@@ -1,0 +1,113 @@
+/* This component is based on the NHS design pattern for pagination
+   https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/pagination */
+
+/* stylelint-disable  no-descending-specificity */
+
+.ictcg-pagination__list {
+  @include govuk-clearfix();
+}
+
+.ictcg-pagination-item--previous {
+  float: left;
+  text-align: left;
+  width: 50%;
+
+  .ictcg-icon {
+    left: -6px;
+  }
+
+  .ictcg-pagination__title {
+    padding-left: govuk-spacing(6);
+  }
+}
+
+.ictcg-pagination-item--next {
+  float: right;
+  text-align: right;
+  width: 50%;
+
+  .ictcg-icon {
+    right: -6px;
+  }
+
+  .ictcg-pagination__title {
+    padding-right: govuk-spacing(6);
+  }
+}
+
+.ictcg-pagination__link {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+
+  .ictcg-icon {
+    position: absolute;
+    fill: govuk-colour('blue');
+    top: -8px;
+
+    @include govuk-media-query ('tablet') {
+      top: -2px;
+    }
+  }
+
+  &:hover {
+    color: $govuk-link-hover-colour;
+
+    .ictcg-icon {
+      fill: $govuk-link-hover-colour;
+    }
+
+    .ictcg-pagination__page {
+      text-decoration: none;
+    }
+  }
+
+  &:visited {
+    .ictcg-icon {
+      fill: $govuk-link-visited-colour;
+    }
+
+    &:hover {
+      .ictcg-icon {
+        fill: $govuk-link-hover-colour;
+      }
+    }
+
+    &:focus {
+      .ictcg-icon {
+        fill: $govuk-focus-text-colour;
+      }
+    }
+  }
+
+  &:focus {
+    @include govuk-focused-text;
+
+    .ictcg-pagination__page {
+      text-decoration: none;
+    }
+
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      .ictcg-icon {
+        fill: $govuk-focus-text-colour;
+      }
+    }
+  }
+}
+
+.ictcg-pagination__title {
+  @include govuk-typography-responsive(24);
+
+  display: block;
+}
+
+.ictcg-pagination__page {
+  @include govuk-typography-responsive(16);
+
+  display: block;
+  text-decoration: underline;
+}

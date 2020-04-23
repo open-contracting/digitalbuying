@@ -1,0 +1,14 @@
+# Environments
+.env
+env
+*.pyc
+.DS_Store
+*.swp
+.vscode
+dist
+node_modules
+.eslintcache
+npm-debug.log
+coverage
+media
+__pycache__/

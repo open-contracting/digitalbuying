@@ -1,0 +1,12 @@
+$govuk-assets-path: '/application/assets';
+$govuk-font-family: Arial, Helvetica, sans-serif;
+
+@import 'govuk-frontend/govuk/core/all';
+@import 'govuk-frontend/govuk/objects/all';
+
+// components
+@import 'govuk-frontend/govuk/components/accordion/accordion';
+@import 'govuk-frontend/govuk/components/header/header';
+@import 'govuk-frontend/govuk/components/breadcrumbs/breadcrumbs';
+@import 'govuk-frontend/govuk/utilities/all';
+@import 'govuk-frontend/govuk/overrides/all';

@@ -1,0 +1,96 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+
+  @include govuk-text-colour;
+}
+
+@include govuk-media-query ($from: tablet) {
+  body {
+    font-size: 19px;
+  }
+}
+
+%ictcg-headings {
+  display: inline-block;
+  margin-top: 0;
+}
+
+h1,
+.ictcg-heading-xl {
+  @include govuk-font($size: 48, $weight: bold);
+  @include govuk-responsive-margin(8, 'bottom');
+
+  @extend %ictcg-headings;
+}
+
+h2,
+.ictcg-heading-l {
+  @include govuk-font($size: 36, $weight: bold);
+  @include govuk-responsive-margin(6, 'bottom');
+
+  @extend %ictcg-headings;
+}
+
+h3,
+.ictcg-heading-m {
+  @include govuk-font($size: 24, $weight: bold);
+  @include govuk-responsive-margin(4, 'bottom');
+
+  @extend %ictcg-headings;
+}
+
+h4,
+.ictcg-heading-s {
+  @include govuk-font($size: 19, $weight: bold);
+  @include govuk-responsive-margin(4, 'bottom');
+
+  @extend %ictcg-headings;
+}
+
+.ictcg-caption-xl {
+  @include govuk-font($size: 27);
+
+  display: block;
+  margin-bottom: govuk-spacing(1);
+}
+
+p {
+  @extend %govuk-body-m;
+}
+
+strong,
+b {
+  @include govuk-typography-weight-bold;
+}
+
+.rich-text {
+  ul,
+  ol {
+    @extend %govuk-list;
+  }
+
+  ol {
+    @extend %govuk-list--number;
+  }
+
+  ul {
+    @extend %govuk-list--bullet;
+  }
+
+  > *:last-child {
+    margin-bottom: 0 !important; /* stylelint-disable-line */
+  }
+}
+
+a {
+  @extend %govuk-link;
+}
+
+hr {
+  @include govuk-responsive-margin(4, 'top');
+  @include govuk-responsive-margin(4, 'bottom');
+
+  display: inline-block;
+}

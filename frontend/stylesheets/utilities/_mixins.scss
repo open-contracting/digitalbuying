@@ -1,0 +1,12 @@
+/*
+ * A public getter for the `$colours` map. Returns a hex colour as a string.
+ * Use this instead of `map-get($colours)`.
+ * @param {String} $name - The colour name from `$colours`
+ * @example
+ *   h1 {
+ *     color: colour('red');
+ *   }
+ */
+@function colour($name) {
+  @return map-get($colours, $name);
+}

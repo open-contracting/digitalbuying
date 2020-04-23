@@ -1,0 +1,107 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-23 14:20+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ictcg/guidelines/models.py:76
+msgid "Text to be shown on the guidelines landing page"
+msgstr ""
+
+#: ictcg/guidelines/models.py:86
+msgid "Title for child pages under this section"
+msgstr ""
+
+#: ictcg/modules/admin.py:10
+msgid "More information module"
+msgstr ""
+
+#: ictcg/modules/admin.py:22
+msgid "Links module"
+msgstr ""
+
+#: ictcg/modules/models.py:30
+msgid "Title to appear in the admin area"
+msgstr ""
+
+#: ictcg/modules/models.py:56
+msgid "Text for link"
+msgstr ""
+
+#: ictcg/settings/base.py:137
+msgid "English"
+msgstr ""
+
+#: ictcg/settings/base.py:138
+msgid "LA Spanish"
+msgstr ""
+
+#: ictcg/settings/base.py:139
+msgid "Bahasa"
+msgstr ""
+
+#: ictcg/sponsors/admin.py:11
+msgid "Sponsor Logos"
+msgstr ""
+
+#: ictcg/sponsors/models.py:37
+msgid "URL for sponsor link"
+msgstr ""
+
+#: ictcg/sponsors/models.py:44
+msgid "Sponsor image or logo"
+msgstr ""
+
+#: ictcg/streams/blocks.py:6
+msgid "Section title, max length 120 characters"
+msgstr ""
+
+#: ictcg/streams/blocks.py:14
+msgid "Item text"
+msgstr ""
+
+#: ictcg/streams/blocks.py:17
+msgid "Do's and dont's title"
+msgstr ""
+
+#: ictcg/templates/guidelines/guidelines_listing_page.html:4
+msgid "Log in"
+msgstr ""
+
+#: ictcg/templates/guidelines/guidelines_listing_page.html:16
+msgid "Open all"
+msgstr "Abrir todo"
+
+#: ictcg/templates/guidelines/guidelines_listing_page.html:16
+msgid "Close all"
+msgstr "cierra todo"
+
+#: ictcg/templates/includes/pagination.html:9
+msgid "Previous"
+msgstr "Anterior"
+
+#: ictcg/templates/includes/pagination.html:21
+msgid "Next"
+msgstr "Siguiente"
+
+#: ictcg/templates/streams/do_dont_list.html:7
+msgid "Do"
+msgstr "hacer"
+
+#: ictcg/templates/streams/do_dont_list.html:20
+msgid "Don't"
+msgstr "Evitar"

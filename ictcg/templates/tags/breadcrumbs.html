@@ -1,0 +1,23 @@
+{% load wagtailcore_tags  %}
+
+{% if ancestors|length > 1 %}
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <div  class="govuk-breadcrumbs">
+          <ol class="govuk-breadcrumbs__list">
+            {% for item in ancestors %}
+              <li class="govuk-breadcrumbs__list-item">
+                {% if forloop.counter != ancestors|length %}
+                  <a class="govuk-breadcrumbs__link" href="{% pageurl item %}">{{ item.title }}</a>
+                {% else %}
+                  {{item.title}}
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

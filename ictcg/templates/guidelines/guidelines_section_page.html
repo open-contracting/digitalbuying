@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load wagtailimages_tags wagtailcore_tags navigation_tags %}
+
+{% block breadcrumbs %}
+    {% breadcrumbs %}
+{% endblock breadcrumbs %}
+
+{% block banner %}
+  {% include 'includes/guidelines-banner.html' with section_title=page.title colour=page.section_colour %}
+{% endblock banner %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full ictcg-margin-top-4">
+      <h1 class="ictcg-heading-l ">{{ page.subtitle }}</h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+  
+      {% for sections in page.sections %}
+        <a href="#{{sections.value.title|slugify }}" class="">
+          {{ sections.value.title }}
+        </a>
+      {% endfor %}
+    
+      {% for block in page.body %}
+        {% include_block block %}
+      {% endfor %}
+    
+      <section>
+        <h3 class="ictcg-margin-bottom-0">{{ page.sub_sections_title }}</h3>
+        <hr>
+        <ul class="govuk-list ictcg-margin-top-2">
+          {% for child in page.get_children.live %}
+            <li>
+              <a href="{{ child.url}}" class="">{{ child.title }}</a>
+            </li>
+          {% endfor %}
+        </ul> 
+      </section>
+      
+
+    </div>
+    
+    <div class="govuk-grid-column-one-third">
+      {% block sidebar %}{% endblock %}
+    </div>
+  </div>
+{% endblock content %}

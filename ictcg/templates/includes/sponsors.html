@@ -1,0 +1,32 @@
+{% load wagtailimages_tags wagtailcore_tags sponsors_tags %}
+
+{% get_sponsors as sponsors %}
+
+{% if sponsors %}
+
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--l">
+  
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h3>{{ sponsors.title }}</h3>
+
+          {{ sponsors.introduction|richtext }}
+
+          <div class="sponsors-flex-row">
+            {% for item in sponsors.sponsor_items.all %}
+              <a href="{{ item.url }}">
+                {% image item.logo min-500x200 %}
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  
+    </main>
+  </div>
+{% endif %}
+
+
+
+

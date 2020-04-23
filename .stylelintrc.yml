@@ -1,0 +1,32 @@
+extends: stylelint-config-standard
+
+plugins:
+  - stylelint-scss
+
+rules:
+  at-rule-no-unknown: ~ # allow Sass @if etc
+  scss/at-rule-no-unknown: true # disallow any non-sass @ rules
+  scss/selector-no-redundant-nesting-selector: true # prevent unecessary use of nested &
+  scss/at-extend-no-missing-placeholder: true # disallow @extend on selectors
+  scss/dollar-variable-colon-space-after: always # ensure space after colons in variable declarations
+  scss/double-slash-comment-empty-line-before: always # ensure commends are spaced cleanly
+  scss/at-function-pattern: "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$"
+  scss/dollar-variable-pattern: "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$"
+  scss/percent-placeholder-pattern: "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$"
+  max-nesting-depth: 5 # restrict mega nesting inside selectors
+  declaration-no-important: true # disallow !important
+  font-family-name-quotes: always-where-required # ensure multi-word font names have quotes
+  function-url-quotes: always # url() contents must always be surrounded by quotes, in case they contain spaces
+  selector-attribute-quotes: always # enforce quotes in attribute selectors e.g. [target="_blank"]
+  string-quotes: single # use single quotes
+  at-rule-no-vendor-prefix: true # disallow vendor prefixes, use auto-prefixer instead
+  property-no-vendor-prefix: true # disallow vendor prefixes, use auto-prefixer instead
+  selector-no-vendor-prefix: true # disallow vendor prefixes, use auto-prefixer instead
+  value-no-vendor-prefix:  # disallow vendor prefixes, use auto-prefixer instead
+  selector-max-id: 0 # disallow IDs in selectors
+  selector-class-pattern: "^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-z0-9]+(?:-[a-z0-9]+)*(?:__[a-z0-9]+(?:-[a-z0-9]+)*)?(?:--[a-z0-9]+(?:-[a-z0-9]+)*)?(?:\\[.+\\])?$"
+  selector-nested-pattern: "^(?!&(-|_))" # disallow nested styles to start with &- or &_ (BEM)
+  number-leading-zero: never # no leading zeros
+
+ignoreFiles:
+  - "src/stylesheets/vendor/**"

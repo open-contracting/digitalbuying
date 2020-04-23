@@ -1,0 +1,23 @@
+@for $i from 0 through 9 {
+  .ictcg-margin-top-#{$i} {
+    @include govuk-responsive-margin($i, 'top');
+  }
+}
+
+@for $i from 0 through 9 {
+  .ictcg-margin-bottom-#{$i} {
+    @include govuk-responsive-margin($i, 'bottom');
+  }
+}
+
+@for $i from 0 through 9 {
+  .ictcg-padding-top-#{$i} {
+    @include govuk-responsive-padding($i, 'top');
+  }
+}
+
+@for $i from 0 through 9 {
+  .ictcg-padding-bottom-#{$i} {
+    @include govuk-responsive-padding($i, 'bottom');
+  }
+}

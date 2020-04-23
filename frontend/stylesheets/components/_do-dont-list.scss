@@ -1,0 +1,57 @@
+/* This component is based on the NHS design pattern for the do and dont list
+   https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/do-dont-list */
+
+.ictcg-list--tick,
+.ictcg-list--cross {
+  list-style: none;
+  margin-top: 0;
+  padding-left: 40px;
+  position: relative;
+
+  svg {
+    left: -4px;
+    margin-top: -5px;
+    position: absolute;
+  }
+}
+
+.ictcg-do-dont-list {
+  @include govuk-responsive-padding(5);
+
+  background-color: colour('light-grey');
+
+  @include govuk-text-colour;
+
+  padding-top: 0 !important; /* stylelint-disable-line */
+}
+
+.ictcg-do-dont-list > *:last-child {
+  margin-bottom: 0;
+}
+
+.ictcg-do-dont > .ictcg-do-dont-list:first-of-type {
+  margin-top: govuk-spacing(2);
+
+  @include govuk-media-query('tablet') {
+    margin-top: govuk-spacing(4);
+  }
+}
+
+.ictcg-do-dont-list__label {
+  @include govuk-typography-responsive(24);
+
+  background-color: colour('blue');
+  color: colour('white');
+  display: inline-block;
+  position: relative;
+  margin-left: -15px;
+  margin-right: 0;
+  padding: govuk-spacing(1) govuk-spacing(4);
+  top: -8px;
+
+  @include govuk-media-query('tablet') {
+    margin: govuk-spacing(0) govuk-spacing(0) govuk-spacing(2) -25px;
+    padding: govuk-spacing(2) govuk-spacing(4);
+    top: -16px;
+  }
+}

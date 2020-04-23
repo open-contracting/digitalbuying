@@ -1,0 +1,10 @@
+.ictcg-guidelines-banner {
+  display: block;
+  width: 100%;
+
+  @include govuk-responsive-padding(8, 'top');
+}
+
+.ictcg-guidelines-banner__title {
+  color: colour('white');
+}

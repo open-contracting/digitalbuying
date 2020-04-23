@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+.ictcg-column-module-spacing {
+  > * {
+    @include govuk-responsive-margin(8, 'bottom');
+  }
+}

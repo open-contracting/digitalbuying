@@ -1,0 +1,8 @@
+<div class="ictcg-more-info-module" style="border-top:10px solid {{ colour }}; background-color:rgba({{ section_colour_rgb }}, 0.1)">
+  <h3 class="ictcg-more-info-module__title">{{ module.title }}</h3>
+  <p class="ictcg-more-info-module__desc">{{ module.description }}
+    <a class="ictcg-more-info-module__link" href="{{ module.url }}" {% if module.open_in_new_tab %}target="_blank"{% endif %}>
+      {{ module.link_text }}
+    </a>
+  </p>
+</div>
