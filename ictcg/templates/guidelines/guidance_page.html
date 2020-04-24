@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% load wagtailimages_tags wagtailcore_tags navigation_tags %}
+{% load wagtailimages_tags wagtailcore_tags navigation_tags cache %}
 
 {% block breadcrumbs %}
     {% breadcrumbs %}
 {% endblock breadcrumbs %}
 
 {% block banner %}
-  {% include 'includes/guidelines-banner.html' with section_title=section.title colour=section.section_colour %}
+  {% include 'includes/guidelines-banner.html' with title=guidelines_title section_title=section.title colour=section.section_colour %}
 {% endblock banner %}
 
 {% block content %}
@@ -27,8 +27,8 @@
       {% for block in page.body %}
         {% include_block block %}
       {% endfor %}
-
-      {% include 'includes/pagination.html'  %}
+      
+      {% include 'includes/pagination.html' with prev_sibling=page.get_prev_sibling next_sibling=page.get_next_sibling %}
     </div>
     
     <div class="govuk-grid-column-one-third ictcg-column-module-spacing">

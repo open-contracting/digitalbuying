@@ -185,3 +185,11 @@ WAGTAIL_SITE_NAME = "ictcg"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': f'{BASE_DIR}/.cache',
+        'TIMEOUT': 86400, #24 hours
+    }
+}

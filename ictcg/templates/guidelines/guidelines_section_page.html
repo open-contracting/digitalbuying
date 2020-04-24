@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% load wagtailimages_tags wagtailcore_tags navigation_tags %}
+{% load wagtailimages_tags wagtailcore_tags navigation_tags cache %}
 
 {% block breadcrumbs %}
     {% breadcrumbs %}
 {% endblock breadcrumbs %}
 
 {% block banner %}
-  {% include 'includes/guidelines-banner.html' with section_title=page.title colour=page.section_colour %}
+  {% include 'includes/guidelines-banner.html' with title=page.get_parent.title section_title=page.title colour=page.section_colour %}
 {% endblock banner %}
 
 {% block content %}
@@ -33,15 +33,15 @@
         <h3 class="ictcg-margin-bottom-0">{{ page.sub_sections_title }}</h3>
         <hr>
         <ul class="govuk-list ictcg-margin-top-2">
-          {% for child in page.get_children.live %}
-            <li>
-              <a href="{{ child.url}}" class="">{{ child.title }}</a>
-            </li>
-          {% endfor %}
+          {% cache 86400 guidelines_sections_children page.id %}
+            {% for child in page.get_children.live %}
+              <li>
+                <a href="{{ child.url}}" class="">{{ child.title }}</a>
+              </li>
+            {% endfor %}
+          {% endcache %}
         </ul> 
       </section>
-      
-
     </div>
     
     <div class="govuk-grid-column-one-third">

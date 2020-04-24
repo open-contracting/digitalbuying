@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags i18n %}
-
-<h1>{% trans 'Log in' %}</h1>
+{% load wagtailcore_tags i18n cache %}
 
 {% block content %}
 
@@ -13,36 +11,38 @@
         {{ page.introduction|richtext }}
       </section>
 
-      <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default" data-open-text="{% trans 'Open all' %} " data-close-text="{% trans 'Close all' %} ">
-        {% for descendant in descendants %}
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h2 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button" id="accordion-default-heading-{{forloop.counter}}">
-                  {{ descendant.title }}
-                </span>
-              </h2>
-              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-{{forloop.counter}}">
-                {{ descendant.specific.landing_page_summary }}
+      {% cache 86400 guidelines_listing_descendant page.id %}
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default" data-open-text="{% trans 'Open all' %} " data-close-text="{% trans 'Close all' %} ">
+          {% for descendant in descendants %}
+            <div class="govuk-accordion__section ">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-{{forloop.counter}}">
+                    {{ descendant.title }}
+                  </span>
+                </h2>
+                <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-{{forloop.counter}}">
+                  {{ descendant.specific.landing_page_summary }}
+                </div>
+              </div>
+              <div id="accordion-default-content-{{forloop.counter}}" class="govuk-accordion__section-content govuk-!-padding-top-0" aria-labelledby="accordion-default-heading-{{forloop.counter}}">
+                <ul class="govuk-list">
+                  <li>
+                    <a href="{{ descendant.url}}" class="">{{ descendant.specific.subtitle }}</a>
+                  </li>
+                  {% for page in descendant.get_children.live %}
+                    <li>
+                      <a href="{{ page.url}}" class="">
+                        {{ page.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul> 
               </div>
             </div>
-            <div id="accordion-default-content-{{forloop.counter}}" class="govuk-accordion__section-content govuk-!-padding-top-0" aria-labelledby="accordion-default-heading-{{forloop.counter}}">
-              <ul class="govuk-list">
-                <li>
-                  <a href="{{ descendant.url}}" class="">{{ descendant.specific.subtitle }}</a>
-                </li>
-                {% for page in descendant.get_children.live %}
-                  <li>
-                    <a href="{{ page.url}}" class="">
-                      {{ page.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul> 
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+          {% endfor %}
+        </div>
+      {% endcache %}
     </div>
     
     <div class="govuk-grid-column-one-third">

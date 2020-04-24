@@ -1,6 +1,9 @@
 from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
+
 from wagtailtrans.models import TranslatablePage, Language
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
@@ -19,7 +22,6 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from ictcg.guidelines.choices import COLOUR_CHOICES
-from ictcg.guidelines.utils import hex_to_rgb
 from ictcg.streams import blocks
 
 class GuidelinesListingPage(TranslatablePage):
@@ -46,7 +48,6 @@ class GuidelinesListingPage(TranslatablePage):
     context = super().get_context(request, *args, **kwards)
     context['descendants'] = Page.objects.child_of(self).live()
     return context
-    
 
 class GuidelinesSectionPage(TranslatablePage):
   """
@@ -96,12 +97,12 @@ class GuidelinesSectionPage(TranslatablePage):
   search_fields = Page.search_fields + [
     index.SearchField('body'),
   ]
-
-  def get_context(self, request, *args, **kwards):
-    context = super().get_context(request, *args, **kwards)
-    guidelines = self.get_parent()
-    context['guidelines_title'] = guidelines.title
-    return context
+  
+  def save(self,  *args, **kwards):
+    parent = self.get_parent()
+    key = make_template_fragment_key("guidelines_listing_descendant", [parent.id])
+    cache.delete(key)
+    return super().save(*args, **kwards)
 
 # TODO: Hide snippets for other languages
 # class CustomizedChooserPanel(SnippetChooserPanel):
@@ -163,12 +164,15 @@ class GuidancePage(TranslatablePage):
 
   def get_context(self, request, *args, **kwards):
     context = super().get_context(request, *args, **kwards)
-    context['prev_sibling'] = self.get_prev_siblings().live().first()
-    context['next_sibling'] = self.get_next_siblings().live().first()
     guidelines =  GuidelinesListingPage.objects.ancestor_of(self).live().first()
-    section = GuidelinesSectionPage.objects.ancestor_of(self).live().first()
-    context['section'] = section
-    context['section_colour_rgb'] = ','.join(str(v) for v in hex_to_rgb(section.section_colour))
+    context['section'] = GuidelinesSectionPage.objects.ancestor_of(self).live().first()
     context['guidelines_title'] = guidelines.title
     return context
   
+  def save(self,  *args, **kwards):
+    section = self.get_parent()
+    guidelines =  GuidelinesListingPage.objects.ancestor_of(self).live().first()
+    section_key = make_template_fragment_key("guidelines_sections_children", [section.id])
+    guidelines_key = make_template_fragment_key("guidelines_listing_descendant", [guidelines.id])
+    cache.delete_many([section_key, guidelines_key])
+    return super().save(*args, **kwards)
