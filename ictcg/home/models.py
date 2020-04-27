@@ -11,6 +11,9 @@ class HomePage(TranslatablePage):
   A TranslatablePage class for the homepage - WIP
   """
 
+  parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
+  subpage_types = ["guidelines.GuidelinesListingPage"]
+
   body = RichTextField(blank=True, default="")
 
   content_panels = Page.content_panels + [

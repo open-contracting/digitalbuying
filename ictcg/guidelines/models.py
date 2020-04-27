@@ -1,3 +1,4 @@
+import logging
 from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
@@ -32,7 +33,6 @@ class GuidelinesListingPage(TranslatablePage):
 
   parent_page_types = ["home.HomePage"]
   subpage_types = ["guidelines.GuidelinesSectionPage"]
-  max_count = 1
 
   introduction = RichTextField(blank=True, default="")
 
@@ -99,9 +99,14 @@ class GuidelinesSectionPage(TranslatablePage):
   ]
   
   def save(self,  *args, **kwards):
-    parent = self.get_parent()
-    key = make_template_fragment_key("guidelines_listing_descendant", [parent.id])
-    cache.delete(key)
+    try:
+      parent = self.get_parent()
+      key = make_template_fragment_key("guidelines_listing_descendant", [parent.id])
+      cache.delete(key)
+    except Exception:
+      logging.error('Error deleting GuidelinesSectionPage cache')
+      pass
+    
     return super().save(*args, **kwards)
 
 # TODO: Hide snippets for other languages
@@ -170,9 +175,14 @@ class GuidancePage(TranslatablePage):
     return context
   
   def save(self,  *args, **kwards):
-    section = self.get_parent()
-    guidelines =  GuidelinesListingPage.objects.ancestor_of(self).live().first()
-    section_key = make_template_fragment_key("guidelines_sections_children", [section.id])
-    guidelines_key = make_template_fragment_key("guidelines_listing_descendant", [guidelines.id])
-    cache.delete_many([section_key, guidelines_key])
+    try:
+      section = self.get_parent()
+      guidelines =  GuidelinesListingPage.objects.ancestor_of(self).live().first()
+      section_key = make_template_fragment_key("guidelines_sections_children", [section.id])
+      guidelines_key = make_template_fragment_key("guidelines_listing_descendant", [guidelines.id])
+      cache.delete_many([section_key, guidelines_key])
+    except Exception:
+      logging.error('Error deleting GuidancePage cache')
+      pass
+    
     return super().save(*args, **kwards)

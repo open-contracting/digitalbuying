@@ -1,6 +1,6 @@
 COLOUR_CHOICES = (
-  ('#25a898','Green'),
-  ('#007fc2', 'Blue'),
-  ('#79b04a','Lime'),
+  ('#28a197','Turqoise'),
+  ('#007FC2', 'Light Blue'),
+  ('#002F49','Dark Blue'),
   ('#7f97ab','Grey'),
 )
