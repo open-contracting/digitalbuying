@@ -9,4 +9,4 @@ Accordion.prototype.updateOpenAllButton = function (expanded) {
   this.$openAllButton.innerHTML = newButtonText
 }
 
-exports.Accordion = Accordion
+export default Accordion

@@ -1,5 +1,6 @@
 from django import template
 from wagtail.core.models import Page
+from ..models import MainMenu
 
 register = template.Library()
 
@@ -16,3 +17,22 @@ def breadcrumbs(context):
     'ancestors': ancestors,
     'request': context['request'],
   }
+
+@register.simple_tag(takes_context=True)
+def main_menu(context):
+  try:
+    request = context['request']
+    mainmenu =  MainMenu.objects.filter(language=request.LANGUAGE_CODE).first()
+    if mainmenu:
+      return mainmenu
+    else:
+      # Default to en if not set for the other countries
+      return MainMenu.objects.filter(language='en').first()
+  except MainMenu.DoesNotExist:
+    return MainMenu.objects.none()
+  
+@register.simple_tag(takes_context=True)
+def is_main_menu_link_active(context, slug):
+  request = context['request']
+  return slug in request.path
+  

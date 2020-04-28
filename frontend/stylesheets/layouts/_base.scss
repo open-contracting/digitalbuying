@@ -7,3 +7,22 @@
     @include govuk-responsive-margin(8, 'bottom');
   }
 }
+
+.rich-text {
+  ul,
+  ol {
+    @extend %govuk-list;
+  }
+
+  ol {
+    @extend %govuk-list--number;
+  }
+
+  ul {
+    @extend %govuk-list--bullet;
+  }
+
+  > *:last-child {
+    margin-bottom: 0 !important; /* stylelint-disable-line */
+  }
+}
