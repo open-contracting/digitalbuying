@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-23 14:20+0000\n"
+"POT-Creation-Date: 2020-04-29 12:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,6 +42,22 @@ msgstr ""
 msgid "Text for link"
 msgstr ""
 
+#: ictcg/navigation/admin.py:9
+msgid "Main menu"
+msgstr ""
+
+#: ictcg/navigation/admin.py:17
+msgid "Menus"
+msgstr ""
+
+#: ictcg/navigation/models.py:48
+msgid "Description for navigation button aria label"
+msgstr ""
+
+#: ictcg/navigation/models.py:54
+msgid "Description for navigation aria label"
+msgstr ""
+
 #: ictcg/settings/base.py:137
 msgid "English"
 msgstr ""
@@ -66,27 +82,23 @@ msgstr ""
 msgid "Sponsor image or logo"
 msgstr ""
 
-#: ictcg/streams/blocks.py:6
+#: ictcg/streams/blocks.py:5
 msgid "Section title, max length 120 characters"
 msgstr ""
 
-#: ictcg/streams/blocks.py:14
+#: ictcg/streams/blocks.py:13
 msgid "Item text"
 msgstr ""
 
-#: ictcg/streams/blocks.py:17
+#: ictcg/streams/blocks.py:16
 msgid "Do's and dont's title"
 msgstr ""
 
-#: ictcg/templates/guidelines/guidelines_listing_page.html:4
-msgid "Log in"
-msgstr ""
-
-#: ictcg/templates/guidelines/guidelines_listing_page.html:16
+#: ictcg/templates/guidelines/guidelines_listing_page.html:15
 msgid "Open all"
 msgstr "Abrir todo"
 
-#: ictcg/templates/guidelines/guidelines_listing_page.html:16
+#: ictcg/templates/guidelines/guidelines_listing_page.html:15
 msgid "Close all"
 msgstr "cierra todo"
 
@@ -105,3 +117,7 @@ msgstr "hacer"
 #: ictcg/templates/streams/do_dont_list.html:20
 msgid "Don't"
 msgstr "Evitar"
+
+#: ictcg/templates/tags/breadcrumbs.html:23
+msgid "Back to "
+msgstr "De regreso"

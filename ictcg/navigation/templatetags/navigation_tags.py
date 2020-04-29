@@ -9,14 +9,23 @@ register = template.Library()
 @register.inclusion_tag('tags/breadcrumbs.html', takes_context=True)
 def breadcrumbs(context):
   self = context.get('self')
-  if self is None or self.depth <= 3:
+  if self is None or self.depth <= 2:
     ancestors = ()
   else:
-    ancestors = Page.objects.ancestor_of(self, inclusive=True).filter(depth__gt=3)
+    ancestors = Page.objects.ancestor_of(self, inclusive=True).filter(depth__gt=2)
+    parent = get_parent(ancestors, self.depth)
   return {
     'ancestors': ancestors,
+    'parent': parent,
     'request': context['request'],
   }
+
+def get_parent(ancestors, child_depth):
+  """Get the parent based on the depth of the current item"""
+  for item in ancestors:
+    if item.depth == (child_depth - 1):
+      return item
+  return None
 
 @register.simple_tag(takes_context=True)
 def main_menu(context):
