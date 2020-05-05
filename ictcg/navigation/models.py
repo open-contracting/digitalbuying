@@ -1,12 +1,15 @@
+import logging
 from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 
 from wagtail.core.models import Orderable
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel
+from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 class MainMenu(ClusterableModel):
@@ -67,9 +70,9 @@ class MainMenu(ClusterableModel):
   def __str__(self):
     return f"{self.title} - {self.language}"
 
-class MenuItem(Orderable):
+class MenuItem(models.Model):
   """
-  Orderable class for link data
+  Reuseable class for menu item links
   """
 
   title = models.CharField(max_length=100, blank=True)
@@ -90,8 +93,6 @@ class MenuItem(Orderable):
     FieldPanel("open_in_new_tab"),
   ]
 
-  menu = ParentalKey("MainMenu", related_name="menu_items")
-
   @property
   def link(self):
     if self.page:
@@ -99,3 +100,96 @@ class MenuItem(Orderable):
     elif self.url:
       return self.url
     return "#"
+
+
+class MainMenuItem(Orderable, MenuItem):
+  """
+   A class that extends Orderable and MenuItem classe for the main menu link items.
+   Extending Orderable allow for links to be arranaged in the order choosen by the user
+  """
+  panels = MenuItem.panels + []
+  links = ParentalKey("MainMenu", related_name="menu_items")
+
+class FooterMenu(ClusterableModel):
+  """
+  FooterMenu class for footer links. Contains Orderable MenuItem class.
+  """
+
+  admin_title = models.CharField(
+    max_length=100, 
+    blank=False,
+    null=True
+  )
+
+  language = models.CharField(
+    max_length=100, 
+    choices=settings.LANGUAGES
+  )
+
+  sponsors_title = models.CharField(
+    max_length=100, 
+    blank=False,
+    null=True,
+  )
+
+  panels = [
+    FieldPanel("admin_title"),
+    FieldPanel("language"),
+    InlinePanel("footer_menu_items", label="Menu Item"),
+    MultiFieldPanel(
+      [
+        FieldPanel("sponsors_title"),
+        InlinePanel("sponsor_items", label="Sponsor Items")
+      ],
+      heading=_('Sponsors'),
+    ),
+  ]
+
+  def __str__(self):
+    return f"{self.admin_title} - {self.language}"
+  
+  def save(self, *args, **kwards):
+    try:
+      sponsors = make_template_fragment_key("footer_sponsors", [self.language])
+      support_link = make_template_fragment_key("footer_support_links", [self.language])
+      cache.delete_many([sponsors, support_link])
+    except Exception:
+      logging.error('Error deleting footer cache')
+      pass
+    return super().save(*args, **kwards)
+
+class FooterMenuItem(Orderable, MenuItem):
+  """
+   A class that extends Orderable and MenuItem classe for the main menu link items.
+   Extending Orderable allow for links to be arranaged in the order choosen by the user
+  """
+  panels = MenuItem.panels + []
+  links = ParentalKey("FooterMenu", related_name="footer_menu_items")
+
+
+class SponsorItem(Orderable):
+
+  name = models.CharField(
+    max_length=140, 
+    blank=True, 
+    help_text='Title'
+  )
+
+  url = models.URLField(blank=True, help_text=_("URL for sponsor link"))
+
+  logo = models.ForeignKey(
+    'wagtailimages.Image',
+    blank=False,
+    null=True,
+    related_name='+',
+    help_text=_('Sponsor image or logo'),
+    on_delete=models.SET_NULL,
+  )
+
+  panels = [
+    FieldPanel("name"),
+    FieldPanel("url"),
+    ImageChooserPanel("logo"),
+  ]
+
+  sponsor = ParentalKey("FooterMenu", related_name="sponsor_items", default='')

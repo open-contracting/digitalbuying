@@ -1,11 +1,13 @@
 from django import template
 from wagtail.core.models import Page
-from ..models import MainMenu
+from ictcg.navigation.models import MainMenu, FooterMenu
+from ictcg.guidelines.models import GuidelinesListingPage, GuidelinesSectionPage
+from wagtailtrans.models import TranslatablePage
 
 register = template.Library()
 
 # Retrieves the ancestors of the current page, 
-# filtering out the top 3 levels (root, translation-root and home)
+# filtering out the top 2 levels (root and translation-root)
 @register.inclusion_tag('tags/breadcrumbs.html', takes_context=True)
 def breadcrumbs(context):
   self = context.get('self')
@@ -13,7 +15,7 @@ def breadcrumbs(context):
     ancestors = ()
   else:
     ancestors = Page.objects.ancestor_of(self, inclusive=True).filter(depth__gt=2)
-    parent = get_parent(ancestors, self.depth)
+  parent = get_parent(ancestors, self.depth)
   return {
     'ancestors': ancestors,
     'parent': parent,
@@ -27,21 +29,27 @@ def get_parent(ancestors, child_depth):
       return item
   return None
 
-@register.simple_tag(takes_context=True)
-def main_menu(context):
-  try:
-    request = context['request']
-    mainmenu =  MainMenu.objects.filter(language=request.LANGUAGE_CODE).first()
-    if mainmenu:
-      return mainmenu
-    else:
-      # Default to en if not set for the other countries
-      return MainMenu.objects.filter(language='en').first()
-  except MainMenu.DoesNotExist:
-    return MainMenu.objects.none()
+@register.simple_tag()
+def main_menu(language):
+  mainmenu =  MainMenu.objects.filter(language=language).first()
+  if mainmenu:
+    return mainmenu
+  else:
+    # Default to en if not set for the other countries
+    return MainMenu.objects.filter(language='en').first()
   
 @register.simple_tag(takes_context=True)
 def is_main_menu_link_active(context, slug):
   request = context['request']
   return slug in request.path
-  
+
+@register.simple_tag()
+def get_footer_content(language):
+  guildelines_sections = GuidelinesSectionPage.objects.filter(language__code=language).live()
+  guildelines_title = GuidelinesListingPage.objects.filter(language__code=language).values_list('title', flat=True).first()
+  footer_content = FooterMenu.objects.filter(language=language).first()
+  return {
+    'guildelines_sections': guildelines_sections,
+    'guildelines_title': guildelines_title,
+    'footer_content': footer_content,
+  }
