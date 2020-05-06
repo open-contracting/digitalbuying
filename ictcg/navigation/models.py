@@ -4,6 +4,8 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
@@ -150,9 +152,7 @@ class FooterMenu(ClusterableModel):
   
   def save(self, *args, **kwards):
     try:
-      sponsors = make_template_fragment_key("footer_sponsors", [self.language])
-      support_link = make_template_fragment_key("footer_support_links", [self.language])
-      cache.delete_many([sponsors, support_link])
+      clear_footer_cache(self.language)
     except Exception:
       logging.error('Error deleting footer cache')
       pass
@@ -193,3 +193,13 @@ class SponsorItem(Orderable):
   ]
 
   sponsor = ParentalKey("FooterMenu", related_name="sponsor_items", default='')
+
+def clear_footer_cache(language_code):
+  sponsors = make_template_fragment_key("footer_sponsors", [language_code])
+  support_link = make_template_fragment_key("footer_support_links", [language_code])
+  cache.delete_many([sponsors, support_link])
+
+@receiver(pre_delete, sender=FooterMenu)
+def on_footer_menu_delete(sender, instance, **kwargs):
+  """ On footer menu delete, clear the cache """
+  clear_footer_cache(instance.language)

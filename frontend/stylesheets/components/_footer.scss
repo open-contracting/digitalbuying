@@ -5,6 +5,6 @@
 
   a {
     @include govuk-responsive-margin(5, 'right');
-    @include govuk-responsive-margin(6, 'bottom');;
+    @include govuk-responsive-margin(6, 'bottom');
   }
 }

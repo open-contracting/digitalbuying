@@ -4,6 +4,8 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 from wagtailtrans.models import TranslatablePage, Language
 from modelcluster.models import ClusterableModel
@@ -100,9 +102,7 @@ class GuidelinesSectionPage(TranslatablePage):
   
   def save(self,  *args, **kwards):
     try:
-      parent = self.get_parent()
-      key = make_template_fragment_key("guidelines_listing_descendant", [parent.id])
-      cache.delete(key)
+      clear_guidelines_listing_cache(self.language.code)
     except Exception:
       logging.error('Error deleting GuidelinesSectionPage cache')
       pass
@@ -174,15 +174,32 @@ class GuidancePage(TranslatablePage):
     context['guidelines_title'] = guidelines.title
     return context
   
-  def save(self,  *args, **kwards):
+  def save(self, *args, **kwards):
     try:
       section = self.get_parent()
-      guidelines =  GuidelinesListingPage.objects.ancestor_of(self).live().first()
-      section_key = make_template_fragment_key("guidelines_sections_children", [section.id])
-      guidelines_key = make_template_fragment_key("guidelines_listing_descendant", [guidelines.id])
-      cache.delete_many([section_key, guidelines_key])
+      clear_guidelines_listing_cache(self.language.code)
+      clear_guidelines_section_cache(section.id)
     except Exception:
       logging.error('Error deleting GuidancePage cache')
       pass
     
     return super().save(*args, **kwards)
+
+def clear_guidelines_section_cache(section_id):
+  section_key = make_template_fragment_key("guidelines_sections_children", [section_id])
+  cache.delete(section_key)
+
+def clear_guidelines_listing_cache(language_code):
+  guidelines_key = make_template_fragment_key("guidelines_listing_descendant", [language_code])
+  cache.delete(guidelines_key)
+
+@receiver(pre_delete, sender=GuidelinesSectionPage)
+@receiver(pre_delete, sender=GuidancePage)
+def on_guidance_page_delete(sender, instance, **kwargs):
+  """ On a guidance or section page delete, clear the cache for the section and listings pages"""
+  clear_guidelines_listing_cache(instance.language.code)
+  
+  if sender.__name__ == 'GuidancePage':
+    section = instance.get_parent()
+    if section.id:
+      clear_guidelines_section_cache(section.id)

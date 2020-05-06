@@ -193,3 +193,5 @@ CACHES = {
         'TIMEOUT': 86400, #24 hours
     }
 }
+
+WAGTAILTRANS_HIDE_TRANSLATION_TREES = True
