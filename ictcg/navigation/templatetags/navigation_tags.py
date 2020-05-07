@@ -3,6 +3,7 @@ from wagtail.core.models import Page
 from ictcg.navigation.models import MainMenu, FooterMenu
 from ictcg.guidelines.models import GuidelinesListingPage, GuidelinesSectionPage
 from wagtailtrans.models import TranslatablePage
+import urllib.parse
 
 register = template.Library()
 
@@ -41,7 +42,7 @@ def main_menu(language):
 @register.simple_tag(takes_context=True)
 def is_main_menu_link_active(context, slug):
   request = context['request']
-  return slug in request.path
+  return urllib.parse.unquote(slug) in request.path
 
 @register.simple_tag()
 def get_footer_content(language):
