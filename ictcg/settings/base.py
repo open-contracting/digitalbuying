@@ -195,3 +195,5 @@ CACHES = {
 }
 
 WAGTAILTRANS_HIDE_TRANSLATION_TREES = True
+
+FIXTURE_DIRS = (os.path.join(BASE_DIR, 'tests/fixtures'),)

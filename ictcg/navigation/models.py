@@ -168,7 +168,9 @@ class FooterMenuItem(Orderable, MenuItem):
 
 
 class SponsorItem(Orderable):
-
+  """
+  SponsorItem class for footer sponsors.
+  """
   name = models.CharField(
     max_length=140, 
     blank=True, 
