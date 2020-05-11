@@ -40,9 +40,9 @@ def main_menu(language):
     return MainMenu.objects.filter(language='en').first()
   
 @register.simple_tag(takes_context=True)
-def is_main_menu_link_active(context, slug):
+def is_main_menu_link_active(context, link):
   request = context['request']
-  return urllib.parse.unquote(slug) in request.path
+  return urllib.parse.unquote(link) in request.path
 
 @register.simple_tag()
 def get_footer_content(language):

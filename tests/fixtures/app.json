@@ -110,11 +110,17 @@
       }
     },
     {
+      "model":"wagtailtrans.translatablepage",
+      "pk":8,
+      "fields":{
+        "canonical_page":8,
+        "language":1
+      }
+    },
+    {
       "model":"wagtailtrans.translatablesiterootpage",
       "pk":3,
-      "fields":{
-  
-      }
+      "fields":{}
     },
     {
       "model":"wagtailcore.page",
@@ -217,6 +223,26 @@
       }
     },
     {
+      "model":"wagtailcore.page",
+      "pk":8,
+      "fields":{
+        "path":"000100020001000100010001",
+        "depth":6,
+        "numchild":0,
+        "title":"Form a team",
+        "draft_title":"Form a team",
+        "slug":"Form-a-team",
+        "content_type":[
+          "guidelines",
+          "guidancepage"
+        ],
+        "live":true,
+        "has_unpublished_changes":false,
+        "url_path":"/root/en/guidelines/prepare-and-plan",
+        "owner":["gdmp.admin"]
+      }
+    },
+    {
       "model":"guidelines.guidelineslistingpage",
       "pk":6,
       "fields":{
@@ -228,6 +254,13 @@
       "pk":7,
       "fields":{
         "subtitle":"Prepare and plan"
+      }
+    },
+    {
+      "model":"guidelines.guidancepage",
+      "pk":8,
+      "fields":{
+        "body":"{}"
       }
     },
     {

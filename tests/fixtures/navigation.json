@@ -1,0 +1,248 @@
+[
+    {
+        "model": "navigation.mainmenu",
+        "pk": 1,
+        "fields": {
+            "admin_title": null,
+            "title": "main menu",
+            "language": "en",
+            "button_text": "Menu",
+            "button_aria_label": "Show or hide Top Level Navigation",
+            "navigation_aria_label": "Top Level Navigation"
+        }
+    },
+    {
+        "model": "navigation.mainmenu",
+        "pk": 2,
+        "fields": {
+            "admin_title": null,
+            "title": "main menu",
+            "language": "es",
+            "button_text": "Menu",
+            "button_aria_label": "Show or hide Top Level Navigation",
+            "navigation_aria_label": "Top Level Navigation"
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 1,
+        "fields": {
+            "title": "Guidelines",
+            "url": "",
+            "page": 6,
+            "open_in_new_tab": false
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 2,
+        "fields": {
+            "title": "Case studies",
+            "url": "#",
+            "page": null,
+            "open_in_new_tab": false
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 3,
+        "fields": {
+            "title": "About",
+            "url": "#",
+            "page": null,
+            "open_in_new_tab": false
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 4,
+        "fields": {
+            "title": "Guidelines",
+            "url": "",
+            "page": 6,
+            "open_in_new_tab": false
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 5,
+        "fields": {
+            "title": "Case studies",
+            "url": "#",
+            "page": null,
+            "open_in_new_tab": false
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 6,
+        "fields": {
+            "title": "About",
+            "url": "#",
+            "page": null,
+            "open_in_new_tab": true
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 7,
+        "fields": {
+            "title": "Help",
+            "url": "#",
+            "page": null,
+            "open_in_new_tab": false
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 8,
+        "fields": {
+            "title": "Cookies",
+            "url": "#",
+            "page": null,
+            "open_in_new_tab": false
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 9,
+        "fields": {
+            "title": "Contact",
+            "url": "http://www.google.com",
+            "page": null,
+            "open_in_new_tab": true
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 10,
+        "fields": {
+            "title": "La guía",
+            "url": "",
+            "page": 7,
+            "open_in_new_tab": false
+        }
+    },
+    {
+        "model": "navigation.menuitem",
+        "pk": 11,
+        "fields": {
+            "title": "La guía",
+            "url": "",
+            "page": 7,
+            "open_in_new_tab": false
+        }
+    },
+    {
+        "model": "navigation.mainmenuitem",
+        "pk": 4,
+        "fields": {
+            "sort_order": 0,
+            "links": 1
+        }
+    },
+    {
+        "model": "navigation.mainmenuitem",
+        "pk": 5,
+        "fields": {
+            "sort_order": 1,
+            "links": 1
+        }
+    },
+    {
+        "model": "navigation.mainmenuitem",
+        "pk": 6,
+        "fields": {
+            "sort_order": 2,
+            "links": 1
+        }
+    },
+    {
+        "model": "navigation.mainmenuitem",
+        "pk": 11,
+        "fields": {
+            "sort_order": 0,
+            "links": 2
+        }
+    },
+    {
+        "model": "navigation.footermenu",
+        "pk": 1,
+        "fields": {
+            "admin_title": "Footer",
+            "language": "en",
+            "sponsors_title": "Supported by:"
+        }
+    },
+    {
+        "model": "navigation.footermenu",
+        "pk": 3,
+        "fields": {
+            "admin_title": "Footer",
+            "language": "es",
+            "sponsors_title": "Sponsors"
+        }
+    },
+    {
+        "model": "navigation.footermenuitem",
+        "pk": 7,
+        "fields": {
+            "sort_order": 0,
+            "links": 1
+        }
+    },
+    {
+        "model": "navigation.footermenuitem",
+        "pk": 8,
+        "fields": {
+            "sort_order": 1,
+            "links": 1
+        }
+    },
+    {
+        "model": "navigation.footermenuitem",
+        "pk": 9,
+        "fields": {
+            "sort_order": 2,
+            "links": 1
+        }
+    },
+    {
+        "model": "navigation.footermenuitem",
+        "pk": 10,
+        "fields": {
+            "sort_order": 0,
+            "links": 3
+        }
+    },
+    {
+        "model": "navigation.sponsoritem",
+        "pk": 1,
+        "fields": {
+            "sort_order": 0,
+            "name": "ITU",
+            "url": "http://www.google.com",
+            "sponsor": 1
+        }
+    },
+    {
+        "model": "navigation.sponsoritem",
+        "pk": 2,
+        "fields": {
+            "sort_order": 1,
+            "name": "OECD",
+            "url": "http://www.google.com",
+            "sponsor": 1
+        }
+    },
+    {
+        "model": "navigation.sponsoritem",
+        "pk": 3,
+        "fields": {
+            "sort_order": 2,
+            "name": "U4SSC",
+            "url": "http://www.google.com",
+            "sponsor": 1
+        }
+    }
+]
