@@ -1,15 +1,10 @@
 from django.test import TestCase
-from django.test.client import Client
 from django.template import Context, Template
-from unittest.mock import Mock, patch
-
-from wagtail.tests.utils import WagtailPageTests
-
 from django.db.models import Model
+from unittest.mock import Mock, patch
 
 from modelcluster.models import ClusterableModel
 from wagtail.core.models import Page, Orderable
-
 
 from ictcg.navigation.models import MainMenu
 from ictcg.navigation.templatetags.navigation_tags import (
@@ -20,7 +15,7 @@ from ictcg.navigation.templatetags.navigation_tags import (
     get_footer_content
 )
 
-class TemplateTagsBreadcrumbTests(WagtailPageTests):
+class TemplateTagsBreadcrumbTests(TestCase):
     fixtures = ['app.json']
 
     def test_breadcrumbs_template_returns_correct_html(self):
@@ -56,11 +51,8 @@ class TemplateTagsBreadcrumbTests(WagtailPageTests):
         self.assertEqual(parent.depth, guidance_page.depth - 1)
         self.assertEqual(parent.depth, 5)
 
-class TemplateTagsMainMenuTests(WagtailPageTests):
+class TemplateTagsMainMenuTests(TestCase):
     fixtures = ['navigation.json', 'app.json']
-
-    def setUp(self):
-        self.client = Client()
 
     def test_get_main_menu_from_selected_language(self):
         # Get main menu based on the selected languauge
@@ -80,7 +72,7 @@ class TemplateTagsMainMenuTests(WagtailPageTests):
         self.assertTrue(is_main_menu_link_active(context, 'guidelines'))
         
 
-class TemplateTagsFooterTests(WagtailPageTests):
+class TemplateTagsFooterTests(TestCase):
     fixtures = ['navigation.json', 'app.json']
 
     def test_get_footer_content(self):
