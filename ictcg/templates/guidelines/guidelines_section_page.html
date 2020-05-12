@@ -6,13 +6,13 @@
 {% endblock breadcrumbs %}
 
 {% block banner %}
-  {% include 'includes/guidelines-banner.html' with title=page.get_parent.title section_title=page.title colour=page.section_colour %}
+  {% include 'includes/guidelines-banner.html' with use_h1=True title=page.get_parent.title section_title=page.title colour=page.section_colour %}
 {% endblock banner %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full ictcg-margin-top-4">
-      <h1 class="ictcg-heading-l ">{{ page.subtitle }}</h1>
+      <h2 class="ictcg-heading-l ">{{ page.subtitle }}</h2>
     </div>
   </div>
 
