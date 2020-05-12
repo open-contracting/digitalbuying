@@ -16,10 +16,8 @@ from wagtail.admin.edit_handlers import (
   FieldPanel,
   MultiFieldPanel,
   StreamFieldPanel, 
-  InlinePanel,
   ObjectList,
   TabbedInterface,
-  PageChooserPanel,
 )
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.search import index

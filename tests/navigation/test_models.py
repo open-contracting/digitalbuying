@@ -1,6 +1,6 @@
 from django.test import TestCase
 from unittest.mock import Mock, patch
-
+from django.conf import settings
 from django.db.models import Model
 
 from modelcluster.models import ClusterableModel
@@ -17,7 +17,8 @@ class MainMenuTests(TestCase):
 
 	def test_mainmenu_object_name(self):
 		main_menu = MainMenu.objects.get(title__exact="test title 1")
-		object_string = f'{main_menu.title} - {main_menu.language}'
+		language = dict(settings.LANGUAGES)
+		object_string = f'{main_menu.title} - {language[main_menu.language]}'
 		self.assertEquals(object_string, str(main_menu))
 
 class MenuItemTests(TestCase):
@@ -51,7 +52,8 @@ class FooterMenuTests(TestCase):
 
 	def test_footermenu_object_name(self):
 		footer_menu = FooterMenu.objects.get(admin_title__exact="Footer title 1")
-		object_string = f'{footer_menu.admin_title} - {footer_menu.language}'
+		language = dict(settings.LANGUAGES)
+		object_string = f'{footer_menu.admin_title} - {language[footer_menu.language]}'
 		self.assertEquals(object_string, str(footer_menu))
 	
 	@patch('ictcg.navigation.models.clear_footer_cache')

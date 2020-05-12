@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.template import Context, Template
 from django.db.models import Model
 from unittest.mock import Mock, patch
+from django.conf import settings
 
 from modelcluster.models import ClusterableModel
 from wagtail.core.models import Page, Orderable
@@ -57,13 +58,14 @@ class TemplateTagsMainMenuTests(TestCase):
     def test_get_main_menu_from_selected_language(self):
         # Get main menu based on the selected languauge
         menu = main_menu('en')
-        object_string = f'{menu.title} - {menu.language}'
+        language = dict(settings.LANGUAGES)
+        object_string = f'{menu.title} - {language[menu.language]}'
         self.assertEquals(object_string, str(menu))
 
     def test_get_main_menu_when_no_language_passed(self):
         # When a menu is not found, should return english by default
         menu = main_menu('it')
-        self.assertEquals('main menu - en', str(menu))
+        self.assertEquals('main menu - English', str(menu))
 
     def test_is_main_menu_link_active(self):
         # Should return true when the menu item link property is also in the requested url

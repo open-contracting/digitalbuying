@@ -70,7 +70,8 @@ class MainMenu(ClusterableModel):
   ]
 
   def __str__(self):
-    return f"{self.title} - {self.language}"
+    language = dict(settings.LANGUAGES)
+    return f"{self.title} - {language[self.language]}"
 
 class MenuItem(models.Model):
   """
@@ -148,7 +149,8 @@ class FooterMenu(ClusterableModel):
   ]
 
   def __str__(self):
-    return f"{self.admin_title} - {self.language}"
+    language = dict(settings.LANGUAGES)
+    return f"{self.admin_title} - {language[self.language]}"
   
   def save(self, *args, **kwards):
     try:
