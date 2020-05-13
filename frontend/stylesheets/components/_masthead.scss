@@ -1,0 +1,55 @@
+$masthead-text-colour: colour('white');
+
+.ictcg-masthead {
+  @include govuk-responsive-padding(6, 'top');
+  @include govuk-responsive-padding(7, 'bottom');
+
+  background-color: colour('navy-blue');
+}
+
+.ictcg-masthead__title {
+  @include govuk-responsive-margin(6, 'bottom');
+
+  color: $masthead-text-colour;
+}
+
+.ictcg-masthead__description {
+  p {
+    @include govuk-typography-responsive(19);
+
+    color: $masthead-text-colour;
+  }
+
+  a {
+    color: $masthead-text-colour;
+  }
+}
+
+.ictcg-masthead__button {
+  @include govuk-responsive-margin(6, 'top');
+  @include govuk-typography-responsive(19);
+
+  font-weight: bold;
+  color: colour('blue');
+  background-color: colour('white');
+  padding: 8px 10px 7px;
+  box-shadow: 0 2px 0 colour('blue');
+  width: auto;
+
+  &:active,
+  &:link,
+  &:visited {
+    background-color: colour('white');
+    color: colour('blue');
+  }
+
+  &:hover {
+    background-color: colour('white');
+    color: colour('navy-blue');
+  }
+}
+
+.ictcg-masthead__image {
+  max-width: 100%;
+  height: auto;
+}

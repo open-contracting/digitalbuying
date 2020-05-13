@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block body_class %}homepage{% endblock %}
+
+{% block banner %}
+  {% include "includes/masthead.html" %}    
+{% endblock banner %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full ictcg-margin-top-6">
+      {% for block in page.body %}
+        {% include_block block %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% comment "TODO - Section will be added at a later date" %} 
+    {% include "includes/sponsors.html" %}
+  {% endcomment %}
+    
+{% endblock content %}
+

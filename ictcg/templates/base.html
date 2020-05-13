@@ -1,7 +1,7 @@
 {% load static wagtailuserbar wagtailcore_tags %}
 
 <!DOCTYPE html>
-<html class="" lang="en">
+<html class="" lang="{{ page.language.code }}">
 
 <head>
   <meta charset="utf-8" />
@@ -22,6 +22,8 @@
   {% endif %}
   
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}">
 
   {# Global stylesheets #}
   <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/application.css' %}">

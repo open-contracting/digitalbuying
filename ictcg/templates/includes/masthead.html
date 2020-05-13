@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="ictcg-masthead">
+  <div class="govuk-width-container">
+      <div class="govuk-grid-row ictcg-flex">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="ictcg-masthead__title"> {{ page.masthead_title }}</h1>
+          <div class="ictcg-masthead__description">
+            {{ page.masthead_description|richtext }}
+          </div>
+          {% if page.masthead_link_title and page.masthead_link %}
+            <a href="{{ page.masthead_link.url }}" title="{{ page.masthead_link_title }}" role="button" class="govuk-button ictcg-masthead__button ictcg-margin-bottom-0 " data-module="govuk-button">
+              {{ page.masthead_link_title }}
+            </a>
+            {% endif %}
+        </div>
+        <div class="govuk-grid-column-one-third ictcg-hidden-mobile ictcg-flex-self-center">
+          {% image page.masthead_image original class="ictcg-masthead__image" %}
+        </div>
+    </div>
+  </div>
+</div>
+
+

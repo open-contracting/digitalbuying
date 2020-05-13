@@ -8,6 +8,28 @@
   }
 }
 
+.ictcg-flex {
+  display: flex;
+}
+
+.ictcg-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ictcg-flex-self-center {
+  align-self: center;
+}
+
+.ictcg-hidden-mobile {
+  display: none;
+
+  @include govuk-media-query('tablet') {
+    display: block;
+  }
+}
+
 .rich-text {
   ul,
   ol {
