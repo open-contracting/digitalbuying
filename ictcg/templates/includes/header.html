@@ -1,5 +1,7 @@
-{% load static wagtailimages_tags navigation_tags %}
+{% load static wagtailimages_tags navigation_tags i18n %}
 {% main_menu request.LANGUAGE_CODE as mainmenu %}
+
+<a href="#main-content" class="govuk-skip-link">{% trans 'Skip to main content' %}</a>
 
 <header class="ictcg-header " role="banner" data-module="ictcg-header-mainmenu">
   <div class="ictcg-header__container govuk-width-container">
