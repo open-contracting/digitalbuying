@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-  'ictcg.home',
+  'ictcg.base',
   'ictcg.guidelines',
   'ictcg.streams',
   'ictcg.sponsors',

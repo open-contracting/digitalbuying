@@ -173,7 +173,7 @@
         "draft_title":"Home",
         "slug":"en",
         "content_type":[
-          "home",
+          "base",
           "homepage"
         ],
         "live":true,
@@ -264,7 +264,7 @@
       }
     },
     {
-      "model":"home.homepage",
+      "model":"base.homepage",
       "pk":4,
       "fields":{
         "body":"<p>Home</p>"

@@ -6,7 +6,7 @@ from wagtail.tests.utils import WagtailPageTests
 from wagtailtrans.models import TranslatablePage
 
 from ictcg.guidelines.models import GuidelinesListingPage, GuidelinesSectionPage, GuidancePage
-from ictcg.home.models import HomePage
+from ictcg.base.models import HomePage
 
 
 class GuidelinesListingPageTests(WagtailPageTests):

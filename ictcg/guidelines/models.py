@@ -31,7 +31,7 @@ class GuidelinesListingPage(TranslatablePage):
   The page contains a list of the child (GuidelinesSectionPage)
   """
 
-  parent_page_types = ["home.HomePage"]
+  parent_page_types = ["base.HomePage"]
   subpage_types = ["guidelines.GuidelinesSectionPage"]
 
   introduction = RichTextField(blank=True, default="")
