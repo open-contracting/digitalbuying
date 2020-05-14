@@ -1,9 +1,4 @@
 ---
 applications:
-- name: pa-gdmp-ictcg-dev
-  memory: 512M
-  buildpacks:
+- buildpacks:
   - python_buildpack
-  services:
-  - pa-gdmp-ictcg-dev-service
-  - pa-gdmp-ictcg-s3-dev-service
