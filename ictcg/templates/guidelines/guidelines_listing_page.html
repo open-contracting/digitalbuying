@@ -7,11 +7,11 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
+  <div class="govuk-grid-row ictcg-margin-top-8">
 
     <div class="govuk-grid-column-two-thirds">
       <section class="ictcg-margin-bottom-3">
-        <h1 class="ictcg-margin-top-8">{{ page.title }}</h1>
+        <h1>{{ page.title }}</h1>
         {{ page.introduction|richtext }}
       </section>
 
@@ -32,7 +32,7 @@
               <div id="accordion-default-content-{{forloop.counter}}" class="govuk-accordion__section-content govuk-!-padding-top-0" aria-labelledby="accordion-default-heading-{{forloop.counter}}">
                 <ul class="govuk-list">
                   <li>
-                    <a href="{{ descendant.url}}" class="">{{ descendant.specific.subtitle }}</a>
+                    <a href="{{ descendant.url}}" class="" aria-label="{{ descendant.title }} - {{ descendant.specific.subtitle }}">{{ descendant.specific.subtitle }}</a>
                   </li>
                   {% for page in descendant.get_children.live %}
                     <li>

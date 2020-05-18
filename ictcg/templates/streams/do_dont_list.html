@@ -1,10 +1,10 @@
 {% load wagtailcore_tags i18n %}
 
 <section class="ictcg-do-dont ictcg-margin-bottom-6">
-  <h3 class="ictcg-margin-bottom-0">{{self.title}}</h3>
+  <h2 class="ictcg-margin-bottom-0">{{self.title}}</h3>
   <hr>
   <section class="ictcg-do-dont-list ictcg-margin-bottom-6">
-    <h4 class="ictcg-do-dont-list__label">{% trans 'Do' %}</h3>
+    <h3 class="ictcg-do-dont-list__label">{% trans 'Do' %}</h3>
     <ul class="govuk-list ictcg-list--tick">
       {% for do in self.dos %}
         <li>
@@ -17,7 +17,7 @@
     </ul>
   </section>
   <section class="ictcg-do-dont-list">
-    <h4 class="ictcg-do-dont-list__label">{% trans "Don't" %}</h3>
+    <h3 class="ictcg-do-dont-list__label">{% trans "Don't" %}</h3>
     <ul class="govuk-list ictcg-list--cross">
       {% for dont in self.donts %}   
         <li>

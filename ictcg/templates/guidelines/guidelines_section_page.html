@@ -12,7 +12,7 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full ictcg-margin-top-4">
-      <h2 class="ictcg-heading-l ">{{ page.subtitle }}</h2>
+      <h2 class="ictcg-heading-l">{{ page.subtitle }}</h2>
     </div>
   </div>
 
@@ -26,11 +26,11 @@
       {% endfor %}
     
       {% for block in page.body %}
-        {% include_block block %}
+        {% include_block block with use_h3=True %}
       {% endfor %}
     
       <section>
-        <h3 class="ictcg-margin-bottom-0">{{ page.sub_sections_title }}</h3>
+        <h3 class="ictcg-heading-m ictcg-margin-bottom-0">{{ page.sub_sections_title }}</h3>
         <hr>
         <ul class="govuk-list ictcg-margin-top-2">
           {% cache 86400 guidelines_sections_children page.id %}

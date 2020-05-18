@@ -25,7 +25,6 @@ h1,
   @extend %ictcg-headings;
 }
 
-h2,
 .ictcg-heading-l {
   @include govuk-font($size: 36, $weight: bold);
   @include govuk-responsive-margin(6, 'bottom');
@@ -33,7 +32,7 @@ h2,
   @extend %ictcg-headings;
 }
 
-h3,
+h2,
 .ictcg-heading-m {
   @include govuk-font($size: 24, $weight: bold);
   @include govuk-responsive-margin(4, 'bottom');
@@ -41,7 +40,7 @@ h3,
   @extend %ictcg-headings;
 }
 
-h4,
+h3,
 .ictcg-heading-s {
   @include govuk-font($size: 19, $weight: bold);
   @include govuk-responsive-margin(4, 'bottom');
@@ -74,4 +73,12 @@ hr {
   @include govuk-responsive-margin(4, 'bottom');
 
   display: inline-block;
+}
+
+.ictcg-font-19 {
+  @include govuk-font($size: 19, $weight: normal);
+}
+
+.ictcg-font-16 {
+  @include govuk-font($size: 16, $weight: normal);
 }
