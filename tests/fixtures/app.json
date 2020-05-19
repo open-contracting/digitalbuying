@@ -253,7 +253,10 @@
       "model":"guidelines.guidelinessectionpage",
       "pk":7,
       "fields":{
-        "subtitle":"Prepare and plan"
+        "subtitle":"Prepare and plan",
+        "section_colour":"#28a197",
+        "landing_page_summary":"summary",
+        "sub_sections_title":"Topics"
       }
     },
     {
