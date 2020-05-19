@@ -198,10 +198,12 @@ $ictcg-text-colour: colour('navy-blue');
 
 .ictcg-header__navigation-item--active {
   a {
-    &:link,
-    &:hover,
-    &:visited {
-      @include govuk-font($size: 16, $weight: bold);
+    @include govuk-font($size: 16, $weight: bold);
+
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
     }
   }
 }

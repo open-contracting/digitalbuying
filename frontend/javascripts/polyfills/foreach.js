@@ -1,6 +1,8 @@
 // Polyfill for IE11 foreach - based on the following
 // https://github.com/imagitama/nodelist-foreach-polyfill
 
+/* eslint-disable */ 
+
 if (typeof window !== 'undefined' && window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = function (callback, thisArg) {
     thisArg = thisArg || window

@@ -82,3 +82,7 @@ hr {
 .ictcg-font-16 {
   @include govuk-font($size: 16, $weight: normal);
 }
+
+.ictcg-capitalize {
+  text-transform: capitalize;
+}

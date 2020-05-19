@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-29 12:53+0000\n"
+"POT-Creation-Date: 2020-05-19 09:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ictcg/base/models.py:24
+msgid "Title for masthead component"
+msgstr ""
+
+#: ictcg/base/models.py:41
+msgid "Title for link"
+msgstr ""
+
+#: ictcg/base/models.py:69
+msgid "Masthead"
+msgstr ""
+
+#: ictcg/base/models.py:93
+msgid "Title for Navigation"
+msgstr ""
 
 #: ictcg/guidelines/models.py:76
 msgid "Text to be shown on the guidelines landing page"
@@ -46,16 +62,32 @@ msgstr ""
 msgid "Main menu"
 msgstr ""
 
-#: ictcg/navigation/admin.py:17
+#: ictcg/navigation/admin.py:20
+msgid "Footer menu"
+msgstr ""
+
+#: ictcg/navigation/admin.py:28
 msgid "Menus"
 msgstr ""
 
-#: ictcg/navigation/models.py:48
+#: ictcg/navigation/models.py:53
 msgid "Description for navigation button aria label"
 msgstr ""
 
-#: ictcg/navigation/models.py:54
+#: ictcg/navigation/models.py:59
 msgid "Description for navigation aria label"
+msgstr ""
+
+#: ictcg/navigation/models.py:147
+msgid "Sponsors"
+msgstr ""
+
+#: ictcg/navigation/models.py:182 ictcg/sponsors/models.py:37
+msgid "URL for sponsor link"
+msgstr ""
+
+#: ictcg/navigation/models.py:189 ictcg/sponsors/models.py:44
+msgid "Sponsor image or logo"
 msgstr ""
 
 #: ictcg/settings/base.py:137
@@ -74,14 +106,6 @@ msgstr ""
 msgid "Sponsor Logos"
 msgstr ""
 
-#: ictcg/sponsors/models.py:37
-msgid "URL for sponsor link"
-msgstr ""
-
-#: ictcg/sponsors/models.py:44
-msgid "Sponsor image or logo"
-msgstr ""
-
 #: ictcg/streams/blocks.py:5
 msgid "Section title, max length 120 characters"
 msgstr ""
@@ -94,12 +118,40 @@ msgstr ""
 msgid "Do's and dont's title"
 msgstr ""
 
-#: ictcg/templates/guidelines/guidelines_listing_page.html:15
+#: ictcg/streams/blocks.py:32
+msgid "Quote section title, max length 120 characters"
+msgstr ""
+
+#: ictcg/streams/blocks.py:34
+msgid "Quote"
+msgstr ""
+
+#: ictcg/streams/blocks.py:35
+msgid "Quote attribution"
+msgstr ""
+
+#: ictcg/templates/base/generic_page_with_sub_nav.html:16
+msgid "Sub-Navigation"
+msgstr ""
+
+#: ictcg/templates/guidelines/guidelines_listing_page.html:19
 msgid "Open all"
 msgstr ""
 
-#: ictcg/templates/guidelines/guidelines_listing_page.html:15
+#: ictcg/templates/guidelines/guidelines_listing_page.html:19
 msgid "Close all"
+msgstr ""
+
+#: ictcg/templates/includes/footer.html:21
+msgid "Translation"
+msgstr ""
+
+#: ictcg/templates/includes/footer.html:51
+msgid "Support links"
+msgstr ""
+
+#: ictcg/templates/includes/header.html:4
+msgid "Skip to main content"
 msgstr ""
 
 #: ictcg/templates/includes/pagination.html:9

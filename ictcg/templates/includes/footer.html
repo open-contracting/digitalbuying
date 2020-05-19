@@ -22,11 +22,13 @@
         <ul class="govuk-footer__list ">
           {% for language, page in translations.items %}
             {% get_language_info for language.code as lang %}
-            <li class="govuk-footer__list-item">
-              <a class="govuk-footer__link" href="{{ page.url }}">
-                {{ lang.name_local }}
-              </a>
-            </li>
+              {% if language.code != request.LANGUAGE_CODE %}
+                <li class="govuk-footer__list-item">
+                  <a class="govuk-footer__link ictcg-capitalize" href="{{ page.url }}">
+                    {{ lang.name_local }}
+                  </a>
+                </li>
+                {% endif %}
           {% endfor %}
         </ul>
       </div>
@@ -48,7 +50,7 @@
     {% endcache %}
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
-        <h2 class="govuk-visually-hidden">Support links</h2>
+        <h2 class="govuk-visually-hidden">{% trans 'Support links' %}</h2>
         <ul class="govuk-footer__inline-list">
           {% cache 86400 footer_support_links request.LANGUAGE_CODE %}
             {% for item in footer.footer_content.footer_menu_items.all %}
