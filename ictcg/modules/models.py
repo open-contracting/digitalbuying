@@ -5,6 +5,7 @@ from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 from wagtail.core.models import Orderable
 from wagtail.snippets.models import register_snippet
+from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import (
   FieldPanel,
   InlinePanel,
@@ -67,21 +68,17 @@ class Links(models.Model):
   ]
 
 @register_snippet
-class MoreInformationModule(KeyModuleFields, Links):
+class MoreInformationModule(KeyModuleFields):
   """
-   A class that extends KeyModuleFields and Links classes that is displayed as a snippet within the admin area.
+   A class that extends KeyModuleFields class that is displayed as a snippet within the admin area.
    This is used as a foreignField in the GuidancePage class
   """
 
-  description = models.CharField(
-    max_length=140, 
-    blank=True,
-    null=True,
-  )
+  description = RichTextField(blank=True, default="")
 
   panels = KeyModuleFields.panels + [
     FieldPanel("description"),
-  ] + Links.panels
+  ]
 
   def __str__(self):
       return f"{self.admin_title} - {self.language}"

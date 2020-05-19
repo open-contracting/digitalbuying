@@ -37,11 +37,12 @@
     {% cache 86400 footer_sponsors request.LANGUAGE_CODE %}
       {% if footer.footer_content.sponsor_items %}
         <div class="ictcg-footer__sponsors">
-          <h2 class="ictcg-heading-m ictcg-margin-bottom-0">{{ footer.footer_content.sponsors_title }}</h2>
+          <h2 class="ictcg-heading-m">{{ footer.footer_content.sponsors_title }}</h2>
           <div class="ictcg-footer__sponsors-items">
             {% for item in footer.footer_content.sponsor_items.all %}
               <a href="{{ item.url }}" target="_blank">
-                {% image item.logo original %}
+                {% image item.logo original %} 
+                <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
               </a>
             {% endfor %}
           </div>
@@ -57,6 +58,9 @@
               <li class="govuk-footer__inline-list-item">
                 <a class="govuk-footer__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank"{% endif %}>
                   {{ item.title }}
+                  {% if item.open_in_new_tab %}
+                    <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
+                  {% endif %}
                 </a>
               </li>
             {% endfor %}

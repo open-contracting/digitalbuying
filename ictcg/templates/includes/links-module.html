@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="ictcg-links-module" >
   <h3 class="ictcg-links-module__title">{{ module.title }}</h3>
   <ul class="govuk-list ictcg-margin-bottom-0">
@@ -5,6 +7,9 @@
       <li>
         <a class="ictcg-links-module__link" href="{{ link.url }}" {% if link.open_in_new_tab %}target="_blank"{% endif %}>
           {{link.link_text}}
+          {% if link.open_in_new_tab %}
+            <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
+          {% endif %}
         </a>
       </li>
     {% endfor %}
