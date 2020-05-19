@@ -1,0 +1,13 @@
+.ictcg-quote {
+  @include govuk-font($size: 16);
+  @include govuk-text-colour;
+  @include govuk-responsive-margin(4, 'top');
+  @include govuk-responsive-margin(4, 'bottom');
+  @include govuk-responsive-padding(5, 'left');
+
+  border-left: 5px solid colour('green');
+
+  p {
+    margin-bottom: 0;
+  }
+}

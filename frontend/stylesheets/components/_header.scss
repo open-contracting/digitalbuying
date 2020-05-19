@@ -178,7 +178,7 @@ $ictcg-text-colour: colour('navy-blue');
 
   @include govuk-media-query ($from: desktop) {
     display: inline-block;
-    margin-right: govuk-spacing(3);
+    margin-right: govuk-spacing(8);
     padding: govuk-spacing(1) 0;
     border: 0;
   }

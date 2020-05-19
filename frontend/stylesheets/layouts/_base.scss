@@ -8,6 +8,14 @@
   }
 }
 
+.ictcg-float-left {
+  float: left;
+}
+
+.ictcg-float-right {
+  float: right;
+}
+
 .ictcg-flex {
   display: flex;
 }
@@ -42,6 +50,11 @@
 
   ul {
     @extend %govuk-list--bullet;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 
   > *:last-child {

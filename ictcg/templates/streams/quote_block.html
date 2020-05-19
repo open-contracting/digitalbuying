@@ -1,0 +1,12 @@
+{% load wagtailcore_tags %}
+
+<section class="ictcg-richtext-block ictcg-margin-bottom-6" id="{{self.title|slugify }}">
+  <h2 class="ictcg-margin-bottom-0">{{self.title}}</h2>
+  <hr>
+  {{ self.content_top|richtext }}
+  <div class="ictcg-quote">
+    <p>{{ self.quote }}</p>
+    <p>- {{ self.attribution }}</p>
+  </div>
+  {{ self.content_bottom|richtext }}
+</section>

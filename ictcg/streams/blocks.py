@@ -28,3 +28,12 @@ class DosAndDontsBlock(blocks.StructBlock):
     icon="list-ul"
     label="Do's and dont's"
   
+class QuoteBlock(blocks.StructBlock):
+  title = blocks.CharBlock(max_length=120, help_text=_("Quote section title, max length 120 characters"))
+  content_top = blocks.RichTextBlock()
+  quote = blocks.CharBlock(max_length=300, help_text=_("Quote"))
+  attribution = blocks.CharBlock(max_length=120, help_text=_("Quote attribution"))
+  content_bottom = blocks.RichTextBlock()
+
+  class Meta:
+    template="streams/quote_block.html"

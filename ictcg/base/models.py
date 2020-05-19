@@ -16,7 +16,7 @@ class HomePage(TranslatablePage):
     """
 
     parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
-    subpage_types = ["guidelines.GuidelinesListingPage"]
+    subpage_types = ["guidelines.GuidelinesListingPage", "base.GenericPageWithSubNav"]
 
     masthead_title = models.CharField(
         max_length=240,
@@ -75,4 +75,30 @@ class HomePage(TranslatablePage):
         index.SearchField('masthead_title'),
         index.SearchField('masthead_description'),
         index.SearchField('body'),
+    ]
+
+class GenericPageWithSubNav(TranslatablePage):
+    """
+    Generic page class which allows rich text and quote components to be added.  Can only be added under the homepage but can be nested itself.
+    Page includes a sub navigation on the left of the layout for quick links to content on the page. This is auto genereated based on the body components.
+    """
+
+    parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav"]
+    subpage_types = ["base.GenericPageWithSubNav"]
+
+    navigation_title = models.CharField(
+        max_length=120,
+        null=True,
+        blank=True,
+        help_text=_("Title for Navigation")
+    )
+
+    body = StreamField([
+        ("rich_text_section", blocks.RichTextWithTitleBlock()),
+        ("quote_section", blocks.QuoteBlock()),
+    ], null=True, blank=True)
+
+    content_panels = TranslatablePage.content_panels + [
+        FieldPanel("navigation_title"),
+        StreamFieldPanel("body"),
     ]

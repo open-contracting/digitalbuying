@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags navigation_tags i18n %}
+
+{% block breadcrumbs %}
+  {% breadcrumbs %}
+{% endblock breadcrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row ictcg-margin-top-8">
+    <div class="govuk-grid-column-two-thirds ictcg-float-right">
+      <h1>{{ page.title }}</h1>
+    </div>
+
+    <div class="govuk-grid-column-one-third ictcg-margin-bottom-7">
+      <nav aria-label="{% trans 'Sub-Navigation' %}">
+        <ul class="govuk-list ictcg-font-16">
+          <li>{{ page.navigation_title }}</li>
+          {% for sections in page.body %}
+            <li>
+              <a href="#{{sections.value.title|slugify }}" class="">
+                {{ sections.value.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds ictcg-float-right">
+      {% for block in page.body %}
+        {% include_block block %}
+      {% endfor %}
+    </div>
+  </div>
+    
+{% endblock content %}
+
