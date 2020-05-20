@@ -24,7 +24,7 @@
             {% get_language_info for language.code as lang %}
               {% if language.code != request.LANGUAGE_CODE %}
                 <li class="govuk-footer__list-item">
-                  <a class="govuk-footer__link ictcg-capitalize" href="{{ page.url }}">
+                  <a class="govuk-footer__link ictcg-capitalize" href="{{ page.url }}" lang="{{ language.code }}">
                     {{ lang.name_local }}
                   </a>
                 </li>
