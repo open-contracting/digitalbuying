@@ -40,6 +40,13 @@ class MainMenu(ClusterableModel):
     on_delete=models.SET_NULL,
   )
 
+  logo_description = models.CharField(
+    max_length=240,
+    null=True,
+    blank=True,
+    help_text=_("Alt tag description for logo")
+  )
+
   button_text = models.CharField(
     max_length=100, 
     blank=False,
@@ -63,6 +70,7 @@ class MainMenu(ClusterableModel):
     FieldPanel("title"),
     FieldPanel("language"),
     ImageChooserPanel("logo"),
+    FieldPanel("logo_description"),
     FieldPanel("button_text"),
     FieldPanel("button_aria_label"),
     FieldPanel("navigation_aria_label"),
@@ -190,10 +198,18 @@ class SponsorItem(Orderable):
     on_delete=models.SET_NULL,
   )
 
+  logo_description = models.CharField(
+    max_length=240,
+    null=True,
+    blank=True,
+    help_text=_("Alt tag description for sponsor logo")
+  )
+
   panels = [
     FieldPanel("name"),
     FieldPanel("url"),
     ImageChooserPanel("logo"),
+    FieldPanel("logo_description"),
   ]
 
   sponsor = ParentalKey("FooterMenu", related_name="sponsor_items", default='')

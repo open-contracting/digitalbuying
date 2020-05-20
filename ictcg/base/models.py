@@ -49,6 +49,13 @@ class HomePage(TranslatablePage):
         on_delete=models.SET_NULL,
     )
 
+    masthead_image_description = models.CharField(
+        max_length=240,
+        null=True,
+        blank=True,
+        help_text=_("Alt tag description for image")
+    )
+
     body = StreamField([
         ("content_section", blocks.RichTextWithTitleBlock()),
     ], null=True, blank=True)
@@ -65,6 +72,7 @@ class HomePage(TranslatablePage):
                 PageChooserPanel("masthead_link"),
                 FieldPanel("masthead_link_title"),
                 ImageChooserPanel("masthead_image"),
+                FieldPanel("masthead_image_description"),
             ],
             heading=_('Masthead'),
         ),

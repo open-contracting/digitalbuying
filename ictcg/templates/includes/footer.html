@@ -41,7 +41,7 @@
           <div class="ictcg-footer__sponsors-items">
             {% for item in footer.footer_content.sponsor_items.all %}
               <a href="{{ item.url }}" target="_blank">
-                {% image item.logo original %} 
+                {% image item.logo width-132 alt=item.logo_description %}
                 <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
               </a>
             {% endfor %}

@@ -9,8 +9,7 @@
       <a href="/{{request.LANGUAGE_CODE}}" class="ictcg-header__link ictcg-header__link--homepage">
         <span class="ictcg-header__logotype">
           {% if mainmenu.logo %}
-              {% image mainmenu.logo width-42 as logo %}
-              <img class="ictcg-header__logotype-image" src="{{ logo.url }}" width="{{ logo.width }}" height="{{ logo.height }}" alt="{{ logo.alt }}" />
+            {% image mainmenu.logo width-42 class="ictcg-header__logotype-image" alt=mainmenu.logo_description %}
           {% endif %}
           <span class="ictcg-header__logotype-text">
             DPM
