@@ -3,7 +3,7 @@
 <div class="ictcg-masthead">
   <div class="govuk-width-container">
       <div class="govuk-grid-row ictcg-flex">
-        <div class="govuk-grid-column-two-thirds">
+        <div class="{% if page.masthead_image %}govuk-grid-column-two-thirds{% else %}govuk-grid-column-full{% endif %}">
           <h1 class="ictcg-masthead__title" id="main-title" tabindex="-1"> {{ page.masthead_title }}</h1>
           <div class="ictcg-masthead__description">
             {{ page.masthead_description|richtext }}
@@ -14,11 +14,11 @@
             </a>
             {% endif %}
         </div>
-        <div class="govuk-grid-column-one-third ictcg-hidden-mobile ictcg-flex-self-center">
-          {% image page.masthead_image original class="ictcg-masthead__image" alt=page.masthead_image_description %}
-        </div>
+        {% if page.masthead_image %}
+          <div class="govuk-grid-column-one-third ictcg-hidden-mobile ictcg-flex-self-center">
+            {% image page.masthead_image original class="ictcg-masthead__image" alt=page.masthead_image_description role="presentation" %}
+          </div>
+        {% endif %}
     </div>
   </div>
 </div>
-
-

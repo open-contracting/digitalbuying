@@ -39,13 +39,16 @@
 
   {% block breadcrumbs %}{% endblock breadcrumbs %}
 
-  {% block banner %}{% endblock %}
+  <main id="main-content" role="main">
+    {% block banner %}{% endblock %}
 
-  <div class="govuk-width-container">
-    <main class="ictcg-main-wrapper" id="main-content" role="main">
-      {% block content %}{% endblock %}
-    </main>
+    <div class="govuk-width-container">
+    
+      <div class="ictcg-main-wrapper" >
+        {% block content %}{% endblock %}
+      </div>
   </div>
+</main>
  
   {% include "includes/footer.html" %}
 

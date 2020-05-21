@@ -1,0 +1,15 @@
+
+{% load wagtailcore_tags i18n %}
+
+<div class="ictcg-phase-wrapper ">
+  <div class="govuk-width-container">
+    <div class="govuk-phase-banner ictcg-flex">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          {% trans 'Beta' %}
+        </strong>
+        {{ banner_description|richtext }}
+      </p>
+    </div>
+  </div>
+</div>

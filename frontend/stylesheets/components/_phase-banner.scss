@@ -1,0 +1,12 @@
+.ictcg-phase-wrapper {
+  border-top: 1px solid colour('border-grey');
+
+  .govuk-phase-banner {
+    border-bottom: none;
+    align-items: center;
+
+    p {
+      @include govuk-font($size: 16, $weight: normal);
+    }
+  }
+}

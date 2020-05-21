@@ -13,6 +13,7 @@ from modelcluster.fields import ParentalKey
 from wagtail.core.models import Orderable
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.core.fields import RichTextField
 
 class MainMenu(ClusterableModel):
   """
@@ -64,6 +65,12 @@ class MainMenu(ClusterableModel):
     help_text=_('Description for navigation aria label'),
   )
 
+  phase_banner_description = RichTextField(
+    blank=True,
+    default="",
+    help_text=_('Text area for phase banner description'),
+  )
+
   panels = [
     FieldPanel("title"),
     FieldPanel("language"),
@@ -72,6 +79,7 @@ class MainMenu(ClusterableModel):
     FieldPanel("button_text"),
     FieldPanel("button_aria_label"),
     FieldPanel("navigation_aria_label"),
+    FieldPanel("phase_banner_description"),
     InlinePanel("menu_items", label="Menu Item")
   ]
 
