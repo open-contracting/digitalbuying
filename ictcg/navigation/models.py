@@ -42,8 +42,6 @@ class MainMenu(ClusterableModel):
 
   logo_description = models.CharField(
     max_length=240,
-    null=True,
-    blank=True,
     help_text=_("Alt tag description for logo")
   )
 
@@ -200,8 +198,6 @@ class SponsorItem(Orderable):
 
   logo_description = models.CharField(
     max_length=240,
-    null=True,
-    blank=True,
     help_text=_("Alt tag description for sponsor logo")
   )
 

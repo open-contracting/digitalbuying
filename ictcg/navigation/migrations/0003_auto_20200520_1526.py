@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='mainmenu',
             name='logo_description',
-            field=models.CharField(blank=True, help_text='Alt tag description for logo', max_length=240, null=True),
+            field=models.CharField(help_text='Alt tag description for logo', max_length=240),
         ),
         migrations.AddField(
             model_name='sponsoritem',
             name='logo_description',
-            field=models.CharField(blank=True, help_text='Alt tag description for sponsor logo', max_length=240, null=True),
+            field=models.CharField(help_text='Alt tag description for sponsor logo', max_length=240),
         ),
     ]

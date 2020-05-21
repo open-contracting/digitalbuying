@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ValidationError
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
@@ -84,6 +85,13 @@ class HomePage(TranslatablePage):
         index.SearchField('masthead_description'),
         index.SearchField('body'),
     ]
+
+    def clean(self):
+      super().clean()
+      if self.masthead_image and not self.masthead_image_description:
+        raise ValidationError({
+          'masthead_image_description': ValidationError(_("Please enter description for the masthead image")), 
+      })
 
 class GenericPageWithSubNav(TranslatablePage):
     """
