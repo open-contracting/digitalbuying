@@ -9,7 +9,6 @@ from wagtailtrans.models import TranslatablePage
 from ictcg.guidelines.models import GuidelinesListingPage, GuidelinesSectionPage, GuidancePage
 from ictcg.base.models import HomePage
 
-# import pudb; pu.db()
 class GuidelinesListingPageTests(WagtailPageTests):
 
     def test_listing_page_can_be_created_under_homepage(self):

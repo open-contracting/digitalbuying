@@ -90,7 +90,7 @@ class HomePage(TranslatablePage):
       super().clean()
       if self.masthead_image and not self.masthead_image_description:
         raise ValidationError({
-          'masthead_image_description': ValidationError(_("Please enter description for the masthead image")), 
+          'masthead_image_description': _("Please enter description for the masthead image"), 
       })
 
 class GenericPageWithSubNav(TranslatablePage):
