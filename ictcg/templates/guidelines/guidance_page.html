@@ -18,11 +18,12 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% for sections in page.sections %}
-        <a href="#{{sections.value.title|slugify }}" class="">
-          {{ sections.value.title }}
-        </a>
-      {% endfor %}
+
+      {% if page.introduction %}
+        <section class="ictcg-richtext-block ictcg-margin-bottom-6">
+          {{ page.introduction|richtext }}
+        </section>
+      {% endif %}
     
       {% for block in page.body %}
         {% include_block block %}

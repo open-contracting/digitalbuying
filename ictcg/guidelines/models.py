@@ -124,12 +124,15 @@ class GuidancePage(TranslatablePage):
   parent_page_types = ["guidelines.GuidelinesSectionPage"]
   subpage_types = []
 
+  introduction = RichTextField(blank=True, default="")
+
   body = StreamField([
     ("content_section", blocks.RichTextWithTitleBlock()),
     ("dos_and_donts", blocks.DosAndDontsBlock()),
   ], null=True, blank=True)
 
   content_panels = TranslatablePage.content_panels + [
+    FieldPanel("introduction"), 
     StreamFieldPanel("body"),
   ]
 
