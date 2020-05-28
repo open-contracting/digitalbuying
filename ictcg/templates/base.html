@@ -28,9 +28,7 @@
   {# Global stylesheets #}
   <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/application.css' %}">
 
-  {% block extra_css %}
-    {# Override this in templates to add extra stylesheets #}
-  {% endblock %}
+  {% block meta_tags %}{% endblock %}
 </head>
 
 <body class="govuk-template__body {% block body_class %}{% endblock %}">

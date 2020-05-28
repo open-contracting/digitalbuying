@@ -17,8 +17,9 @@ $ictcg-text-colour: colour('navy-blue');
 }
 
 .ictcg-header__logotype {
-  display: inline-block;
+  display: flex;
   margin-right: govuk-spacing(1);
+  align-items: center;
 }
 
 .ictcg-header__logotype-image {
@@ -28,6 +29,7 @@ $ictcg-text-colour: colour('navy-blue');
 
 .ictcg-header__logotype-text {
   color: $ictcg-text-colour;
+  margin-left: govuk-spacing(1)
 }
 
 .ictcg-header__link {
@@ -48,11 +50,9 @@ $ictcg-text-colour: colour('navy-blue');
 }
 
 .ictcg-header__link--homepage {
-  @include govuk-font($size: false, $weight: bold);
+  @include govuk-font($size: 24, $weight: bold);
 
   display: inline-block;
-  font-size: 30px;
-  line-height: 1;
 
   &:link,
   &:visited {
@@ -80,7 +80,7 @@ $ictcg-text-colour: colour('navy-blue');
   padding: govuk-spacing(3) govuk-spacing(8) govuk-spacing(3) 0;
 
   @include govuk-media-query ($from: desktop) {
-    width: 33.33%;
+    width: 40%;
     padding: 0 $govuk-gutter-half 0 0;
     float: left;
     vertical-align: top;
@@ -89,7 +89,7 @@ $ictcg-text-colour: colour('navy-blue');
 
 .ictcg-header__content {
   @include govuk-media-query ($from: desktop) {
-    width: 66.66%;
+    width: 60%;
     padding-left: $govuk-gutter-half;
     float: left;
   }
@@ -100,7 +100,7 @@ $ictcg-text-colour: colour('navy-blue');
 
   display: none;
   position: absolute;
-  top: 22px;
+  top: 19px;
   right: 0;
   margin: 0;
   padding: 0;

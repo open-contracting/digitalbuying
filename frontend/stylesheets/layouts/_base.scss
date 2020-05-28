@@ -16,6 +16,17 @@
   float: right;
 }
 
+.ictcg-block {
+  display: block;
+}
+
+.ictcg-float-right-desktop {
+  @include govuk-media-query('tablet') {
+    float: right;
+  }
+}
+
+
 .ictcg-flex {
   display: flex;
 }

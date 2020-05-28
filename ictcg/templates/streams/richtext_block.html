@@ -8,6 +8,11 @@
     <h2 class="ictcg-margin-bottom-0">{{self.title}}</h3>
   {% endif %}
 
-  <hr>
+  {% if self.hide_horizontal_rule %}
+    <div class="ictcg-padding-top-4"></div>
+  {% else %}
+    <hr>
+  {% endif %}
+
   {{ self.content|richtext }}
 </section>
