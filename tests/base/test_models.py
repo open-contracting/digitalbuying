@@ -8,6 +8,7 @@ from wagtail.images.models import Image
 
 from ictcg.guidelines.models import GuidelinesListingPage
 from ictcg.base.models import HomePage, GenericPageWithSubNav
+from ictcg.case_studies.models import CaseStudiesListingPage
 
 class HomePageTests(WagtailPageTests):
     fixtures = ['app.json']
@@ -19,6 +20,14 @@ class HomePageTests(WagtailPageTests):
     def test_listing_page_can_be_created_under_homepage(self):
         # You can create a GuidelinesSectionPage under the HomePage
         self.assertCanCreateAt(HomePage, GuidelinesListingPage)
+    
+    def test_genericP_page_with_sub_nav_can_be_created_under_homepage(self):
+        # You can create a CaseStudiesListingPage under the HomePage
+        self.assertCanCreateAt(HomePage, GenericPageWithSubNav)
+
+    def test_case_studies_listing_page_can_be_created_under_homepage(self):
+        # You can create a CaseStudiesListingPage under the HomePage
+        self.assertCanCreateAt(HomePage, CaseStudiesListingPage)
 
     def test_listing_page_inherits_from_translatable_page_class(self):
         assert issubclass(HomePage, TranslatablePage)

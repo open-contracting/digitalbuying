@@ -18,6 +18,11 @@ ALLOWED_HOSTS = ['*', ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+# ManifestStaticFilesStorage is recommended in production, to prevent outdated
+# Javascript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
+# See https://docs.djangoproject.com/en/3.0/ref/contrib/staticfiles/#manifeststaticfilesstorage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 try:
   services_json = json.loads(os.getenv('VCAP_SERVICES'))
   aws_s3_config = services_json['aws-s3-bucket'][0]['credentials']
