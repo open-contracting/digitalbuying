@@ -47,7 +47,6 @@ class CaseStudyPage(TranslatablePage):
 
     header_image = models.ForeignKey(
         'wagtailimages.Image',
-        blank=True,
         null=True,
         related_name='+',
         on_delete=models.SET_NULL,
