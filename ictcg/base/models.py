@@ -17,7 +17,7 @@ class HomePage(TranslatablePage):
     """
 
     parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
-    subpage_types = ["guidelines.GuidelinesListingPage", "base.GenericPageWithSubNav"]
+    subpage_types = ["guidelines.GuidelinesListingPage", "base.GenericPageWithSubNav", "case_studies.CaseStudiesListingPage"]
 
     masthead_title = models.CharField(
         max_length=240,

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
   'ictcg.sponsors',
   'ictcg.navigation',
   'ictcg.modules',
+  'ictcg.case_studies',
   'search',
 
   'wagtail.contrib.forms',
