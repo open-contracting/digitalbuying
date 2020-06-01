@@ -75,6 +75,14 @@ hr {
   display: inline-block;
 }
 
+.ictcg-font-14 {
+  @include govuk-font($size: 14, $weight: normal);
+}
+
+.ictcg-font-16 {
+  @include govuk-font($size: 16, $weight: normal);
+}
+
 .ictcg-font-19 {
   @include govuk-font($size: 19, $weight: normal);
 }
@@ -83,10 +91,10 @@ hr {
   @include govuk-font($size: 19, $weight: bold);
 }
 
-.ictcg-font-16 {
-  @include govuk-font($size: 16, $weight: normal);
-}
-
 .ictcg-capitalize {
   text-transform: capitalize;
+}
+
+.ictcg-font-normal {
+  font-weight: normal;
 }

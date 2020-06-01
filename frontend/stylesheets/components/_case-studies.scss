@@ -1,0 +1,38 @@
+.ictcg-case-study-header {
+  background-color: colour('case-study-grey');
+}
+
+.ictcg-case-study-header__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+
+  @include govuk-media-query ('tablet') {
+    width: 50vw;
+    height: 100%;
+  }
+}
+
+.ictcg-case-study-header__layout {
+  @include govuk-media-query ('tablet') {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+}
+
+.ictcg-case-study-header__column--image {
+  padding: 0;
+  align-self: stretch;
+}
+
+.ictcg-case-study-header__column--content {
+  @include govuk-responsive-padding(7, 'top');
+  @include govuk-responsive-padding(7, 'bottom');
+}
+
+.ictcg-case-study-header__readtime {
+  margin-bottom: 0;
+  color: colour('case-study-read-more');
+}

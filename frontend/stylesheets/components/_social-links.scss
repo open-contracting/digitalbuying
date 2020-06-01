@@ -1,0 +1,24 @@
+.ictcg-social-links__link {
+  @include govuk-font($size: 16, $weight: normal);
+
+  padding-left: 25px;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: left center;
+
+  &.twitter {
+    background-image: url('/assets/images/twitter-logo.svg');
+  }
+
+  &.facebook {
+    background-image: url('/assets/images/facebook-logo.svg');
+  }
+
+  &.linkedin {
+    background-image: url('/assets/images/linkedin-logo.svg');
+  }
+
+  &.email {
+    background-image: url('/assets/images/email-logo.svg');
+  }
+}

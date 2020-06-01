@@ -1,0 +1,13 @@
+.ictcg-tag {
+  @include govuk-font($size: 16, $weight: normal);
+  @include govuk-responsive-margin(2, 'right');
+  @include govuk-responsive-margin(2, 'bottom');
+
+  display: inline-block;
+  color: colour('gov-uk-blue');
+  background-color: colour('tag-background');
+  text-transform: capitalize;
+  padding: 4px 6px;
+  text-decoration: none;
+  border-radius: 3px;
+}

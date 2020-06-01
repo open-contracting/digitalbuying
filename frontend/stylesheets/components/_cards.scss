@@ -1,0 +1,112 @@
+/* stylelint-disable  no-descending-specificity */
+
+.ictcg-cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-left: -$govuk-gutter-half;
+  margin-right: -$govuk-gutter-half;
+  padding: 0;
+}
+
+.ictcg-cards__item {
+  @include govuk-responsive-margin(6, 'top');
+
+  display: flex;
+  padding: 0 $govuk-gutter-half;
+  width: 100%;
+
+  @include govuk-media-query('tablet') {
+    width: 50%;
+  }
+
+  @include govuk-media-query('desktop') {
+    width: 33.3333%;
+  }
+}
+
+.ictcg-card {
+  background-color: colour('white');
+  width: 100%;
+  overflow: hidden;
+}
+
+.ictcg-card__link-wrapper {
+  background-color: colour('white');
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+  border: 1px solid colour('border-grey');
+
+  &:focus {
+    background-color: white;
+
+    .ictcg-card__heading {
+      @include govuk-focused-text;
+    }
+  }
+
+  &:hover {
+    .ictcg-card__heading {
+      text-decoration: underline;
+    }
+  }
+}
+
+.ictcg-card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: govuk-spacing(1) govuk-spacing(4) govuk-spacing(3) govuk-spacing(4);
+}
+
+.ictcg-card__meta {
+  display: flex;
+  justify-content: space-between;
+  color: colour('case-study-read-more');
+}
+
+.ictcg-card__meta-item,
+.ictcg-card__collaborator {
+  @include govuk-font($size: 16);
+
+  @include govuk-media-query('tablet') {
+    @include govuk-font($size: 14);
+  }
+}
+
+.ictcg-card__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.ictcg-card__heading {
+  @include govuk-font($size: 19);
+
+  flex: 1;
+  font-weight: normal;
+}
+
+.ictcg-card__intro {
+  color: colour('case-study-read-more');
+}
+
+.ictcg-cards__item--featured {
+  width: 100%;
+
+  .ictcg-card__collaborator,
+  .ictcg-card__meta span {
+    @include govuk-font($size: 16);
+  }
+
+  .ictcg-card__heading {
+    @include govuk-font($size: 19, $weight: bold);
+
+    @include govuk-media-query('tablet') {
+      @include govuk-font($size: 36, $weight: bold);
+    }
+  }
+}
