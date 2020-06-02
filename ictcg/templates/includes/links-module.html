@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <div class="ictcg-links-module" >
-  <h3 class="ictcg-links-module__title">{{ module.title }}</h3>
+  <h2 class="ictcg-links-module__title">{{ module.title }}</h2>
   <ul class="govuk-list ictcg-margin-bottom-0">
     {% for link in module.orderable_links.all %}
       <li>

@@ -20,6 +20,7 @@
             <li>
               <a href="#{{sections.value.title|slugify }}" class="">
                 {{ sections.value.title }}
+                <span class="govuk-visually-hidden">{% trans '(Same page link)' %}</span>
               </a>
             </li>
           {% endfor %}
