@@ -31,7 +31,7 @@
     
       <section>
         <h3 class="ictcg-heading-m ictcg-margin-bottom-0">{{ page.sub_sections_title }}</h3>
-        <hr>
+        <hr aria-hidden="true">
         <ul class="govuk-list ictcg-margin-top-2">
           {% cache 86400 guidelines_sections_children page.id %}
             {% for child in page.get_children.live %}
