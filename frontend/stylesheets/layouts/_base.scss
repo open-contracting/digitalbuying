@@ -54,3 +54,19 @@
     top: govuk-spacing(4);
   }
 }
+
+.ictcg-full-viewport-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: colour('case-study-grey');
+}
+
+.ictcg-desktop-column-count-2 {
+  @include govuk-media-query('tablet') {
+    column-count: 2;
+  }
+}

@@ -1,0 +1,45 @@
+.ictcg-button {
+  @include govuk-responsive-margin(6, 'top');
+  @include govuk-typography-responsive(19);
+
+  font-weight: bold;
+  
+  
+  padding: 8px 10px 7px;
+  width: auto;
+}
+
+.ictcg-button--white {
+  background-color: colour('white');
+  box-shadow: 0 2px 0 colour('blue');
+  color: colour('blue');
+
+  &:active,
+  &:link,
+  &:visited {
+    background-color: colour('white');
+    color: colour('blue');
+  }
+
+  &:hover {
+    background-color: colour('white');
+    color: colour('navy');
+  }
+}
+
+.ictcg-button--blue {
+  background-color: colour('gov-uk-blue');
+  color: colour('white');
+
+  &:active,
+  &:link,
+  &:visited {
+    background-color: colour('gov-uk-blue');
+    color: colour('white');
+  }
+
+  &:hover {
+    background-color: colour('gov-uk-blue');
+    color: colour('navy');
+  }
+}

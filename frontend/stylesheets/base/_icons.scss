@@ -1,6 +1,11 @@
 .ictcg-icon {
-  height: 34px;
-  width: 34px;
+  height: 30px;
+  width: 30px;
+
+  @include govuk-media-query('tablet') {
+    height: 34px;
+    width: 34px;
+  }
 }
 
 .ictcg-icon__cross {
@@ -9,4 +14,8 @@
 
 .ictcg-icon__tick {
   stroke: colour('green');
+}
+
+.ictcg-icon__tick--navy {
+  stroke: colour('navy');
 }

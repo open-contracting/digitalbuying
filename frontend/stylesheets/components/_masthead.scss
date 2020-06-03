@@ -4,7 +4,7 @@ $masthead-text-colour: colour('white');
   @include govuk-responsive-padding(6, 'top');
   @include govuk-responsive-padding(7, 'bottom');
 
-  background-color: colour('navy-blue');
+  background-color: colour('navy');
 }
 
 .ictcg-masthead__title {
@@ -22,30 +22,6 @@ $masthead-text-colour: colour('white');
 
   a {
     color: $masthead-text-colour;
-  }
-}
-
-.ictcg-masthead__button {
-  @include govuk-responsive-margin(6, 'top');
-  @include govuk-typography-responsive(19);
-
-  font-weight: bold;
-  color: colour('blue');
-  background-color: colour('white');
-  padding: 8px 10px 7px;
-  box-shadow: 0 2px 0 colour('blue');
-  width: auto;
-
-  &:active,
-  &:link,
-  &:visited {
-    background-color: colour('white');
-    color: colour('blue');
-  }
-
-  &:hover {
-    background-color: colour('white');
-    color: colour('navy-blue');
   }
 }
 
