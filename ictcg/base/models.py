@@ -58,7 +58,9 @@ class HomePage(TranslatablePage):
     )
 
     body = StreamField([
-        ("content_section", blocks.RichTextWithTitleBlock()),
+        ("rich_text_section", blocks.HomePageRichTextBlock()),
+        ("highlight_list_section", blocks.HighlightListBlock()),
+        ("case_study_section", blocks.CaseStudyBlock()),
     ], null=True, blank=True)
 
     content_panels = TranslatablePage.content_panels + [

@@ -1,0 +1,13 @@
+{% load wagtailcore_tags %}
+
+<section 
+  class="ictcg-text-align-{{self.text_alignment}} ictcg-margin-bottom-6 {% if self.width == 'half'%}govuk-grid-column-one-half{% else %}govuk-grid-column-full{% endif %}" 
+  id="{{self.title|slugify }}"
+>
+  {% if self.title %}
+    <h2 class="ictcg-margin-bottom-0">{{self.title}}</h3>
+  {% endif %}
+  
+  <hr aria-hidden="true">
+  {{ self.content|richtext }}
+</section>

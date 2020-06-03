@@ -1,0 +1,26 @@
+{% load wagtailcore_tags case_studies_tags %}
+{% load guidelines_tags wagtailcore_tags %}
+{% get_latest_case_studies request.LANGUAGE_CODE as case_studies %}
+
+<section class="ictcg-margin-bottom-6 govuk-grid-column-full" id="{{self.title|slugify }}">
+  <div class="ictcg-text-align-{{self.text_alignment}}">
+    <h2 class="ictcg-margin-bottom-0">{{self.title}}</h3>
+    <hr aria-hidden="true">
+    {{ self.content|richtext }}
+  </div>
+ 
+  <div class="ictcg-cards">
+    {% for case_study in case_studies %}
+      {% include 'includes/card.html' with item=case_study featured=False %}
+    {% endfor %}
+  </div>
+
+  <div class="ictcg-text-align-centre">
+    {% if self.button_text and self.button_link %}
+    <a href="{{ self.button_link.url }}" title="{{ self.button_text }}" role="button" class="govuk-button ictcg-button ictcg-button--blue ictcg-margin-top-6  ictcg-margin-bottom-0 " data-module="govuk-button">
+      {{ self.button_text }}
+    </a>
+    {% endif %}
+  </div>
+ 
+</section>

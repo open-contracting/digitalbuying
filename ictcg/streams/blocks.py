@@ -9,6 +9,47 @@ class RichTextWithTitleBlock(blocks.StructBlock):
   class Meta:
     template="streams/richtext_block.html"
 
+class TextAlignmentBlock(blocks.ChoiceBlock):
+  choices = [
+    ('left','Left'),
+    ('centre', 'Centred'),
+    ('right','Right'),
+  ]
+
+class HomePageRichTextBlock(blocks.StructBlock):
+  title = blocks.CharBlock(max_length=120, required=False, help_text=_("Section title, max length 120 characters"))
+  
+  width =  blocks.ChoiceBlock(choices=[
+      ('full','Full Width'),
+      ('half', 'Half Width'),
+  ], default='full')
+
+  text_alignment = TextAlignmentBlock(default='left')
+
+  content = blocks.RichTextBlock()
+
+  class Meta:
+    template="streams/homepage_richtext_block.html"
+
+class HighlightListBlock(blocks.StructBlock):
+  title = blocks.CharBlock(max_length=120, help_text=_("Section title, max length 120 characters"))
+  items_list = blocks.ListBlock(blocks.CharBlock(label=_("Item")))
+
+  class Meta:
+    template="streams/highlight_list_block.html"
+    icon="tick"
+
+class CaseStudyBlock(blocks.StructBlock):
+  title = blocks.CharBlock(max_length=120, help_text=_("Section title, max length 120 characters"))
+  text_alignment = TextAlignmentBlock(default='left')
+  content = blocks.RichTextBlock()
+
+  button_text = blocks.CharBlock(max_length=120, required=False, help_text=_("Text for button"))
+  button_link = blocks.PageChooserBlock()
+
+  class Meta:
+    template="streams/case_study_block.html"
+    icon="image"
 
 class DoOrDontCard(blocks.StructBlock):
   item = blocks.CharBlock(max_length=250, help_text=_("Item text"))
