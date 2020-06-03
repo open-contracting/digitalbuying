@@ -12,7 +12,7 @@
   
   {% if page.header_image %}
     {% image page.header_image fill-1440x664 as share_image %}
-    <meta property="og:image" content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ share_image.url }}" />
+    <meta property="og:image" content="{{ share_image.url }}" />
   {% endif %}
 
   {% if page.introduction %}
@@ -48,7 +48,7 @@
     
     <div class="govuk-grid-column-two-thirds ictcg-float-right-desktop">
       {% if page.introduction %}
-        <section class="ictcg-richtext-block ictcg-margin-bottom-6">
+        <section class="ictcg-margin-bottom-6">
           <p class="ictcg-font-19--bold">{{ page.introduction }}</p>
         </section>
       {% endif %}
@@ -61,13 +61,13 @@
 
     </div>
 
-    <div class="govuk-grid-column-one-third ictcg-column-module-spacing">
+    <div class="govuk-grid-column-one-third ictcg-column-module-spacing ictcg-sticky-desktop">
       {% with section_tags=page.section_tags.all %}
         {% if section_tags|length > 0 %}
           <section class="ictcg-margin-bottom-4">
             <h3 class="ictcg-block">{% trans 'Tags:' %}</h3>
             {% for tag in section_tags %}
-              <span class="ictcg-tag" href="#?tag={{ tag }}">{{ tag }}</span>
+              <span class="ictcg-tag">{{ tag }}</span>
             {% endfor %}
           </section>
         {% endif %}
