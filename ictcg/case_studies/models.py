@@ -28,8 +28,9 @@ class CaseStudiesListingPage(TranslatablePage):
     def get_context(self, request, *args, **kwards):
         context = super().get_context(request, *args, **kwards)
         featured_case_studies = CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE).order_by('-publication_date').live().first()
-        context['case_studies']  = CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE).exclude(pk=featured_case_studies.pk).order_by('-publication_date').live()
         context['featured_case_studies'] = featured_case_studies
+        if featured_case_studies:
+            context['case_studies']  = CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE).exclude(pk=featured_case_studies.pk).order_by('-publication_date').live()
         return context
 
 class CaseStudyGuidelinesSectionTag(TaggedItemBase):

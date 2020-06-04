@@ -13,7 +13,9 @@
         <p class="ictcg-font-16 ictcg-margin-bottom-2">{{case_studies|length|add:1}} {% trans 'Results' %}</p> <!-- ADD 1 to include featured case study -->
       </div>
       <div class="ictcg-cards">
-        {% include 'includes/card.html' with item=featured_case_studies featured=True %}
+        {% if featured_case_studies %}
+          {% include 'includes/card.html' with item=featured_case_studies featured=True %}
+        {% endif %}
 
         {% for case_study in case_studies %}
           {% include 'includes/card.html' with item=case_study featured=False %}
