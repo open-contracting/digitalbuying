@@ -65,7 +65,7 @@
       {% with section_tags=page.section_tags.all %}
         {% if section_tags|length > 0 %}
           <section class="ictcg-margin-bottom-4">
-            <h3 class="ictcg-block">{% trans 'Tags:' %}</h3>
+            <h2 class="ictcg-block ictcg-heading-s">{% trans 'Tags:' %}</h2>
             {% for tag in section_tags %}
               <span class="ictcg-tag">{{ tag }}</span>
             {% endfor %}
