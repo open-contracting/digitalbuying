@@ -81,12 +81,13 @@
   width: 100%;
   height: auto;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .ictcg-card__heading {
   @include govuk-font($size: 19);
 
-  flex: 1;
+  flex: 1 1 auto;
   font-weight: normal;
 }
 
