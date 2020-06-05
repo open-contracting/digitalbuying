@@ -10,9 +10,10 @@
   {% endif %}
 
   {{ self.content_top|richtext }}
-  <div class="ictcg-quote">
+  <blockquote class="ictcg-quote">
     <p>{{ self.quote }}</p>
-    <p>- {{ self.attribution }}</p>
-  </div>
+    <footer>- <cite title="{{ self.attribution }}">{{ self.attribution }}</cite></footer>
+  </blockquote>
   {{ self.content_bottom|richtext }}
 </section>
+
