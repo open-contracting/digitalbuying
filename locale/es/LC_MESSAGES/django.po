@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-19 09:43+0000\n"
+"POT-Creation-Date: 2020-06-05 13:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ictcg/base/models.py:24
+#: ictcg/base/models.py:25
 msgid "Title for masthead component"
 msgstr ""
 
-#: ictcg/base/models.py:41
+#: ictcg/base/models.py:42
 msgid "Title for link"
 msgstr ""
 
-#: ictcg/base/models.py:69
+#: ictcg/base/models.py:57
+msgid "Alt tag description for image"
+msgstr ""
+
+#: ictcg/base/models.py:80
 msgid "Masthead"
 msgstr ""
 
-#: ictcg/base/models.py:93
+#: ictcg/base/models.py:95
+msgid "Please enter description for the masthead image"
+msgstr ""
+
+#: ictcg/base/models.py:111
 msgid "Title for Navigation"
+msgstr ""
+
+#: ictcg/case_studies/models.py:54
+msgid "Image dimensions should be 1912px wide × 714px high"
+msgstr ""
+
+#: ictcg/case_studies/models.py:64
+msgid "Time taken (in minutes) to read the case study"
 msgstr ""
 
 #: ictcg/guidelines/models.py:76
@@ -50,11 +66,11 @@ msgstr ""
 msgid "Links module"
 msgstr ""
 
-#: ictcg/modules/models.py:30
+#: ictcg/modules/models.py:31
 msgid "Title to appear in the admin area"
 msgstr ""
 
-#: ictcg/modules/models.py:56
+#: ictcg/modules/models.py:57
 msgid "Text for link"
 msgstr ""
 
@@ -70,35 +86,47 @@ msgstr ""
 msgid "Menus"
 msgstr ""
 
-#: ictcg/navigation/models.py:53
+#: ictcg/navigation/models.py:47
+msgid "Alt tag description for logo"
+msgstr ""
+
+#: ictcg/navigation/models.py:60
 msgid "Description for navigation button aria label"
 msgstr ""
 
-#: ictcg/navigation/models.py:59
+#: ictcg/navigation/models.py:66
 msgid "Description for navigation aria label"
 msgstr ""
 
-#: ictcg/navigation/models.py:147
+#: ictcg/navigation/models.py:72
+msgid "Text area for phase banner description"
+msgstr ""
+
+#: ictcg/navigation/models.py:162
 msgid "Sponsors"
 msgstr ""
 
-#: ictcg/navigation/models.py:182 ictcg/sponsors/models.py:37
+#: ictcg/navigation/models.py:197 ictcg/sponsors/models.py:37
 msgid "URL for sponsor link"
 msgstr ""
 
-#: ictcg/navigation/models.py:189 ictcg/sponsors/models.py:44
+#: ictcg/navigation/models.py:204 ictcg/sponsors/models.py:44
 msgid "Sponsor image or logo"
 msgstr ""
 
-#: ictcg/settings/base.py:137
-msgid "English"
+#: ictcg/navigation/models.py:211
+msgid "Alt tag description for sponsor logo"
 msgstr ""
 
 #: ictcg/settings/base.py:138
-msgid "LA Spanish"
+msgid "English"
 msgstr ""
 
 #: ictcg/settings/base.py:139
+msgid "LA Spanish"
+msgstr ""
+
+#: ictcg/settings/base.py:140
 msgid "Bahasa"
 msgstr ""
 
@@ -106,32 +134,58 @@ msgstr ""
 msgid "Sponsor Logos"
 msgstr ""
 
-#: ictcg/streams/blocks.py:5
+#: ictcg/streams/blocks.py:5 ictcg/streams/blocks.py:20
+#: ictcg/streams/blocks.py:35 ictcg/streams/blocks.py:43
 msgid "Section title, max length 120 characters"
 msgstr ""
 
-#: ictcg/streams/blocks.py:13
+#: ictcg/streams/blocks.py:36
+msgid "Item"
+msgstr ""
+
+#: ictcg/streams/blocks.py:47
+msgid "Text for button"
+msgstr ""
+
+#: ictcg/streams/blocks.py:55
 msgid "Item text"
 msgstr ""
 
-#: ictcg/streams/blocks.py:16
+#: ictcg/streams/blocks.py:58
 msgid "Do's and dont's title"
 msgstr ""
 
-#: ictcg/streams/blocks.py:32
+#: ictcg/streams/blocks.py:74
 msgid "Quote section title, max length 120 characters"
 msgstr ""
 
-#: ictcg/streams/blocks.py:34
+#: ictcg/streams/blocks.py:77
 msgid "Quote"
 msgstr ""
 
-#: ictcg/streams/blocks.py:35
+#: ictcg/streams/blocks.py:78
 msgid "Quote attribution"
 msgstr ""
 
 #: ictcg/templates/base/generic_page_with_sub_nav.html:16
 msgid "Sub-Navigation"
+msgstr ""
+
+#: ictcg/templates/base/generic_page_with_sub_nav.html:23
+msgid "(Same page link)"
+msgstr ""
+
+#: ictcg/templates/case_studies/case_studies_listing_page.html:13
+msgid "Results"
+msgstr ""
+
+#: ictcg/templates/case_studies/case_study_page.html:38
+#: ictcg/templates/includes/card.html:18
+msgid "min read"
+msgstr ""
+
+#: ictcg/templates/case_studies/case_study_page.html:68
+msgid "Tags:"
 msgstr ""
 
 #: ictcg/templates/guidelines/guidelines_listing_page.html:19
@@ -144,14 +198,49 @@ msgstr "cierra todo"
 
 #: ictcg/templates/includes/footer.html:21
 msgid "Translation"
+msgstr "Traducción"
+
+#: ictcg/templates/includes/footer.html:45
+#: ictcg/templates/includes/footer.html:62
+#: ictcg/templates/includes/header.html:30
+#: ictcg/templates/includes/links-module.html:11
+#: ictcg/templates/includes/social-links.html:16
+#: ictcg/templates/includes/social-links.html:29
+#: ictcg/templates/includes/social-links.html:42
+#: ictcg/templates/includes/social-links.html:55
+msgid "(opens in a new tab)"
 msgstr ""
 
-#: ictcg/templates/includes/footer.html:51
+#: ictcg/templates/includes/footer.html:54
 msgid "Support links"
 msgstr ""
 
+#: ictcg/templates/includes/footer.html:70
+msgid "Built by the"
+msgstr "Creado por el"
+
+#: ictcg/templates/includes/footer.html:70
+msgid "Servicio digital gubernamental"
+msgstr ""
+
+#: ictcg/templates/includes/footer.html:77
+msgid "All content is available under the"
+msgstr "Todo el contenido está disponible bajo la"
+
+#: ictcg/templates/includes/footer.html:78
+msgid "Open Government Licence v3.0"
+msgstr "Licencia gubernamental abierta v3.0"
+
+#: ictcg/templates/includes/footer.html:78
+msgid "except where otherwise stated"
+msgstr "excepto cuando se indique lo contrario"
+
 #: ictcg/templates/includes/header.html:4
 msgid "Skip to main content"
+msgstr ""
+
+#: ictcg/templates/includes/header.html:15
+msgid "Digital Buying Guide"
 msgstr ""
 
 #: ictcg/templates/includes/pagination.html:9
@@ -162,13 +251,64 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Siguiente"
 
+#: ictcg/templates/includes/phase-banner.html:9
+msgid "Beta"
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:4
+msgid "Share this case study:"
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:12
+msgid "Share case study on Twitter"
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:14
+#: ictcg/templates/includes/social-links.html:27
+#: ictcg/templates/includes/social-links.html:40
+#: ictcg/templates/includes/social-links.html:53
+msgid "Share case study on "
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:15
+msgid "Twitter"
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:25
+msgid "Share case study on Facebook"
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:28
+msgid "Facebook"
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:38
+msgid "Share case study on LinkedIn"
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:41
+msgid "LinkedIn"
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:48
+msgid "I wanted to share this post with you from the Digital Buying Guide"
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:51
+msgid "Share case study on Email"
+msgstr ""
+
+#: ictcg/templates/includes/social-links.html:54
+msgid "Email"
+msgstr ""
+
 #: ictcg/templates/streams/do_dont_list.html:7
 msgid "Do"
-msgstr "hacer"
+msgstr "Se debe"
 
 #: ictcg/templates/streams/do_dont_list.html:20
 msgid "Don't"
-msgstr "Evitar"
+msgstr "No se debe"
 
 #: ictcg/templates/tags/breadcrumbs.html:23
 msgid "Back to "
