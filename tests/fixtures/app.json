@@ -150,6 +150,22 @@
       }
     },
     {
+      "model":"wagtailtrans.translatablepage",
+      "pk":13,
+      "fields":{
+        "canonical_page":13,
+        "language":1
+      }
+    },
+    {
+      "model":"wagtailtrans.translatablepage",
+      "pk":14,
+      "fields":{
+        "canonical_page":13,
+        "language":1
+      }
+    },
+    {
       "model":"wagtailtrans.translatablesiterootpage",
       "pk":3,
       "fields":{}
@@ -258,25 +274,65 @@
       "model":"wagtailcore.page",
       "pk":8,
       "fields":{
+        "path":"00010002000100010002",
+        "depth":5,
+        "numchild":2,
+        "title":"Inform the market",
+        "draft_title":"Inform the market",
+        "slug":"inform-the-market",
+        "content_type":[
+          "guidelines",
+          "guidelinessectionpage"
+        ],
+        "live":true,
+        "has_unpublished_changes":false,
+        "url_path":"/root/en/guidelines/inform-the-market/",
+        "owner":["gdmp.admin"]
+      }
+    },
+    {
+      "model":"wagtailcore.page",
+      "pk":9,
+      "fields":{
         "path":"000100020001000100010001",
         "depth":6,
         "numchild":0,
         "title":"Form a team",
         "draft_title":"Form a team",
-        "slug":"Form-a-team",
+        "slug":"form-a-team",
         "content_type":[
           "guidelines",
           "guidancepage"
         ],
         "live":true,
         "has_unpublished_changes":false,
-        "url_path":"/root/en/guidelines/form-a-team/",
+        "url_path":"/root/en/guidelines/prepare-and-plan/form-a-team/",
+        "owner":["gdmp.admin"]
+      }
+    },
+    {
+      "model":"wagtailcore.page",
+      "pk":10,
+      "fields":{
+        "path":"000100020001000100010002",
+        "depth":6,
+        "numchild":0,
+        "title":"Understand user needs",
+        "draft_title":"Understand user needs",
+        "slug":"user-needs",
+        "content_type":[
+          "guidelines",
+          "guidancepage"
+        ],
+        "live":true,
+        "has_unpublished_changes":false,
+        "url_path":"/root/en/guidelines/prepare-and-plan/user-needs/",
         "owner":["gdmp.admin"]
       }
     },
     {
       "model": "wagtailcore.page",
-      "pk": 9,
+      "pk": 11,
       "fields": {
         "path": "0001000200010003",
         "depth": 4,
@@ -296,7 +352,7 @@
     },
     {
       "model": "wagtailcore.page",
-      "pk": 10,
+      "pk": 12,
       "fields": {
         "path": "00010002000100030001",
         "depth": 5,
@@ -316,7 +372,7 @@
     },
     {
       "model": "wagtailcore.page",
-      "pk": 11,
+      "pk": 13,
       "fields": {
         "path": "00010002000100030002",
         "depth": 5,
@@ -336,7 +392,7 @@
     },
     {
       "model": "wagtailcore.page",
-      "pk": 12,
+      "pk": 14,
       "fields": {
         "path": "00010002000100030003",
         "depth": 5,
@@ -367,13 +423,28 @@
       "fields":{
         "subtitle":"Prepare and plan",
         "section_colour":"#28a197",
-        "landing_page_summary":"summary",
-        "sub_sections_title":"Topics"
+        "landing_page_summary":"summary"
+      }
+    },
+    {
+      "model":"guidelines.guidelinessectionpage",
+      "pk":8,
+      "fields":{
+        "subtitle":"Prepare and plan",
+        "section_colour":"#28a197",
+        "landing_page_summary":"summary"
       }
     },
     {
       "model":"guidelines.guidancepage",
-      "pk":8,
+      "pk":9,
+      "fields":{
+        "body":"{}"
+      }
+    },
+    {
+      "model":"guidelines.guidancepage",
+      "pk":10,
       "fields":{
         "body":"{}"
       }
@@ -387,12 +458,12 @@
     },
     {
       "model": "case_studies.casestudieslistingpage",
-      "pk": 9,
+      "pk": 11,
       "fields": {}
     },
     {
       "model": "case_studies.casestudypage",
-      "pk": 10,
+      "pk": 12,
       "fields": {
         "introduction": "Case study number 1",
         "header_image": 7,
@@ -405,7 +476,7 @@
     },
     {
       "model": "case_studies.casestudypage",
-      "pk": 11,
+      "pk": 13,
       "fields": {
         "introduction": "Case study number 2",
         "header_image": null,
@@ -418,7 +489,7 @@
     },
     {
       "model": "case_studies.casestudypage",
-      "pk": 12,
+      "pk": 14,
       "fields": {
         "introduction": "Case study number 3",
         "header_image": null,

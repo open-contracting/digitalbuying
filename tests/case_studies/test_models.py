@@ -14,9 +14,9 @@ from ictcg.base.models import HomePage
 class CaseStudiesListingPageTests(WagtailPageTests):
     fixtures = ['app.json']
     # Order of case studies should as below based on publication date (newest first)
-    # PK 11 - case-study-number-2 - 2020-06-01
-    # PK 10 - case-study-number-1 - 2020-05-31
-    # PK 12 - case-study-number-3 - 2020-05-01
+    # PK 13 - case-study-number-2 - 2020-06-01
+    # PK 12 - case-study-number-1 - 2020-05-31
+    # PK 14 - case-study-number-3 - 2020-05-01
 
     def test_case_studies_listing_page_can_be_created_under_homepage(self):
         # You can create a CaseStudiesListingPage under an HomePage
@@ -36,9 +36,9 @@ class CaseStudiesListingPageTests(WagtailPageTests):
         featured_case_study = response.context['featured_case_studies']
         case_studies = response.context['case_studies']
 
-        self.assertEquals(featured_case_study.pk, 11)
-        self.assertEquals(case_studies[0].pk, 10)
-        self.assertEquals(case_studies[1].pk, 12)
+        self.assertEquals(featured_case_study.pk, 13)
+        self.assertEquals(case_studies[0].pk, 12)
+        self.assertEquals(case_studies[1].pk, 14)
 
 class CaseStudyGuidelinesSectionTagTests(WagtailPageTests):
 
@@ -49,9 +49,9 @@ class CaseStudyGuidelinesSectionTagTests(WagtailPageTests):
 class CaseStudyPageTests(WagtailPageTests):
     fixtures = ['app.json']
     # Order of case studies should as below based on publication date (newest first)
-    # PK 11 - case-study-number-2 - 2020-06-01
-    # PK 10 - case-study-number-1 - 2020-05-31
-    # PK 12 - case-study-number-3 - 2020-05-01
+    # PK 13 - case-study-number-2 - 2020-06-01
+    # PK 12 - case-study-number-1 - 2020-05-31
+    # PK 14 - case-study-number-3 - 2020-05-01
 
     def test_case_study_page_can_be_created_under_case_study_listing_page(self):
         # You can create a GenericPageWithSubNav under an the HomePage
@@ -63,25 +63,25 @@ class CaseStudyPageTests(WagtailPageTests):
 
     def test_case_studies_article_pagination_links_ordered_by_publication_date_first_page(self):
         # The first article (order by publication_date) should have a next page link and not a prev link
-        response = self.client.get('/en/case-studies/case-study-number-2/') #PK 11
+        response = self.client.get('/en/case-studies/case-study-number-2/') #PK 13
         
         self.assertFalse('prev_page' in response.context)
         self.assertTrue('next_page' in response.context)
-        self.assertEquals(response.context['next_page'].pk, 10)
+        self.assertEquals(response.context['next_page'].pk, 12)
     
     def test_case_studies_article_pagination_links_ordered_by_publication_date_middle_page(self):
         # A middle page  article (order by publication_date) should have a next page link and a prev link
-        response = self.client.get('/en/case-studies/case-study-number-1/') #PK 10
+        response = self.client.get('/en/case-studies/case-study-number-1/') #PK 12
         
         self.assertTrue('prev_page' in response.context)
         self.assertTrue('next_page' in response.context)
-        self.assertEquals(response.context['prev_page'].pk, 11)
-        self.assertEquals(response.context['next_page'].pk, 12)
+        self.assertEquals(response.context['prev_page'].pk, 13)
+        self.assertEquals(response.context['next_page'].pk, 14)
 
     def test_case_studies_article_pagination_links_ordered_by_publication_date_lasr_page(self):
         # The last page (order by publication_date) should have a prev link but no next link
-        response = self.client.get('/en/case-studies/case-study-number-3/') #PK 12
+        response = self.client.get('/en/case-studies/case-study-number-3/') #PK 14
         
         self.assertTrue('prev_page' in response.context)
         self.assertFalse('next_page' in response.context)
-        self.assertEquals(response.context['prev_page'].pk, 10)
+        self.assertEquals(response.context['prev_page'].pk, 12)

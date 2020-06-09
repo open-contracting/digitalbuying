@@ -57,10 +57,14 @@ class GuidelinesSectionPage(TranslatablePage):
   parent_page_types = ["guidelines.GuidelinesListingPage"]
   subpage_types = ["guidelines.GuidancePage"]
 
+  introduction = RichTextField(blank=True, default="")
+
   subtitle = models.CharField(
     max_length=140, 
     blank=False
   )
+
+  body = RichTextField(blank=True, default="")
 
   section_colour = models.CharField(
     max_length=140, 
@@ -75,26 +79,17 @@ class GuidelinesSectionPage(TranslatablePage):
     blank=False,
     help_text=_("Text to be shown on the guidelines landing page")
   )
-  
-  body = StreamField([
-    ("content", blocks.RichTextWithTitleBlock()),
-  ], null=True, blank=True)
-
-  sub_sections_title = models.CharField(
-    max_length=140, 
-    blank=False,
-    help_text=_("Title for child pages under this section")
-  )
 
   content_panels = Page.content_panels + [
+    FieldPanel("introduction"),
     FieldPanel("subtitle"),
+    FieldPanel("body"),
     FieldPanel("section_colour"),
-    StreamFieldPanel("body"),
-    FieldPanel("sub_sections_title"),
     FieldPanel("landing_page_summary"),
   ]
 
   search_fields = Page.search_fields + [
+    index.SearchField('introduction'),
     index.SearchField('body'),
   ]
   
@@ -171,8 +166,22 @@ class GuidancePage(TranslatablePage):
   def get_context(self, request, *args, **kwards):
     context = super().get_context(request, *args, **kwards)
     guidelines =  GuidelinesListingPage.objects.ancestor_of(self).live().first()
-    context['section'] = GuidelinesSectionPage.objects.ancestor_of(self).live().first()
     context['guidelines_title'] = guidelines.title
+    context['section'] = GuidelinesSectionPage.objects.ancestor_of(self).live().first()
+    
+    prev_page = self.get_prev_siblings().live().first()
+    next_page = self.get_next_siblings().live().first()
+
+    if prev_page == None:
+      prev_page = self.get_parent().specific
+      prev_page.title = prev_page.subtitle
+    
+    if next_page == None:
+      next_page = self.get_parent().get_next_siblings().live().first()
+    
+    context['prev_page'] = prev_page
+    context['next_page'] = next_page
+    
     return context
   
   def save(self, *args, **kwards):
