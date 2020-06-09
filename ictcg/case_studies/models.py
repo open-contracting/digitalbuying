@@ -96,9 +96,9 @@ class CaseStudyPage(TranslatablePage):
         case_study_length = len(case_study_list) - 1 # 0 based index
 
         if current_idx + 1 <= case_study_length:
-            context['next_sibling'] = siblings[current_idx + 1]
+            context['next_page'] = siblings[current_idx + 1]
 
         if current_idx - 1 >= 0:
-            context['prev_sibling'] = siblings[current_idx - 1]
+            context['prev_page'] = siblings[current_idx - 1]
        
         return context

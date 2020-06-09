@@ -65,23 +65,23 @@ class CaseStudyPageTests(WagtailPageTests):
         # The first article (order by publication_date) should have a next page link and not a prev link
         response = self.client.get('/en/case-studies/case-study-number-2/') #PK 11
         
-        self.assertFalse('prev_sibling' in response.context)
-        self.assertTrue('next_sibling' in response.context)
-        self.assertEquals(response.context['next_sibling'].pk, 10)
+        self.assertFalse('prev_page' in response.context)
+        self.assertTrue('next_page' in response.context)
+        self.assertEquals(response.context['next_page'].pk, 10)
     
     def test_case_studies_article_pagination_links_ordered_by_publication_date_middle_page(self):
         # A middle page  article (order by publication_date) should have a next page link and a prev link
         response = self.client.get('/en/case-studies/case-study-number-1/') #PK 10
         
-        self.assertTrue('prev_sibling' in response.context)
-        self.assertTrue('next_sibling' in response.context)
-        self.assertEquals(response.context['prev_sibling'].pk, 11)
-        self.assertEquals(response.context['next_sibling'].pk, 12)
+        self.assertTrue('prev_page' in response.context)
+        self.assertTrue('next_page' in response.context)
+        self.assertEquals(response.context['prev_page'].pk, 11)
+        self.assertEquals(response.context['next_page'].pk, 12)
 
     def test_case_studies_article_pagination_links_ordered_by_publication_date_lasr_page(self):
         # The last page (order by publication_date) should have a prev link but no next link
         response = self.client.get('/en/case-studies/case-study-number-3/') #PK 12
         
-        self.assertTrue('prev_sibling' in response.context)
-        self.assertFalse('next_sibling' in response.context)
-        self.assertEquals(response.context['prev_sibling'].pk, 10)
+        self.assertTrue('prev_page' in response.context)
+        self.assertFalse('next_page' in response.context)
+        self.assertEquals(response.context['prev_page'].pk, 10)

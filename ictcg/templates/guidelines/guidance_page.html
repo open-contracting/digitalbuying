@@ -29,7 +29,9 @@
         {% include_block block %}
       {% endfor %}
       
-      {% include 'includes/pagination.html' with prev_sibling=page.get_prev_sibling next_sibling=page.get_next_sibling %}
+      {% include 'includes/pagination.html' %}
+
+
     </div>
     
     <div class="govuk-grid-column-one-third ictcg-column-module-spacing">
