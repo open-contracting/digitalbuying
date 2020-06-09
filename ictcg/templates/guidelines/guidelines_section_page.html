@@ -17,18 +17,20 @@
       <section>
         {{ page.introduction|richtext }}
 
-        <h2 class="ictcg-font-16 ictcg-font-normal ictcg-margin-bottom-1 ictcg-margin-top-4">{% trans 'Contents' %}</h2>
-        <ul class="govuk-list">
+        <nav role="navigation" class="ictcg-margin-top-4" aria-label="{% trans 'Pages in this section' %}">
+          <h2 class="ictcg-font-16 ictcg-font-normal ictcg-margin-bottom-1">{% trans 'Contents' %}</h2>
+          <ul class="govuk-list">
 
-          <li class="govuk-body-s ictcg-list-item">{{ page.subtitle }}</li>
-            {% cache 86400 guidelines_sections_children page.id %}
-              {% for child in page.get_children.live %}
-                <li class="govuk-body-s ictcg-list-item">
-                  <a href="{{ child.url}}" class="">{{ child.title }}</a>
-                </li>
-              {% endfor %}
-            {% endcache %}
-        </ul> 
+            <li class="govuk-body-s ictcg-list-item">{{ page.subtitle }}</li>
+              {% cache 86400 guidelines_sections_children page.id %}
+                {% for child in page.get_children.live %}
+                  <li class="govuk-body-s ictcg-list-item">
+                    <a href="{{ child.url}}" class="">{{ child.title }}</a>
+                  </li>
+                {% endfor %}
+              {% endcache %}
+          </ul> 
+        </nav>
       </section>
 
       <hr class="ictcg-margin-top-2" aria-hidden="true">
