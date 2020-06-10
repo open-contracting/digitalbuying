@@ -1,5 +1,4 @@
 .ictcg-quote {
-
   @include govuk-text-colour;
   @include govuk-responsive-margin(4, 'top');
   @include govuk-responsive-margin(4, 'bottom');
@@ -12,7 +11,8 @@
   }
 
   cite {
-    font-style: normal;
     @include govuk-font($size: 19);
+
+    font-style: normal;
   }
 }

@@ -1,4 +1,4 @@
-.ictcg-list-item:before {
-  content: "– ";
+.ictcg-list-item::before {
+  content: '– ';
   padding-right: 5px;
 }

@@ -15,6 +15,7 @@
   display: flex;
   padding: 0 $govuk-gutter-half;
   width: 100%;
+  position: relative;
 
   @include govuk-media-query('tablet') {
     width: 50%;
@@ -29,30 +30,9 @@
   background-color: colour('white');
   width: 100%;
   overflow: hidden;
-}
-
-.ictcg-card__link-wrapper {
-  background-color: colour('white');
+  border: 1px solid colour('border-grey');
   display: flex;
   flex-direction: column;
-  height: 100%;
-  position: relative;
-  text-decoration: none;
-  border: 1px solid colour('border-grey');
-
-  &:focus {
-    background-color: white;
-
-    .ictcg-card__heading {
-      @include govuk-focused-text;
-    }
-  }
-
-  &:hover {
-    .ictcg-card__heading {
-      text-decoration: underline;
-    }
-  }
 }
 
 .ictcg-card__content {
@@ -77,6 +57,21 @@
   }
 }
 
+.ictcg-card__link::before {
+  content: '';
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+.ictcg-card__collaborator {
+  margin-top: auto;
+}
+
 .ictcg-card__image {
   width: 100%;
   height: auto;
@@ -89,6 +84,12 @@
 
   flex: 1 1 auto;
   font-weight: normal;
+}
+
+.ictcg-card__link:hover {
+  .ictcg-card__heading {
+    text-decoration: underline;
+  }
 }
 
 .ictcg-card__intro {
