@@ -11,7 +11,7 @@
  
   <div class="ictcg-cards">
     {% for case_study in case_studies %}
-      {% include 'includes/card.html' with item=case_study featured=False %}
+      {% include 'includes/card.html' with item=case_study featured=False case_study_block=True %}
     {% endfor %}
   </div>
 

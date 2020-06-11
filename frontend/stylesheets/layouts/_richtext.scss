@@ -38,5 +38,10 @@
     &::after {
       content: '\200b';
     }
+
+    &:first-child::after,
+    &:last-child::after {
+      content: '';
+    }
   }
 }

@@ -17,7 +17,11 @@
         <span class="ictcg-card__meta-item">{{ item.read_time }} {% trans 'min read' %}</span>
       </div>
       <a class="ictcg-card__link" href="{% pageurl item %}" alt="{{ item.title }}">
-        <h2 class="ictcg-card__heading ictcg-margin-bottom-0">{{ item.title }}</h2>
+        {% if case_study_block %}
+          <h3 class="ictcg-card__heading ictcg-margin-bottom-0">{{ item.title }}</h3>
+        {% else %}
+          <h2 class="ictcg-card__heading ictcg-margin-bottom-0">{{ item.title }}</h2>
+        {% endif %}
       </a>
       {% if featured %}
         <p class="ictcg-font-19 ictcg-card__intro ictcg-padding-top-4 ictcg-margin-bottom-0">{{ item.introduction }}</p>
