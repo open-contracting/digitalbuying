@@ -1,3 +1,14 @@
+
+$ictcg-button-white: colour('white');
+$ictcg-button-white-hover: govuk-shade($ictcg-button-white, 20%);
+$ictcg-button-white-shadow: govuk-shade($ictcg-button-white, 60%);
+$ictcg-button-white-text: colour('link');
+
+$ictcg-button-blue: colour('link');
+$ictcg-button-blue-hover: govuk-shade($ictcg-button-blue, 20%);
+$ictcg-button-blue-shadow: govuk-shade($ictcg-button-blue, 40%);
+$ictcg-button-blue-text: colour('white');
+
 .ictcg-button {
   @include govuk-responsive-margin(6, 'top');
   @include govuk-typography-responsive(19);
@@ -8,36 +19,33 @@
 }
 
 .ictcg-button--white {
-  background-color: colour('white');
-  box-shadow: 0 2px 0 colour('blue');
-  color: colour('blue');
+  background-color: $ictcg-button-white;
+  box-shadow: 0 2px 0 $ictcg-button-white-shadow;
+  color: $ictcg-button-white-text;
 
   &:active,
   &:link,
   &:visited {
-    background-color: colour('white');
-    color: colour('blue');
+    color: $ictcg-button-white-text;
   }
 
   &:hover {
-    background-color: colour('white');
-    color: colour('navy');
+    background-color: $ictcg-button-white-hover;
   }
 }
 
 .ictcg-button--blue {
-  background-color: colour('gov-uk-blue');
-  color: colour('white');
+  background-color: $ictcg-button-blue;
+  box-shadow: 0 2px 0 $ictcg-button-blue-shadow;
+  color: $ictcg-button-blue-text;
 
   &:active,
   &:link,
   &:visited {
-    background-color: colour('gov-uk-blue');
-    color: colour('white');
+    color: $ictcg-button-blue-text;
   }
 
   &:hover {
-    background-color: colour('gov-uk-blue');
-    color: colour('navy');
+    background-color: $ictcg-button-blue-hover;
   }
 }

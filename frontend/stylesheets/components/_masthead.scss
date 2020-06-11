@@ -4,7 +4,7 @@ $masthead-text-colour: colour('white');
   @include govuk-responsive-padding(6, 'top');
   @include govuk-responsive-padding(7, 'bottom');
 
-  background-color: colour('navy');
+  background-color: colour('primary-3');
 }
 
 .ictcg-masthead__title {

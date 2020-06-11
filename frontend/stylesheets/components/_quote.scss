@@ -1,10 +1,10 @@
 .ictcg-quote {
-  @include govuk-text-colour;
   @include govuk-responsive-margin(4, 'top');
   @include govuk-responsive-margin(4, 'bottom');
   @include govuk-responsive-padding(5, 'left');
 
-  border-left: 5px solid colour('green');
+  color: colour('text');
+  border-left: 5px solid colour('highlight');
 
   p {
     margin-bottom: 0;

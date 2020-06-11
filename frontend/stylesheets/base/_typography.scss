@@ -2,8 +2,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-
-  @include govuk-text-colour;
+  color: colour('text');
 }
 
 @include govuk-media-query ($from: tablet) {
@@ -66,6 +65,20 @@ b {
 
 a {
   @extend %govuk-link;
+
+  color: colour('link');
+
+  &:visited {
+    color: colour('link-visited');
+  }
+
+  &:hover {
+    color: colour('link-hover');
+  }
+
+  &:focus {
+    color: colour('text');
+  }
 }
 
 hr {
@@ -73,6 +86,7 @@ hr {
   @include govuk-responsive-margin(4, 'bottom');
 
   display: inline-block;
+  border-top: 1px solid colour('border');
 }
 
 .ictcg-font-14 {

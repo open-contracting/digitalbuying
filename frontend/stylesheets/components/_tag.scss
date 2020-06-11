@@ -4,8 +4,8 @@
   @include govuk-responsive-margin(2, 'bottom');
 
   display: inline-block;
-  color: colour('gov-uk-blue');
-  background-color: colour('tag-background');
+  color: colour('link');
+  background-color: colour('footer');
   text-transform: capitalize;
   padding: 4px 6px;
   text-decoration: none;

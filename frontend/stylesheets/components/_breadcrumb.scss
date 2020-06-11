@@ -1,5 +1,5 @@
 .ictcg-breadcrumbs-container {
-  background-color: colour('navy');
+  background-color: colour('primary-3');
 }
 
 $chevron-size: 7px;
@@ -21,13 +21,13 @@ $chevron-altitude-calculated: 5px;
   transform: rotate(225deg);
   border: solid;
   border-width: $chevron-border-width $chevron-border-width 0 0;
-  border-color: $govuk-secondary-text-colour;
+  border-color: colour('border');
 }
 
 .ictcg-breadcrumbs {
   @include govuk-font($size: 16);
-  @include govuk-text-colour;
 
+  color: colour('text');
   display: inline-block;
   margin-top: govuk-spacing(2);
   margin-bottom: govuk-spacing(2);
@@ -104,6 +104,6 @@ $chevron-altitude-calculated: 5px;
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: colour('text');
   }
 }

@@ -22,10 +22,8 @@
 .ictcg-do-dont-list {
   @include govuk-responsive-padding(5);
 
-  background-color: colour('light-grey');
-
-  @include govuk-text-colour;
-
+  background-color: colour('highlight');
+  color: colour('text');
   padding-top: 0 !important; /* stylelint-disable-line */
 }
 
@@ -44,7 +42,7 @@
 .ictcg-do-dont-list__label {
   @include govuk-typography-responsive(24);
 
-  background-color: colour('blue');
+  background-color: colour('link');
   color: colour('white');
   display: inline-block;
   position: relative;

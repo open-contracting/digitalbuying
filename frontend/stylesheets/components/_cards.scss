@@ -30,7 +30,7 @@
   background-color: colour('white');
   width: 100%;
   overflow: hidden;
-  border: 1px solid colour('border-grey');
+  border: 1px solid colour('border');
   display: flex;
   flex-direction: column;
 }
@@ -45,7 +45,7 @@
 .ictcg-card__meta {
   display: flex;
   justify-content: space-between;
-  color: colour('case-study-read-more');
+  color: colour('caption');
 }
 
 .ictcg-card__meta-item,
@@ -93,7 +93,7 @@
 }
 
 .ictcg-card__intro {
-  color: colour('case-study-read-more');
+  color: colour('caption');
 }
 
 .ictcg-cards__item--featured {

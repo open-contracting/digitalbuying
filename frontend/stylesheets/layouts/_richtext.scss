@@ -31,4 +31,12 @@
   > *:last-child {
     margin-bottom: 0 !important; /* stylelint-disable-line */
   }
+
+  p:empty {
+    margin-bottom: 0;
+
+    &::after {
+      content: '\200b';
+    }
+  }
 }

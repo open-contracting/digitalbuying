@@ -43,7 +43,7 @@
 
   .ictcg-icon {
     position: absolute;
-    fill: govuk-colour('blue');
+    fill: colour('link');
     top: -8px;
 
     @include govuk-media-query ('tablet') {
@@ -52,10 +52,10 @@
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: colour('link-hover');
 
     .ictcg-icon {
-      fill: $govuk-link-hover-colour;
+      fill: colour('link-hover');
     }
 
     .ictcg-pagination__page {
@@ -65,24 +65,24 @@
 
   &:visited {
     .ictcg-icon {
-      fill: $govuk-link-visited-colour;
+      fill: colour('link-visited');
     }
 
     &:hover {
       .ictcg-icon {
-        fill: $govuk-link-hover-colour;
+        fill: colour('link-hover');
       }
     }
 
     &:focus {
       .ictcg-icon {
-        fill: $govuk-focus-text-colour;
+        fill: colour('text');
       }
     }
   }
 
   &:focus {
-    @include govuk-focused-text;
+    color: colour('text');
 
     .ictcg-pagination__page {
       text-decoration: none;
@@ -93,7 +93,7 @@
     &:focus,
     &:active {
       .ictcg-icon {
-        fill: $govuk-focus-text-colour;
+        fill: colour('text');
       }
     }
   }

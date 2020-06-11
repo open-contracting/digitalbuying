@@ -1,4 +1,4 @@
-$ictcg-text-colour: colour('navy');
+$ictcg-text-colour: colour('primary-3');
 
 .ictcg-header {
   @include govuk-font($size: 16);
@@ -45,7 +45,7 @@ $ictcg-text-colour: colour('navy');
   }
 
   &:focus {
-    @include govuk-focused-text;
+    color: colour('text');
   }
 }
 
@@ -113,7 +113,7 @@ $ictcg-text-colour: colour('navy');
   }
 
   &:focus {
-    @include govuk-focused-text;
+    color: colour('text');
   }
 
   &::after {
@@ -174,7 +174,7 @@ $ictcg-text-colour: colour('navy');
 
 .ictcg-header__navigation-item {
   padding: govuk-spacing(2) 0;
-  border-bottom: 1px solid colour('border-grey');
+  border-bottom: 1px solid colour('border');
 
   @include govuk-media-query ($from: desktop) {
     display: inline-block;
@@ -209,7 +209,7 @@ $ictcg-text-colour: colour('navy');
 }
 
 .ictcg-header__navigation-item:first-child {
-  border-top: 1px solid colour('border-light-grey');
+  border-top: 1px solid colour('border');
 
   @include govuk-media-query ($from: desktop) {
     border: 0;

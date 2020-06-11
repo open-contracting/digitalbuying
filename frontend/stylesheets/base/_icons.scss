@@ -9,13 +9,9 @@
 }
 
 .ictcg-icon__cross {
-  fill: colour('red');
+  fill: colour('crosses');
 }
 
 .ictcg-icon__tick {
-  stroke: colour('green');
-}
-
-.ictcg-icon__tick--navy {
-  stroke: colour('navy');
+  stroke: colour('ticks');
 }
