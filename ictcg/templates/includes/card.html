@@ -13,7 +13,7 @@
     {% endif %}
     <div class="ictcg-card__content">
       <div class="ictcg-card__meta ictcg-margin-bottom-4">
-        <span class="ictcg-card__meta-item">{{ item.publication_date|date:"d M Y" }}</span>
+        <time class="ictcg-card__meta-item" datetime="{{ item.publication_date|date:'Y-m-d' }}">{{ item.publication_date|date:"d M Y" }}</time>
         <span class="ictcg-card__meta-item">{{ item.read_time }} {% trans 'min read' %}</span>
       </div>
       <a class="ictcg-card__link" href="{% pageurl item %}" alt="{{ item.title }}">

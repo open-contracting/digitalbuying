@@ -100,7 +100,7 @@
   width: 100%;
 
   .ictcg-card__collaborator,
-  .ictcg-card__meta span {
+  .ictcg-card__meta > * {
     @include govuk-font($size: 16);
   }
 
