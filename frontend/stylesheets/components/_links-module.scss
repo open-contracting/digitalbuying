@@ -1,19 +1,3 @@
 .ictcg-links-module {
-  border-top: 10px solid colour('primary-4');
-
   @include govuk-responsive-padding(4);
-
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: colour('primary-4');
-    opacity: .1;
-    pointer-events: none;
-  }
 }

@@ -4,7 +4,7 @@
   @include govuk-responsive-padding(5, 'left');
 
   color: colour('text');
-  border-left: 5px solid colour('highlight');
+  border-left: 5px solid colour('border');
 
   p {
     margin-bottom: 0;

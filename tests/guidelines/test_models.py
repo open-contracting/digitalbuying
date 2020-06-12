@@ -48,7 +48,7 @@ class GuidelinesSectionPageTests(WagtailPageTests):
             depth='5',
             landing_page_summary='Summary',
             subtitle='Overview', 
-            section_colour='#28a197', 
+            section_colour='primary-1', 
             title='Test section page'
         )
 
@@ -130,7 +130,7 @@ class OnDeletePageSignalsTest(TestCase):
             depth='5',
             landing_page_summary='Summary',
             subtitle='Overview', 
-            section_colour='#28a197', 
+            section_colour='primary-1', 
             title='Test section page'
         )
         guidelines_section_page.delete()

@@ -1,0 +1,19 @@
+$primary-colours: 'primary-1', 'primary-2', 'primary-3', 'primary-4';
+
+@each $colour in $primary-colours {
+  .ictcg-#{$colour}-background-colour {
+    background-color: colour($colour);
+  }
+
+  .ictcg-#{$colour}-border-top-10 {
+    border-top: 10px solid colour($colour);
+  }
+
+  @for $i from 1 through 9 {
+    .ictcg-#{$colour}-background-opacity-#{$i} {
+      $hex: colour($colour);
+
+      @include background-opacity($hex, $i / 10);
+    }
+  }
+}

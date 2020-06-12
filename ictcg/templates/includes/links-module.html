@@ -1,11 +1,11 @@
 {% load i18n %}
 
-<div class="ictcg-links-module" >
-  <h2 class="ictcg-links-module__title">{{ module.title }}</h2>
+<div class="ictcg-links-module ictcg-primary-4-border-top-10 ictcg-primary-4-background-opacity-1" >
+  <h2>{{ module.title }}</h2>
   <ul class="govuk-list ictcg-margin-bottom-0">
     {% for link in module.orderable_links.all %}
       <li>
-        <a class="ictcg-links-module__link" href="{{ link.url }}" {% if link.open_in_new_tab %}target="_blank"{% endif %}>
+        <a href="{{ link.url }}" {% if link.open_in_new_tab %}target="_blank"{% endif %}>
           {{link.link_text}}
           {% if link.open_in_new_tab %}
             <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>

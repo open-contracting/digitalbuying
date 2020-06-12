@@ -422,7 +422,7 @@
       "pk":7,
       "fields":{
         "subtitle":"Prepare and plan",
-        "section_colour":"#28a197",
+        "section_colour":"primary-1",
         "landing_page_summary":"summary"
       }
     },
@@ -431,7 +431,7 @@
       "pk":8,
       "fields":{
         "subtitle":"Prepare and plan",
-        "section_colour":"#28a197",
+        "section_colour":"primary-2",
         "landing_page_summary":"summary"
       }
     },

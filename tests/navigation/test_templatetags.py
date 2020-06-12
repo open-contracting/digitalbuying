@@ -20,8 +20,6 @@ class TemplateTagsBreadcrumbTests(TestCase):
     fixtures = ['app.json']
 
     def test_breadcrumbs_template_returns_correct_html(self):
-        TEMPLATE = Template("{% load navigation_tags %} {% breadcrumbs %}")
-
         guidelines_page = Page.objects.get(id=6)
         context = Context({'self': guidelines_page, 'request': []})
         template_to_render = Template(
@@ -44,9 +42,9 @@ class TemplateTagsBreadcrumbTests(TestCase):
         self.assertEqual(parent.title, 'Guidelines')
     
     def test_get_parent(self):
-        # Get guidance page, depth of the page should be 6
+        # Get guidance page (ID 9), depth of the page should be 6
         # Parent depth should be 1 less (5)
-        guidance_page = Page.objects.get(id=8)
+        guidance_page = Page.objects.get(id=9)
         ancestors = Page.objects.ancestor_of(guidance_page, inclusive=True).filter(depth__gt=2)
         parent = get_parent(ancestors, guidance_page.depth)
         self.assertEqual(parent.depth, guidance_page.depth - 1)

@@ -10,3 +10,8 @@
 @function colour($name) {
   @return map-get($colours, $name);
 }
+
+@mixin background-opacity($color, $opacity: .3) {
+  background: $color; /* The Fallback */
+  background: rgba($color, $opacity);
+}
