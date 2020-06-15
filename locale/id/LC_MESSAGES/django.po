@@ -181,7 +181,7 @@ msgstr ""
 
 #: ictcg/templates/case_studies/case_study_page.html:38
 #: ictcg/templates/includes/card.html:18
-msgid "min read"
+msgid "minute read"
 msgstr ""
 
 #: ictcg/templates/case_studies/case_study_page.html:68
