@@ -32,6 +32,11 @@
   @include govuk-responsive-padding(7, 'bottom');
 }
 
+.ictcg-case-study-header__title {
+  width: 100%;
+  word-wrap: break-word;
+}
+
 .ictcg-case-study-header__readtime {
   margin-bottom: 0;
   color: colour('caption');

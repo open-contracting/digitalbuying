@@ -20,16 +20,13 @@ $ictcg-text-colour: colour('primary-3');
   display: flex;
   margin-right: govuk-spacing(1);
   align-items: center;
+  color: $ictcg-text-colour;
 }
 
 .ictcg-header__logotype-image {
   width: 21px;
   height: auto;
-}
-
-.ictcg-header__logotype-text {
-  color: $ictcg-text-colour;
-  margin-left: govuk-spacing(1);
+  margin-right: govuk-spacing(1);
 }
 
 .ictcg-header__link {

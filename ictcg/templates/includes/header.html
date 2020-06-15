@@ -9,11 +9,9 @@
       <a href="/{{request.LANGUAGE_CODE}}" class="ictcg-header__link ictcg-header__link--homepage">
         <span class="ictcg-header__logotype">
           {% if mainmenu.logo %}
-            {% image mainmenu.logo width-42 class="ictcg-header__logotype-image" alt=mainmenu.logo_description %}
+            {% image mainmenu.logo width-42 class="ictcg-header__logotype-image" alt="" aria-hidden="true" %}
           {% endif %}
-          <span class="ictcg-header__logotype-text">
-            {% trans 'Digital Buying Guide' %}
-          </span>
+          {% trans 'Digital Buying Guide' %}
         </span>
       </a>
     </div>
