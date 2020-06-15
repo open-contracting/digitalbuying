@@ -24,24 +24,24 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 try:
-  services_json = json.loads(os.getenv('VCAP_SERVICES'))
-  aws_s3_config = services_json['aws-s3-bucket'][0]['credentials']
+    services_json = json.loads(os.getenv('VCAP_SERVICES'))
+    aws_s3_config = services_json['aws-s3-bucket'][0]['credentials']
 
-  AWS_STORAGE_BUCKET_NAME = aws_s3_config['bucket_name']
-  AWS_ACCESS_KEY_ID = aws_s3_config['aws_access_key_id']
-  AWS_SECRET_ACCESS_KEY = aws_s3_config['aws_secret_access_key']
-  AWS_S3_REGION_NAME = aws_s3_config["aws_region"]
-  AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME)
-  AWS_DEFAULT_ACL = None
+    AWS_STORAGE_BUCKET_NAME = aws_s3_config['bucket_name']
+    AWS_ACCESS_KEY_ID = aws_s3_config['aws_access_key_id']
+    AWS_SECRET_ACCESS_KEY = aws_s3_config['aws_secret_access_key']
+    AWS_S3_REGION_NAME = aws_s3_config["aws_region"]
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME)
+    AWS_DEFAULT_ACL = None
 
-  MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-  DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 except Exception:
-  logging.error('Error configuring S3 media storage')
-  pass
+    logging.error('Error configuring S3 media storage')
+    pass
 
 try:
-  from .local import *
+    from .local import *
 except ImportError:
-  pass
+    pass

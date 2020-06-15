@@ -5,13 +5,13 @@ from .models import Sponsor
 
 @modeladmin_register
 class SponsorsAdmin(ModelAdmin):
-  """Sponsors admin."""
+    """Sponsors admin."""
 
-  model = Sponsor
-  menu_label = _("Sponsor Logos")
-  menu_icon = "placeholder"
-  menu_order = 290
-  add_to_settings_menu = False
-  exclude_from_explorer = False
-  list_display =  ("language", "title",)
-  list_filter = ("language",)
+    model = Sponsor
+    menu_label = _("Sponsor Logos")
+    menu_icon = "placeholder"
+    menu_order = 290
+    add_to_settings_menu = False
+    exclude_from_explorer = False
+    list_display = ("language", "title",)
+    list_filter = ("language",)

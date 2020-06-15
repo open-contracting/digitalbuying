@@ -14,24 +14,24 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'gdmp-ictcg-dev',
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'gdmp-ictcg-dev',
+    }
 }
 
 INSTALLED_APPS += [
-  'debug_toolbar'
+    'debug_toolbar'
 ]
 
 MIDDLEWARE += [
-  'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 INTERNAL_IPS = [
-  '127.0.0.1'
+    '127.0.0.1'
 ]
 try:
-  from .local import *
+    from .local import *
 except ImportError:
-  pass
+    pass
