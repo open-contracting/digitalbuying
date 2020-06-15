@@ -115,16 +115,12 @@ class QuoteBlockTests(WagtailPageTests):
 
     def test_quote_block_input_types(self):
         child_blocks = ictgs_blocks.QuoteBlock().child_blocks
-        assert type(child_blocks['title']) is blocks.CharBlock
-        assert type(child_blocks['hide_horizontal_rule']) is blocks.BooleanBlock
-        assert type(child_blocks['content_top']) is blocks.RichTextBlock
         assert type(child_blocks['quote']) is blocks.CharBlock
         assert type(child_blocks['attribution']) is blocks.CharBlock
-        assert type(child_blocks['content_bottom']) is blocks.RichTextBlock
     
     def test_do_dont_block_input_types_count(self):
         child_blocks = ictgs_blocks.QuoteBlock().child_blocks
-        self.assertEquals(len(child_blocks), 6)
+        self.assertEquals(len(child_blocks), 2)
 
     def test_quote_block_template(self):
         self.assertEquals(ictgs_blocks.QuoteBlock().get_template(), 'streams/quote_block.html')

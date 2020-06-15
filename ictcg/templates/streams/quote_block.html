@@ -1,19 +1,9 @@
 {% load wagtailcore_tags %}
 
 <section class="ictcg-margin-bottom-6" id="{{self.title|slugify }}">
-  <h2 class="ictcg-margin-bottom-0">{{self.title}}</h2>
-
-  {% if self.hide_horizontal_rule %}
-    <div class="ictcg-padding-top-4"></div>
-  {% else %}
-    <hr aria-hidden="true">
-  {% endif %}
-
-  {{ self.content_top|richtext }}
   <blockquote class="ictcg-quote">
     <p>{{ self.quote }}</p>
     <footer><cite title="{{ self.attribution }}">{{ self.attribution }}</cite></footer>
   </blockquote>
-  {{ self.content_bottom|richtext }}
 </section>
 
