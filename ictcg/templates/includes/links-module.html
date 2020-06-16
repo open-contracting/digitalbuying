@@ -1,8 +1,8 @@
 {% load i18n %}
 
 <div class="ictcg-links-module ictcg-primary-4-border-top-10 ictcg-primary-4-background-opacity-1" >
-  <h2>{{ module.title }}</h2>
-  <ul class="govuk-list ictcg-margin-bottom-0">
+  <h2 class="ictcg-heading-s">{{ module.title }}</h2>
+  <ul class="govuk-list ictcg-font-16 ictcg-margin-bottom-0">
     {% for link in module.orderable_links.all %}
       <li>
         <a href="{{ link.url }}" {% if link.open_in_new_tab %}target="_blank"{% endif %}>

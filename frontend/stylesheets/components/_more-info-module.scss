@@ -1,7 +1,9 @@
 .ictcg-more-info-module {
   @include govuk-responsive-padding(4);
-}
 
-.ictcg-more-info-module__desc {
-  margin-bottom: 0;
+  .rich-text {
+    p {
+      @include govuk-font($size: 16, $weight: normal);
+    }
+  }
 }
