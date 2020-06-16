@@ -6,7 +6,7 @@
 <header class="ictcg-header " role="banner" data-module="ictcg-header-mainmenu">
   <div class="ictcg-header__container govuk-width-container">
     <div class="ictcg-header__logo">
-      <a href="/{{request.LANGUAGE_CODE}}" class="ictcg-header__link ictcg-header__link--homepage">
+      <a href="/{{request.LANGUAGE_CODE}}" class="ictcg-header__link ictcg-header__link--homepage" title="{% trans 'Go to the Digital Buying Guide homepage' %}">
         <span class="ictcg-header__logotype">
           {% if mainmenu.logo %}
             {% image mainmenu.logo width-42 class="ictcg-header__logotype-image" alt="" aria-hidden="true" %}
