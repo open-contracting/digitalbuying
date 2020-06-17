@@ -13,7 +13,7 @@
     {% endif %}
     <div class="ictcg-card__content">
       <div class="ictcg-card__meta ictcg-margin-bottom-4">
-        <time class="ictcg-card__meta-item" datetime="{{ item.publication_date|date:'Y-m-d' }}">
+        <time class="ictcg-card__meta-item" datetime="{{ item.publication_date|date:'Y-m-d\T00:00:00+00:00' }}">
           <span aria-hidden="true">{{ item.publication_date|date:"d M Y" }}</span>
           <span class="govuk-visually-hidden">{{ item.publication_date|date:"d F Y" }}</span>
         </time>
