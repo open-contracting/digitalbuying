@@ -8,3 +8,20 @@
     @include govuk-responsive-margin(6, 'bottom');
   }
 }
+
+.ictcg-footer__heading {
+  @include govuk-responsive-margin(4, 'bottom');
+}
+
+.ictcg-footer__section {
+  margin-bottom: govuk-spacing(2);
+
+  @include govuk-media-query('tablet') {
+  margin-bottom: 0;
+  }
+}
+
+.ictcg-footer__link {
+  @include govuk-responsive-margin(4, 'bottom');
+  display: inline-block;
+}

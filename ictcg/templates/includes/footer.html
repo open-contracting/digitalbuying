@@ -2,29 +2,29 @@
 {% get_translations page homepage_fallback=False include_self=True as translations %}
 {% get_footer_content request.LANGUAGE_CODE as footer  %}
 
-<footer class="govuk-footer ictcg-margin-top-9" role="contentinfo">
+<footer class="govuk-footer ictcg-margin-top-9 ictcg-padding-top-6 ictcg-padding-bottom-0" role="contentinfo">
   <div class="govuk-width-container ">
     <div class="govuk-footer__navigation">
-      <div class="govuk-footer__section">
-        <h2 class="govuk-footer__heading govuk-heading-m">{{ footer.guildelines_title }}</h2>
+      <div class="govuk-footer__section ictcg-footer__section">
+        <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{{ footer.guildelines_title }}</h2>
         <ul class="govuk-footer__list govuk-footer__list--columns-2">
           {% for item in footer.guildelines_sections %}
-            <li class="govuk-footer__list-item">
-              <a class="govuk-footer__link" title="{{ item.title }}" href="{% pageurl item %}">
+            <li class="">
+              <a class="govuk-footer__link ictcg-footer__link" title="{{ item.title }}" href="{% pageurl item %}">
                 {{ item.title }}
               </a>
             </li>
           {% endfor %}
         </ul>
       </div>
-      <div class="govuk-footer__section">
-        <h2 class="govuk-footer__heading govuk-heading-m">{% trans 'Translation' %}</h2>
+      <div class="govuk-footer__section ictcg-footer__section">
+        <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{% trans 'Translation' %}</h2>
         <ul class="govuk-footer__list ">
           {% for language, page in translations.items %}
             {% get_language_info for language.code as lang %}
               {% if language.code != request.LANGUAGE_CODE %}
-                <li class="govuk-footer__list-item">
-                  <a class="govuk-footer__link ictcg-capitalize" href="{{ page.url }}" lang="{{ language.code }}">
+                <li class="">
+                  <a class="govuk-footer__link ictcg-footer__link ictcg-capitalize" href="{{ page.url }}" lang="{{ language.code }}">
                     {{ lang.name_local }}
                   </a>
                 </li>
@@ -33,11 +33,11 @@
         </ul>
       </div>
     </div>
-    <hr aria-hidden="true" class="govuk-footer__section-break ictcg-margin-bottom-6">
+    <hr aria-hidden="true" class="govuk-footer__section-break ictcg-margin-bottom-6 ictcg-block ictcg-hidden-mobile">
     {% cache 86400 footer_sponsors request.LANGUAGE_CODE %}
       {% if footer.footer_content.sponsor_items %}
         <div class="ictcg-footer__sponsors">
-          <h2 class="ictcg-heading-m">{{ footer.footer_content.sponsors_title }}</h2>
+          <h2 class="govuk-heading-m">{{ footer.footer_content.sponsors_title }}</h2>
           <div class="ictcg-footer__sponsors-items">
             {% for item in footer.footer_content.sponsor_items.all %}
               <a href="{{ item.url }}" target="_blank">
@@ -50,7 +50,7 @@
       {% endif %}
     {% endcache %}
     <div class="govuk-footer__meta">
-      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow ictcg-margin-bottom-6">
         <h2 class="govuk-visually-hidden">{% trans 'Support links' %}</h2>
         <ul class="govuk-footer__inline-list">
           {% cache 86400 footer_support_links request.LANGUAGE_CODE %}
