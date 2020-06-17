@@ -37,8 +37,8 @@
           <p class="ictcg-font-16 ictcg-margin-bottom-1">
             <span>{{ page.collaborator }}, </span>
             <time datetime="{{ page.publication_date|date:'Y-m-d\T00:00:00+00:00' }}">
-              <span aria-hidden="true">{{ page.publication_date|date:"d M Y" }}</span>
               <span class="govuk-visually-hidden">{{ page.publication_date|date:"d F Y" }}</span>
+              <span aria-hidden="true">{{ page.publication_date|date:"d M Y" }}</span>
             </time>
           </p>
           <p class="ictcg-font-16 ictcg-case-study-header__readtime">{{ page.read_time }} {% trans 'minute read' %}</p>
