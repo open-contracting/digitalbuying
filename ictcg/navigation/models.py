@@ -149,17 +149,18 @@ class FooterMenu(ClusterableModel):
         null=True,
     )
 
+    translation_title = models.CharField(
+        max_length=100,
+        blank=False,
+        null=True,
+    )
+
     panels = [
         FieldPanel("admin_title"),
         FieldPanel("language"),
+        FieldPanel("sponsors_title"),
+        FieldPanel("translation_title"),
         InlinePanel("footer_menu_items", label="Menu Item"),
-        MultiFieldPanel(
-            [
-                FieldPanel("sponsors_title"),
-                InlinePanel("sponsor_items", label="Sponsor Items")
-            ],
-            heading=_('Sponsors'),
-        ),
     ]
 
     def __str__(self):
@@ -182,49 +183,9 @@ class FooterMenuItem(Orderable, MenuItem):
     panels = MenuItem.panels + []
     links = ParentalKey("FooterMenu", related_name="footer_menu_items")
 
-
-class SponsorItem(Orderable):
-    """
-    SponsorItem class for footer sponsors.
-    """
-    name = models.CharField(
-        max_length=140,
-        blank=True,
-        help_text='Title'
-    )
-
-    url = models.URLField(blank=True, help_text=_("URL for sponsor link"))
-
-    logo = models.ForeignKey(
-        'wagtailimages.Image',
-        blank=False,
-        null=True,
-        related_name='+',
-        help_text=_('Sponsor image or logo'),
-        on_delete=models.SET_NULL,
-    )
-
-    logo_description = models.CharField(
-        max_length=240,
-        null=True,
-        help_text=_("Alt tag description for sponsor logo")
-    )
-
-    panels = [
-        FieldPanel("name"),
-        FieldPanel("url"),
-        ImageChooserPanel("logo"),
-        FieldPanel("logo_description"),
-    ]
-
-    sponsor = ParentalKey(
-        "FooterMenu", related_name="sponsor_items", default='')
-
-
 def clear_footer_cache(language_code):
-    sponsors = make_template_fragment_key("footer_sponsors", [language_code])
     support_link = make_template_fragment_key("footer_support_links", [language_code])
-    cache.delete_many([sponsors, support_link])
+    cache.delete_many([support_link])
 
 @receiver(pre_delete, sender=FooterMenu)
 def on_footer_menu_delete(sender, instance, **kwargs):

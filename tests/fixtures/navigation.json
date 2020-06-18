@@ -214,35 +214,5 @@
             "sort_order": 0,
             "links": 3
         }
-    },
-    {
-        "model": "navigation.sponsoritem",
-        "pk": 1,
-        "fields": {
-            "sort_order": 0,
-            "name": "ITU",
-            "url": "http://www.google.com",
-            "sponsor": 1
-        }
-    },
-    {
-        "model": "navigation.sponsoritem",
-        "pk": 2,
-        "fields": {
-            "sort_order": 1,
-            "name": "OECD",
-            "url": "http://www.google.com",
-            "sponsor": 1
-        }
-    },
-    {
-        "model": "navigation.sponsoritem",
-        "pk": 3,
-        "fields": {
-            "sort_order": 2,
-            "name": "U4SSC",
-            "url": "http://www.google.com",
-            "sponsor": 1
-        }
     }
 ]

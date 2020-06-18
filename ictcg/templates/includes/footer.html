@@ -18,7 +18,7 @@
         </ul>
       </div>
       <div class="govuk-footer__section ictcg-footer__section">
-        <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{% trans 'Translation' %}</h2>
+        <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{{ footer.footer_content.translation_title }}</h2>
         <ul class="govuk-footer__list ">
           {% for language, page in translations.items %}
             {% get_language_info for language.code as lang %}
@@ -34,21 +34,20 @@
       </div>
     </div>
     <hr aria-hidden="true" class="govuk-footer__section-break ictcg-margin-bottom-6 ictcg-block ictcg-hidden-mobile">
-    {% cache 86400 footer_sponsors request.LANGUAGE_CODE %}
-      {% if footer.footer_content.sponsor_items %}
         <div class="ictcg-footer__sponsors">
           <h2 class="govuk-heading-m">{{ footer.footer_content.sponsors_title }}</h2>
           <div class="ictcg-footer__sponsors-items">
-            {% for item in footer.footer_content.sponsor_items.all %}
-              <a href="{{ item.url }}" target="_blank">
-                {% image item.logo width-132 alt=item.logo_description %}
-                <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
-              </a>
-            {% endfor %}
+            {% cache 86400 sponsors_footer request.LANGUAGE_CODE %}
+              {% get_footer_sponsors request.LANGUAGE_CODE as sponsors %}
+              {% for item in sponsors %}
+                <a href="{{ item.url }}" target="_blank">
+                  {% image item.logo width-132 alt=item.logo_description %}
+                  <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
+                </a>
+              {% endfor %}
+            {% endcache %}
           </div>
         </div>
-      {% endif %}
-    {% endcache %}
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow ictcg-margin-bottom-6">
         <h2 class="govuk-visually-hidden">{% trans 'Support links' %}</h2>

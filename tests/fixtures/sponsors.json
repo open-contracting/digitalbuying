@@ -1,0 +1,69 @@
+[
+    {
+        "model": "sponsors.sponsor",
+        "pk": 1,
+        "fields": {
+            "language": "en"
+        }
+    },
+    {
+        "model": "sponsors.sponsoritem",
+        "pk": 1,
+        "fields": {
+            "sort_order": 2,
+            "name": "Sponsor 1",
+            "url": "http://www.google.com",
+            "logo": 1,
+            "logo_description": "Sponsor",
+            "show_in_footer": true,
+            "show_on_homepage": true,
+            "sponsor": 1
+        }
+    },
+    {
+        "model": "sponsors.sponsoritem",
+        "pk": 2,
+        "fields": {
+            "sort_order": 1,
+            "name": "Sponsor 2",
+            "url": "http://www.google.com",
+            "logo": 1,
+            "logo_description": "Sponsor",
+            "show_in_footer": false,
+            "show_on_homepage": false,
+            "sponsor": 1
+        }
+    },
+    {
+        "model": "sponsors.sponsoritem",
+        "pk": 3,
+        "fields": {
+            "sort_order": 0,
+            "name": "Sponsor 3",
+            "url": "http://www.google.com",
+            "logo": 1,
+            "logo_description": "Sponsor",
+            "show_in_footer": true,
+            "show_on_homepage": true,
+            "sponsor": 1
+        }
+    },
+    {
+      "model": "wagtailimages.image",
+      "pk": 1,
+      "fields": {
+        "collection": 1,
+        "title": "test",
+        "file": "original_images/test.png",
+        "width": 642,
+        "height": 608,
+        "created_at": "2020-05-13T08:44:00.225Z",
+        "focal_point_x": null,
+        "focal_point_y": null,
+        "focal_point_width": null,
+        "focal_point_height": null,
+        "file_size": 129315,
+        "file_hash": "b6b41ac86a1cfa4c89eb29c906fdae4679965898"
+      }
+    }
+]

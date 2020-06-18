@@ -8,23 +8,31 @@ from wagtail.core.models import Orderable
 from modelcluster.fields import ParentalKey
 from django.conf import settings
 
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 class Sponsor(ClusterableModel):
     language = models.CharField(
         max_length=100,
         choices=settings.LANGUAGES
     )
-    title = models.CharField(max_length=100)
-    introduction = RichTextField(blank=True)
 
     panels = [
         FieldPanel("language"),
-        FieldPanel("title"),
-        FieldPanel("introduction"),
         InlinePanel("sponsor_items", label="Sponsor Item")
     ]
 
     def __str__(self):
-        return self.title
+        return f"Sponsors - {self.language}"
+    
+    def save(self, *args, **kwards):
+        try:
+            clear_sponsors_footer_cache(self.language)
+        except Exception:
+            logging.error('Error deleting sponsors cache')
+            pass
+        return super().save(*args, **kwards)
 
 class SponsorItem(Orderable):
 
@@ -45,10 +53,33 @@ class SponsorItem(Orderable):
         on_delete=models.SET_NULL,
     )
 
+    logo_description = models.CharField(
+        max_length=240,
+        null=True,
+        help_text=_("Alt tag description for sponsor logo")
+    )
+
+    show_in_footer = models.BooleanField(default=False, blank=True)
+
+    show_on_homepage = models.BooleanField(default=False, blank=True)
+
     panels = [
         FieldPanel("name"),
         FieldPanel("url"),
-        ImageChooserPanel("logo")
+        ImageChooserPanel("logo"),
+        FieldPanel("logo_description"),
+        FieldPanel("show_in_footer"),
+        FieldPanel("show_on_homepage"),
     ]
 
     sponsor = ParentalKey("Sponsor", related_name="sponsor_items", default='')
+
+
+def clear_sponsors_footer_cache(language_code):
+    sponsors_footer = make_template_fragment_key("sponsors_footer", [language_code])
+    cache.delete_many([sponsors_footer])
+
+@receiver(pre_delete, sender=Sponsor)
+def on_footer_menu_delete(sender, instance, **kwargs):
+    """ On Sponsor delete, clear the cache """
+    clear_sponsors_footer_cache(instance.language)

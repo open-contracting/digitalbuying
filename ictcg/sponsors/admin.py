@@ -13,5 +13,5 @@ class SponsorsAdmin(ModelAdmin):
     menu_order = 290
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("language", "title",)
+    list_display = ("language",)
     list_filter = ("language",)

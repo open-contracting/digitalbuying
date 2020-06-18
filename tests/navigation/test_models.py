@@ -24,7 +24,7 @@ class MainMenuTests(TestCase):
 class MenuItemTests(TestCase):
 	fixtures = ['app.json']
 
-	def test_mainmenu_inherits_from_translatable_page_class(self):
+	def test_mainitem_inherits_from_translatable_page_class(self):
 		assert issubclass(MenuItem, Model)
 
 	def test_link_property_should_return_page_url_when_page_object_is_set(self):
@@ -73,7 +73,7 @@ class ClearFooterCacheTest(TestCase):
 		FooterMenu.objects.create(admin_title='Footer title 2', language='en')
 
 	@patch('django.core.cache.cache.delete_many')
-	def test_cache_delete_when_clear_footer_cache_is_called(self, mock):
+	def test_delete_is_called_when_clear_footer_cache_is_called(self, mock):
 		clear_footer_cache('en')
 		self.assertTrue(mock.called)
 		self.assertEqual(mock.call_count, 1)
