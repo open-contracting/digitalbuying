@@ -61,6 +61,7 @@ class HomePage(TranslatablePage):
         ("rich_text_section", blocks.HomePageRichTextBlock()),
         ("highlight_list_section", blocks.HighlightListBlock()),
         ("case_study_section", blocks.CaseStudyBlock()),
+        ("sponsors_section", blocks.HomePageRichTextBlock(template = "streams/homepage_sponsors_block.html")),
     ], null=True, blank=True)
 
     content_panels = TranslatablePage.content_panels + [

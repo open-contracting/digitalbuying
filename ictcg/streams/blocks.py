@@ -26,7 +26,7 @@ class HomePageRichTextBlock(blocks.StructBlock):
 
     text_alignment = TextAlignmentBlock(default='left')
 
-    content = blocks.RichTextBlock()
+    content = blocks.RichTextBlock(required=False)
 
     class Meta:
         template = "streams/homepage_richtext_block.html"

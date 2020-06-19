@@ -1,0 +1,16 @@
+.ictcg-sponsors__items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  a {
+    @include govuk-responsive-margin(5, 'right');
+    @include govuk-responsive-margin(4, 'top');
+  }
+}
+
+.ictcg-sponsors {
+  .rich-text {
+    @include govuk-responsive-margin(4, 'top');
+  }
+}

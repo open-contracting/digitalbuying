@@ -40,6 +40,18 @@
   align-self: center;
 }
 
+.ictcg-flex-justify-left {
+  justify-content: flex-start;
+}
+
+.ictcg-flex-justify-centre {
+  justify-content: center;
+}
+
+.ictcg-flex-justify-right {
+  justify-content: flex-end;
+}
+
 .ictcg-hidden-mobile {
   display: none;
 
