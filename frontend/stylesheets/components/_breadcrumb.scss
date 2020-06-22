@@ -46,7 +46,7 @@ $chevron-altitude-calculated: 5px;
   display: none;
 
   @include govuk-media-query ('tablet') {
-    display: block;
+    display: flex;
   }
 }
 
@@ -56,6 +56,7 @@ $chevron-altitude-calculated: 5px;
   padding-left: govuk-spacing(2) + $chevron-altitude-calculated;
   float: left;
   color: colour('white');
+  white-space: nowrap;
 
   &::before {
     @extend %ictcg-chevron;
@@ -71,6 +72,12 @@ $chevron-altitude-calculated: 5px;
       content: none;
       display: none;
     }
+  }
+
+  &:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1 1 auto;
   }
 }
 
