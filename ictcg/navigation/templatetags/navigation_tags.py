@@ -9,7 +9,7 @@ register = template.Library()
 
 # Retrieves the ancestors of the current page, 
 # filtering out the top 2 levels (root and translation-root)
-@register.inclusion_tag('tags/breadcrumbs.html', takes_context=True)
+@register.inclusion_tag('includes/breadcrumbs.html', takes_context=True)
 def breadcrumbs(context):
   self = context.get('self')
   if self is None or self.depth <= 2:
