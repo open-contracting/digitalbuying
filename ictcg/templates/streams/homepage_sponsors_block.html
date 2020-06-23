@@ -9,8 +9,6 @@
     <h2 class="ictcg-margin-bottom-0">{{self.title}}</h3>
   {% endif %}
   
-  <hr aria-hidden="true" class="ictcg-margin-bottom-0">
-
   <div class="ictcg-sponsors__items ictcg-flex-justify-{{self.text_alignment}}">
     {% get_homepage_sponsors request.LANGUAGE_CODE as sponsors %}
     {% for item in sponsors %}

@@ -3,15 +3,9 @@
 <section class="ictcg-margin-bottom-6" id="{{self.title|slugify }}">
   
   {% if use_h3 %}
-    <h3 class="ictcg-heading-m ictcg-margin-bottom-0">{{self.title}}</h3>
+    <h3 class="ictcg-heading-m ictcg-margin-bottom-4">{{self.title}}</h3>
   {% else %}
-    <h2 class="ictcg-margin-bottom-0">{{self.title}}</h3>
-  {% endif %}
-
-  {% if self.hide_horizontal_rule %}
-    <div class="ictcg-padding-top-4"></div>
-  {% else %}
-    <hr aria-hidden="true">
+    <h2 class="ictcg-margin-bottom-4">{{self.title}}</h3>
   {% endif %}
 
   {{ self.content|richtext }}
