@@ -16,15 +16,9 @@ $ictcg-text-colour: colour('masthead');
   }
 }
 
-.ictcg-header__logotype {
-  display: flex;
-  margin-right: govuk-spacing(1);
-  align-items: center;
-  color: $ictcg-text-colour;
-}
-
 .ictcg-header__link {
   text-decoration: none;
+  margin-right: govuk-spacing(1);
 
   &:link,
   &:visited {
@@ -91,7 +85,7 @@ $ictcg-text-colour: colour('masthead');
 
   display: none;
   position: absolute;
-  top: 19px;
+  top: 16px;
   right: 0;
   margin: 0;
   padding: 0;
