@@ -3,7 +3,6 @@ from django.utils.translation import ugettext_lazy as _
 
 class RichTextWithTitleBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=120, help_text=_("Section title, max length 120 characters"))
-    hide_horizontal_rule = blocks.BooleanBlock(required=False)
     content = blocks.RichTextBlock()
 
     class Meta:

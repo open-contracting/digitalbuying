@@ -10,12 +10,11 @@ class RichTextBlockTests(WagtailPageTests):
     def test_rich_text_block(self):
         child_blocks = ictgs_blocks.RichTextWithTitleBlock().child_blocks
         assert type(child_blocks['title']) is blocks.CharBlock
-        assert type(child_blocks['hide_horizontal_rule']) is blocks.BooleanBlock
         assert type(child_blocks['content']) is blocks.RichTextBlock
 
     def test_rich_text_block_count(self):
         child_blocks = ictgs_blocks.RichTextWithTitleBlock().child_blocks
-        self.assertEquals(len(child_blocks), 3)
+        self.assertEquals(len(child_blocks), 2)
 
     def test_rich_text_block_template(self):
         self.assertEquals(ictgs_blocks.RichTextWithTitleBlock().get_template(), 'streams/richtext_block.html')
