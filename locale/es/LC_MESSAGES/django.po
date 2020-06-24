@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-05 13:07+0000\n"
+"POT-Creation-Date: 2020-06-24 16:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,15 +30,15 @@ msgstr ""
 msgid "Alt tag description for image"
 msgstr ""
 
-#: ictcg/base/models.py:80
+#: ictcg/base/models.py:81
 msgid "Masthead"
 msgstr ""
 
-#: ictcg/base/models.py:95
+#: ictcg/base/models.py:96
 msgid "Please enter description for the masthead image"
 msgstr ""
 
-#: ictcg/base/models.py:111
+#: ictcg/base/models.py:112
 msgid "Title for Navigation"
 msgstr ""
 
@@ -50,12 +50,8 @@ msgstr ""
 msgid "Time taken (in minutes) to read the case study"
 msgstr ""
 
-#: ictcg/guidelines/models.py:76
+#: ictcg/guidelines/models.py:81
 msgid "Text to be shown on the guidelines landing page"
-msgstr ""
-
-#: ictcg/guidelines/models.py:86
-msgid "Title for child pages under this section"
 msgstr ""
 
 #: ictcg/modules/admin.py:10
@@ -70,7 +66,7 @@ msgstr ""
 msgid "Title to appear in the admin area"
 msgstr ""
 
-#: ictcg/modules/models.py:57
+#: ictcg/modules/models.py:58
 msgid "Text for link"
 msgstr ""
 
@@ -78,44 +74,24 @@ msgstr ""
 msgid "Main menu"
 msgstr ""
 
-#: ictcg/navigation/admin.py:20
+#: ictcg/navigation/admin.py:19
 msgid "Footer menu"
 msgstr ""
 
-#: ictcg/navigation/admin.py:28
+#: ictcg/navigation/admin.py:27
 msgid "Menus"
 msgstr ""
 
-#: ictcg/navigation/models.py:47
-msgid "Alt tag description for logo"
-msgstr ""
-
-#: ictcg/navigation/models.py:60
+#: ictcg/navigation/models.py:46
 msgid "Description for navigation button aria label"
 msgstr ""
 
-#: ictcg/navigation/models.py:66
+#: ictcg/navigation/models.py:52
 msgid "Description for navigation aria label"
 msgstr ""
 
-#: ictcg/navigation/models.py:72
+#: ictcg/navigation/models.py:58
 msgid "Text area for phase banner description"
-msgstr ""
-
-#: ictcg/navigation/models.py:162
-msgid "Sponsors"
-msgstr ""
-
-#: ictcg/navigation/models.py:197 ictcg/sponsors/models.py:37
-msgid "URL for sponsor link"
-msgstr ""
-
-#: ictcg/navigation/models.py:204 ictcg/sponsors/models.py:44
-msgid "Sponsor image or logo"
-msgstr ""
-
-#: ictcg/navigation/models.py:211
-msgid "Alt tag description for sponsor logo"
 msgstr ""
 
 #: ictcg/settings/base.py:138
@@ -134,12 +110,24 @@ msgstr ""
 msgid "Sponsor Logos"
 msgstr ""
 
-#: ictcg/streams/blocks.py:5 ictcg/streams/blocks.py:20
-#: ictcg/streams/blocks.py:35 ictcg/streams/blocks.py:43
+#: ictcg/sponsors/models.py:45
+msgid "URL for sponsor link"
+msgstr ""
+
+#: ictcg/sponsors/models.py:52
+msgid "Sponsor image or logo"
+msgstr ""
+
+#: ictcg/sponsors/models.py:59
+msgid "Alt tag description for sponsor logo"
+msgstr ""
+
+#: ictcg/streams/blocks.py:5 ictcg/streams/blocks.py:19
+#: ictcg/streams/blocks.py:34 ictcg/streams/blocks.py:43
 msgid "Section title, max length 120 characters"
 msgstr ""
 
-#: ictcg/streams/blocks.py:36
+#: ictcg/streams/blocks.py:35
 msgid "Item"
 msgstr ""
 
@@ -147,16 +135,12 @@ msgstr ""
 msgid "Text for button"
 msgstr ""
 
-#: ictcg/streams/blocks.py:55
+#: ictcg/streams/blocks.py:56
 msgid "Item text"
 msgstr ""
 
-#: ictcg/streams/blocks.py:58
+#: ictcg/streams/blocks.py:60
 msgid "Do's and dont's title"
-msgstr ""
-
-#: ictcg/streams/blocks.py:74
-msgid "Quote section title, max length 120 characters"
 msgstr ""
 
 #: ictcg/streams/blocks.py:77
@@ -179,12 +163,12 @@ msgstr ""
 msgid "Results"
 msgstr ""
 
-#: ictcg/templates/case_studies/case_study_page.html:38
-#: ictcg/templates/includes/card.html:18
+#: ictcg/templates/case_studies/case_study_page.html:44
+#: ictcg/templates/includes/card.html:20
 msgid "minute read"
 msgstr ""
 
-#: ictcg/templates/case_studies/case_study_page.html:68
+#: ictcg/templates/case_studies/case_study_page.html:74
 msgid "Tags:"
 msgstr ""
 
@@ -196,42 +180,51 @@ msgstr "Abrir todo"
 msgid "Close all"
 msgstr "cierra todo"
 
-#: ictcg/templates/includes/footer.html:21
-msgid "Translation"
-msgstr "Traducción"
+#: ictcg/templates/guidelines/guidelines_section_page.html:20
+msgid "Pages in this section"
+msgstr ""
+
+#: ictcg/templates/guidelines/guidelines_section_page.html:21
+msgid "Contents"
+msgstr ""
+
+#: ictcg/templates/includes/breadcrumbs.html:23
+msgid "Back to "
+msgstr "De regreso"
 
 #: ictcg/templates/includes/footer.html:45
-#: ictcg/templates/includes/footer.html:62
-#: ictcg/templates/includes/header.html:30
+#: ictcg/templates/includes/footer.html:61
+#: ictcg/templates/includes/header.html:23
 #: ictcg/templates/includes/links-module.html:11
 #: ictcg/templates/includes/social-links.html:16
 #: ictcg/templates/includes/social-links.html:29
 #: ictcg/templates/includes/social-links.html:42
 #: ictcg/templates/includes/social-links.html:55
+#: ictcg/templates/streams/homepage_sponsors_block.html:17
 msgid "(opens in a new tab)"
 msgstr ""
 
-#: ictcg/templates/includes/footer.html:54
+#: ictcg/templates/includes/footer.html:53
 msgid "Support links"
 msgstr ""
 
-#: ictcg/templates/includes/footer.html:70
+#: ictcg/templates/includes/footer.html:69
 msgid "Built by the"
 msgstr "Creado por el"
 
-#: ictcg/templates/includes/footer.html:70
-msgid "Servicio digital gubernamental"
+#: ictcg/templates/includes/footer.html:69
+msgid "Government Digital Service"
 msgstr ""
 
-#: ictcg/templates/includes/footer.html:77
+#: ictcg/templates/includes/footer.html:76
 msgid "All content is available under the"
 msgstr "Todo el contenido está disponible bajo la"
 
-#: ictcg/templates/includes/footer.html:78
+#: ictcg/templates/includes/footer.html:77
 msgid "Open Government Licence v3.0"
 msgstr "Licencia gubernamental abierta v3.0"
 
-#: ictcg/templates/includes/footer.html:78
+#: ictcg/templates/includes/footer.html:77
 msgid "except where otherwise stated"
 msgstr "excepto cuando se indique lo contrario"
 
@@ -239,7 +232,11 @@ msgstr "excepto cuando se indique lo contrario"
 msgid "Skip to main content"
 msgstr ""
 
-#: ictcg/templates/includes/header.html:15
+#: ictcg/templates/includes/header.html:9
+msgid "Go to the Digital Buying Guide homepage"
+msgstr ""
+
+#: ictcg/templates/includes/header.html:10
 msgid "Digital Buying Guide"
 msgstr ""
 
@@ -302,14 +299,13 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: ictcg/templates/streams/do_dont_list.html:7
+#: ictcg/templates/streams/do_dont_list.html:6
 msgid "Do"
 msgstr "Se debe"
 
-#: ictcg/templates/streams/do_dont_list.html:20
+#: ictcg/templates/streams/do_dont_list.html:19
 msgid "Don't"
 msgstr "No se debe"
 
-#: ictcg/templates/tags/breadcrumbs.html:23
-msgid "Back to "
-msgstr "De regreso"
+#~ msgid "Translation"
+#~ msgstr "Traducción"
