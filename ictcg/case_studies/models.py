@@ -89,7 +89,7 @@ class CaseStudyPage(TranslatablePage):
 
     def get_context(self, request, *args, **kwards):
         context = super().get_context(request, *args, **kwards)
-        siblings = CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE).order_by('-publication_date')
+        siblings = CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE).order_by('-publication_date').live()
         case_study_list = list(siblings.values_list('pk', flat=True))
         current_idx = case_study_list.index(self.pk)
 
