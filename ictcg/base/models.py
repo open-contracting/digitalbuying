@@ -90,11 +90,11 @@ class HomePage(TranslatablePage):
     ]
 
     def clean(self):
-      super().clean()
-      if self.masthead_image and not self.masthead_image_description:
-        raise ValidationError({
-          'masthead_image_description': _("Please enter description for the masthead image"), 
-      })
+        super().clean()
+        if self.masthead_image and not self.masthead_image_description:
+            raise ValidationError({
+            'masthead_image_description': _("Please enter description for the masthead image"), 
+        })
 
 class GenericPageWithSubNav(TranslatablePage):
     """
