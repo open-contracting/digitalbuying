@@ -1,5 +1,7 @@
+import os
 from django.conf import settings
 from django.conf.urls import include, url
+from django.views.generic import TemplateView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
@@ -14,6 +16,10 @@ urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
 ]
 
+if os.getenv('BLOCK_SEARCH_ENGINES', 'off') == 'on':
+    urlpatterns = [
+        url(r'^robots.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"))
+    ] + urlpatterns
 
 if settings.DEBUG:
     from django.conf.urls.static import static
