@@ -91,14 +91,16 @@ class CaseStudyPage(TranslatablePage):
         context = super().get_context(request, *args, **kwards)
         siblings = CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE).order_by('-publication_date').live()
         case_study_list = list(siblings.values_list('pk', flat=True))
-        current_idx = case_study_list.index(self.pk)
+        
+        if self.pk in case_study_list:
+            current_idx = case_study_list.index(self.pk)
 
-        case_study_length = len(case_study_list) - 1 # 0 based index
+            case_study_length = len(case_study_list) - 1 # 0 based index
 
-        if current_idx + 1 <= case_study_length:
-            context['next_page'] = siblings[current_idx + 1]
+            if current_idx + 1 <= case_study_length:
+                context['next_page'] = siblings[current_idx + 1]
 
-        if current_idx - 1 >= 0:
-            context['prev_page'] = siblings[current_idx - 1]
+            if current_idx - 1 >= 0:
+                context['prev_page'] = siblings[current_idx - 1]
        
         return context
