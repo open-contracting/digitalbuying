@@ -157,20 +157,20 @@ msgstr ""
 
 #: ictcg/templates/base/generic_page_with_sub_nav.html:23
 msgid "(Same page link)"
-msgstr ""
+msgstr "(Enlace de la misma página)"
 
 #: ictcg/templates/case_studies/case_studies_listing_page.html:13
 msgid "Results"
-msgstr ""
+msgstr "Resultados"
 
 #: ictcg/templates/case_studies/case_study_page.html:44
 #: ictcg/templates/includes/card.html:20
 msgid "minute read"
-msgstr ""
+msgstr "tiempo de lectura"
 
 #: ictcg/templates/case_studies/case_study_page.html:74
 msgid "Tags:"
-msgstr ""
+msgstr "Etiquetas"
 
 #: ictcg/templates/guidelines/guidelines_listing_page.html:19
 msgid "Open all"
@@ -178,19 +178,19 @@ msgstr "Abrir todo"
 
 #: ictcg/templates/guidelines/guidelines_listing_page.html:19
 msgid "Close all"
-msgstr "cierra todo"
+msgstr "Cerrar todo"
 
 #: ictcg/templates/guidelines/guidelines_section_page.html:20
 msgid "Pages in this section"
-msgstr ""
+msgstr "Páginas en esta sección"
 
 #: ictcg/templates/guidelines/guidelines_section_page.html:21
 msgid "Contents"
-msgstr ""
+msgstr "Contenidos"
 
 #: ictcg/templates/includes/breadcrumbs.html:23
 msgid "Back to "
-msgstr "De regreso"
+msgstr "Volver a"
 
 #: ictcg/templates/includes/footer.html:45
 #: ictcg/templates/includes/footer.html:61
@@ -202,11 +202,11 @@ msgstr "De regreso"
 #: ictcg/templates/includes/social-links.html:55
 #: ictcg/templates/streams/homepage_sponsors_block.html:17
 msgid "(opens in a new tab)"
-msgstr ""
+msgstr "(se abre en una nueva pestaña)"
 
 #: ictcg/templates/includes/footer.html:53
 msgid "Support links"
-msgstr ""
+msgstr "Enlaces de soporte"
 
 #: ictcg/templates/includes/footer.html:69
 msgid "Built by the"
@@ -214,7 +214,7 @@ msgstr "Creado por el"
 
 #: ictcg/templates/includes/footer.html:69
 msgid "Government Digital Service"
-msgstr ""
+msgstr "Government Digital Service"
 
 #: ictcg/templates/includes/footer.html:76
 msgid "All content is available under the"
@@ -230,7 +230,7 @@ msgstr "excepto cuando se indique lo contrario"
 
 #: ictcg/templates/includes/header.html:4
 msgid "Skip to main content"
-msgstr ""
+msgstr "Saltar al contenido principal"
 
 #: ictcg/templates/includes/header.html:9
 msgid "Go to the Digital Buying Guide homepage"
@@ -238,7 +238,7 @@ msgstr ""
 
 #: ictcg/templates/includes/header.html:10
 msgid "Digital Buying Guide"
-msgstr ""
+msgstr "Guía para compras digitales"
 
 #: ictcg/templates/includes/pagination.html:9
 msgid "Previous"
@@ -250,54 +250,54 @@ msgstr "Siguiente"
 
 #: ictcg/templates/includes/phase-banner.html:9
 msgid "Beta"
-msgstr ""
+msgstr "Beta"
 
 #: ictcg/templates/includes/social-links.html:4
 msgid "Share this case study:"
-msgstr ""
+msgstr "Compartir este estudio de caso"
 
 #: ictcg/templates/includes/social-links.html:12
 msgid "Share case study on Twitter"
-msgstr ""
+msgstr "Compartir el estudio de caso sobre Twitter" 
 
 #: ictcg/templates/includes/social-links.html:14
 #: ictcg/templates/includes/social-links.html:27
 #: ictcg/templates/includes/social-links.html:40
 #: ictcg/templates/includes/social-links.html:53
 msgid "Share case study on "
-msgstr ""
+msgstr "Compartir el estudio de caso sobre"
 
 #: ictcg/templates/includes/social-links.html:15
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: ictcg/templates/includes/social-links.html:25
 msgid "Share case study on Facebook"
-msgstr ""
+msgstr "Compartir el estudio de caso sobre Facebook"
 
 #: ictcg/templates/includes/social-links.html:28
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: ictcg/templates/includes/social-links.html:38
 msgid "Share case study on LinkedIn"
-msgstr ""
+msgstr "Compartir el estudio de caso sobre LinkedIn"
 
 #: ictcg/templates/includes/social-links.html:41
 msgid "LinkedIn"
-msgstr ""
+msgstr "LinkedIn"
 
 #: ictcg/templates/includes/social-links.html:48
 msgid "I wanted to share this post with you from the Digital Buying Guide"
-msgstr ""
+msgstr "Quería compartir con usted esta publicación de la Guía para compras digitales"
 
 #: ictcg/templates/includes/social-links.html:51
 msgid "Share case study on Email"
-msgstr ""
+msgstr "Compartir el estudio de caso sobre Correo electrónico"
 
 #: ictcg/templates/includes/social-links.html:54
 msgid "Email"
-msgstr ""
+msgstr "Correo electrónico"
 
 #: ictcg/templates/streams/do_dont_list.html:6
 msgid "Do"
