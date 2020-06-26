@@ -1,4 +1,5 @@
 from django import template
+from django.utils.translation import get_language
 from wagtail.core.models import Page
 from ictcg.navigation.models import MainMenu, FooterMenu
 from ictcg.guidelines.models import GuidelinesListingPage, GuidelinesSectionPage
@@ -41,11 +42,14 @@ def main_menu(language):
   
 @register.simple_tag(takes_context=True)
 def is_main_menu_link_active(context, link):
-  request = context['request']
-  return urllib.parse.unquote(link) in request.path
+  request = context.get('request')
+  if request:
+    return urllib.parse.unquote(link) in request.path
+  return False
 
 @register.simple_tag()
-def get_footer_content(language):
+def get_footer_content():
+  language = get_language()
   guildelines_sections = GuidelinesSectionPage.objects.filter(language__code=language).live()
   guildelines_title = GuidelinesListingPage.objects.filter(language__code=language).values_list('title', flat=True).first()
   footer_content = FooterMenu.objects.filter(language=language).first()

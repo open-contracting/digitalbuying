@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html class="no-js">
+{% extends "base.html" %}
 
-<head>
-  <meta charset="utf-8" />
-  <title>Internal server error</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
+{% load i18n %}
+{% block body_class %}template-500{% endblock %}
 
-<body>
-  <h1>Internal server error</h1>
+{% block content %}
+  <h1 class="ictcg-margin-top-8">{% trans 'Sorry, there is a problem with the service' %}</h1>
 
-  <h2>Sorry, there seems to be an error. Please try again soon.</h2>
-</body>
+  <p>{% trans 'Try again later' %}</p>
 
-</html>
+  <p>{% trans 'If the web address is correct or you selected a link or button and you wish to report the broken link.' %} <a href="mailto:">{% trans 'please email this address' %}</a></p>
+
+{% endblock %}
