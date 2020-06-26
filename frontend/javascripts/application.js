@@ -2,6 +2,7 @@
 import './polyfills/foreach'
 import Accordion from './components/accordion'
 import Header from './components/header'
+import { Button } from 'govuk-frontend'
 
 (function () {
   var $accordions = document.querySelectorAll('[data-module="govuk-accordion"]')
@@ -14,5 +15,11 @@ import Header from './components/header'
 
   if ($mainmenu) {
     $mainmenu.forEach($mainmenu => new Header($mainmenu).init())
+  }
+
+  var $button = document.querySelectorAll('a[role="button"]')
+
+  if ($button) {
+    $button.forEach($button => new Button($button).init())
   }
 })()
