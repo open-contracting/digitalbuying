@@ -25,6 +25,7 @@ if settings.DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
     import debug_toolbar
+    from django.views import defaults as default_views
 
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
@@ -32,6 +33,8 @@ if settings.DEBUG:
 
     urlpatterns = [
         url(r'^__debug__/', include(debug_toolbar.urls)),
+        url(r'^404/$', default_views.page_not_found, kwargs={'exception': Exception("Page not Found")}),
+        url(r'^500/$', default_views.server_error),
     ] + urlpatterns
 
 urlpatterns = urlpatterns + [
