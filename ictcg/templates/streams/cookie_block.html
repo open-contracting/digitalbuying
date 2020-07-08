@@ -1,0 +1,9 @@
+{% load wagtailcore_tags %}
+
+<section class="ictcg-margin-bottom-6" id="{{self.title|slugify }}">
+  <h2 class="ictcg-margin-bottom-4">{{self.title}}</h3>
+    {{ self.content|richtext }}
+    <div class="ictcg-margin-top-4 ictcg-cooke-table">
+      {% include_block self.bound_blocks.table %}
+    </div>
+</section>

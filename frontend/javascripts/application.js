@@ -2,6 +2,7 @@
 import './polyfills/foreach'
 import Accordion from './components/accordion'
 import Header from './components/header'
+import Cookie from './components/cookie'
 import { Button } from 'govuk-frontend'
 
 (function () {
@@ -21,5 +22,11 @@ import { Button } from 'govuk-frontend'
 
   if ($button) {
     $button.forEach($button => new Button($button).init())
+  }
+
+  var $cookiebanner = document.querySelector('[data-module="ictcg-cookie-banner"]')
+
+  if ($cookiebanner) {
+    new Cookie($cookiebanner).init()
   }
 })()

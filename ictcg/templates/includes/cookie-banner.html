@@ -1,0 +1,33 @@
+{% load wagtailcore_tags base_tags i18n  %} 
+{% get_cookie_notice as cookie %}
+
+{% if not cookie and request.path != mainmenu.cookie_page.url %}
+  <div class="ictcg-cookie-banner" data-module="ictcg-cookie-banner">
+    <div class="govuk-width-container ictcg-padding-top-6">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <div class="ictcg-cookie-container">
+
+            <h2 class="ictcg-heading-m">{{ mainmenu.cookie_banner_title }}</h2>
+
+            {{ mainmenu.cookie_banner_description|richtext }}
+
+            <div class="ictcg-margin-top-4">
+              <form action="{{ mainmenu.cookie_page.url }}" method="POST" class="ictcg-cookie-banner--form">
+                  {% csrf_token %}
+                  <input type="hidden" name="analytics" value="true" >
+                  <div>
+                    <button type="submit" class="govuk-button ictcg-button ictcg-button--blue ictcg-cookie-banner-button ictcg-margin-bottom-6" >{{ mainmenu.cookie_banner_button_text }}</button>
+                    <a href="{{ mainmenu.cookie_page.url }}" title="{{ mainmenu.cookie_banner_preferences_link_text }}" role="button" class="govuk-button ictcg-button ictcg-button--blue ictcg-cookie-banner-button ictcg-margin-bottom-6" data-module="govuk-button">
+                      {{ mainmenu.cookie_banner_preferences_link_text }}
+                    </a>
+                  </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
