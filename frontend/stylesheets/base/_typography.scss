@@ -3,6 +3,7 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   color: colour('text');
+  overflow-x: hidden;
 }
 
 @include govuk-media-query ($from: tablet) {
