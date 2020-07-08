@@ -1,7 +1,7 @@
 from wagtail.tests.utils import WagtailPageTests
 from wagtail.core import blocks
+from wagtail.contrib.table_block.blocks import TableBlock
 from ictcg.streams import blocks as ictgs_blocks
-
 
 class RichTextBlockTests(WagtailPageTests):
     def test_rich_text_block_subclass(self):
@@ -123,3 +123,20 @@ class QuoteBlockTests(WagtailPageTests):
 
     def test_quote_block_template(self):
         self.assertEquals(ictgs_blocks.QuoteBlock().get_template(), 'streams/quote_block.html')
+
+class CookieTableBlockText(WagtailPageTests):
+    def test_cookie_table_block_subclass(self):
+        assert issubclass(ictgs_blocks.CookieTableBlock, blocks.StructBlock)
+
+    def test_cookie_table_block_input_types(self):
+        child_blocks = ictgs_blocks.CookieTableBlock().child_blocks
+        assert type(child_blocks['title']) is blocks.CharBlock
+        assert type(child_blocks['content']) is blocks.RichTextBlock
+        assert type(child_blocks['table']) is TableBlock
+    
+    def test_cookie_table_block_input_types_count(self):
+        child_blocks = ictgs_blocks.CookieTableBlock().child_blocks
+        self.assertEquals(len(child_blocks), 3)
+
+    def test_cookie_table_block_template(self):
+        self.assertEquals(ictgs_blocks.CookieTableBlock().get_template(), 'streams/cookie_block.html')

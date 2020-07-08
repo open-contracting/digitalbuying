@@ -11,7 +11,7 @@ from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 
 from wagtail.core.models import Orderable
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel, MultiFieldPanel, ObjectList, TabbedInterface
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import RichTextField
 
@@ -58,7 +58,40 @@ class MainMenu(ClusterableModel):
         help_text=_('Text area for phase banner description'),
     )
 
-    panels = [
+    cookie_banner_title = models.CharField(
+        max_length=150,
+        blank=False,
+        null=True
+    )
+
+    cookie_banner_description = RichTextField(
+        blank=True,
+        default="",
+        help_text=_('Text area for cookie banner description'),
+    )
+
+    cookie_banner_button_text = models.CharField(
+        max_length=150,
+        blank=False,
+        null=True,
+        help_text=_('Text for cookie accept button'),
+    )
+
+    cookie_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        related_name="+",
+        on_delete=models.CASCADE
+    )
+
+    cookie_banner_preferences_link_text = models.CharField(
+        max_length=150,
+        blank=False,
+        null=True
+    )
+
+    content_panel = [
         FieldPanel("title"),
         FieldPanel("language"),
         FieldPanel("button_text"),
@@ -67,6 +100,19 @@ class MainMenu(ClusterableModel):
         FieldPanel("phase_banner_description"),
         InlinePanel("menu_items", label="Menu Item")
     ]
+
+    cookie_panel = [
+        FieldPanel("cookie_banner_title"),
+        FieldPanel("cookie_banner_description"),
+        FieldPanel("cookie_banner_button_text"),
+        PageChooserPanel("cookie_page"),
+        FieldPanel("cookie_banner_preferences_link_text"),
+    ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panel, heading='Content'),
+        ObjectList(cookie_panel, heading='Cookie Banner'),
+    ])
 
     def __str__(self):
         language = dict(settings.LANGUAGES)

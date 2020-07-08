@@ -77,7 +77,7 @@ class TemplateTagsFooterTests(TestCase):
 
     def test_get_footer_content(self):
         # Get Footer based on the selected language
-        footer = get_footer_content('en')
+        footer = get_footer_content()
 
         self.assertTrue('guildelines_sections' in footer)
         self.assertTrue('guildelines_title' in footer)

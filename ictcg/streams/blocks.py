@@ -1,4 +1,5 @@
 from wagtail.core import blocks
+from wagtail.contrib.table_block.blocks import TableBlock
 from django.utils.translation import ugettext_lazy as _
 
 class RichTextWithTitleBlock(blocks.StructBlock):
@@ -79,3 +80,13 @@ class QuoteBlock(blocks.StructBlock):
 
     class Meta:
         template = "streams/quote_block.html"
+
+class CookieTableBlock(blocks.StructBlock):
+
+    title = blocks.CharBlock(max_length=120, help_text=_("Section title, max length 120 characters"))
+    content = blocks.RichTextBlock()
+    table = TableBlock()
+
+    class Meta:
+        template = "streams/cookie_block.html"
+        icon="table"

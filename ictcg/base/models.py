@@ -9,6 +9,7 @@ from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePane
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
+from django.conf import settings 
 from ictcg.streams import blocks
 
 class HomePage(TranslatablePage):
@@ -17,7 +18,7 @@ class HomePage(TranslatablePage):
     """
 
     parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
-    subpage_types = ["guidelines.GuidelinesListingPage", "base.GenericPageWithSubNav", "case_studies.CaseStudiesListingPage"]
+    subpage_types = ["guidelines.GuidelinesListingPage", "base.GenericPageWithSubNav", "case_studies.CaseStudiesListingPage", "base.CookiePage"]
 
     masthead_title = models.CharField(
         max_length=240,
@@ -121,3 +122,34 @@ class GenericPageWithSubNav(TranslatablePage):
         FieldPanel("navigation_title"),
         StreamFieldPanel("body"),
     ]
+
+class CookiePage(TranslatablePage):
+    """
+    Simple page class which allows doe rich text content.  Also allow analytics consent form to be added to the page.  Can only be added under the homepage with no children.
+    Overrides the default serve method to allow for setting cookie permissions
+    """
+
+    subpage_types = []
+    ajax_template = "base/cookie_page_ajax.html"
+
+    introduction = RichTextField(blank=True, default="")
+
+    body = StreamField([
+        ("cookie_section", blocks.CookieTableBlock()),
+        ("Analtyics_cookie_section", blocks.CookieTableBlock(template="streams/analytics_cookie_block.html")),
+    ], null=True, blank=True)
+
+    content_panels = TranslatablePage.content_panels + [
+        FieldPanel("introduction"),
+        StreamFieldPanel("body"),
+    ]
+
+    def serve(self, request, *args, **kwargs):
+        response = super().serve(request, *args, **kwargs)
+        if request.method == 'POST':
+            analytics = request.POST.get("analytics", "false")
+            response.set_cookie('cookie_notice', "true", max_age=settings.COOKIE_MAX_AGE)
+            response.set_cookie('analytics', analytics, max_age=settings.COOKIE_MAX_AGE)
+            request.COOKIES['analytics'] = analytics
+
+        return response

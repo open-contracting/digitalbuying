@@ -7,7 +7,7 @@ from wagtailtrans.models import TranslatablePage, TranslatableSiteRootPage
 from wagtail.images.models import Image
 
 from ictcg.guidelines.models import GuidelinesListingPage
-from ictcg.base.models import HomePage, GenericPageWithSubNav
+from ictcg.base.models import HomePage, GenericPageWithSubNav, CookiePage
 from ictcg.case_studies.models import CaseStudiesListingPage
 
 class HomePageTests(WagtailPageTests):
@@ -28,6 +28,10 @@ class HomePageTests(WagtailPageTests):
     def test_case_studies_listing_page_can_be_created_under_homepage(self):
         # You can create a CaseStudiesListingPage under the HomePage
         self.assertCanCreateAt(HomePage, CaseStudiesListingPage)
+    
+    def test_cookie_page_can_be_created_under_homepage(self):
+        # You can create a CaseStudiesListingPage under the HomePage
+        self.assertCanCreateAt(HomePage, CookiePage)
 
     def test_listing_page_inherits_from_translatable_page_class(self):
         assert issubclass(HomePage, TranslatablePage)
@@ -53,6 +57,19 @@ class GenericPageWithSubNavTests(WagtailPageTests):
     def test_generic_page_can_be_nested_under_itself(self):
         # You can nested a GenericPageWithSubNav under itself
         self.assertCanCreateAt(GenericPageWithSubNav, GenericPageWithSubNav)
+
+    def test_generic_page_inherits_from_translatable_page_class(self):
+        assert issubclass(GenericPageWithSubNav, TranslatablePage)
+
+class CookiePageTests(WagtailPageTests):
+
+    def test_cookie_page_can_be_created_under_homepage(self):
+        # You can create a CookiePage under an the HomePage
+        self.assertCanCreateAt(HomePage, CookiePage)
+
+    def test_cookie_page_cannot_have_any_nested_pages(self):
+        # You shouldn't be able to nested pages under CookiePage
+        self.assertCanNotCreateAt(CookiePage, GenericPageWithSubNav)
 
     def test_generic_page_inherits_from_translatable_page_class(self):
         assert issubclass(GenericPageWithSubNav, TranslatablePage)

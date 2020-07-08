@@ -1,4 +1,4 @@
-{% load static wagtailuserbar wagtailcore_tags %}
+{% load static wagtailuserbar wagtailcore_tags i18n %}
 
 <!DOCTYPE html>
 <html class="" lang="{{ page.language.code }}">
@@ -32,6 +32,8 @@
 </head>
 
 <body class="govuk-template__body {% block body_class %}{% endblock %}">
+
+  <a href="#main-title" class="govuk-skip-link">{% trans 'Skip to main content' %}</a>
 
   {% include "includes/header.html" %}
 

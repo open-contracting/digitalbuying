@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtail.contrib.postgres_search',
+    'wagtail.contrib.table_block',
 
     'modelcluster',
     'taggit',
@@ -193,3 +194,5 @@ CACHES = {
 WAGTAILTRANS_HIDE_TRANSLATION_TREES = True
 
 FIXTURE_DIRS = (os.path.join(BASE_DIR, 'tests/fixtures'),)
+
+COOKIE_MAX_AGE = 31536000
