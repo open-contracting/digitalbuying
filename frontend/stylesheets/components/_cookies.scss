@@ -1,0 +1,40 @@
+.ictcg-cookie-banner {
+  background-color: colour('footer');
+}
+
+.ictcg-cookie-banner-button {
+  width: 100%;
+  font-weight: normal;
+
+  @include govuk-media-query ('tablet') {
+    @include govuk-responsive-margin(6, 'right');
+
+    width: auto;
+  }
+}
+
+.ictcg-cookie-confirmation {
+  border: 3px solid colour('ticks');
+  padding: govuk-spacing(4);
+}
+
+.ictcg-cookie-confirmation--message {
+  position: relative;
+  padding-left: 30px;
+  font-weight: bold;
+
+  svg {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+.ictcg-cooke-table {
+  td:nth-child(2) {
+    width: 50%;
+  }
+}

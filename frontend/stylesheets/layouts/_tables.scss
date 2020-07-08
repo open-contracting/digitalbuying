@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+  text-align: left;
+
+  th,
+  td {
+    @include govuk-responsive-padding(2, 'top');
+    @include govuk-responsive-padding(2, 'bottom');
+
+    border-bottom: 1px solid colour('border');
+  }
+
+  caption {
+    @include govuk-visually-hidden;
+  }
+}

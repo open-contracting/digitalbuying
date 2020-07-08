@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.ictcg-hidden {
+  display: none;
+}
+
 .ictcg-column-module-spacing {
   > * {
     @include govuk-responsive-margin(8, 'bottom');
