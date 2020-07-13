@@ -17,11 +17,11 @@
           </legend>
           <div class="govuk-radios govuk-radios--inline">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="analytics-yes" name="analytics" type="radio" value="true" {% if cookie == 'true' %} checked {% endif %}>
+              <input class="govuk-radios__input" id="analytics-yes" name="analytics" type="radio" value="true" {% if cookie %} checked {% endif %}>
               <label class="govuk-label govuk-radios__label" for="analytics-yes">{% trans 'Yes' %}</label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="analytics-no" name="analytics" type="radio" value="false" {% if cookie == 'false' %} checked {% endif %}>
+              <input class="govuk-radios__input" id="analytics-no" name="analytics" type="radio" value="false" {% if not cookie %} checked {% endif %}>
               <label class="govuk-label govuk-radios__label" for="analytics-no">{% trans 'No' %}</label>
             </div>
           </div>

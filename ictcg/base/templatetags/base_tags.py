@@ -11,4 +11,4 @@ def get_cookie_notice(context):
 @register.simple_tag(takes_context = True)
 def get_analytics_cookie(context):
     request = context['request']
-    return request.COOKIES.get('analytics', 'false')
+    return request.COOKIES.get('analytics', 'false') == 'true'
