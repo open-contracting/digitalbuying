@@ -34,3 +34,13 @@ Po files can be found in the `/locale/language/LC_MESSAGES/django.po`
 
 Once completed the file must be compiled
 `python manage.py compilemessages -i env`
+
+## Deployments commands
+
+* Private Beta / Dev (ictcg-beta-app) - uses the V2 version of the Cloud Foundry API 
+
+cf push ictcg-beta-app
+
+* Public beta (ictcg-public-beta-app) - uses the V3 version of the Cloud Foundry API 
+
+cf v3-zdt-push ictcg-public-beta-app --wait-for-deploy-complete

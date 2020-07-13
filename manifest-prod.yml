@@ -1,0 +1,6 @@
+---
+applications:
+- name: ictcg-public-beta-app
+  memory: 1GB
+  buildpacks:
+  - python_buildpack
