@@ -18,7 +18,7 @@ class HomePage(TranslatablePage):
     """
 
     parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
-    subpage_types = ["guidelines.GuidelinesListingPage", "base.GenericPageWithSubNav", "case_studies.CaseStudiesListingPage", "base.CookiePage"]
+    subpage_types = ["guidelines.GuidelinesListingPage", "base.GenericPageWithSubNav", "case_studies.CaseStudiesListingPage", "base.CookiePage", "base.GenericPage"]
 
     masthead_title = models.CharField(
         max_length=240,
@@ -103,8 +103,8 @@ class GenericPageWithSubNav(TranslatablePage):
     Page includes a sub navigation on the left of the layout for quick links to content on the page. This is auto genereated based on the body components.
     """
 
-    parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav"]
-    subpage_types = ["base.GenericPageWithSubNav"]
+    parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]
+    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage"]
 
     navigation_title = models.CharField(
         max_length=120,
@@ -120,6 +120,27 @@ class GenericPageWithSubNav(TranslatablePage):
 
     content_panels = TranslatablePage.content_panels + [
         FieldPanel("navigation_title"),
+        StreamFieldPanel("body"),
+    ]
+
+class GenericPage(TranslatablePage):
+    """
+    Generic page class which allows rich text and quote components to be added.
+    Similar page to GenericPageWithSubNav but does not include the sub-navigation component.
+    """
+
+    parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]
+    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage"]
+
+    introduction = RichTextField(blank=True, default="")
+
+    body = StreamField([
+        ("rich_text_section", blocks.RichTextWithTitleBlock()),
+        ("quote_section", blocks.QuoteBlock()),
+    ], null=True, blank=True)
+
+    content_panels = TranslatablePage.content_panels + [
+        FieldPanel("introduction"),
         StreamFieldPanel("body"),
     ]
 
