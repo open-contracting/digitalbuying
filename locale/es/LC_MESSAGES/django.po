@@ -234,7 +234,7 @@ msgstr "Saltar al contenido principal"
 
 #: ictcg/templates/includes/header.html:9
 msgid "Go to the Digital Buying Guide homepage"
-msgstr ""
+msgstr "Volver a Guía para compras digitales Página de inicio"
 
 #: ictcg/templates/includes/header.html:10
 msgid "Digital Buying Guide"
