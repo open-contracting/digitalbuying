@@ -7,13 +7,15 @@
       <div class="govuk-footer__section ictcg-footer__section">
         <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{{ footer.guildelines_title }}</h2>
         <ul class="govuk-footer__list govuk-footer__list--columns-2">
-          {% for item in footer.guildelines_sections %}
-            <li class="">
-              <a class="govuk-footer__link ictcg-footer__link" title="{{ item.title }}" href="{% pageurl item %}">
-                {{ item.title }}
-              </a>
-            </li>
-          {% endfor %}
+          {% cache 86400 guidelines_footer request.LANGUAGE_CODE %}
+            {% for item in footer.guildelines_sections %}
+              <li class="">
+                <a class="govuk-footer__link ictcg-footer__link" title="{{ item.title }}" href="{% pageurl item %}">
+                  {{ item.title }}
+                </a>
+              </li>
+            {% endfor %}
+          {% endcache %}
         </ul>
       </div>
       {% if page %}

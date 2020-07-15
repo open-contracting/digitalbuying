@@ -202,7 +202,8 @@ def clear_guidelines_section_cache(section_id):
 
 def clear_guidelines_listing_cache(language_code):
     guidelines_key = make_template_fragment_key("guidelines_listing_descendant", [language_code])
-    cache.delete(guidelines_key)
+    guidelines_footer_key = make_template_fragment_key("guidelines_footer", [language_code])
+    cache.delete_many([guidelines_key, guidelines_footer_key])
 
 @receiver(pre_delete, sender=GuidelinesSectionPage)
 @receiver(pre_delete, sender=GuidancePage)
