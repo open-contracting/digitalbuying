@@ -45,7 +45,6 @@ class CaseStudyGuidelinesSectionTagTests(WagtailPageTests):
     def test_case_study_section_tags_class_inherits_from_tagged_itme_base_class(self):
         assert issubclass(CaseStudyGuidelinesSectionTag, TaggedItemBase)
 
-# import pudb; pu.db()
 class CaseStudyPageTests(WagtailPageTests):
     fixtures = ['app.json']
     # Order of case studies should as below based on publication date (newest first)

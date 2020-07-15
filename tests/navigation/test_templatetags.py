@@ -20,15 +20,10 @@ class TemplateTagsBreadcrumbTests(TestCase):
     fixtures = ['app.json']
 
     def test_breadcrumbs_template_returns_correct_html(self):
-        guidelines_page = Page.objects.get(id=6)
-        context = Context({'self': guidelines_page, 'request': []})
-        template_to_render = Template(
-            '{% load navigation_tags %}'
-            '{% breadcrumbs %}'
-        )
-    
-        rendered_template = template_to_render.render(context)
-        self.assertInHTML('<a class="ictcg-breadcrumbs__link" href="/en/">Home</a>', rendered_template)
+        response = self.client.get('/en/guidelines/') #PK 6
+        self.assertInHTML('<a class="ictcg-breadcrumbs__link" href="/en/">Home</a>', response.rendered_content.strip())
+        self.assertInHTML('<li class="ictcg-breadcrumbs__list-item" aria-current="page">Guidelines</li>', response.rendered_content.strip())
+
 
     def test_breadcrumbs_return_correct_ancestor_data(self):
         # Get guidelines section page
