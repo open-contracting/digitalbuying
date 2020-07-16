@@ -6,10 +6,10 @@
       <picture>
         {% image item.header_image fill-1912x714 as desktop %}
         <source media="(min-width: 641px)" srcset="{{ desktop.url }}"  />
-        {% image item.header_image fill-594x454 class="ictcg-card__image" alt=item.header_image_description %}
+        {% image item.header_image fill-594x454 class="ictcg-card__image" alt="" role="presentation" %}
       </picture>
     {% else %}
-      {% image item.header_image fill-594x454 class="ictcg-card__image" alt=item.header_image_description %}
+      {% image item.header_image fill-594x454 class="ictcg-card__image" alt="" role="presentation" %}
     {% endif %}
     <div class="ictcg-card__content">
       <div class="ictcg-card__meta ictcg-margin-bottom-4">
@@ -19,7 +19,7 @@
         </time>
         <span class="ictcg-card__meta-item">{{ item.read_time }} {% trans 'minute read' %}</span>
       </div>
-      <a class="ictcg-card__link" href="{% pageurl item %}" alt="{{ item.title }}">
+      <a class="ictcg-card__link" href="{% pageurl item %}">
         {% if case_study_block %}
           <h3 class="ictcg-card__heading ictcg-margin-bottom-0">{{ item.title }}</h3>
         {% else %}
