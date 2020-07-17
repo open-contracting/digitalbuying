@@ -46,7 +46,8 @@
   }
 
   figcaption {
-    margin-top: govuk-spacing(1);
+    @include govuk-responsive-margin(1, 'top');
     @include govuk-responsive-margin(4, 'bottom');
+    @include govuk-font($size: 19);
   }
 }
