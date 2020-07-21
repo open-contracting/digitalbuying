@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'ictcg.navigation',
     'ictcg.modules',
     'ictcg.case_studies',
-    'search',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -47,6 +46,8 @@ INSTALLED_APPS = [
     'wagtail.core',
     'wagtail.contrib.postgres_search',
     'wagtail.contrib.table_block',
+    'wagtail.contrib.modeladmin',
+    'wagtail.contrib.settings',
 
     'modelcluster',
     'taggit',
@@ -60,9 +61,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django.contrib.sitemaps",
 
-    'wagtail.contrib.modeladmin',
-    'wagtail.contrib.settings',
     'wagtailtrans',
+    'health_check',
+    'health_check.db',
+    'health_check.cache',
+    'health_check.storage',
 ]
 
 MIDDLEWARE = [

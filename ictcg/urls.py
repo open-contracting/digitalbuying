@@ -8,12 +8,12 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.contrib.sitemaps.views import sitemap
 
-from search import views as search_views
+from ictcg.base.views import HealthCheck
 
 urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^sitemap.xml/', sitemap),
-    # url(r'^search/$', search_views.search, name='search'),
+    url(r'^health-check/', HealthCheck.as_view()),
 ]
 
 if os.getenv('BLOCK_SEARCH_ENGINES', 'off') == 'on':
