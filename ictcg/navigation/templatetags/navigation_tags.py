@@ -51,10 +51,8 @@ def is_main_menu_link_active(context, link):
 def get_footer_content():
   language = get_language()
   guildelines_sections = GuidelinesSectionPage.objects.filter(language__code=language).live()
-  guildelines_title = GuidelinesListingPage.objects.filter(language__code=language).values_list('title', flat=True).first()
   footer_content = FooterMenu.objects.filter(language=language).first()
   return {
     'guildelines_sections': guildelines_sections,
-    'guildelines_title': guildelines_title,
     'footer_content': footer_content,
   }

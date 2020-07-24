@@ -173,6 +173,13 @@ class FooterMenu(ClusterableModel):
         choices=settings.LANGUAGES
     )
 
+
+    quick_links_title = models.CharField(
+        max_length=100,
+        blank=False,
+        null=True,
+    )
+
     sponsors_title = models.CharField(
         max_length=100,
         blank=False,
@@ -188,6 +195,7 @@ class FooterMenu(ClusterableModel):
     panels = [
         FieldPanel("admin_title"),
         FieldPanel("language"),
+        FieldPanel("quick_links_title"),
         FieldPanel("sponsors_title"),
         FieldPanel("translation_title"),
         InlinePanel("footer_menu_items", label="Menu Item"),

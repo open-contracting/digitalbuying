@@ -171,7 +171,9 @@
         "fields": {
             "admin_title": "Footer",
             "language": "en",
-            "sponsors_title": "Supported by:"
+            "quick_links_title": "Quick Links:",
+            "sponsors_title": "Supported by:",
+            "translation_title": "Translations:"
         }
     },
     {
@@ -180,7 +182,9 @@
         "fields": {
             "admin_title": "Footer",
             "language": "es",
-            "sponsors_title": "Sponsors"
+            "quick_links_title": "Quick Links:",
+            "sponsors_title": "Supported by:",
+            "translation_title": "Translations:"
         }
     },
     {

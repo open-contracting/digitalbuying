@@ -5,7 +5,7 @@
   <div class="govuk-width-container ">
     <div class="govuk-footer__navigation">
       <div class="govuk-footer__section ictcg-footer__section">
-        <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{{ footer.guildelines_title }}</h2>
+        <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{{ footer.footer_content.quick_links_title }}</h2>
         <ul class="govuk-footer__list govuk-footer__list--columns-2">
           {% cache 86400 guidelines_footer request.LANGUAGE_CODE %}
             {% for item in footer.guildelines_sections %}
