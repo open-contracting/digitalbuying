@@ -19,7 +19,7 @@
           {% for item in mainmenu.menu_items.all %}
             {% is_main_menu_link_active item.link as active_link %}
             <li class="ictcg-header__navigation-item {% if active_link %}ictcg-header__navigation-item--active{% endif %}">
-              <a class="ictcg-header__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank"{% endif %}>
+              <a class="ictcg-header__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
                 {{ item.title }}
                 {% if item.open_in_new_tab %}
                   <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>

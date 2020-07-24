@@ -5,7 +5,7 @@
   <ul class="govuk-list ictcg-font-16 ictcg-margin-bottom-0">
     {% for link in module.orderable_links.all %}
       <li>
-        <a href="{{ link.url }}" {% if link.open_in_new_tab %}target="_blank"{% endif %}>
+        <a href="{{ link.url }}" {% if link.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
           {{link.link_text}}
           {% if link.open_in_new_tab %}
             <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>

@@ -44,7 +44,7 @@
             {% cache 86400 sponsors_footer request.LANGUAGE_CODE %}
               {% get_footer_sponsors request.LANGUAGE_CODE as sponsors %}
               {% for item in sponsors %}
-                <a href="{{ item.url }}" target="_blank">
+                <a href="{{ item.url }}" target="_blank" rel="noopener">
                   {% image item.logo width-132 alt=item.logo_description %}
                   <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
                 </a>
@@ -59,7 +59,7 @@
           {% cache 86400 footer_support_links request.LANGUAGE_CODE %}
             {% for item in footer.footer_content.footer_menu_items.all %}
               <li class="govuk-footer__inline-list-item">
-                <a class="govuk-footer__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank"{% endif %}>
+                <a class="govuk-footer__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
                   {{ item.title }}
                   {% if item.open_in_new_tab %}
                     <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
