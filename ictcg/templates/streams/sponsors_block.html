@@ -1,0 +1,18 @@
+{% load wagtailcore_tags wagtailimages_tags sponsors_tags %}
+
+<section class="ictcg-margin-bottom-6" id="{{self.title|slugify }}">
+
+  {% if self.title %}
+    <h2 class="ictcg-margin-bottom-4">{{self.title}}</h3>
+  {% endif %}
+
+  {% if self.content %}
+    {{ self.content|richtext }}
+  {% endif %}
+  
+  <div class="ictcg-supports-logos">
+    {% get_sponsorship_page_sponsors request.LANGUAGE_CODE as sponsors %}
+    {% include "includes/supporter-logos.html" with logos=sponsors %}
+  </div>
+
+</section>

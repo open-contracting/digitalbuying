@@ -1,0 +1,8 @@
+{% load wagtailimages_tags i18n %}
+
+{% for item in logos %}
+  <a href="{{ item.url }}" target="_blank" rel="noopener" class="ictcg-supports-logos__link">
+    {% image item.logo width-390 alt=item.logo_description %}
+    <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
+  </a>
+{% endfor %}

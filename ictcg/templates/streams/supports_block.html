@@ -1,0 +1,17 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section class="ictcg-margin-bottom-6" id="{{self.title|slugify }}">
+
+  {% if self.title %}
+    <h2 class="ictcg-margin-bottom-4">{{self.title}}</h3>
+  {% endif %}
+
+  {% if self.introduction %}
+    {{ self.introduction|richtext }}
+  {% endif %}
+  
+  <div class="ictcg-supports-logos">
+    {% include "includes/supporter-logos.html" with logos=self.logos %}
+  </div>
+
+</section>
