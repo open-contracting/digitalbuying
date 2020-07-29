@@ -18,7 +18,14 @@ class HomePage(TranslatablePage):
     """
 
     parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
-    subpage_types = ["guidelines.GuidelinesListingPage", "base.GenericPageWithSubNav", "case_studies.CaseStudiesListingPage", "base.CookiePage", "base.GenericPage"]
+    subpage_types = [
+        "guidelines.GuidelinesListingPage", 
+        "base.GenericPageWithSubNav", 
+        "case_studies.CaseStudiesListingPage", 
+        "base.CookiePage", 
+        "base.GenericPage",
+        "sponsors.SponsorsPage"
+    ]
 
     masthead_title = models.CharField(
         max_length=240,
@@ -104,7 +111,7 @@ class GenericPageWithSubNav(TranslatablePage):
     """
 
     parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]
-    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage"]
+    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage", "sponsors.SponsorsPage"]
 
     navigation_title = models.CharField(
         max_length=120,
@@ -130,7 +137,7 @@ class GenericPage(TranslatablePage):
     """
 
     parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]
-    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage"]
+    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage", "sponsors.SponsorsPage"]
 
     introduction = RichTextField(blank=True, default="")
 

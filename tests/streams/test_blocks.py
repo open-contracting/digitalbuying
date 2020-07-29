@@ -1,6 +1,7 @@
 from wagtail.tests.utils import WagtailPageTests
 from wagtail.core import blocks
 from wagtail.contrib.table_block.blocks import TableBlock
+from wagtail.images.blocks import ImageChooserBlock
 from ictcg.streams import blocks as ictgs_blocks
 
 class RichTextBlockTests(WagtailPageTests):
@@ -124,7 +125,7 @@ class QuoteBlockTests(WagtailPageTests):
     def test_quote_block_template(self):
         self.assertEquals(ictgs_blocks.QuoteBlock().get_template(), 'streams/quote_block.html')
 
-class CookieTableBlockText(WagtailPageTests):
+class CookieTableBlockTests(WagtailPageTests):
     def test_cookie_table_block_subclass(self):
         assert issubclass(ictgs_blocks.CookieTableBlock, blocks.StructBlock)
 
@@ -140,3 +141,34 @@ class CookieTableBlockText(WagtailPageTests):
 
     def test_cookie_table_block_template(self):
         self.assertEquals(ictgs_blocks.CookieTableBlock().get_template(), 'streams/cookie_block.html')
+
+class LogoItemTests(WagtailPageTests):
+    def test_logo_item_block_subclass(self):
+        assert issubclass(ictgs_blocks.LogoItem, blocks.StructBlock)
+
+    def test_ogo_item_block_input_types(self):
+        child_blocks = ictgs_blocks.LogoItem().child_blocks
+        assert type(child_blocks['logo']) is ImageChooserBlock
+        assert type(child_blocks['url']) is blocks.URLBlock
+        assert type(child_blocks['logo_description']) is blocks.CharBlock
+    
+    def test_ogo_item_block_input_types_count(self):
+        child_blocks = ictgs_blocks.LogoItem().child_blocks
+        self.assertEquals(len(child_blocks), 3)
+
+class SupportersBlockTests(WagtailPageTests):
+    def test_supporters_block_subclass(self):
+        assert issubclass(ictgs_blocks.SupportersBlock, blocks.StructBlock)
+
+    def test_supporters_block_input_types(self):
+        child_blocks = ictgs_blocks.SupportersBlock().child_blocks
+        assert type(child_blocks['title']) is blocks.CharBlock
+        assert type(child_blocks['introduction']) is blocks.RichTextBlock
+        assert type(child_blocks['logos']) is blocks.ListBlock
+    
+    def test_supporters_block_input_types_count(self):
+        child_blocks = ictgs_blocks.SupportersBlock().child_blocks
+        self.assertEquals(len(child_blocks), 3)
+
+    def test_supporters_block_template(self):
+        self.assertEquals(ictgs_blocks.SupportersBlock().get_template(), 'streams/supports_block.html')

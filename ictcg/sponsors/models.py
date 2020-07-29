@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel
+from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.fields import RichTextField
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable
+from wagtail.search import index
+from wagtailtrans.models import TranslatablePage
 from modelcluster.fields import ParentalKey
 from django.conf import settings
 
@@ -12,6 +14,8 @@ from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
+from ictcg.streams import blocks
+
 class Sponsor(ClusterableModel):
     language = models.CharField(
         max_length=100,
@@ -63,6 +67,8 @@ class SponsorItem(Orderable):
 
     show_on_homepage = models.BooleanField(default=False, blank=True)
 
+    show_on_sponsorship = models.BooleanField(default=False, blank=True)
+
     panels = [
         FieldPanel("name"),
         FieldPanel("url"),
@@ -70,10 +76,33 @@ class SponsorItem(Orderable):
         FieldPanel("logo_description"),
         FieldPanel("show_in_footer"),
         FieldPanel("show_on_homepage"),
+        FieldPanel("show_on_sponsorship"),
     ]
 
     sponsor = ParentalKey("Sponsor", related_name="sponsor_items", default='')
 
+class SponsorsPage(TranslatablePage):
+    """
+    SponsorsPage page - allows for listing of site sponsors along with additional supporters and contributors
+    Can be nested under the homepage or generic pages
+    """
+
+    parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]
+    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage"]
+
+    body = StreamField([
+        ("rich_text_section", blocks.RichTextWithTitleBlock()),
+        ("sponsors_section", blocks.RichTextWithTitleBlock(template = "streams/sponsors_block.html")),
+        ("supports_section", blocks.SupportersBlock()),
+    ], null=True, blank=True)
+
+    content_panels = TranslatablePage.content_panels + [
+        StreamFieldPanel("body"),
+    ]
+
+    search_fields = TranslatablePage.search_fields + [
+        index.SearchField('body'),
+    ]
 
 def clear_sponsors_footer_cache(language_code):
     sponsors_footer = make_template_fragment_key("sponsors_footer", [language_code])

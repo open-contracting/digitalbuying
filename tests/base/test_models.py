@@ -9,6 +9,7 @@ from wagtail.images.models import Image
 from ictcg.guidelines.models import GuidelinesListingPage
 from ictcg.base.models import CookiePage, GenericPage, GenericPageWithSubNav, HomePage
 from ictcg.case_studies.models import CaseStudiesListingPage
+from ictcg.sponsors.models import SponsorsPage
 
 class HomePageTests(WagtailPageTests):
     fixtures = ['app.json']
@@ -36,6 +37,10 @@ class HomePageTests(WagtailPageTests):
     def test_cookie_page_can_be_created_under_homepage(self):
         # You can create a CaseStudiesListingPage under the HomePage
         self.assertCanCreateAt(HomePage, CookiePage)
+    
+    def test_sponsors_page_can_be_created_under_homepage(self):
+        # You can create a SponsorsPage under the HomePage
+        self.assertCanCreateAt(HomePage, SponsorsPage)
 
     def test_listing_page_inherits_from_translatable_page_class(self):
         assert issubclass(HomePage, TranslatablePage)
@@ -65,6 +70,10 @@ class GenericPageTests(WagtailPageTests):
     def test_generic_page_can_be_nested_under_generic_page_with_sub_nav(self):
         # You can nested GenericPage under a GenericPageWithSubNav page
         self.assertCanCreateAt(GenericPageWithSubNav, GenericPage)
+    
+    def test_sponsors_page_can_be_created_under_generic_page(self):
+        # You can create a SponsorsPage under a GenericPage
+        self.assertCanCreateAt(GenericPage, SponsorsPage)
 
     def test_generic_page_inherits_from_translatable_page_class(self):
         assert issubclass(GenericPageWithSubNav, TranslatablePage)
@@ -82,6 +91,10 @@ class GenericPageWithSubNavTests(WagtailPageTests):
     def test_generic_page_with_sub_nav_can_be_created_under_generic_page(self):
         # You can nested GenericPageWithSubNav under GenericPage
         self.assertCanCreateAt(GenericPage, GenericPageWithSubNav)
+    
+    def test_sponsors_page_can_be_created_under_generic_page_with_sub_nav(self):
+        # You can create a SponsorsPage under a GenericPageWithSubNav
+        self.assertCanCreateAt(GenericPageWithSubNav, SponsorsPage)
 
     def test_generic_page_inherits_from_translatable_page_class(self):
         assert issubclass(GenericPageWithSubNav, TranslatablePage)

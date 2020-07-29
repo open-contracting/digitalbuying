@@ -17,6 +17,7 @@
             "logo_description": "Sponsor",
             "show_in_footer": true,
             "show_on_homepage": true,
+            "show_on_sponsorship": true,
             "sponsor": 1
         }
     },
@@ -31,6 +32,7 @@
             "logo_description": "Sponsor",
             "show_in_footer": false,
             "show_on_homepage": false,
+            "show_on_sponsorship": false,
             "sponsor": 1
         }
     },
@@ -45,6 +47,7 @@
             "logo_description": "Sponsor",
             "show_in_footer": true,
             "show_on_homepage": true,
+            "show_on_sponsorship": true,
             "sponsor": 1
         }
     },

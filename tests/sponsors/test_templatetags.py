@@ -1,7 +1,7 @@
 
 
 from django.test import TestCase
-from ictcg.sponsors.templatetags.sponsors_tags import get_footer_sponsors, get_homepage_sponsors
+from ictcg.sponsors.templatetags.sponsors_tags import get_footer_sponsors, get_homepage_sponsors, get_sponsorship_page_sponsors
 from wagtail.images.models import Image
 
 
@@ -29,3 +29,14 @@ class TemplateTagsHomePageTests(TestCase):
         homepage_sponsors = get_homepage_sponsors('de')
         self.assertEqual(homepage_sponsors, None)
 
+class TemplateTagsSponsorshipTests(TestCase):
+    fixtures = ['sponsors.json']
+
+    def test_get_sponsorship_page_sponsors(self):
+        # Get homepage sponsors based on the selected language from fixture data
+        sponsorship_page_sponsors = get_sponsorship_page_sponsors('en')
+        self.assertEqual(len(sponsorship_page_sponsors), 2)
+    
+    def test_get_sponsorship_page_sponsors_when_language_is_not_set(self):
+        homepage_sponsors = get_sponsorship_page_sponsors('de')
+        self.assertEqual(homepage_sponsors, None)
