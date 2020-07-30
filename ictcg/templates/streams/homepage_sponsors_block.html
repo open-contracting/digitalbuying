@@ -9,14 +9,9 @@
     <h2 class="ictcg-margin-bottom-0">{{self.title}}</h3>
   {% endif %}
   
-  <div class="ictcg-sponsors__items ictcg-flex-justify-{{self.text_alignment}}">
+  <div class="ictcg-supports-logos ictcg-flex-justify-{{self.text_alignment}}">
     {% get_homepage_sponsors request.LANGUAGE_CODE as sponsors %}
-    {% for item in sponsors %}
-      <a href="{{ item.url }}" target="_blank" rel="noopener">
-        {% image item.logo width-132 alt=item.logo_description %}
-        <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
-      </a>
-    {% endfor %}
+    {% include "includes/supporter-logos.html" with logos=sponsors %}    
   </div>
 
   {% if self.content %}
