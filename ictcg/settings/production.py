@@ -5,7 +5,7 @@ import logging
 
 DEBUG = os.getenv('DJANGO_DEBUG', 'off') == 'on'
 
-ALLOW_ANALYTICS = os.getenv('ALLOW_ANALYTICS', 'off') == 'on'
+ANALYTICS_ID = os.getenv('ANALYTICS_ID', '')
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 

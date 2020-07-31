@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.conf import settings
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
@@ -178,6 +179,12 @@ class CookiePage(TranslatablePage):
             analytics = request.POST.get("analytics", "false")
             response.set_cookie('cookie_notice', "true", max_age=settings.COOKIE_MAX_AGE)
             response.set_cookie('analytics', analytics, max_age=settings.COOKIE_MAX_AGE)
+            if analytics == 'false':
+                # Delete any analytics cookies if the user opts out
+                response.delete_cookie(('_gat_gtag_%s' % settings.ANALYTICS_ID).replace("-", "_"))
+                response.delete_cookie('_ga')
+                response.delete_cookie('_gid')
+                
             request.COOKIES['analytics'] = analytics
 
         return response

@@ -18,6 +18,6 @@ def get_analytics_cookie(context):
         return False
     return request.COOKIES.get('analytics', 'false') == 'true'
 
-@register.simple_tag(takes_context = True)
-def allow_analytics_cookie(context):
-    return settings.ALLOW_ANALYTICS and get_analytics_cookie(context)
+@register.simple_tag()
+def get_analytics_id():
+    return settings.ANALYTICS_ID 

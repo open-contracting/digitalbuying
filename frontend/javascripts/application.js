@@ -4,6 +4,8 @@ import Accordion from './components/accordion'
 import Header from './components/header'
 import Cookie from './components/cookie'
 import { Button } from 'govuk-frontend'
+import { getCookieByName } from './utils/cookie'
+import { loadGoogleAnalytics } from './google-analytics'
 
 (function () {
   var $accordions = document.querySelectorAll('[data-module="govuk-accordion"]')
@@ -28,5 +30,17 @@ import { Button } from 'govuk-frontend'
 
   if ($cookiebanner) {
     new Cookie($cookiebanner).init()
+  }
+
+  if (getCookieByName('analytics') === 'true') {
+    const gaID = document.getElementsByTagName('body')[0].getAttribute('data-ga-id')
+
+    loadGoogleAnalytics(gaID)
+    window.dataLayer = window.dataLayer || []
+
+    function gtag(){dataLayer.push(arguments)}
+
+    gtag('js', new Date())
+    gtag('config', gaID)
   }
 })()
