@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 from wagtail.core.models import Page
 
 register = template.Library()
@@ -16,3 +17,7 @@ def get_analytics_cookie(context):
     if request is None:
         return False
     return request.COOKIES.get('analytics', 'false') == 'true'
+
+@register.simple_tag(takes_context = True)
+def allow_analytics_cookie(context):
+    return settings.ALLOW_ANALYTICS and get_analytics_cookie(context)

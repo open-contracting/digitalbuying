@@ -5,6 +5,8 @@ import logging
 
 DEBUG = os.getenv('DJANGO_DEBUG', 'off') == 'on'
 
+ALLOW_ANALYTICS = os.getenv('ALLOW_ANALYTICS', 'off') == 'on'
+
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 DATABASES = {}
