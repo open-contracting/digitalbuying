@@ -145,8 +145,6 @@ LANGUAGES = [
     ('id', _('Bahasa')),
 ]
 
-LANGUAGE_CODE = 'en'
-
 # Tell Django where the project's translation files should be.
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
