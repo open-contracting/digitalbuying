@@ -25,6 +25,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # See https://docs.djangoproject.com/en/3.0/ref/contrib/staticfiles/#manifeststaticfilesstorage
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = True
+
 try:
     services_json = json.loads(os.getenv('VCAP_SERVICES'))
     aws_s3_config = services_json['aws-s3-bucket'][0]['credentials']
