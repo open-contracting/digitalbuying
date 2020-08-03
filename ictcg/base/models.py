@@ -181,9 +181,10 @@ class CookiePage(TranslatablePage):
             response.set_cookie('analytics', analytics, max_age=settings.COOKIE_MAX_AGE)
             if analytics == 'false':
                 # Delete any analytics cookies if the user opts out
-                response.delete_cookie(('_gat_gtag_%s' % settings.ANALYTICS_ID).replace("-", "_"))
-                response.delete_cookie('_ga')
-                response.delete_cookie('_gid')
+                domain = request.META['HTTP_HOST'].replace("www", "")
+                response.delete_cookie(('_gat_gtag_%s' % settings.ANALYTICS_ID).replace("-", "_"), domain=domain)
+                response.delete_cookie('_ga', domain=domain)
+                response.delete_cookie('_gid', domain=domain)
                 
             request.COOKIES['analytics'] = analytics
 
