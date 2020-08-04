@@ -1,4 +1,4 @@
-{% load static wagtailimages_tags navigation_tags i18n %}
+{% load static wagtailimages_tags navigation_tags i18n cache %}
 {% main_menu request.LANGUAGE_CODE as mainmenu %}
 
 {% if mainmenu.cookie_page.url %}
@@ -16,17 +16,18 @@
       <button type="button" class="ictcg-header__menu-button ictcg-js-header-toggle" aria-controls="MainNavigation" aria-label="{{mainmenu.button_aria_label}}">{{mainmenu.button_text}}</button>
       <nav aria-label="Main">
         <ul id="MainNavigation" class="ictcg-header__navigation " aria-label="{{mainmenu.navigation_aria_label}}">
-          {% for item in mainmenu.menu_items.all %}
-            {% is_main_menu_link_active item.link as active_link %}
-            <li class="ictcg-header__navigation-item {% if active_link %}ictcg-header__navigation-item--active{% endif %}">
-              <a class="ictcg-header__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
-                {{ item.title }}
-                {% if item.open_in_new_tab %}
-                  <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
-                {% endif %}
-              </a>
-            </li>
-          {% endfor %}
+          {% cache 86400 header_navigation_links request.LANGUAGE_CODE %}
+            {% for item in mainmenu.menu_items.all %}
+              <li class="ictcg-header__navigation-item">
+                <a class="ictcg-header__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+                  {{ item.title }}
+                  {% if item.open_in_new_tab %}
+                    <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
+                  {% endif %}
+                </a>
+              </li>
+            {% endfor %}
+            {% endcache %}
         </ul>
       </nav>
     </div>

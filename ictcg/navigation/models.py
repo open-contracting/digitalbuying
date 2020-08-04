@@ -117,6 +117,14 @@ class MainMenu(ClusterableModel):
     def __str__(self):
         language = dict(settings.LANGUAGES)
         return f"{self.title} - {language[self.language]}"
+    
+    def save(self, *args, **kwards):
+        try:
+            clear_mainmenu_cache(self.language)
+        except Exception:
+            logging.error('Error deleting menu cache')
+            pass
+        return super().save(*args, **kwards)
 
 class MenuItem(models.Model):
     """
@@ -221,9 +229,18 @@ class FooterMenuItem(Orderable, MenuItem):
     panels = MenuItem.panels + []
     links = ParentalKey("FooterMenu", related_name="footer_menu_items")
 
+def clear_mainmenu_cache(language_code):
+    navigation_links = make_template_fragment_key("header_navigation_links", [language_code])
+    cache.delete(navigation_links)
+
 def clear_footer_cache(language_code):
     support_link = make_template_fragment_key("footer_support_links", [language_code])
     cache.delete_many([support_link])
+
+@receiver(pre_delete, sender=MainMenu)
+def on_main_menu_delete(sender, instance, **kwargs):
+    """ On main menu delete, clear the cache """
+    clear_mainmenu_cache(instance.language)
 
 @receiver(pre_delete, sender=FooterMenu)
 def on_footer_menu_delete(sender, instance, **kwargs):

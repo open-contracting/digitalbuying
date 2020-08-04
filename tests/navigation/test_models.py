@@ -20,6 +20,13 @@ class MainMenuTests(TestCase):
 		language = dict(settings.LANGUAGES)
 		object_string = f'{main_menu.title} - {language[main_menu.language]}'
 		self.assertEquals(object_string, str(main_menu))
+	
+	@patch('ictcg.navigation.models.clear_mainmenu_cache')
+	def test_clear_mainmenu_cache_is_called_on_save(self, mock):
+		main_menu = MainMenu.objects.get(title__exact="test title 1")
+		main_menu.save()
+		self.assertTrue(mock.called)
+		self.assertEqual(mock.call_count, 1)
 
 class MenuItemTests(TestCase):
 	fixtures = ['app.json']
@@ -67,6 +74,24 @@ class FooterMenuItemTests(TestCase):
 	def test_footermenuitem_inherits_from_orderable_and_menuitem_classes(self):
 		assert issubclass(FooterMenuItem, (Orderable, MenuItem))
 
+class ClearMainMenuCacheTest(TestCase):
+	@classmethod
+	def setUpTestData(cls):
+		MainMenu.objects.create(title='test title 1', language='en')
+
+	@patch('django.core.cache.cache.delete')
+	def test_delete_is_called_when_clear_mainmenu_cache_is_called(self, mock):
+		clear_mainmenu_cache('en')
+		self.assertTrue(mock.called)
+		self.assertEqual(mock.call_count, 1)
+
+	@patch('ictcg.navigation.models.clear_mainmenu_cache')
+	def test_clear_mainmenu_cache_is_triggered_by_signal_on_model_delete(self, mock):
+		main_menu = MainMenu.objects.get(title__exact="test title 1")
+		main_menu.delete()
+		self.assertTrue(mock.called)
+		self.assertEqual(mock.call_count, 1)
+
 class ClearFooterCacheTest(TestCase):
 	@classmethod
 	def setUpTestData(cls):
@@ -79,7 +104,7 @@ class ClearFooterCacheTest(TestCase):
 		self.assertEqual(mock.call_count, 1)
 
 	@patch('ictcg.navigation.models.clear_footer_cache')
-	def test_clear_footer_cache_triggered_by_signal_on_model_delete(self, mock):
+	def test_clear_footer_cache_is_triggered_by_signal_on_model_delete(self, mock):
 		footer_menu = FooterMenu.objects.get(admin_title__exact="Footer title 2")
 		footer_menu.delete()
 		self.assertTrue(mock.called)
