@@ -1,4 +1,4 @@
-{% load wagtailcore_tags case_studies_tags %}
+{% load wagtailcore_tags case_studies_tags cache  %}
 {% get_latest_case_studies request.LANGUAGE_CODE as case_studies %}
 
 <section class="ictcg-margin-bottom-6 govuk-grid-column-full" id="{{self.title|slugify }}">
@@ -8,9 +8,11 @@
   </div>
  
   <div class="ictcg-cards">
-    {% for case_study in case_studies %}
-      {% include 'includes/card.html' with item=case_study featured=False case_study_block=True %}
-    {% endfor %}
+    {% cache 86400 case_study_block request.LANGUAGE_CODE %}
+      {% for case_study in case_studies %}
+        {% include 'includes/card.html' with item=case_study featured=False case_study_block=True %}
+      {% endfor %}
+    {% endcache %}
   </div>
 
   <div class="ictcg-text-align-centre">
