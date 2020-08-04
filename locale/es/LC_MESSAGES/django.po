@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-24 16:13+0000\n"
+"POT-Creation-Date: 2020-08-04 11:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ictcg/base/models.py:25
+#: ictcg/base/models.py:34
 msgid "Title for masthead component"
 msgstr ""
 
-#: ictcg/base/models.py:42
+#: ictcg/base/models.py:51
 msgid "Title for link"
 msgstr ""
 
-#: ictcg/base/models.py:57
+#: ictcg/base/models.py:66
 msgid "Alt tag description for image"
 msgstr ""
 
-#: ictcg/base/models.py:81
+#: ictcg/base/models.py:90
 msgid "Masthead"
 msgstr ""
 
-#: ictcg/base/models.py:96
+#: ictcg/base/models.py:105
 msgid "Please enter description for the masthead image"
 msgstr ""
 
-#: ictcg/base/models.py:112
+#: ictcg/base/models.py:121
 msgid "Title for Navigation"
 msgstr ""
 
@@ -94,15 +94,23 @@ msgstr ""
 msgid "Text area for phase banner description"
 msgstr ""
 
-#: ictcg/settings/base.py:138
+#: ictcg/navigation/models.py:70
+msgid "Text area for cookie banner description"
+msgstr ""
+
+#: ictcg/navigation/models.py:77
+msgid "Text for cookie accept button"
+msgstr ""
+
+#: ictcg/settings/base.py:143
 msgid "English"
 msgstr ""
 
-#: ictcg/settings/base.py:139
+#: ictcg/settings/base.py:144
 msgid "LA Spanish"
 msgstr ""
 
-#: ictcg/settings/base.py:140
+#: ictcg/settings/base.py:145
 msgid "Bahasa"
 msgstr ""
 
@@ -110,52 +118,122 @@ msgstr ""
 msgid "Sponsor Logos"
 msgstr ""
 
-#: ictcg/sponsors/models.py:45
+#: ictcg/sponsors/models.py:49
 msgid "URL for sponsor link"
 msgstr ""
 
-#: ictcg/sponsors/models.py:52
+#: ictcg/sponsors/models.py:56
 msgid "Sponsor image or logo"
 msgstr ""
 
-#: ictcg/sponsors/models.py:59
+#: ictcg/sponsors/models.py:63
 msgid "Alt tag description for sponsor logo"
 msgstr ""
 
-#: ictcg/streams/blocks.py:5 ictcg/streams/blocks.py:19
-#: ictcg/streams/blocks.py:34 ictcg/streams/blocks.py:43
+#: ictcg/streams/blocks.py:7 ictcg/streams/blocks.py:21
+#: ictcg/streams/blocks.py:36 ictcg/streams/blocks.py:45
+#: ictcg/streams/blocks.py:87
 msgid "Section title, max length 120 characters"
 msgstr ""
 
-#: ictcg/streams/blocks.py:35
+#: ictcg/streams/blocks.py:37
 msgid "Item"
 msgstr ""
 
-#: ictcg/streams/blocks.py:47
+#: ictcg/streams/blocks.py:49
 msgid "Text for button"
 msgstr ""
 
-#: ictcg/streams/blocks.py:56
+#: ictcg/streams/blocks.py:58
 msgid "Item text"
 msgstr ""
 
-#: ictcg/streams/blocks.py:60
+#: ictcg/streams/blocks.py:62 ictcg/streams/blocks.py:101
 msgid "Do's and dont's title"
 msgstr ""
 
-#: ictcg/streams/blocks.py:77
+#: ictcg/streams/blocks.py:79
 msgid "Quote"
 msgstr ""
 
-#: ictcg/streams/blocks.py:78
+#: ictcg/streams/blocks.py:80
 msgid "Quote attribution"
 msgstr ""
 
+#: ictcg/streams/blocks.py:96
+msgid "Logo of supporter"
+msgstr ""
+
+#: ictcg/streams/blocks.py:97
+msgid "URL of supporter"
+msgstr ""
+
+#: ictcg/streams/blocks.py:98
+msgid "Alt description for the image"
+msgstr ""
+
+#: ictcg/templates/404.html:6 ictcg/templates/500.html:6
+#: ictcg/templates/includes/header.html:12
+msgid "Digital Buying Guide"
+msgstr "Guía para compras digitales"
+
+#: ictcg/templates/404.html:6 ictcg/templates/404.html:9
+msgid "Page not found"
+msgstr "No se encontró la página"
+
+#: ictcg/templates/404.html:11
+msgid "If you typed the web address, check it is correct."
+msgstr "Si escribió la dirección web, verifique que sea correcta."
+
+#: ictcg/templates/404.html:13
+msgid "If you pasted the web address, check you copied the entire address."
+msgstr ""
+"Si pegó la dirección web, verifique que haya copiado la dirección completa."
+
+#: ictcg/templates/404.html:15 ictcg/templates/base/cookie_page.html:17
+msgid "Go back to home"
+msgstr "Volver a Inicio"
+
+#: ictcg/templates/500.html:6
+msgid "Error"
+msgstr ""
+
+#: ictcg/templates/500.html:9
+msgid "Sorry, there is a problem with the service"
+msgstr "Lo sentimos, hay un problema con el servicio"
+
+#: ictcg/templates/500.html:11
+msgid "Try again later"
+msgstr "Inténtelo nuevamente más tarde."
+
+#: ictcg/templates/500.html:13
+msgid ""
+"If the web address is correct or you selected a link or button and you wish "
+"to report the broken link"
+msgstr ""
+"Si la dirección web es correcta o si seleccionó un enlace o un botón y desea "
+"informar el enlace roto,"
+
+#: ictcg/templates/500.html:13
+msgid "please contact us at gdmp_ictguidelines@digital.cabinet-office.gov.uk"
+msgstr ""
+"comuníquese con nosotros a gdmp_ictguidelines@digital.cabinet-office.gov.uk"
+
+#: ictcg/templates/base.html:37
+msgid "Skip to main content"
+msgstr "Saltar al contenido principal"
+
+#: ictcg/templates/base/cookie_page.html:15
+msgid "Your cookie settings were saved"
+msgstr "Su configuración de cookies fue guardada"
+
 #: ictcg/templates/base/generic_page_with_sub_nav.html:16
+#: ictcg/templates/sponsors/sponsors_page.html:16
 msgid "Sub-Navigation"
 msgstr ""
 
 #: ictcg/templates/base/generic_page_with_sub_nav.html:23
+#: ictcg/templates/sponsors/sponsors_page.html:23
 msgid "(Same page link)"
 msgstr "(Enlace de la misma página)"
 
@@ -185,6 +263,7 @@ msgid "Pages in this section"
 msgstr "Páginas en esta sección"
 
 #: ictcg/templates/guidelines/guidelines_section_page.html:21
+#: ictcg/templates/sponsors/sponsors_page.html:18
 msgid "Contents"
 msgstr "Contenidos"
 
@@ -192,53 +271,45 @@ msgstr "Contenidos"
 msgid "Back to "
 msgstr "Volver a"
 
-#: ictcg/templates/includes/footer.html:45
-#: ictcg/templates/includes/footer.html:61
-#: ictcg/templates/includes/header.html:23
+#: ictcg/templates/includes/footer.html:49
+#: ictcg/templates/includes/footer.html:65
+#: ictcg/templates/includes/header.html:25
 #: ictcg/templates/includes/links-module.html:11
 #: ictcg/templates/includes/social-links.html:16
 #: ictcg/templates/includes/social-links.html:29
 #: ictcg/templates/includes/social-links.html:42
 #: ictcg/templates/includes/social-links.html:55
-#: ictcg/templates/streams/homepage_sponsors_block.html:17
+#: ictcg/templates/includes/supporter-logos.html:6
 msgid "(opens in a new tab)"
 msgstr "(se abre en una nueva pestaña)"
 
-#: ictcg/templates/includes/footer.html:53
+#: ictcg/templates/includes/footer.html:57
 msgid "Support links"
 msgstr "Enlaces de soporte"
 
-#: ictcg/templates/includes/footer.html:69
+#: ictcg/templates/includes/footer.html:73
 msgid "Built by the"
 msgstr "Creado por el"
 
-#: ictcg/templates/includes/footer.html:69
+#: ictcg/templates/includes/footer.html:73
 msgid "Government Digital Service"
 msgstr "Government Digital Service"
 
-#: ictcg/templates/includes/footer.html:76
+#: ictcg/templates/includes/footer.html:80
 msgid "All content is available under the"
 msgstr "Todo el contenido está disponible bajo la"
 
-#: ictcg/templates/includes/footer.html:77
+#: ictcg/templates/includes/footer.html:81
 msgid "Open Government Licence v3.0"
 msgstr "Licencia gubernamental abierta v3.0"
 
-#: ictcg/templates/includes/footer.html:77
+#: ictcg/templates/includes/footer.html:81
 msgid "except where otherwise stated"
 msgstr "excepto cuando se indique lo contrario"
 
-#: ictcg/templates/includes/header.html:4
-msgid "Skip to main content"
-msgstr "Saltar al contenido principal"
-
-#: ictcg/templates/includes/header.html:9
+#: ictcg/templates/includes/header.html:11
 msgid "Go to the Digital Buying Guide homepage"
 msgstr "Volver a Guía para compras digitales Página de inicio"
-
-#: ictcg/templates/includes/header.html:10
-msgid "Digital Buying Guide"
-msgstr "Guía para compras digitales"
 
 #: ictcg/templates/includes/pagination.html:9
 msgid "Previous"
@@ -258,7 +329,7 @@ msgstr "Compartir este estudio de caso"
 
 #: ictcg/templates/includes/social-links.html:12
 msgid "Share case study on Twitter"
-msgstr "Compartir el estudio de caso sobre Twitter" 
+msgstr "Compartir el estudio de caso sobre Twitter"
 
 #: ictcg/templates/includes/social-links.html:14
 #: ictcg/templates/includes/social-links.html:27
@@ -289,7 +360,8 @@ msgstr "LinkedIn"
 
 #: ictcg/templates/includes/social-links.html:48
 msgid "I wanted to share this post with you from the Digital Buying Guide"
-msgstr "Quería compartir con usted esta publicación de la Guía para compras digitales"
+msgstr ""
+"Quería compartir con usted esta publicación de la Guía para compras digitales"
 
 #: ictcg/templates/includes/social-links.html:51
 msgid "Share case study on Email"
@@ -298,6 +370,22 @@ msgstr "Compartir el estudio de caso sobre Correo electrónico"
 #: ictcg/templates/includes/social-links.html:54
 msgid "Email"
 msgstr "Correo electrónico"
+
+#: ictcg/templates/streams/analytics_cookie_block.html:16
+msgid "Do you want to accept analytics cookies?"
+msgstr "¿Desea aceptar cookies analíticas?"
+
+#: ictcg/templates/streams/analytics_cookie_block.html:21
+msgid "Yes"
+msgstr "Sí"
+
+#: ictcg/templates/streams/analytics_cookie_block.html:25
+msgid "No"
+msgstr "No"
+
+#: ictcg/templates/streams/analytics_cookie_block.html:30
+msgid "Save cookie setting"
+msgstr "Guardar la configuración de las cookies"
 
 #: ictcg/templates/streams/do_dont_list.html:6
 msgid "Do"
