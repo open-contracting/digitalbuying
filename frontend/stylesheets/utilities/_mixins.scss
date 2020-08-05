@@ -16,6 +16,9 @@
   background: rgba($color, $opacity);
 }
 
-@mixin supports-link-spacing($total-margin, $row-items: 3) {
-  flex: 0 1 calc((100% - #{$total-margin}) / #{$row-items});
+@mixin supports-link-spacing($spacing, $row-items: 3) {
+  flex-grow: 0;
+  flex-shrink: 1;
+  // The .1px in the calc is to fix a rounding issue on Edge and IE which causeing the wrapping to break early
+  flex-basis: calc((100% - ((#{$row-items} - 1) * #{$spacing})) / #{$row-items} - 0.1px); 
 }

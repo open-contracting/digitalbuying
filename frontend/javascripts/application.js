@@ -1,5 +1,6 @@
 
 import './polyfills/foreach'
+import './polyfills/includes'
 import Accordion from './components/accordion'
 import Header from './components/header'
 import Cookie from './components/cookie'
