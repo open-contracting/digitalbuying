@@ -16,7 +16,7 @@
       <button type="button" class="ictcg-header__menu-button ictcg-js-header-toggle" aria-controls="MainNavigation" aria-label="{{mainmenu.button_aria_label}}">{{mainmenu.button_text}}</button>
       <nav aria-label="Main">
         <ul id="MainNavigation" class="ictcg-header__navigation " aria-label="{{mainmenu.navigation_aria_label}}">
-          {% cache 86400 header_navigation_links request.LANGUAGE_CODE %}
+          {% cache 604800 header_navigation_links request.LANGUAGE_CODE %}
             {% for item in mainmenu.menu_items.all %}
               <li class="ictcg-header__navigation-item">
                 <a class="ictcg-header__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>

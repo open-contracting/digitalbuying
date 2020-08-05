@@ -8,7 +8,7 @@
   </div>
  
   <div class="ictcg-cards">
-    {% cache 86400 case_study_block request.LANGUAGE_CODE %}
+    {% cache 604800 case_study_block request.LANGUAGE_CODE %}
       {% for case_study in case_studies %}
         {% include 'includes/card.html' with item=case_study featured=False case_study_block=True %}
       {% endfor %}

@@ -13,7 +13,7 @@
         <p class="ictcg-font-16 ictcg-margin-bottom-2">{{case_studies|length|add:1}} {% trans 'Results' %}</p> <!-- ADD 1 to include featured case study -->
       </div>
       <div class="ictcg-cards">
-        {% cache 86400 case_study_listing_page request.LANGUAGE_CODE %}
+        {% cache 604800 case_study_listing_page request.LANGUAGE_CODE %}
           {% if featured_case_studies %}
             {% include 'includes/card.html' with item=featured_case_studies featured=True %}
           {% endif %}
