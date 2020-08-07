@@ -18,6 +18,25 @@ class Header {
 
     // Handle $toggleButton click events
     $toggleButton.addEventListener('click', this.handleClick.bind(this))
+
+    var $menuitems = $module.querySelectorAll('.ictcg-header__navigation-item')
+    if ($menuitems.length > 0) {
+      this.setActiveNavItem($menuitems)
+    }
+  }
+
+  /**
+  * set active item
+  * @param {object} nodelist elements
+  */
+  setActiveNavItem ($nodelist) {
+    $nodelist.forEach($item => {
+      const navLink = $item.getElementsByTagName('a')[0].getAttribute('href')
+
+      if (window.location.pathname.includes(navLink)) {
+        $item.classList.add('ictcg-header__navigation-item--active')
+      }
+    })
   }
 
   /**

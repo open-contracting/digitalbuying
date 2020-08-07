@@ -1,5 +1,6 @@
 from wagtail.core import blocks
 from wagtail.contrib.table_block.blocks import TableBlock
+from wagtail.images.blocks import ImageChooserBlock
 from django.utils.translation import ugettext_lazy as _
 
 class RichTextWithTitleBlock(blocks.StructBlock):
@@ -90,3 +91,20 @@ class CookieTableBlock(blocks.StructBlock):
     class Meta:
         template = "streams/cookie_block.html"
         icon="table"
+
+class LogoItem(blocks.StructBlock):
+    logo = ImageChooserBlock(required=True, help_text=_("Logo of supporter"))
+    url = blocks.URLBlock(max_length=250, help_text=_("URL of supporter"))
+    logo_description = blocks.CharBlock(max_length=250, help_text=_("Alt description for the image"))
+
+class SupportersBlock(blocks.StructBlock):
+    title = blocks.CharBlock(max_length=200, help_text=_("Do's and dont's title"))
+    introduction = blocks.RichTextBlock()
+
+    logos = blocks.ListBlock(
+        LogoItem()
+    )
+    class Meta:
+        template = "streams/supports_block.html"
+        icon = "image"
+        label = "Supporter logos"

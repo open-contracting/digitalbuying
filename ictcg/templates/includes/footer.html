@@ -5,9 +5,9 @@
   <div class="govuk-width-container ">
     <div class="govuk-footer__navigation">
       <div class="govuk-footer__section ictcg-footer__section">
-        <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{{ footer.guildelines_title }}</h2>
+        <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{{ footer.footer_content.quick_links_title }}</h2>
         <ul class="govuk-footer__list govuk-footer__list--columns-2">
-          {% cache 86400 guidelines_footer request.LANGUAGE_CODE %}
+          {% cache 604800 guidelines_footer request.LANGUAGE_CODE %}
             {% for item in footer.guildelines_sections %}
               <li class="">
                 <a class="govuk-footer__link ictcg-footer__link" title="{{ item.title }}" href="{% pageurl item %}">
@@ -41,11 +41,11 @@
         <div class="ictcg-footer__sponsors">
           <h2 class="govuk-heading-m">{{ footer.footer_content.sponsors_title }}</h2>
           <div class="ictcg-footer__sponsors-items">
-            {% cache 86400 sponsors_footer request.LANGUAGE_CODE %}
+            {% cache 604800 sponsors_footer request.LANGUAGE_CODE %}
               {% get_footer_sponsors request.LANGUAGE_CODE as sponsors %}
               {% for item in sponsors %}
-                <a href="{{ item.url }}" target="_blank">
-                  {% image item.logo width-132 alt=item.logo_description %}
+                <a href="{{ item.url }}" target="_blank" rel="noopener">
+                  {% image item.logo width-264 alt=item.logo_description %}
                   <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>
                 </a>
               {% endfor %}
@@ -56,10 +56,10 @@
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow ictcg-margin-bottom-6">
         <h2 class="govuk-visually-hidden">{% trans 'Support links' %}</h2>
         <ul class="govuk-footer__inline-list">
-          {% cache 86400 footer_support_links request.LANGUAGE_CODE %}
+          {% cache 604800 footer_support_links request.LANGUAGE_CODE %}
             {% for item in footer.footer_content.footer_menu_items.all %}
               <li class="govuk-footer__inline-list-item">
-                <a class="govuk-footer__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank"{% endif %}>
+                <a class="govuk-footer__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
                   {{ item.title }}
                   {% if item.open_in_new_tab %}
                     <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>

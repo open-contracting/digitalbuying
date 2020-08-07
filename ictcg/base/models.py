@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.conf import settings
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
@@ -18,7 +19,14 @@ class HomePage(TranslatablePage):
     """
 
     parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
-    subpage_types = ["guidelines.GuidelinesListingPage", "base.GenericPageWithSubNav", "case_studies.CaseStudiesListingPage", "base.CookiePage", "base.GenericPage"]
+    subpage_types = [
+        "guidelines.GuidelinesListingPage", 
+        "base.GenericPageWithSubNav", 
+        "case_studies.CaseStudiesListingPage", 
+        "base.CookiePage", 
+        "base.GenericPage",
+        "sponsors.SponsorsPage"
+    ]
 
     masthead_title = models.CharField(
         max_length=240,
@@ -104,7 +112,7 @@ class GenericPageWithSubNav(TranslatablePage):
     """
 
     parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]
-    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage"]
+    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage", "sponsors.SponsorsPage"]
 
     navigation_title = models.CharField(
         max_length=120,
@@ -130,7 +138,7 @@ class GenericPage(TranslatablePage):
     """
 
     parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]
-    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage"]
+    subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage", "sponsors.SponsorsPage"]
 
     introduction = RichTextField(blank=True, default="")
 
@@ -171,6 +179,13 @@ class CookiePage(TranslatablePage):
             analytics = request.POST.get("analytics", "false")
             response.set_cookie('cookie_notice', "true", max_age=settings.COOKIE_MAX_AGE)
             response.set_cookie('analytics', analytics, max_age=settings.COOKIE_MAX_AGE)
+            if analytics == 'false':
+                # Delete any analytics cookies if the user opts out
+                domain = request.META['HTTP_HOST'].replace("www", "")
+                response.delete_cookie(('_gat_gtag_%s' % settings.ANALYTICS_ID).replace("-", "_"), domain=domain)
+                response.delete_cookie('_ga', domain=domain)
+                response.delete_cookie('_gid', domain=domain)
+                
             request.COOKIES['analytics'] = analytics
 
         return response

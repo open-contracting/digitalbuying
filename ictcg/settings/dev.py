@@ -3,6 +3,8 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ANALYTICS_ID = 'UA-xxxxxx-1'
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'ml3&38def!wfp=eyu(=71gd(_tlmpujwpb958^7wq)5^=lw5*#'
 

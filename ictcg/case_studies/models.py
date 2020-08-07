@@ -1,11 +1,16 @@
+import logging
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 from wagtailtrans.models import TranslatablePage
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
-
 
 from wagtail.admin.edit_handlers import (
     FieldPanel,
@@ -104,3 +109,22 @@ class CaseStudyPage(TranslatablePage):
                 context['prev_page'] = siblings[current_idx - 1]
        
         return context
+    
+    def save(self,  *args, **kwards):
+        try:
+            clear_case_study_cache(self.language.code)
+        except Exception:
+            logging.error('Error deleting CaseStudyPage cache')
+            pass
+
+        return super().save(*args, **kwards)
+
+def clear_case_study_cache(language_code):
+    case_study_block_key = make_template_fragment_key("case_study_block", [language_code])
+    case_study_listing_page_key  = make_template_fragment_key("case_study_listing_page", [language_code])
+    cache.delete_many([case_study_block_key, case_study_listing_page_key])
+
+@receiver(pre_delete, sender=CaseStudyPage)
+def on_guidance_page_delete(sender, instance, **kwargs):
+    """ On a CaseStudyPage delete, clear the cache for case_study_block """
+    clear_case_study_cache(instance.language.code)

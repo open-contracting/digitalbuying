@@ -1,4 +1,4 @@
-{% load static wagtailuserbar wagtailcore_tags i18n %}
+{% load static wagtailuserbar wagtailcore_tags i18n base_tags %}
 
 <!DOCTYPE html>
 <html class="" lang="{{ page.language.code }}">
@@ -18,7 +18,7 @@
   </title>
 
   {% if self.search_description %}
-    <meta name="description" content="{{ self.search_description }}"">
+    <meta name="description" content="{{ self.search_description }}">
   {% endif %}
   
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,7 +31,8 @@
   {% block meta_tags %}{% endblock %}
 </head>
 
-<body class="govuk-template__body {% block body_class %}{% endblock %}">
+{% get_analytics_id as analytics_id %}
+<body class="govuk-template__body {% block body_class %}{% endblock %}" data-ga-id="{{ analytics_id }}">
 
   <a href="#main-title" class="govuk-skip-link">{% trans 'Skip to main content' %}</a>
 
@@ -56,13 +57,8 @@
   <script>
     document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
   </script>
-
   <script type="text/javascript" src="{% static 'javascripts/application.js' %}"></script>
 
-  {% block extra_js %}
-    {# Override this in templates to add extra javascript #}
-  {% endblock %}
-  <script></script>
 </body>
 
 </html>

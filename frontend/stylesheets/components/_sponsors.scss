@@ -1,16 +1,37 @@
-.ictcg-sponsors__items {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-
-  a {
-    @include govuk-responsive-margin(5, 'right');
+.ictcg-sponsors {
+  .rich-text {
     @include govuk-responsive-margin(4, 'top');
   }
 }
 
-.ictcg-sponsors {
-  .rich-text {
-    @include govuk-responsive-margin(4, 'top');
+.ictcg-supports-logos {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ictcg-supports-logos__link {
+  margin: govuk-spacing(3) govuk-spacing(3) 0  0;
+
+  @include supports-link-spacing($spacing: govuk-spacing(3));
+
+  @include govuk-media-query ('tablet') {
+    margin: govuk-spacing(5) govuk-spacing(5) 0 0;
+    
+    @include supports-link-spacing($spacing: govuk-spacing(5));
+  }
+  
+  display: flex;
+  justify-content: center;
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+
+  img {
+    width: 100%;
+    max-width: 195px;
+    height: auto;
+    align-self: center;
   }
 }

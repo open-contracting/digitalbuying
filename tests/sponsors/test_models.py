@@ -4,8 +4,11 @@ from django.conf import settings
 from django.db.models import Model
 
 from modelcluster.models import ClusterableModel
+from wagtail.tests.utils import WagtailPageTests
 from wagtail.core.models import Page, Orderable
-from ictcg.sponsors.models import Sponsor, SponsorItem, clear_sponsors_footer_cache
+from wagtailtrans.models import TranslatablePage
+from ictcg.sponsors.models import Sponsor, SponsorItem, clear_sponsors_footer_cache, SponsorsPage
+from ictcg.base.models import GenericPage, GenericPageWithSubNav, HomePage
 
 class SponsorTests(TestCase):
 	fixtures = ['sponsors.json']
@@ -45,4 +48,23 @@ class ClearSponsorFooterCacheTest(TestCase):
 		self.assertTrue(mock.called)
 		self.assertEqual(mock.call_count, 1)
 
-	
+class SponsorsPageTests(WagtailPageTests):
+
+    def test_sponsors_page_can_be_created_under_homepage(self):
+        # You can create a SponsorsPage under the HomePage
+        self.assertCanCreateAt(HomePage, SponsorsPage)
+
+    def test_sponsors_page_cannot_be_nested_under_itself(self):
+        # You cannot nested SponsorsPage under itself
+        self.assertCanNotCreateAt(SponsorsPage, SponsorsPage)
+
+    def test_sponsors_page_can_be_created_under_generic_page(self):
+        # You can nested SponsorsPage under GenericPage
+        self.assertCanCreateAt(GenericPage, SponsorsPage)
+    
+    def test_sponsors_page_can_be_created_under_generic_page_with_sub_nav(self):
+        # You can nested SponsorsPage under GenericPageWithSubNav
+        self.assertCanCreateAt(GenericPageWithSubNav, SponsorsPage)
+
+    def test_generic_page_inherits_from_translatable_page_class(self):
+        assert issubclass(SponsorsPage, TranslatablePage)

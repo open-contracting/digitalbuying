@@ -75,7 +75,6 @@ class TemplateTagsFooterTests(TestCase):
         footer = get_footer_content()
 
         self.assertTrue('guildelines_sections' in footer)
-        self.assertTrue('guildelines_title' in footer)
         self.assertTrue('footer_content' in footer)
-        self.assertEqual(len(footer), 3)
+        self.assertEqual(len(footer), 2)
       

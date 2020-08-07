@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'ictcg.navigation',
     'ictcg.modules',
     'ictcg.case_studies',
-    'search',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -47,6 +46,8 @@ INSTALLED_APPS = [
     'wagtail.core',
     'wagtail.contrib.postgres_search',
     'wagtail.contrib.table_block',
+    'wagtail.contrib.modeladmin',
+    'wagtail.contrib.settings',
 
     'modelcluster',
     'taggit',
@@ -60,9 +61,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django.contrib.sitemaps",
 
-    'wagtail.contrib.modeladmin',
-    'wagtail.contrib.settings',
     'wagtailtrans',
+    'health_check',
+    'health_check.db',
+    'health_check.cache',
+    'health_check.storage',
 ]
 
 MIDDLEWARE = [
@@ -142,8 +145,6 @@ LANGUAGES = [
     ('id', _('Bahasa')),
 ]
 
-LANGUAGE_CODE = 'en'
-
 # Tell Django where the project's translation files should be.
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
@@ -182,13 +183,13 @@ WAGTAIL_SITE_NAME = "ictcg"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'https://www.digitalbuyingguide.org'
 
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': f'{BASE_DIR}/.cache',
-        'TIMEOUT': 86400,  #24 hours
+        'TIMEOUT': 604800,  #7 days
     }
 }
 

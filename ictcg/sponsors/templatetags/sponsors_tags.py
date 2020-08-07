@@ -18,3 +18,11 @@ def get_homepage_sponsors(language):
         return sponsors
     else:
         return None
+
+@register.simple_tag()
+def get_sponsorship_page_sponsors(language):
+    sponsors = SponsorItem.objects.filter(sponsor__language=language, show_on_sponsorship=True)
+    if sponsors:
+        return sponsors
+    else:
+        return None

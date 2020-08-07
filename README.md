@@ -27,7 +27,7 @@ To run linting on CSS and JS `npm run linting`
 Most transations occur within the CMS itself however there are a number of words/sentences which require manual translation using the translation feature provided by Django.  
 
 To generate the transation .po files run:
-`python manage.py makemessages -l 'es' -i env` - Spanish being the language in this example
+`python manage.py makemessages -i env`
 
 After generating the .po file, add the translated content here.  
 Po files can be found in the `/locale/language/LC_MESSAGES/django.po`

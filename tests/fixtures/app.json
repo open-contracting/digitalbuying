@@ -479,7 +479,7 @@
       "pk": 13,
       "fields": {
         "introduction": "Case study number 2",
-        "header_image": null,
+        "header_image": 7,
         "header_image_description": "Header images alt",
         "publication_date": "2020-06-01",
         "collaborator": "Australian DTA",
@@ -492,7 +492,7 @@
       "pk": 14,
       "fields": {
         "introduction": "Case study number 3",
-        "header_image": null,
+        "header_image": 7,
         "header_image_description": "Test image",
         "publication_date": "2020-05-01",
         "collaborator": "GDS",

@@ -5,6 +5,8 @@ import logging
 
 DEBUG = os.getenv('DJANGO_DEBUG', 'off') == 'on'
 
+ANALYTICS_ID = os.getenv('ANALYTICS_ID', '')
+
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 DATABASES = {}
@@ -23,6 +25,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # See https://docs.djangoproject.com/en/3.0/ref/contrib/staticfiles/#manifeststaticfilesstorage
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = True
+LANGUAGE_COOKIE_SECURE = True
+LANGUAGE_COOKIE_HTTPONLY = True
+
 try:
     services_json = json.loads(os.getenv('VCAP_SERVICES'))
     aws_s3_config = services_json['aws-s3-bucket'][0]['credentials']
@@ -33,6 +42,9 @@ try:
     AWS_S3_REGION_NAME = aws_s3_config["aws_region"]
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME)
     AWS_DEFAULT_ACL = None
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=604800',
+    }
 
     MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

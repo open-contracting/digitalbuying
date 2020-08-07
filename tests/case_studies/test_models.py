@@ -1,4 +1,5 @@
 from django.test import TestCase
+from unittest.mock import Mock, patch
 from django.core.exceptions import ValidationError
 
 from wagtail.core.models import Page
@@ -84,3 +85,13 @@ class CaseStudyPageTests(WagtailPageTests):
         self.assertTrue('prev_page' in response.context)
         self.assertFalse('next_page' in response.context)
         self.assertEquals(response.context['prev_page'].pk, 12)
+    
+    @patch('ictcg.case_studies.models.clear_case_study_cache')
+    def test_clear_cache_is_called_on_save(self, mock):
+        # When save is called on a CaseStudyPage class clear_case_study_cache should be called
+        case_study = CaseStudyPage.objects.get(id='13')
+        case_study.save()
+
+        self.assertTrue(mock.called)
+        self.assertEqual(mock.call_count, 1)
+        

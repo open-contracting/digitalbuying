@@ -85,7 +85,7 @@ gulp.task('javascripts', () => {
     debug: true,
     cache: {},
     packageCache: {},
-    fullPaths: true
+    fullPaths: false
   }).transform(babelify, {})
 
   function bundle () {
