@@ -5,7 +5,7 @@
 
   a {
     @include govuk-responsive-margin(1, 'right');
-    @include govuk-responsive-margin(2, 'bottom');    
+    @include govuk-responsive-margin(2, 'bottom');
   }
 
   img {
