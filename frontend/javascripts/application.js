@@ -39,7 +39,7 @@ import { loadGoogleAnalytics } from './google-analytics'
     loadGoogleAnalytics(gaID)
     window.dataLayer = window.dataLayer || []
 
-    function gtag(){dataLayer.push(arguments)}
+    function gtag(){dataLayer.push(arguments)} /* eslint-disable-line */
 
     gtag('js', new Date())
     gtag('config', gaID)
