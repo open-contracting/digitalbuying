@@ -20,11 +20,8 @@
 3. In your original terminal window run  `python manage.py runserver` the application should now be running on and accessible at `http://localhost:8000`
 
 ## Assets
-Frontend assets can be be found in the /frontend directory.  
-When running the build job the generated assets will be deployed to /ictcg/assets/
-
-DO NOT STORE STATIC ASSETS IN /ictcg/assets/javascipts or /ictcg/assets/stylesheets.  
-ALL THE FILES IN THESE DIRECTORIES WILL BE CLEAN/DELETED ON EACH BUILD AND ANY STATIC FILES WILL BE LOST.
+Frontend assets should be stored in the /frontend directory.
+When the `npm run start` command is run it will run `npm run-script build` as a sub command which will compile assets and deploy them to `/ictcg/assets`
 
 ## Build
 To build production version of the frontend assets run `npm run build`
