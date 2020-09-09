@@ -1,0 +1,36 @@
+name: CI - Push to master deploys to staging
+
+on: push
+
+jobs:
+  build:
+
+    name: Deploy master to staging on push to master
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Install the CF CLI
+        if: github.ref == 'refs/heads/master'
+        run: |
+          wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+          echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+          sudo apt-get update
+          sudo apt-get install cf7-cli
+      - name: Authenticate with CloudFoundry
+        if: github.ref == 'refs/heads/master'
+        env:
+          CF_USERNAME: ${{ secrets.DEPLOY_STAGING_USERNAME }}
+          CF_PASSWORD: ${{ secrets.DEPLOY_STAGING_PASSWORD }}
+          CF_ORG: global-digital-marketplace
+        run: |
+          cf api https://api.london.cloud.service.gov.uk
+          cf auth
+          cf target -o ${CF_ORG}
+      - name: Deploy to staging
+        if: github.ref == 'refs/heads/master'
+        env:
+          CF_SPACE: dbg-staging
+          CF_MANIFEST: staging
+        run: |
+          cf target -s ${CF_SPACE}
+          cf push -f manifest-${CF_MANIFEST}.yml --strategy rolling
