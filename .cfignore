@@ -1,15 +1,19 @@
-# Environments
+-# Environments
 .env
 env
+.venv
+venv
 *.pyc
 .DS_Store
-*.swp
-.vscode
 dist
 node_modules
-.eslintcache
-npm-debug.log
-coverage
-media
 __pycache__/
-.cache
+.idea
+
+# Repo files
+.cfignore
+.gitignore
+.stylelintrc.yml
+/tests/
+README.md
+dev-requirements.txt
