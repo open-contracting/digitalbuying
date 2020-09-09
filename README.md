@@ -32,6 +32,56 @@ To build production version of the frontend assets run `npm run build`
 ## Linting
 To run linting on CSS and JS `npm run linting`
 
+## Deployment
+The Digital Buying Guide is currently deployed on [GOVUK PaaS](https://www.cloud.service.gov.uk/)
+
+The following environment variables should be supplied in the manifest before performing a `cf push`:
+```
+  ANALYTICS_ID: [UA-some-ga-token-1]
+  BLOCK_SEARCH_ENGINES: (on/off)
+  DJANGO_DEBUG: (on/off)
+  DJANGO_SECRET_KEY: [SOME KEY]
+```
+
+The application requires a
+[Postgres backing service](https://docs.cloud.service.gov.uk/deploying_services/postgresql/#set-up-a-postgresql-service)
+and an
+[AWS s3 backing service](https://docs.cloud.service.gov.uk/deploying_services/s3/#amazon-s3)
+
+```
+cf create-service aws-s3-bucket default [service-name] -c '{"public_bucket":true}'
+cf create-service postgres [plan-name] [service-name]
+```
+
+The Postgres service can be populated from a SQL db dump
+```
+cf conduit [service-name] -- psql [dump-filename].sql
+```
+
+The S3 service can be populated from a local directory
+
+First create a key:
+```
+cf csk [service-name] [some-key-name] -c '{"allow_external_access": true}'
+cf service-key [service-name] [some-key-name]
+```
+Then populate your `~/.aws/credentials` file with an entry with the `aws_access_key_id` and `aws_secret_access_key`
+```
+# [some-key-name]
+# aws_access_key_id = access-key
+# aws_secret_access_key = secret-key
+```
+
+Next, using the bucket name from the `cf service-key` step above:
+```
+AWS_PROFILE=[some-key-name] aws s3 sync [directory] s3://[bucket-name]
+```
+
+Finally:
+```
+cf delete-service-key [service-name] [some-key-name]
+```
+
 ## Translation
 Most transations occur within the CMS itself however there are a number of words/sentences which require manual translation using the translation feature provided by Django.  
 
