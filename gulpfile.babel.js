@@ -29,9 +29,9 @@ const paths = {
     src: ['frontend/stylesheets/**/*.scss', '!frontend/stylesheets/__tests__/*.scss'],
     dist: 'ictcg/assets/stylesheets'
   },
-  fonts: {
-    src: ['frontend/fonts/**/*'],
-    dist: 'ictcg/assets/fonts'
+  images: {
+    src: ['frontend/images/**/*'],
+    dist: 'ictcg/assets/images'
   },
   dist: 'dist'
 }
@@ -67,6 +67,11 @@ gulp.task('stylesheets', () => {
     .pipe(gulpif(!prod, browserSync.reload({
       stream: true
     })))
+})
+
+gulp.task('images', () => {
+    return gulp.src(paths.images.src)
+    .pipe(gulp.dest(paths.images.dist))
 })
 
 gulp.task('lint-stylesheets', () => {
@@ -128,10 +133,6 @@ gulp.task('browser-sync', gulp.series(gulp.parallel('javascripts', 'stylesheets'
   })
 }))
 
-gulp.task('fonts', () => {
-  return gulp.src(paths.fonts.src)
-    .pipe(gulp.dest(paths.fonts.dist))
-})
 
 gulp.task('watch', (done) => {
   gulp.watch(paths.stylesheets.src, gulp.series('build'))
@@ -140,8 +141,8 @@ gulp.task('watch', (done) => {
   done()
 })
 
-gulp.task('serve', gulp.series('clean', 'fonts', gulp.parallel('browser-sync', 'watch')))
+gulp.task('serve', gulp.series('clean', gulp.parallel('browser-sync', 'watch')))
 
-gulp.task('build', gulp.series('clean', 'javascripts', 'stylesheets'))
+gulp.task('build', gulp.series('clean', 'javascripts', 'stylesheets', 'images'))
 
 gulp.task('linting', gulp.parallel('lint-javascripts', 'lint-stylesheets'))
