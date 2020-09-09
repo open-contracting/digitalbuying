@@ -3,15 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "10.22.x"
+  },
   "scripts": {
     "start": "gulp serve",
+    "install": "npm run-script build",
     "build": "NODE_ENV=production gulp build",
     "build_win": "set NODE_ENV=production&&gulp build",
     "test": "jest --verbose --coverage",
     "linting": "gulp linting",
     "clean": "gulp clean"
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
@@ -45,9 +49,7 @@
     "stylelint-config-standard": "^18.3.0",
     "stylelint-scss": "^3.6.1",
     "vinyl-buffer": "1.0.1",
-    "vinyl-source-stream": "2.0.0"
-  },
-  "dependencies": {
+    "vinyl-source-stream": "2.0.0",
     "govuk-frontend": "^3.6.0"
   },
   "browserify": {
