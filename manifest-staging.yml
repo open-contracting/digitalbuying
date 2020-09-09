@@ -1,6 +1,6 @@
 ---
 applications:
-- name: dbg-staging-app
+- name: dbg-staging-app-2
   buildpacks:
     - nodejs_buildpack
     - python_buildpack
@@ -8,9 +8,9 @@ applications:
     - dbg-staging-postgres-service
     - dbg-staging-s3-service
   routes:
-    - route: dbg-staging-app.london.cloudapps.digital
+    - route: dbg-staging-app-2.london.cloudapps.digital
   env:
     BLOCK_SEARCH_ENGINES: on
     DJANGO_DEBUG: false
-#    ANALYTICS_ID: UA-xxxxxx-1
-#    DJANGO_SECRET_KEY: test
+    ANALYTICS_ID: UA-xxxxxx-1
+    DJANGO_SECRET_KEY: test
