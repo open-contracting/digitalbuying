@@ -15,5 +15,3 @@ applications:
   env:
     BLOCK_SEARCH_ENGINES: on
     DJANGO_DEBUG: false
-    ANALYTICS_ID: UA-xxxxxx-1
-    DJANGO_SECRET_KEY: test
