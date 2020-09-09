@@ -33,4 +33,5 @@ jobs:
           CF_MANIFEST: staging
         run: |
           cf target -s ${CF_SPACE}
+          pwd
           cf push -f manifest-${CF_MANIFEST}.yml --strategy rolling
