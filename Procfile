@@ -1,1 +1,1 @@
-web: npm run-script build && python manage.py migrate && waitress-serve --port=$PORT ictcg.wsgi:application
+web: python manage.py migrate && waitress-serve --port=$PORT ictcg.wsgi:application

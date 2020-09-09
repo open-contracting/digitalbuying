@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "gulp serve",
+    "heroku-postbuild": "npm run-script build",
     "build": "NODE_ENV=production gulp build",
     "build_win": "set NODE_ENV=production&&gulp build",
     "test": "jest --verbose --coverage",

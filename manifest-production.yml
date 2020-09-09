@@ -4,13 +4,16 @@ applications:
   memory: 4GB
   instances: 2
   buildpacks:
-  - python_buildpack
+    - nodejs_buildpack
+    - python_buildpack
   services:
-    - dbg-prodcution-postgres-service
-    - dbg-production-s3-service
-  env:
-    BLOCK_SEARCH_ENGINES: on
-    DJANGO_DEBUG: false
+    - dbg-staging-postgres-service
+    - dbg-staging-s3-service
   routes:
     - dbg-production-app.london.cloudapps.digital
     - www.digitalbuyingguide.org
+  env:
+    BLOCK_SEARCH_ENGINES: on
+    DJANGO_DEBUG: false
+    ANALYTICS_ID: UA-xxxxxx-1
+    DJANGO_SECRET_KEY: test
