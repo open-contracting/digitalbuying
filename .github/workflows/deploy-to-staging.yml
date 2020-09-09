@@ -34,4 +34,5 @@ jobs:
         run: |
           cf target -s ${CF_SPACE}
           pwd
+          ls
           cf push -f manifest-${CF_MANIFEST}.yml --strategy rolling
