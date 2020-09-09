@@ -1,7 +1,16 @@
 ---
 applications:
-- name: ictcg-public-beta-app
+- name: dbg-production-app
   memory: 4GB
   instances: 2
   buildpacks:
   - python_buildpack
+  services:
+    - dbg-prodcution-postgres-service
+    - dbg-production-s3-service
+  env:
+    BLOCK_SEARCH_ENGINES: on
+    DJANGO_DEBUG: false
+  routes:
+    - dbg-production-app.london.cloudapps.digital
+    - www.digitalbuyingguide.org
