@@ -215,9 +215,9 @@ msgstr ""
 "informar el enlace roto,"
 
 #: ictcg/templates/500.html:13
-msgid "please contact us at gdmp_ictguidelines@digital.cabinet-office.gov.uk"
+msgid "please contact us at digitalbuyingguide@digital.cabinet-office.gov.uk"
 msgstr ""
-"comuníquese con nosotros a gdmp_ictguidelines@digital.cabinet-office.gov.uk"
+"comuníquese con nosotros a digitalbuyingguide@digital.cabinet-office.gov.uk"
 
 #: ictcg/templates/base.html:37
 msgid "Skip to main content"
