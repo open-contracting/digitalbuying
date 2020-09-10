@@ -1,8 +1,9 @@
 name: CI - Push to master deploys to staging
 
-on: push
-  branches:
-    - master
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
