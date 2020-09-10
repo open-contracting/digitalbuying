@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-04 11:28+0000\n"
+"POT-Creation-Date: 2020-09-10 09:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,11 +42,11 @@ msgstr ""
 msgid "Title for Navigation"
 msgstr ""
 
-#: ictcg/case_studies/models.py:54
+#: ictcg/case_studies/models.py:59
 msgid "Image dimensions should be 1912px wide × 714px high"
 msgstr ""
 
-#: ictcg/case_studies/models.py:64
+#: ictcg/case_studies/models.py:69
 msgid "Time taken (in minutes) to read the case study"
 msgstr ""
 
