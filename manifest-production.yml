@@ -7,11 +7,11 @@ applications:
     - nodejs_buildpack
     - python_buildpack
   services:
-    - dbg-staging-postgres-service
-    - dbg-staging-s3-service
+    - dbg-production-postgres-service
+    - dbg-production-s3-service
   routes:
-    - dbg-production-app.london.cloudapps.digital
-    - www.digitalbuyingguide.org
+    - route: dbg-production-app.london.cloudapps.digital
+    - route: www.digitalbuyingguide.org
   env:
     BLOCK_SEARCH_ENGINES: on
     DJANGO_DEBUG: false
