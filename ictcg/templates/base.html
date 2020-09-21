@@ -5,6 +5,22 @@
 
 <head>
   <meta charset="utf-8" />
+
+  <!-- Disable Google Analytics unless explicit consent set in cookie-->
+  <script>
+    window['ga-disable-{{ analytics_id }}'] = Object.fromEntries( document.cookie.split('; ').map( x => x.split('=')) ).analytics !== "true"
+  </script>>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ analytics_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ analytics_id }}');
+  </script>
+
   <title>
     {% block title %}
       {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
@@ -32,7 +48,7 @@
 </head>
 
 {% get_analytics_id as analytics_id %}
-<body class="govuk-template__body {% block body_class %}{% endblock %}" data-ga-id="{{ analytics_id }}">
+<body class="govuk-template__body {% block body_class %}{% endblock %}">
 
   <a href="#main-title" class="govuk-skip-link">{% trans 'Skip to main content' %}</a>
 
