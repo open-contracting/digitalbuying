@@ -10,7 +10,7 @@
   <!-- Disable Google Analytics unless explicit consent set in cookie-->
   <script>
     window['ga-disable-{{ analytics_id }}'] = Object.fromEntries( document.cookie.split('; ').map( x => x.split('=')) ).analytics !== "true"
-  </script>>
+  </script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ analytics_id }}"></script>
