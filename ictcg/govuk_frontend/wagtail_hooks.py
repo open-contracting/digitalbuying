@@ -27,3 +27,4 @@ def register_help_text_feature(features):
         'from_database_format': {'div[class=govuk-inset-text]': BlockElementHandler(type_)},
         'to_database_format': {'block_map': {type_: {'element': 'div', 'props': {'class': 'govuk-inset-text'}}}},
     })
+    features.default_features.append('govuk-inset-text')
