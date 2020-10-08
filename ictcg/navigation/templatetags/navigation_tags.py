@@ -50,9 +50,9 @@ def is_main_menu_link_active(context, link):
 @register.simple_tag()
 def get_footer_content():
   language = get_language()
-  guildelines_sections = GuidelinesSectionPage.objects.filter(language__code=language).live()
+  guildelines = GuidelinesListingPage.objects.filter(language__code=language).live()
   footer_content = FooterMenu.objects.filter(language=language).first()
   return {
-    'guildelines_sections': guildelines_sections,
+    'guildelines': guildelines,
     'footer_content': footer_content,
   }

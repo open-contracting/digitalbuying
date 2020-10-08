@@ -15,26 +15,26 @@
         {{ page.introduction|richtext }}
       </section>
 
-      {% cache 604800 guidelines_listing_descendant request.LANGUAGE_CODE %}
+      {% cache 604800 sections_and_pages_for_listing page.id %}
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default" data-open-text="{% trans 'Open all' %} " data-close-text="{% trans 'Close all' %} ">
-          {% for descendant in descendants %}
+          {% for section in page.get_children.live %}
             <div class="govuk-accordion__section ">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
                   <span class="govuk-accordion__section-button" id="accordion-default-heading-{{forloop.counter}}">
-                    {{ descendant.title }}
+                    {{ section.title }}
                   </span>
                 </h2>
                 <div class="govuk-accordion__section-summary govuk-body" id="accordion-default-summary-{{forloop.counter}}">
-                  {{ descendant.specific.landing_page_summary }}
+                  {{ section.specific.landing_page_summary }}
                 </div>
               </div>
               <div id="accordion-default-content-{{forloop.counter}}" class="govuk-accordion__section-content govuk-!-padding-top-0" aria-labelledby="accordion-default-heading-{{forloop.counter}}">
                 <ul class="govuk-list">
                   <li>
-                    <a href="{{ descendant.url}}" class="" aria-label="{{ descendant.title }} - {{ descendant.specific.subtitle }}">{{ descendant.specific.subtitle }}</a>
+                    <a href="{{ section.url}}" class="" aria-label="{{ section.title }} - {{ section.specific.subtitle }}">{{ section.specific.subtitle }}</a>
                   </li>
-                  {% for page in descendant.get_children.live %}
+                  {% for page in section.get_children.live %}
                     <li>
                       <a href="{{ page.url}}" class="">
                         {{ page.title }}

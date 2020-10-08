@@ -1,6 +1,5 @@
 import logging
 from django.db import models
-from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
@@ -8,10 +7,7 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 
 from wagtailtrans.models import TranslatablePage, Language
-from modelcluster.models import ClusterableModel
-from modelcluster.fields import ParentalKey
 from wagtail.core.models import Orderable, Page
-from wagtail.snippets.models import register_snippet
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     MultiFieldPanel,
@@ -26,10 +22,20 @@ from ictcg.guidelines.choices import COLOUR_CHOICES
 from ictcg.streams import blocks
 
 
-class GuidelinesListingPage(TranslatablePage):
+class TranslatablePageWithCacheClear(TranslatablePage):
+
+    def clear_from_caches(self):
+        raise NotImplementedError("clear_from_caches function is required for subclasses")
+
+    def save(self,  *args, **kwargs):
+        self.clear_from_caches()
+        return super().save(*args, **kwargs)
+
+
+class GuidelinesListingPage(TranslatablePageWithCacheClear):
     """
-    A TranslatablePage class used for the entry to the guidelines section of the site. 
-    The page contains a list of the child (GuidelinesSectionPage)
+    A TranslatablePage class used for the entry to the guidelines section of the site.
+    The page lists the sections (GuidelinesSectionPages) within the guidelines.
     """
 
     parent_page_types = ["base.HomePage"]
@@ -45,14 +51,20 @@ class GuidelinesListingPage(TranslatablePage):
         FieldPanel('introduction'),
     ]
 
-    def get_context(self, request, *args, **kwards):
-        context = super().get_context(request, *args, **kwards)
-        context['descendants'] = Page.objects.child_of(self).live()
-        return context
+    def clear_from_caches(self):
+        target = "guidelines_footer"
+        try:
+            language_code = self.language.code
+            target = make_template_fragment_key(target, [language_code])
+            cache.delete(target)
+        except Exception:
+            logging.warning('Error deleting %s cache', target)
 
-class GuidelinesSectionPage(TranslatablePage):
+
+class GuidelinesSectionPage(TranslatablePageWithCacheClear):
     """
-    A TranslatablePage class used for each subsection with the guidelines section.
+    A TranslatablePage class used for each section with the guidelines.
+    The page lists the pages (GuidancePages) within the section.
     """
 
     parent_page_types = ["guidelines.GuidelinesListingPage"]
@@ -94,14 +106,22 @@ class GuidelinesSectionPage(TranslatablePage):
         index.SearchField('body'),
     ]
 
-    def save(self,  *args, **kwards):
+    def clear_from_caches(self):
+        target = "sections_and_pages_for_listing"
         try:
-            clear_guidelines_listing_cache(self.language.code)
+            listing_id = self.get_parent().id
+            target = make_template_fragment_key(target, [listing_id])
+            cache.delete(target)
         except Exception:
-            logging.error('Error deleting GuidelinesSectionPage cache')
-            pass
+            logging.warning('Error deleting %s cache', target)
 
-        return super().save(*args, **kwards)
+        target = "pages_for_section"
+        try:
+            target = make_template_fragment_key(target, [self.id])
+            cache.delete(target)
+        except Exception:
+            logging.warning('Error deleting %s cache', target)
+
 
 # TODO: Hide snippets for other languages
 # class CustomizedChooserPanel(SnippetChooserPanel):
@@ -112,9 +132,11 @@ class GuidelinesSectionPage(TranslatablePage):
 #     self.form.fields["more_information_module"].queryset = choices
 #     super().on_form_bound()
 
-class GuidancePage(TranslatablePage):
+
+class GuidancePage(TranslatablePageWithCacheClear):
     """
-    A TranslatablePage class used for the many content pages for each guidelines subsection
+    A TranslatablePage class used for content pages (GuidancePages) within each guidelines section
+    (GuidelinesSectionPages)
     """
 
     parent_page_types = ["guidelines.GuidelinesSectionPage"]
@@ -185,33 +207,26 @@ class GuidancePage(TranslatablePage):
 
         return context
 
-    def save(self, *args, **kwards):
+    def clear_from_caches(self):
+        target = "sections_and_pages_for_listing"
         try:
-            section = self.get_parent()
-            clear_guidelines_listing_cache(self.language.code)
-            clear_guidelines_section_cache(section.id)
+            listing_id = self.get_parent().get_parent().id
+            target = make_template_fragment_key(target, [listing_id])
+            cache.delete(target)
         except Exception:
-            logging.error('Error deleting GuidancePage cache')
-            pass
+            logging.warning('Error deleting %s cache', target)
 
-        return super().save(*args, **kwards)
+        target = "pages_for_section"
+        try:
+            section_id = self.get_parent().id
+            target = make_template_fragment_key(target, [section_id])
+            cache.delete(target)
+        except Exception:
+            logging.warning('Error deleting %s cache', target)
 
-def clear_guidelines_section_cache(section_id):
-    section_key = make_template_fragment_key("guidelines_sections_children", [section_id])
-    cache.delete(section_key)
 
-def clear_guidelines_listing_cache(language_code):
-    guidelines_key = make_template_fragment_key("guidelines_listing_descendant", [language_code])
-    guidelines_footer_key = make_template_fragment_key("guidelines_footer", [language_code])
-    cache.delete_many([guidelines_key, guidelines_footer_key])
-
+@receiver(pre_delete, sender=GuidelinesListingPage)
 @receiver(pre_delete, sender=GuidelinesSectionPage)
 @receiver(pre_delete, sender=GuidancePage)
-def on_guidance_page_delete(sender, instance, **kwargs):
-    """ On a guidance or section page delete, clear the cache for the section and listings pages"""
-    clear_guidelines_listing_cache(instance.language.code)
-
-    if sender.__name__ == 'GuidancePage':
-        section = instance.get_parent()
-        if section.id:
-            clear_guidelines_section_cache(section.id)
+def clear_caches_on_delete(sender, instance, **kwargs):
+    instance.clear_from_caches()

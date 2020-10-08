@@ -8,7 +8,7 @@
         <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{{ footer.footer_content.quick_links_title }}</h2>
         <ul class="govuk-footer__list govuk-footer__list--columns-2">
           {% cache 604800 guidelines_footer request.LANGUAGE_CODE %}
-            {% for item in footer.guildelines_sections %}
+            {% for item in footer.guildelines %}
               <li class="">
                 <a class="govuk-footer__link ictcg-footer__link" title="{{ item.title }}" href="{% pageurl item %}">
                   {{ item.title }}

@@ -22,7 +22,7 @@
           <ul class="govuk-list">
 
             <li class="govuk-body-s ictcg-list-item">{{ page.subtitle }}</li>
-              {% cache 604800 guidelines_sections_children page.id %}
+              {% cache 604800 pages_for_section page.id %}
                 {% for child in page.get_children.live %}
                   <li class="govuk-body-s ictcg-list-item">
                     <a href="{{ child.url}}" class="">{{ child.title }}</a>
