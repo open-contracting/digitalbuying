@@ -12,7 +12,7 @@ from ictcg.base.views import HealthCheck
 
 urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^sitemap.xml/', sitemap),
+    url(r'^sitemap.xml', sitemap),
     url(r'^health-check/', HealthCheck.as_view()),
 ]
 
