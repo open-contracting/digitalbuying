@@ -26,6 +26,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     'ictcg.base',
+    'ictcg.govuk_frontend',
     'ictcg.guidelines',
     'ictcg.streams',
     'ictcg.sponsors',
