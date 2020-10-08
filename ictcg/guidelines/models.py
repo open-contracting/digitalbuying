@@ -22,7 +22,7 @@ from ictcg.guidelines.choices import COLOUR_CHOICES
 from ictcg.streams import blocks
 
 
-class TranslatablePageWithCacheClear(TranslatablePage):
+class CacheClearMixin:
 
     def clear_from_caches(self):
         raise NotImplementedError("clear_from_caches function is required for subclasses")
@@ -32,7 +32,7 @@ class TranslatablePageWithCacheClear(TranslatablePage):
         return super().save(*args, **kwargs)
 
 
-class GuidelinesListingPage(TranslatablePageWithCacheClear):
+class GuidelinesListingPage(CacheClearMixin, TranslatablePage):
     """
     A TranslatablePage class used for the entry to the guidelines section of the site.
     The page lists the sections (GuidelinesSectionPages) within the guidelines.
@@ -61,7 +61,7 @@ class GuidelinesListingPage(TranslatablePageWithCacheClear):
             logging.warning('Error deleting %s cache', target)
 
 
-class GuidelinesSectionPage(TranslatablePageWithCacheClear):
+class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
     """
     A TranslatablePage class used for each section with the guidelines.
     The page lists the pages (GuidancePages) within the section.
@@ -133,7 +133,7 @@ class GuidelinesSectionPage(TranslatablePageWithCacheClear):
 #     super().on_form_bound()
 
 
-class GuidancePage(TranslatablePageWithCacheClear):
+class GuidancePage(CacheClearMixin, TranslatablePage):
     """
     A TranslatablePage class used for content pages (GuidancePages) within each guidelines section
     (GuidelinesSectionPages)
