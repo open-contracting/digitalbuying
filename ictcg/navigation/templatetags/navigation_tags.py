@@ -2,8 +2,7 @@ from django import template
 from django.utils.translation import get_language
 from wagtail.core.models import Page
 from ictcg.navigation.models import MainMenu, FooterMenu
-from ictcg.guidelines.models import GuidelinesListingPage, GuidelinesSectionPage
-from wagtailtrans.models import TranslatablePage
+from ictcg.guidelines.models import GuidelinesListingPage
 import urllib.parse
 
 register = template.Library()
