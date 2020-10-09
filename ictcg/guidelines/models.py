@@ -188,8 +188,8 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
 
     def get_context(self, request, *args, **kwards):
         context = super().get_context(request, *args, **kwards)
-        guidelines = self.get_parent().get_parent()
-        section = self.get_parent()
+        guidelines = GuidelinesListingPage.objects.ancestor_of(self).live().first()
+        section = GuidelinesSectionPage.objects.ancestor_of(self).live().first()
 
         prev_page = self.get_prev_siblings().live().first()
         next_page = self.get_next_siblings().live().first()
