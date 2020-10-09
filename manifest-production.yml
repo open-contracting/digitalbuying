@@ -13,5 +13,5 @@ applications:
     - route: dbg-production-app.london.cloudapps.digital
     - route: www.digitalbuyingguide.org
   env:
-    BLOCK_SEARCH_ENGINES: on
+    BLOCK_SEARCH_ENGINES: false
     DJANGO_DEBUG: false

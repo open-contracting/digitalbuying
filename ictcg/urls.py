@@ -16,12 +16,13 @@ urlpatterns = [
     url(r'^health-check/', HealthCheck.as_view()),
 ]
 
-if os.getenv('BLOCK_SEARCH_ENGINES', 'off') == 'on':
+# Block search engines unless explicitly set. See deployment manifest to activate
+if not os.getenv('BLOCK_SEARCH_ENGINES', 'true') == 'false':
     urlpatterns = [
         url(r'^robots.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"))
     ] + urlpatterns
 
-if settings.DEBUG:
+if settings.DJANGO_DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
     import debug_toolbar

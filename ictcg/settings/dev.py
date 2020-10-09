@@ -1,7 +1,7 @@
 from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DJANGO_DEBUG = True
 
 ANALYTICS_ID = 'UA-xxxxxx-1'
 

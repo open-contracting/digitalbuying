@@ -35,8 +35,8 @@ The Digital Buying Guide is currently deployed on [GOVUK PaaS](https://www.cloud
 The following environment variables should be supplied in the manifest before performing a `cf push`:
 ```
   ANALYTICS_ID: [UA-some-ga-token-1]
-  BLOCK_SEARCH_ENGINES: (on/off)
-  DJANGO_DEBUG: (on/off)
+  BLOCK_SEARCH_ENGINES: (true/false)
+  DJANGO_DEBUG: (true/false)
   DJANGO_SECRET_KEY: [SOME KEY]
 ```
 

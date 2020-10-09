@@ -3,7 +3,8 @@ import dj_database_url
 import json
 import logging
 
-DEBUG = os.getenv('DJANGO_DEBUG', 'off') == 'on'
+# Turn off by default in production
+DJANGO_DEBUG = os.getenv('DJANGO_DEBUG', 'false') == 'true'
 
 ANALYTICS_ID = os.getenv('ANALYTICS_ID', '')
 

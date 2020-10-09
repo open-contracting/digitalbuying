@@ -10,5 +10,6 @@ applications:
   routes:
     - route: dbg-staging-app.london.cloudapps.digital
   env:
-    BLOCK_SEARCH_ENGINES: on
+    BLOCK_SEARCH_ENGINES: true
     DJANGO_DEBUG: false
+    ANALYTICS_ID: UA-xxxxxx-1
