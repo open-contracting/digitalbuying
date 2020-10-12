@@ -73,6 +73,7 @@ class CaseStudyPage(TranslatablePage):
 
     body = StreamField([
         ("rich_text_section", blocks.RichTextWithTitleBlock()),
+        ("simple_rich_text_section", blocks.SimpleRichTextBlock()),
         ("quote_section", blocks.QuoteBlock()),
     ], null=True, blank=True)
 

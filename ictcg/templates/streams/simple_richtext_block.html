@@ -1,0 +1,5 @@
+{% load wagtailcore_tags %}
+
+<section class="ictcg-margin-bottom-6" id="{{self.description|slugify }}">
+  {{ self.content|richtext }}
+</section>
