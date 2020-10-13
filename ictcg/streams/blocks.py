@@ -15,6 +15,14 @@ class SimpleRichTextBlock(blocks.StructBlock):
         template = "streams/simple_richtext_block.html"
 
 
+class InformationBanner(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=120, help_text=_("Banner heading, max length 120 characters"))
+    content = blocks.RichTextBlock(features=('bold', 'italic', 'link', 'document-link', 'hr', 'ul', 'ol'))
+
+    class Meta:
+        template = "streams/information_banner.html"
+
+
 class RichTextWithTitleBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=120, help_text=_("Section title, max length 120 characters"))
     content = blocks.RichTextBlock()

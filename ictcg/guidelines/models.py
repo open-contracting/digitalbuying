@@ -36,6 +36,8 @@ class GuidelinesListingPage(CacheClearMixin, TranslatablePage):
     parent_page_types = ["base.HomePage"]
     subpage_types = ["guidelines.GuidelinesSectionPage"]
 
+    information_banners = StreamField([("information_banner", blocks.InformationBanner())], null=True, blank=True)
+
     introduction = RichTextField(blank=True, default="")
 
     search_fields = Page.search_fields + [
@@ -44,6 +46,7 @@ class GuidelinesListingPage(CacheClearMixin, TranslatablePage):
 
     content_panels = Page.content_panels + [
         FieldPanel('introduction'),
+        StreamFieldPanel('information_banners'),
     ]
 
     def clear_from_caches(self):
@@ -136,6 +139,7 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
 
     parent_page_types = ["guidelines.GuidelinesSectionPage"]
     subpage_types = []
+
 
     introduction = RichTextField(blank=True, default="")
 

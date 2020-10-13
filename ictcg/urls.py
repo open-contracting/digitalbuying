@@ -22,7 +22,7 @@ if not os.getenv('BLOCK_SEARCH_ENGINES', 'true') == 'false':
         url(r'^robots.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"))
     ] + urlpatterns
 
-if settings.DJANGO_DEBUG:
+if settings.DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
     import debug_toolbar
