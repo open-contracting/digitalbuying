@@ -4,7 +4,7 @@ import json
 import logging
 
 # Turn off by default in production
-DJANGO_DEBUG = os.getenv('DJANGO_DEBUG', 'false') == 'true'
+DEBUG = os.getenv('DJANGO_DEBUG', 'false') == 'true'
 
 ANALYTICS_ID = os.getenv('ANALYTICS_ID', '')
 
