@@ -1,0 +1,4 @@
+.ictcg-information-banner {
+  @extend .govuk-error-summary;
+  border: $govuk-border-width solid colour('information');
+}
