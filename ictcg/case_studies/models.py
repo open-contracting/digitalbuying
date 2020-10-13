@@ -1,25 +1,25 @@
 import logging
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
-
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
+from django.utils.translation import ugettext_lazy as _
 
 from wagtailtrans.models import TranslatablePage
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
+
 from taggit.models import TaggedItemBase
 
-from wagtail.admin.edit_handlers import (
-    FieldPanel,
-    StreamFieldPanel,
-)
-from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.core.fields import StreamField
+from wagtail.core.signals import page_published, page_unpublished
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
+
 from ictcg.streams import blocks
+
 
 class CaseStudiesListingPage(TranslatablePage):
     """
@@ -38,8 +38,10 @@ class CaseStudiesListingPage(TranslatablePage):
             context['case_studies']  = CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE).exclude(pk=featured_case_studies.pk).order_by('-publication_date').live()
         return context
 
+
 class CaseStudyGuidelinesSectionTag(TaggedItemBase):
     content_object = ParentalKey('CaseStudyPage', on_delete=models.CASCADE, related_name='case_study_section_items')
+
 
 class CaseStudyPage(TranslatablePage):
     """
@@ -120,12 +122,15 @@ class CaseStudyPage(TranslatablePage):
 
         return super().save(*args, **kwards)
 
+
 def clear_case_study_cache(language_code):
     case_study_block_key = make_template_fragment_key("case_study_block", [language_code])
     case_study_listing_page_key  = make_template_fragment_key("case_study_listing_page", [language_code])
     cache.delete_many([case_study_block_key, case_study_listing_page_key])
 
-@receiver(pre_delete, sender=CaseStudyPage)
+
+@receiver((pre_delete, page_published, page_unpublished), sender=CaseStudyPage)
 def on_guidance_page_delete(sender, instance, **kwargs):
     """ On a CaseStudyPage delete, clear the cache for case_study_block """
     clear_case_study_cache(instance.language.code)
+
