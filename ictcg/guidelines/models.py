@@ -6,15 +6,10 @@ from django.core.cache.utils import make_template_fragment_key
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 
-from wagtailtrans.models import TranslatablePage, Language
-from wagtail.core.models import Orderable, Page
-from wagtail.admin.edit_handlers import (
-    FieldPanel,
-    MultiFieldPanel,
-    StreamFieldPanel,
-    ObjectList,
-    TabbedInterface,
-)
+from wagtailtrans.models import TranslatablePage
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, ObjectList, TabbedInterface
+from wagtail.core.models import Page
+from wagtail.core.signals import page_published, page_unpublished
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
@@ -227,8 +222,10 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
             logging.warning('Error deleting %s cache', target)
 
 
-@receiver(pre_delete, sender=GuidelinesListingPage)
-@receiver(pre_delete, sender=GuidelinesSectionPage)
-@receiver(pre_delete, sender=GuidancePage)
+cache_clear_signals = (pre_delete, page_published, page_unpublished)
+
+@receiver(cache_clear_signals, sender=GuidelinesListingPage)
+@receiver(cache_clear_signals, sender=GuidelinesSectionPage)
+@receiver(cache_clear_signals, sender=GuidancePage)
 def clear_caches_on_delete(sender, instance, **kwargs):
     instance.clear_from_caches()
