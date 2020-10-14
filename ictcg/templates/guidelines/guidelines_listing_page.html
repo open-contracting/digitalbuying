@@ -9,12 +9,12 @@
 
   <div class="govuk-grid-row ictcg-margin-top-8">
 
+    {% for block in page.information_banners %}
+      {% include_block block %}
+    {% endfor %}
+
     <div class="govuk-grid-column-two-thirds">
       <section class="ictcg-margin-bottom-3">
-
-        {% for block in page.information_banners %}
-          {% include_block block %}
-        {% endfor %}
 
         <h1 id="main-title" tabindex="-1">{{ page.title }}</h1>
 
