@@ -9,7 +9,11 @@ applications:
     - dbg-staging-s3-service
   routes:
     - route: dbg-staging-app.london.cloudapps.digital
+  health-check-type: http
+  health-check-http-endpoint: /health-check?format=json
   env:
-    BLOCK_SEARCH_ENGINES: true
     DJANGO_DEBUG: false
+    DJANGO_SETTINGS_MODULE: ictcg.settings.deployed
+    BLOCK_SEARCH_ENGINES: true
+    PRIMARY_ROUTE: https://dbg-staging-app.london.cloudapps.digital
     ANALYTICS_ID: UA-xxxxxx-1
