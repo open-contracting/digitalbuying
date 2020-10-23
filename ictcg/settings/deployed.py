@@ -3,6 +3,7 @@ import dj_database_url
 import json
 import logging
 
+
 # Turn off by default in production
 DEBUG = os.getenv('DJANGO_DEBUG', 'false') == 'true'
 
@@ -19,8 +20,13 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*', ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# Base URL to use when referring to full URLs within the Wagtail admin backend -
+# e.g. in notification emails. Don't include '/admin' or a trailing slash
+BASE_URL = os.getenv('PRIMARY_ROUTE', 'https://www.digitalbuyingguide.org')
 
+EMAIL_BACKEND = 'ictcg.email.NotifyEmailBackend'
+EMAIL_NOTIFY_API_KEY = os.environ['EMAIL_NOTIFY_API_KEY']
+EMAIL_NOTIFY_BASIC_TEMPLATE = "b5b61748-7326-415a-ba44-33c177c82591"
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
 # Javascript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
 # See https://docs.djangoproject.com/en/3.0/ref/contrib/staticfiles/#manifeststaticfilesstorage
@@ -49,7 +55,6 @@ try:
 
     MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 except Exception:
     logging.error('Error configuring S3 media storage')
     pass

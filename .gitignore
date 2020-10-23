@@ -1,9 +1,12 @@
 # Environments
 .env
 env
+.venv
+venv
 *.pyc
 .DS_Store
 *.swp
+.idea
 .vscode
 dist
 node_modules
@@ -13,3 +16,4 @@ coverage
 media
 __pycache__/
 .cache
+ictcg/assets

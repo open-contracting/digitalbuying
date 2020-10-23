@@ -7,14 +7,18 @@ venv
 .DS_Store
 dist
 node_modules
-__pycache__/
+__pycache__
 .idea
 
 # Repo files
 .cfignore
 .gitignore
 .stylelintrc.yml
-/tests/
+tests
 README.md
 dev-requirements.txt
-/.github/
+.github
+
+# Development files
+ictcg/assets
+.cache

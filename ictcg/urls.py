@@ -5,15 +5,15 @@ from django.views.generic import TemplateView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
-from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.contrib.sitemaps.views import sitemap
 
-from ictcg.base.views import HealthCheck
+from health_check.views import MainView
+
 
 urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^sitemap.xml', sitemap),
-    url(r'^health-check/', HealthCheck.as_view()),
+    url(r'^health-check', MainView.as_view()),
 ]
 
 # Block search engines unless explicitly set. See deployment manifest to activate

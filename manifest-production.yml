@@ -12,6 +12,10 @@ applications:
   routes:
     - route: dbg-production-app.london.cloudapps.digital
     - route: www.digitalbuyingguide.org
+  health-check-type: http
+  health-check-http-endpoint: /health-check?format=json
   env:
-    BLOCK_SEARCH_ENGINES: false
     DJANGO_DEBUG: false
+    DJANGO_SETTINGS_MODULE: ictcg.settings.deployed
+    BLOCK_SEARCH_ENGINES: false
+    PRIMARY_ROUTE: https://www.digitalbuyingguide.org
