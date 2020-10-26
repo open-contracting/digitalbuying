@@ -79,6 +79,39 @@ Finally:
 cf delete-service-key [service-name] [some-key-name]
 ```
 
+## Autoscaling
+
+Autoscaling rules are defined in the files:
+
+```
+autoscaling-policy-staging.json
+autoscaling-policy-production.json
+```
+
+For both staging and production
+* An instance will be added if:
+  * cpu or memory breaches 80% usage for 60 seconds
+* An instance will be removed if:
+  * cpu or memory drops below 50% usage for 120 seconds
+
+With a minimum of 2 and a maximum of 10 instances for production and a minimum of 1 and a maximum of 3 for staging.
+
+To update an autoscaling policy:
+
+```
+cf target -o global-digital-marketplace -s <SPACE>
+cf attach-autoscaling-policy <APPNAME> autoscaling-policy-<STAGE>.json
+```
+
+
+
+In the future consider setting this to respond to `responsetime` if we decide we want an SLA based on this metric.
+
+Further reading:
+
+https://docs.cloud.service.gov.uk/managing_apps.html#autoscaling
+https://github.com/cloudfoundry/app-autoscaler/blob/master/docs/Readme.md#concepts-of-autoscaling-policy
+
 ## Translation
 Most transations occur within the CMS itself however there are a number of words/sentences which require manual translation using the translation feature provided by Django.  
 
