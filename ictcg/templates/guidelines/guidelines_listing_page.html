@@ -22,7 +22,7 @@
       </section>
 
       {% cache 604800 sections_and_pages_for_listing page.id %}
-        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default" data-open-text="{% trans 'Open all' %} " data-close-text="{% trans 'Close all' %} ">
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{ page.slug }}" data-open-text="{% trans 'Open all' %} " data-close-text="{% trans 'Close all' %} ">
           {% for section in page.get_children.live %}
             <div class="govuk-accordion__section ">
               <div class="govuk-accordion__section-header">
