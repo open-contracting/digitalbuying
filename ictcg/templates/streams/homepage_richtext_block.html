@@ -1,7 +1,7 @@
 {% load wagtailcore_tags %}
 
 <section 
-  class="ictcg-text-align-{{self.text_alignment}} ictcg-margin-bottom-6 {% if self.width == 'half'%}govuk-grid-column-one-half{% else %}govuk-grid-column-full{% endif %}" 
+  class="ictcg-text-align-{{self.text_alignment}} ictcg-margin-bottom-6 govuk-grid-column-{% if self.width == 'half'%}one-half{% elif self.width == 'two-thirds'%}two-thirds{% else %}full{% endif %}"
   id="{{self.title|slugify }}"
 >
   {% if self.title %}

@@ -45,6 +45,7 @@ class HomePageRichTextBlock(blocks.StructBlock):
     width = blocks.ChoiceBlock(choices=[
         ('full', 'Full Width'),
         ('half', 'Half Width'),
+        ('two-thirds', 'Two Thirds'),
     ], default='full')
 
     text_alignment = TextAlignmentBlock(default='left')
