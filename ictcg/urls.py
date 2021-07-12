@@ -14,6 +14,7 @@ from health_check.views import MainView
 urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^sitemap.xml', sitemap),
+    url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^health-check', MainView.as_view()),
 ]
 
