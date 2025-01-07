@@ -44,7 +44,7 @@ urllib3==1.25.8
 urwid==2.1.0
 wagtail==2.9.3
 wagtailtrans==2.1
-waitress==1.4.3
+waitress==3.0.1
 webencodings==0.5.1
 whitenoise==5.0.1
 Willow==1.3
