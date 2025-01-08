@@ -4,7 +4,6 @@ from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
-from django.utils.translation import gettext_lazy as _
 
 from wagtailtrans.models import TranslatablePage
 from modelcluster.fields import ParentalKey
@@ -58,7 +57,7 @@ class CaseStudyPage(TranslatablePage):
         null=True,
         related_name='+',
         on_delete=models.SET_NULL,
-        help_text=_("Image dimensions should be 1912px wide × 714px high")
+        help_text="Image dimensions should be 1912px wide × 714px high"
     )
 
     header_image_description = models.CharField(max_length=240)
@@ -68,7 +67,7 @@ class CaseStudyPage(TranslatablePage):
     collaborator = models.CharField(max_length=120)
 
     read_time = models.IntegerField(
-        help_text=_("Time taken (in minutes) to read the case study")
+        help_text="Time taken (in minutes) to read the case study"
     )
 
     section_tags = ClusterTaggableManager(through=CaseStudyGuidelinesSectionTag, blank=True)

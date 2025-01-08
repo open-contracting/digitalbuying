@@ -1,6 +1,5 @@
 import logging
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db.models.signals import pre_delete
@@ -94,7 +93,7 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
         max_length=240,
         null=True,
         blank=False,
-        help_text=_("Text to be shown on the guidelines landing page")
+        help_text="Text to be shown on the guidelines landing page"
     )
 
     content_panels = Page.content_panels + [

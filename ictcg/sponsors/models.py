@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -46,21 +45,21 @@ class SponsorItem(Orderable):
         help_text='Title'
     )
 
-    url = models.URLField(blank=True, help_text=_("URL for sponsor link"))
+    url = models.URLField(blank=True, help_text="URL for sponsor link")
 
     logo = models.ForeignKey(
         'wagtailimages.Image',
         blank=False,
         null=True,
         related_name='+',
-        help_text=_('Sponsor image or logo'),
+        help_text='Sponsor image or logo',
         on_delete=models.SET_NULL,
     )
 
     logo_description = models.CharField(
         max_length=240,
         null=True,
-        help_text=_("Alt tag description for sponsor logo")
+        help_text="Alt tag description for sponsor logo"
     )
 
     show_in_footer = models.BooleanField(default=False, blank=True)

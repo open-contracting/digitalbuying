@@ -1,7 +1,6 @@
 import logging
 from django.db import models
 from django.conf import settings
-from django.utils.translation import gettext_lazy as _
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db.models.signals import pre_delete
@@ -43,19 +42,19 @@ class MainMenu(ClusterableModel):
     button_aria_label = models.CharField(
         max_length=100,
         default="Show or hide Top Level Navigation",
-        help_text=_('Description for navigation button aria label'),
+        help_text='Description for navigation button aria label',
     )
 
     navigation_aria_label = models.CharField(
         max_length=100,
         default="Top Level Navigation",
-        help_text=_('Description for navigation aria label'),
+        help_text='Description for navigation aria label',
     )
 
     phase_banner_description = RichTextField(
         blank=True,
         default="",
-        help_text=_('Text area for phase banner description'),
+        help_text='Text area for phase banner description',
     )
 
     panels = [

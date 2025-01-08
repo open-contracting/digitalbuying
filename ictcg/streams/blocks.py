@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 class SimpleRichTextBlock(blocks.StructBlock):
     description = blocks.CharBlock(
         max_length=120,
-        help_text=_("Non visible description, max length 120 characters, used for html id.")
+        help_text="Non visible description, max length 120 characters, used for html id."
     )
     content = blocks.RichTextBlock()
 
@@ -15,7 +15,7 @@ class SimpleRichTextBlock(blocks.StructBlock):
 
 
 class InformationBanner(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=120, help_text=_("Banner heading, max length 120 characters"))
+    heading = blocks.CharBlock(max_length=120, help_text="Banner heading, max length 120 characters")
     content = blocks.RichTextBlock(features=('bold', 'italic', 'link', 'document-link', 'hr', 'ul', 'ol'))
 
     class Meta:
@@ -23,7 +23,7 @@ class InformationBanner(blocks.StructBlock):
 
 
 class RichTextWithTitleBlock(blocks.StructBlock):
-    title = blocks.CharBlock(max_length=120, help_text=_("Section title, max length 120 characters"))
+    title = blocks.CharBlock(max_length=120, help_text="Section title, max length 120 characters")
     content = blocks.RichTextBlock()
 
     class Meta:
@@ -39,7 +39,7 @@ class TextAlignmentBlock(blocks.ChoiceBlock):
 
 
 class HomePageRichTextBlock(blocks.StructBlock):
-    title = blocks.CharBlock(max_length=120, required=False, help_text=_("Section title, max length 120 characters"))
+    title = blocks.CharBlock(max_length=120, required=False, help_text="Section title, max length 120 characters")
 
     width = blocks.ChoiceBlock(choices=[
         ('full', 'Full Width'),
@@ -56,7 +56,7 @@ class HomePageRichTextBlock(blocks.StructBlock):
 
 
 class HighlightListBlock(blocks.StructBlock):
-    title = blocks.CharBlock(max_length=120, help_text=_("Section title, max length 120 characters"))
+    title = blocks.CharBlock(max_length=120, help_text="Section title, max length 120 characters")
     items_list = blocks.ListBlock(blocks.CharBlock(label=_("Item")))
 
     class Meta:
@@ -65,12 +65,11 @@ class HighlightListBlock(blocks.StructBlock):
 
 
 class CaseStudyBlock(blocks.StructBlock):
-    title = blocks.CharBlock(max_length=120, help_text=_(
-        "Section title, max length 120 characters"))
+    title = blocks.CharBlock(max_length=120, help_text="Section title, max length 120 characters")
     text_alignment = TextAlignmentBlock(default='left')
     content = blocks.RichTextBlock()
 
-    button_text = blocks.CharBlock(max_length=120, required=False, help_text=_("Text for button"))
+    button_text = blocks.CharBlock(max_length=120, required=False, help_text="Text for button")
     button_link = blocks.PageChooserBlock()
 
     class Meta:
@@ -79,11 +78,11 @@ class CaseStudyBlock(blocks.StructBlock):
 
 
 class DoOrDontCard(blocks.StructBlock):
-    item = blocks.CharBlock(max_length=250, help_text=_("Item text"))
+    item = blocks.CharBlock(max_length=250, help_text="Item text")
 
 
 class DosAndDontsBlock(blocks.StructBlock):
-    title = blocks.CharBlock(max_length=200, help_text=_("Do's and dont's title"))
+    title = blocks.CharBlock(max_length=200, help_text="Do's and dont's title")
 
     dos = blocks.ListBlock(
         DoOrDontCard()
@@ -100,21 +99,21 @@ class DosAndDontsBlock(blocks.StructBlock):
 
 
 class QuoteBlock(blocks.StructBlock):
-    quote = blocks.CharBlock(max_length=300, help_text=_("Quote"))
-    attribution = blocks.CharBlock(max_length=120, help_text=_("Quote attribution"))
+    quote = blocks.CharBlock(max_length=300, help_text="Quote")
+    attribution = blocks.CharBlock(max_length=120, help_text="Quote attribution")
 
     class Meta:
         template = "streams/quote_block.html"
 
 
 class LogoItem(blocks.StructBlock):
-    logo = ImageChooserBlock(required=True, help_text=_("Logo of supporter"))
-    url = blocks.URLBlock(max_length=250, help_text=_("URL of supporter"))
-    logo_description = blocks.CharBlock(max_length=250, help_text=_("Alt description for the image"))
+    logo = ImageChooserBlock(required=True, help_text="Logo of supporter")
+    url = blocks.URLBlock(max_length=250, help_text="URL of supporter")
+    logo_description = blocks.CharBlock(max_length=250, help_text="Alt description for the image")
 
 
 class SupportersBlock(blocks.StructBlock):
-    title = blocks.CharBlock(max_length=200, help_text=_("Do's and dont's title"))
+    title = blocks.CharBlock(max_length=200, help_text="Do's and dont's title")
     introduction = blocks.RichTextBlock()
 
     logos = blocks.ListBlock(

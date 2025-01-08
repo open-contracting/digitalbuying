@@ -30,7 +30,7 @@ class HomePage(TranslatablePage):
     masthead_title = models.CharField(
         max_length=240,
         null=True,
-        help_text=_("Title for masthead component")
+        help_text="Title for masthead component"
     )
 
     masthead_description = RichTextField(blank=True, default="")
@@ -47,7 +47,7 @@ class HomePage(TranslatablePage):
         max_length=240,
         null=True,
         blank=True,
-        help_text=_("Title for link")
+        help_text="Title for link"
     )
 
     masthead_image = models.ForeignKey(
@@ -62,7 +62,7 @@ class HomePage(TranslatablePage):
         max_length=240,
         null=True,
         blank=True,
-        help_text=_("Alt tag description for image")
+        help_text="Alt tag description for image"
     )
 
     body = StreamField([
@@ -117,7 +117,7 @@ class GenericPageWithSubNav(TranslatablePage):
         max_length=120,
         null=True,
         blank=True,
-        help_text=_("Title for Navigation")
+        help_text="Title for Navigation"
     )
 
     body = StreamField([

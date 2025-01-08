@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from django.utils.translation import gettext_lazy as _
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 from wagtail.core.models import Orderable
@@ -28,7 +27,7 @@ class KeyModuleFields(models.Model):
         max_length=140,
         blank=False,
         null=True,
-        help_text=_('Title to appear in the admin area')
+        help_text='Title to appear in the admin area'
     )
 
     title = models.CharField(
@@ -55,7 +54,7 @@ class Links(models.Model):
     link_text = models.CharField(
         max_length=140,
         blank=True,
-        help_text=_('Text for link')
+        help_text='Text for link'
     )
 
     url = models.URLField(null=True, blank=True)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-08 21:00+0000\n"
+"POT-Creation-Date: 2025-01-08 21:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ictcg/base/models.py:33
-msgid "Title for masthead component"
-msgstr ""
-
-#: ictcg/base/models.py:50
-msgid "Title for link"
-msgstr ""
-
-#: ictcg/base/models.py:65
-msgid "Alt tag description for image"
-msgstr ""
-
 #: ictcg/base/models.py:89
 msgid "Masthead"
 msgstr ""
@@ -38,36 +26,12 @@ msgstr ""
 msgid "Please enter description for the masthead image"
 msgstr ""
 
-#: ictcg/base/models.py:120
-msgid "Title for Navigation"
-msgstr ""
-
-#: ictcg/case_studies/models.py:61
-msgid "Image dimensions should be 1912px wide × 714px high"
-msgstr ""
-
-#: ictcg/case_studies/models.py:71
-msgid "Time taken (in minutes) to read the case study"
-msgstr ""
-
-#: ictcg/guidelines/models.py:97
-msgid "Text to be shown on the guidelines landing page"
-msgstr ""
-
 #: ictcg/modules/admin.py:10
 msgid "More information module"
 msgstr ""
 
 #: ictcg/modules/admin.py:22
 msgid "Links module"
-msgstr ""
-
-#: ictcg/modules/models.py:31
-msgid "Title to appear in the admin area"
-msgstr ""
-
-#: ictcg/modules/models.py:58
-msgid "Text for link"
 msgstr ""
 
 #: ictcg/navigation/admin.py:9
@@ -80,18 +44,6 @@ msgstr ""
 
 #: ictcg/navigation/admin.py:27
 msgid "Menus"
-msgstr ""
-
-#: ictcg/navigation/models.py:46
-msgid "Description for navigation button aria label"
-msgstr ""
-
-#: ictcg/navigation/models.py:52
-msgid "Description for navigation aria label"
-msgstr ""
-
-#: ictcg/navigation/models.py:58
-msgid "Text area for phase banner description"
 msgstr ""
 
 #: ictcg/settings.py:250
@@ -110,65 +62,12 @@ msgstr ""
 msgid "Sponsor Logos"
 msgstr ""
 
-#: ictcg/sponsors/models.py:49
-msgid "URL for sponsor link"
-msgstr ""
-
-#: ictcg/sponsors/models.py:56
-msgid "Sponsor image or logo"
-msgstr ""
-
-#: ictcg/sponsors/models.py:63
-msgid "Alt tag description for sponsor logo"
-msgstr ""
-
-#: ictcg/streams/blocks.py:9
-msgid "Non visible description, max length 120 characters, used for html id."
-msgstr ""
-
-#: ictcg/streams/blocks.py:18
-msgid "Banner heading, max length 120 characters"
-msgstr ""
-
-#: ictcg/streams/blocks.py:26 ictcg/streams/blocks.py:42
-#: ictcg/streams/blocks.py:59 ictcg/streams/blocks.py:69
-msgid "Section title, max length 120 characters"
-msgstr ""
-
 #: ictcg/streams/blocks.py:60
 msgid "Item"
 msgstr ""
 
-#: ictcg/streams/blocks.py:73
-msgid "Text for button"
-msgstr ""
-
-#: ictcg/streams/blocks.py:82
-msgid "Item text"
-msgstr ""
-
-#: ictcg/streams/blocks.py:86 ictcg/streams/blocks.py:117
-msgid "Do's and dont's title"
-msgstr ""
-
-#: ictcg/streams/blocks.py:103
-msgid "Quote"
-msgstr ""
-
-#: ictcg/streams/blocks.py:104
-msgid "Quote attribution"
-msgstr ""
-
-#: ictcg/streams/blocks.py:111
-msgid "Logo of supporter"
-msgstr ""
-
-#: ictcg/streams/blocks.py:112
-msgid "URL of supporter"
-msgstr ""
-
-#: ictcg/streams/blocks.py:113
-msgid "Alt description for the image"
+#: ictcg/streams/blocks.py:69
+msgid "Section title, max length 120 characters"
 msgstr ""
 
 #: ictcg/templates/base.html:36
