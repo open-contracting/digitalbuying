@@ -1,6 +1,5 @@
 from wagtail.tests.utils import WagtailPageTests
 from wagtail.core import blocks
-from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.images.blocks import ImageChooserBlock
 from ictcg.streams import blocks as ictgs_blocks
 
@@ -15,10 +14,12 @@ class RichTextBlockTests(WagtailPageTests):
 
     def test_rich_text_block_count(self):
         child_blocks = ictgs_blocks.RichTextWithTitleBlock().child_blocks
-        self.assertEquals(len(child_blocks), 2)
+        self.assertEqual(len(child_blocks), 2)
 
     def test_rich_text_block_template(self):
-        self.assertEquals(ictgs_blocks.RichTextWithTitleBlock().get_template(), 'streams/richtext_block.html')
+        self.assertEqual(
+            ictgs_blocks.RichTextWithTitleBlock().get_template(), 'streams/richtext_with_title_block.html'
+        )
 
 class TextAlignmentBlockTests(WagtailPageTests):
     def test_text_alignment_block_subclass(self):
@@ -38,10 +39,10 @@ class HomePageRichTextBlockTests(WagtailPageTests):
 
     def test_home_page_rich_text_block_count(self):
         child_blocks = ictgs_blocks.HomePageRichTextBlock().child_blocks
-        self.assertEquals(len(child_blocks), 4)
+        self.assertEqual(len(child_blocks), 4)
 
     def test_home_page_rich_text_block_template(self):
-        self.assertEquals(ictgs_blocks.HomePageRichTextBlock().get_template(), 'streams/homepage_richtext_block.html')
+        self.assertEqual(ictgs_blocks.HomePageRichTextBlock().get_template(), 'streams/homepage_richtext_block.html')
 
 
 class HighlightListBlockTests(WagtailPageTests):
@@ -55,10 +56,10 @@ class HighlightListBlockTests(WagtailPageTests):
 
     def test_highlight_list_block_count(self):
         child_blocks = ictgs_blocks.HighlightListBlock().child_blocks
-        self.assertEquals(len(child_blocks), 2)
+        self.assertEqual(len(child_blocks), 2)
 
     def test_highlight_list_block_template(self):
-        self.assertEquals(ictgs_blocks.HighlightListBlock().get_template(), 'streams/highlight_list_block.html')
+        self.assertEqual(ictgs_blocks.HighlightListBlock().get_template(), 'streams/highlight_list_block.html')
 
 
 class CaseStudyBlockTests(WagtailPageTests):
@@ -75,10 +76,10 @@ class CaseStudyBlockTests(WagtailPageTests):
 
     def test_case_study_block_count(self):
         child_blocks = ictgs_blocks.CaseStudyBlock().child_blocks
-        self.assertEquals(len(child_blocks), 5)
+        self.assertEqual(len(child_blocks), 5)
 
     def test_case_study_block_template(self):
-        self.assertEquals(ictgs_blocks.CaseStudyBlock().get_template(), 'streams/case_study_block.html')
+        self.assertEqual(ictgs_blocks.CaseStudyBlock().get_template(), 'streams/case_study_block.html')
 
 class DoDontCardTests(WagtailPageTests):
     def test_do_dont_card_subclass(self):
@@ -90,7 +91,7 @@ class DoDontCardTests(WagtailPageTests):
     
     def test_do_dont_card_input_types_count(self):
         child_blocks = ictgs_blocks.DoOrDontCard().child_blocks
-        self.assertEquals(len(child_blocks), 1)
+        self.assertEqual(len(child_blocks), 1)
 
 class DoDontBlockTests(WagtailPageTests):
     def test_do_dont_block_subclass(self):
@@ -104,10 +105,10 @@ class DoDontBlockTests(WagtailPageTests):
     
     def test_do_dont_block_input_types_count(self):
         child_blocks = ictgs_blocks.DosAndDontsBlock().child_blocks
-        self.assertEquals(len(child_blocks), 3)
+        self.assertEqual(len(child_blocks), 3)
 
     def test_do_dont_block_template(self):
-        self.assertEquals(ictgs_blocks.DosAndDontsBlock().get_template(), 'streams/do_dont_list.html')
+        self.assertEqual(ictgs_blocks.DosAndDontsBlock().get_template(), 'streams/do_dont_list.html')
 
 class QuoteBlockTests(WagtailPageTests):
     def test_quote_block_subclass(self):
@@ -120,27 +121,10 @@ class QuoteBlockTests(WagtailPageTests):
     
     def test_do_dont_block_input_types_count(self):
         child_blocks = ictgs_blocks.QuoteBlock().child_blocks
-        self.assertEquals(len(child_blocks), 2)
+        self.assertEqual(len(child_blocks), 2)
 
     def test_quote_block_template(self):
-        self.assertEquals(ictgs_blocks.QuoteBlock().get_template(), 'streams/quote_block.html')
-
-class CookieTableBlockTests(WagtailPageTests):
-    def test_cookie_table_block_subclass(self):
-        assert issubclass(ictgs_blocks.CookieTableBlock, blocks.StructBlock)
-
-    def test_cookie_table_block_input_types(self):
-        child_blocks = ictgs_blocks.CookieTableBlock().child_blocks
-        assert type(child_blocks['title']) is blocks.CharBlock
-        assert type(child_blocks['content']) is blocks.RichTextBlock
-        assert type(child_blocks['table']) is TableBlock
-    
-    def test_cookie_table_block_input_types_count(self):
-        child_blocks = ictgs_blocks.CookieTableBlock().child_blocks
-        self.assertEquals(len(child_blocks), 3)
-
-    def test_cookie_table_block_template(self):
-        self.assertEquals(ictgs_blocks.CookieTableBlock().get_template(), 'streams/cookie_block.html')
+        self.assertEqual(ictgs_blocks.QuoteBlock().get_template(), 'streams/quote_block.html')
 
 class LogoItemTests(WagtailPageTests):
     def test_logo_item_block_subclass(self):
@@ -154,7 +138,7 @@ class LogoItemTests(WagtailPageTests):
     
     def test_ogo_item_block_input_types_count(self):
         child_blocks = ictgs_blocks.LogoItem().child_blocks
-        self.assertEquals(len(child_blocks), 3)
+        self.assertEqual(len(child_blocks), 3)
 
 class SupportersBlockTests(WagtailPageTests):
     def test_supporters_block_subclass(self):
@@ -168,7 +152,7 @@ class SupportersBlockTests(WagtailPageTests):
     
     def test_supporters_block_input_types_count(self):
         child_blocks = ictgs_blocks.SupportersBlock().child_blocks
-        self.assertEquals(len(child_blocks), 3)
+        self.assertEqual(len(child_blocks), 3)
 
     def test_supporters_block_template(self):
-        self.assertEquals(ictgs_blocks.SupportersBlock().get_template(), 'streams/supports_block.html')
+        self.assertEqual(ictgs_blocks.SupportersBlock().get_template(), 'streams/supports_block.html')

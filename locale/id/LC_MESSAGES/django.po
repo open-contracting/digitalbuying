@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 09:46+0000\n"
+"POT-Creation-Date: 2025-01-08 21:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,39 +18,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ictcg/base/models.py:34
+#: ictcg/base/models.py:33
 msgid "Title for masthead component"
 msgstr ""
 
-#: ictcg/base/models.py:51
+#: ictcg/base/models.py:50
 msgid "Title for link"
 msgstr ""
 
-#: ictcg/base/models.py:66
+#: ictcg/base/models.py:65
 msgid "Alt tag description for image"
 msgstr ""
 
-#: ictcg/base/models.py:90
+#: ictcg/base/models.py:89
 msgid "Masthead"
 msgstr ""
 
-#: ictcg/base/models.py:105
+#: ictcg/base/models.py:104
 msgid "Please enter description for the masthead image"
 msgstr ""
 
-#: ictcg/base/models.py:121
+#: ictcg/base/models.py:120
 msgid "Title for Navigation"
 msgstr ""
 
-#: ictcg/case_studies/models.py:59
+#: ictcg/case_studies/models.py:61
 msgid "Image dimensions should be 1912px wide × 714px high"
 msgstr ""
 
-#: ictcg/case_studies/models.py:69
+#: ictcg/case_studies/models.py:71
 msgid "Time taken (in minutes) to read the case study"
 msgstr ""
 
-#: ictcg/guidelines/models.py:81
+#: ictcg/guidelines/models.py:97
 msgid "Text to be shown on the guidelines landing page"
 msgstr ""
 
@@ -94,23 +94,15 @@ msgstr ""
 msgid "Text area for phase banner description"
 msgstr ""
 
-#: ictcg/navigation/models.py:70
-msgid "Text area for cookie banner description"
-msgstr ""
-
-#: ictcg/navigation/models.py:77
-msgid "Text for cookie accept button"
-msgstr ""
-
-#: ictcg/settings/base.py:143
+#: ictcg/settings.py:250
 msgid "English"
 msgstr ""
 
-#: ictcg/settings/base.py:144
+#: ictcg/settings.py:251
 msgid "LA Spanish"
 msgstr ""
 
-#: ictcg/settings/base.py:145
+#: ictcg/settings.py:252
 msgid "Bahasa"
 msgstr ""
 
@@ -130,103 +122,58 @@ msgstr ""
 msgid "Alt tag description for sponsor logo"
 msgstr ""
 
-#: ictcg/streams/blocks.py:7 ictcg/streams/blocks.py:21
-#: ictcg/streams/blocks.py:36 ictcg/streams/blocks.py:45
-#: ictcg/streams/blocks.py:87
+#: ictcg/streams/blocks.py:9
+msgid "Non visible description, max length 120 characters, used for html id."
+msgstr ""
+
+#: ictcg/streams/blocks.py:18
+msgid "Banner heading, max length 120 characters"
+msgstr ""
+
+#: ictcg/streams/blocks.py:26 ictcg/streams/blocks.py:42
+#: ictcg/streams/blocks.py:59 ictcg/streams/blocks.py:69
 msgid "Section title, max length 120 characters"
 msgstr ""
 
-#: ictcg/streams/blocks.py:37
+#: ictcg/streams/blocks.py:60
 msgid "Item"
 msgstr ""
 
-#: ictcg/streams/blocks.py:49
+#: ictcg/streams/blocks.py:73
 msgid "Text for button"
 msgstr ""
 
-#: ictcg/streams/blocks.py:58
+#: ictcg/streams/blocks.py:82
 msgid "Item text"
 msgstr ""
 
-#: ictcg/streams/blocks.py:62 ictcg/streams/blocks.py:101
+#: ictcg/streams/blocks.py:86 ictcg/streams/blocks.py:117
 msgid "Do's and dont's title"
 msgstr ""
 
-#: ictcg/streams/blocks.py:79
+#: ictcg/streams/blocks.py:103
 msgid "Quote"
 msgstr ""
 
-#: ictcg/streams/blocks.py:80
+#: ictcg/streams/blocks.py:104
 msgid "Quote attribution"
 msgstr ""
 
-#: ictcg/streams/blocks.py:96
+#: ictcg/streams/blocks.py:111
 msgid "Logo of supporter"
 msgstr ""
 
-#: ictcg/streams/blocks.py:97
+#: ictcg/streams/blocks.py:112
 msgid "URL of supporter"
 msgstr ""
 
-#: ictcg/streams/blocks.py:98
+#: ictcg/streams/blocks.py:113
 msgid "Alt description for the image"
 msgstr ""
 
-#: ictcg/templates/404.html:6 ictcg/templates/500.html:6
-#: ictcg/templates/includes/header.html:12
-msgid "Digital Buying Guide"
-msgstr "Panduan Pembelian Digital"
-
-#: ictcg/templates/404.html:6 ictcg/templates/404.html:9
-msgid "Page not found"
-msgstr "Laman tidak ditemukan"
-
-#: ictcg/templates/404.html:11
-msgid "If you typed the web address, check it is correct."
-msgstr ""
-"Apabila Anda mengetik alamat web, pastikan alamat web tersebut sudah benar."
-
-#: ictcg/templates/404.html:13
-msgid "If you pasted the web address, check you copied the entire address."
-msgstr ""
-"Apabila Anda menempel alamat web, pastikan Anda telah menyalin seluruh "
-"alamat."
-
-#: ictcg/templates/404.html:15 ictcg/templates/base/cookie_page.html:17
-msgid "Go back to home"
-msgstr "Kembali ke beranda"
-
-#: ictcg/templates/500.html:6
-msgid "Error"
-msgstr ""
-
-#: ictcg/templates/500.html:9
-msgid "Sorry, there is a problem with the service"
-msgstr "Maaf, layanan sedang bermasalah"
-
-#: ictcg/templates/500.html:11
-msgid "Try again later"
-msgstr "Coba lagi nanti."
-
-#: ictcg/templates/500.html:13
-msgid ""
-"If the web address is correct or you selected a link or button and you wish "
-"to report the broken link"
-msgstr ""
-"Apabila alamat web benar atau Anda memilih tautan atau tombol dan Anda ingin "
-"melaporkan tautan yang rusak,"
-
-#: ictcg/templates/500.html:13
-msgid "please contact us at digitalbuyingguide@digital.cabinet-office.gov.uk"
-msgstr "hubungilah kami di digitalbuyingguide@digital.cabinet-office.gov.uk"
-
-#: ictcg/templates/base.html:37
+#: ictcg/templates/base.html:36
 msgid "Skip to main content"
 msgstr "Lewati ke konten utama"
-
-#: ictcg/templates/base/cookie_page.html:15
-msgid "Your cookie settings were saved"
-msgstr "Pengaturan cookie Anda disimpan"
 
 #: ictcg/templates/base/generic_page_with_sub_nav.html:16
 #: ictcg/templates/sponsors/sponsors_page.html:16
@@ -251,11 +198,11 @@ msgstr "menit baca"
 msgid "Tags:"
 msgstr "Tag:"
 
-#: ictcg/templates/guidelines/guidelines_listing_page.html:19
+#: ictcg/templates/guidelines/guidelines_listing_page.html:25
 msgid "Open all"
 msgstr "Buka semua"
 
-#: ictcg/templates/guidelines/guidelines_listing_page.html:19
+#: ictcg/templates/guidelines/guidelines_listing_page.html:25
 msgid "Close all"
 msgstr "Tutup semua"
 
@@ -274,7 +221,7 @@ msgstr "Kembali ke "
 
 #: ictcg/templates/includes/footer.html:49
 #: ictcg/templates/includes/footer.html:65
-#: ictcg/templates/includes/header.html:25
+#: ictcg/templates/includes/header.html:21
 #: ictcg/templates/includes/links-module.html:11
 #: ictcg/templates/includes/social-links.html:16
 #: ictcg/templates/includes/social-links.html:29
@@ -308,9 +255,13 @@ msgstr "Open Government Licence v3.0"
 msgid "except where otherwise stated"
 msgstr "kecuali jika dinyatakan lain"
 
-#: ictcg/templates/includes/header.html:11
+#: ictcg/templates/includes/header.html:7
 msgid "Go to the Digital Buying Guide homepage"
 msgstr "Kembali ke Panduan Pembelian Digital Laman beranda"
+
+#: ictcg/templates/includes/header.html:8
+msgid "Digital Buying Guide"
+msgstr "Panduan Pembelian Digital"
 
 #: ictcg/templates/includes/pagination.html:9
 msgid "Previous"
@@ -372,22 +323,6 @@ msgstr "Bagikan studi kasus ke Email"
 #: ictcg/templates/includes/social-links.html:54
 msgid "Email"
 msgstr "Email"
-
-#: ictcg/templates/streams/analytics_cookie_block.html:16
-msgid "Do you want to accept analytics cookies?"
-msgstr "Apakah Anda ingin menerima cookie analisis?"
-
-#: ictcg/templates/streams/analytics_cookie_block.html:21
-msgid "Yes"
-msgstr "Ya"
-
-#: ictcg/templates/streams/analytics_cookie_block.html:25
-msgid "No"
-msgstr "Tidak"
-
-#: ictcg/templates/streams/analytics_cookie_block.html:30
-msgid "Save cookie setting"
-msgstr "Simpan pengaturan cookie"
 
 #: ictcg/templates/streams/do_dont_list.html:6
 msgid "Do"

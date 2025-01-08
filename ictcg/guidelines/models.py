@@ -1,6 +1,6 @@
 import logging
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db.models.signals import pre_delete
@@ -13,8 +13,14 @@ from wagtail.core.signals import page_published, page_unpublished
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
-from ictcg.guidelines.choices import COLOUR_CHOICES
 from ictcg.streams import blocks
+
+COLOUR_CHOICES = (
+    ('primary-1', 'Primary 1'),
+    ('primary-2', 'Primary 2'),
+    ('primary-3', 'Primary 3'),
+    ('primary-4', 'Primary 4'),
+)
 
 
 class CacheClearMixin:
@@ -119,16 +125,6 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
             cache.delete(target)
         except Exception:
             logging.warning('Error deleting %s cache', target)
-
-
-# TODO: Hide snippets for other languages
-# class CustomizedChooserPanel(SnippetChooserPanel):
-#   def on_form_bound(self):
-#     page_language = self.form.initial['language']
-#     language_code = Language.objects.get(id=page_language)
-#     choices = MoreInformationModule.objects.filter(language=language_code.code)
-#     self.form.fields["more_information_module"].queryset = choices
-#     super().on_form_bound()
 
 
 class GuidancePage(CacheClearMixin, TranslatablePage):

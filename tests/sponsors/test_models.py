@@ -19,7 +19,7 @@ class SponsorTests(TestCase):
 	def test_sponsor_object_name(self):
 		sponsor = Sponsor.objects.get(language="en")
 		object_string = f'Sponsors - {sponsor.language}'
-		self.assertEquals(object_string, str(sponsor))
+		self.assertEqual(object_string, str(sponsor))
 	
 	@patch('ictcg.sponsors.models.clear_sponsors_footer_cache')
 	def test_clear_sponsors_footer_cache_is_called_on_save(self, mock):

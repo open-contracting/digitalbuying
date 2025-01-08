@@ -1,26 +1,10 @@
-{% load static wagtailuserbar wagtailcore_tags i18n base_tags %}
-{% get_analytics_id as analytics_id %}
+{% load static wagtailcore_tags i18n %}
 
 <!DOCTYPE html>
-<html class="" lang="{{ page.language.code }}">
+<html lang="{{ page.language.code }}">
 
 <head>
   <meta charset="utf-8" />
-
-  <!-- Disable Google Analytics unless explicit consent set in cookie-->
-  <script>
-    window['ga-disable-{{ analytics_id }}'] = Object.fromEntries( document.cookie.split('; ').map( x => x.split('=')) ).analytics !== "true"
-  </script>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ analytics_id }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', '{{ analytics_id }}', {'site_speed_sample_rate': 100});
-  </script>
 
   <title>
     {% block title %}
@@ -49,7 +33,6 @@
 </head>
 
 <body class="govuk-template__body {% block body_class %}{% endblock %}">
-
   <a href="#main-title" class="govuk-skip-link">{% trans 'Skip to main content' %}</a>
 
   {% include "includes/header.html" %}

@@ -1,19 +1,32 @@
-# Environments
-.env
-env
-.venv
-venv
-*.pyc
-.DS_Store
+# Editor
 *.swp
-.idea
-.vscode
-dist
+*~
+
+# Virtual environment
+/.ve
+/venv
+
+# Bytecode
+__pycache__
+*.pyc
+
+# Coverage
+/.coverage
+/htmlcov
+
+# Sphinx
+/docs/_build
+
+# Django
+/media
+/static
+*.mo
+
+# Node
 node_modules
-.eslintcache
 npm-debug.log
-coverage
-media
-__pycache__/
-.cache
-ictcg/assets
+
+# Project-specific
+/cache
+/assets
+/ictcg/assets

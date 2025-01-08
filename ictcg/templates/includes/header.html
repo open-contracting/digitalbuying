@@ -1,10 +1,6 @@
 {% load static wagtailimages_tags navigation_tags i18n cache %}
 {% main_menu request.LANGUAGE_CODE as mainmenu %}
 
-{% if mainmenu.cookie_page.url %}
-  {% include "includes/cookie-banner.html" %}
-{% endif %}
-
 <header class="ictcg-header " role="banner" data-module="ictcg-header-mainmenu">
   <div class="ictcg-header__container govuk-width-container">
     <div class="ictcg-header__logo">

@@ -19,7 +19,7 @@ class MainMenuTests(TestCase):
 		main_menu = MainMenu.objects.get(title__exact="test title 1")
 		language = dict(settings.LANGUAGES)
 		object_string = f'{main_menu.title} - {language[main_menu.language]}'
-		self.assertEquals(object_string, str(main_menu))
+		self.assertEqual(object_string, str(main_menu))
 	
 	@patch('ictcg.navigation.models.clear_mainmenu_cache')
 	def test_clear_mainmenu_cache_is_called_on_save(self, mock):
@@ -61,7 +61,7 @@ class FooterMenuTests(TestCase):
 		footer_menu = FooterMenu.objects.get(admin_title__exact="Footer title 1")
 		language = dict(settings.LANGUAGES)
 		object_string = f'{footer_menu.admin_title} - {language[footer_menu.language]}'
-		self.assertEquals(object_string, str(footer_menu))
+		self.assertEqual(object_string, str(footer_menu))
 	
 	@patch('ictcg.navigation.models.clear_footer_cache')
 	def test_clear_footer_cache_is_called_on_save(self, mock):

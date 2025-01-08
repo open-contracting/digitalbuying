@@ -37,9 +37,9 @@ class CaseStudiesListingPageTests(WagtailPageTests):
         featured_case_study = response.context['featured_case_studies']
         case_studies = response.context['case_studies']
 
-        self.assertEquals(featured_case_study.pk, 13)
-        self.assertEquals(case_studies[0].pk, 12)
-        self.assertEquals(case_studies[1].pk, 14)
+        self.assertEqual(featured_case_study.pk, 13)
+        self.assertEqual(case_studies[0].pk, 12)
+        self.assertEqual(case_studies[1].pk, 14)
 
 class CaseStudyGuidelinesSectionTagTests(WagtailPageTests):
 
@@ -67,7 +67,7 @@ class CaseStudyPageTests(WagtailPageTests):
         
         self.assertFalse('prev_page' in response.context)
         self.assertTrue('next_page' in response.context)
-        self.assertEquals(response.context['next_page'].pk, 12)
+        self.assertEqual(response.context['next_page'].pk, 12)
     
     def test_case_studies_article_pagination_links_ordered_by_publication_date_middle_page(self):
         # A middle page  article (order by publication_date) should have a next page link and a prev link
@@ -75,8 +75,8 @@ class CaseStudyPageTests(WagtailPageTests):
         
         self.assertTrue('prev_page' in response.context)
         self.assertTrue('next_page' in response.context)
-        self.assertEquals(response.context['prev_page'].pk, 13)
-        self.assertEquals(response.context['next_page'].pk, 14)
+        self.assertEqual(response.context['prev_page'].pk, 13)
+        self.assertEqual(response.context['next_page'].pk, 14)
 
     def test_case_studies_article_pagination_links_ordered_by_publication_date_lasr_page(self):
         # The last page (order by publication_date) should have a prev link but no next link
@@ -84,7 +84,7 @@ class CaseStudyPageTests(WagtailPageTests):
         
         self.assertTrue('prev_page' in response.context)
         self.assertFalse('next_page' in response.context)
-        self.assertEquals(response.context['prev_page'].pk, 12)
+        self.assertEqual(response.context['prev_page'].pk, 12)
     
     @patch('ictcg.case_studies.models.clear_case_study_cache')
     def test_clear_cache_is_called_on_save(self, mock):

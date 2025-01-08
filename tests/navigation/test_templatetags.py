@@ -53,12 +53,12 @@ class TemplateTagsMainMenuTests(TestCase):
         menu = main_menu('en')
         language = dict(settings.LANGUAGES)
         object_string = f'{menu.title} - {language[menu.language]}'
-        self.assertEquals(object_string, str(menu))
+        self.assertEqual(object_string, str(menu))
 
     def test_get_main_menu_when_no_language_passed(self):
         # When a menu is not found, should return english by default
         menu = main_menu('it')
-        self.assertEquals('main menu - English', str(menu))
+        self.assertEqual('main menu - English', str(menu))
 
     def test_is_main_menu_link_active(self):
         # Should return true when the menu item link property is also in the requested url
@@ -74,7 +74,7 @@ class TemplateTagsFooterTests(TestCase):
         # Get Footer based on the selected language
         footer = get_footer_content()
 
-        self.assertTrue('guildelines_sections' in footer)
+        self.assertTrue('guildelines' in footer)
         self.assertTrue('footer_content' in footer)
         self.assertEqual(len(footer), 2)
       

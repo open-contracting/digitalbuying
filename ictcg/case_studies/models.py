@@ -4,7 +4,7 @@ from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from wagtailtrans.models import TranslatablePage
 from modelcluster.fields import ParentalKey

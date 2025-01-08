@@ -40,8 +40,8 @@ class GuidelinesSectionPageTests(WagtailPageTests):
     def test_section_page_inherits_from_translatable_page_class(self):
         assert issubclass(GuidelinesListingPage, TranslatablePage)
 
-    @patch('ictcg.guidelines.models.clear_guidelines_listing_cache')
-    def test_clear_cache_is_called_on_save(self, mock):
+    @patch('ictcg.guidelines.models.GuidelinesSectionPage.clear_from_caches')
+    def test_clear_cache_is_called_on_save(self, clear_from_caches):
         # When save is called on a GuidelinesSectionPage class clear_guidelines_listing_cache should be called
         GuidelinesSectionPage.objects.create(
             path='00010002000100010003', 
@@ -52,8 +52,8 @@ class GuidelinesSectionPageTests(WagtailPageTests):
             title='Test section page'
         )
 
-        self.assertTrue(mock.called)
-        self.assertEqual(mock.call_count, 1)
+        self.assertTrue(clear_from_caches.called)
+        self.assertEqual(clear_from_caches.call_count, 1)
     
     def test_section_page_should_include_pagination_link_to_first_child_page(self):
         response = self.client.get('/en/guidelines/prepare-and-plan/')
@@ -80,8 +80,8 @@ class GuidancePageTests(WagtailPageTests):
         
         self.assertTrue('prev_page' in response.context)
         self.assertTrue('next_page' in response.context)
-        self.assertEquals(response.context['prev_page'].pk, 7)
-        self.assertEquals(response.context['next_page'].pk, 10)
+        self.assertEqual(response.context['prev_page'].pk, 7)
+        self.assertEqual(response.context['next_page'].pk, 10)
     
     def test_guidance_page_pagination_links_last_page_in_section(self):
         # Ensure the data for the pagation links is correct
@@ -94,32 +94,26 @@ class GuidancePageTests(WagtailPageTests):
 
         self.assertTrue('prev_page' in response.context)
         self.assertTrue('next_page' in response.context)
-        self.assertEquals(response.context['prev_page'].pk, 9)
-        self.assertEquals(response.context['next_page'].pk, 8)
+        self.assertEqual(response.context['prev_page'].pk, 9)
+        self.assertEqual(response.context['next_page'].pk, 8)
     
-    @patch('ictcg.guidelines.models.clear_guidelines_listing_cache')
-    @patch('ictcg.guidelines.models.clear_guidelines_section_cache')
-    def test_clear_cache_is_called_on_save(self, mock_section, mock_listing):
-        # When save is called on a GuidancePage class clear_guidelines_listing_cache and clear_guidelines_section_cache 
-        # functions should be called
+    @patch('ictcg.guidelines.models.GuidancePage.clear_from_caches')
+    def test_clear_cache_is_called_on_save(self, clear_from_caches):
         GuidancePage.objects.create(
             path='000100020001000100010003', 
             depth='6',
             title='Test guidance page'
         )
 
-        self.assertTrue(mock_section.called)
-        self.assertEqual(mock_section.call_count, 1)
-        self.assertTrue(mock_listing.called)
-        self.assertEqual(mock_listing.call_count, 1)
+        self.assertTrue(clear_from_caches.called)
+        self.assertEqual(clear_from_caches.call_count, 1)
 
 
 class OnDeletePageSignalsTest(TestCase):
     fixtures = ['app.json']     
 
-    @patch('ictcg.guidelines.models.clear_guidelines_listing_cache')
-    @patch('ictcg.guidelines.models.clear_guidelines_section_cache')
-    def test_cache_is_cleared_on_guidelines_section_page_delete(self, mock_section, mock_listing):
+    @patch('ictcg.guidelines.models.GuidancePage.clear_from_caches')
+    def test_cache_is_cleared_on_guidelines_section_page_delete(self, clear_from_caches):
         # When delete is called on a GuidelinesSectionPage class clear_guidelines_section_cache should be called and 
         # clear_guidelines_listing_cache should not be called
         
@@ -135,16 +129,13 @@ class OnDeletePageSignalsTest(TestCase):
         )
         guidelines_section_page.delete()
 
-        self.assertFalse(mock_section.called)
-        self.assertTrue(mock_listing.called)
+        self.assertFalse(clear_from_caches.called)
 
-    @patch('ictcg.guidelines.models.clear_guidelines_listing_cache')
-    @patch('ictcg.guidelines.models.clear_guidelines_section_cache')
-    def test_cache_is_cleared_on_guidance_page_delete(self, mock_section, mock_listing):
+    @patch('ictcg.guidelines.models.GuidancePage.clear_from_caches')
+    def test_cache_is_cleared_on_guidance_page_delete(self, clear_from_caches):
         # When delete is called on a GuidancePage class clear_guidelines_section_cache and
         # clear_guidelines_listing_cache should both be called
         guidance_page = GuidancePage.objects.get(pk=9)
         guidance_page.delete()
 
-        self.assertTrue(mock_section.called)
-        self.assertTrue(mock_listing.called)
+        self.assertTrue(clear_from_caches.called)

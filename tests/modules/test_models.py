@@ -33,7 +33,7 @@ class MoreInformationModuleTests(WagtailPageTests):
         lang = 'en'
         more_info = MoreInformationModule.objects.create(language=lang, admin_title=admin_title, title='display title')
         object_string = f'{admin_title} - {lang}'
-        self.assertEquals(object_string, str(more_info))
+        self.assertEqual(object_string, str(more_info))
 
 class OrderableLinksTests(WagtailPageTests):
     def test_orderable_links_class_inherits_from_orderable_and_links_classes(self):
@@ -50,4 +50,4 @@ class LinksModuleTests(WagtailPageTests):
         lang = 'es'
         more_info = LinksModule.objects.create(language=lang, admin_title=admin_title, title='display title')
         object_string = f'{admin_title} - {lang}'
-        self.assertEquals(object_string, str(more_info))
+        self.assertEqual(object_string, str(more_info))

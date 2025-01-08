@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.conf import settings
 
@@ -23,7 +23,6 @@ class HomePage(TranslatablePage):
         "guidelines.GuidelinesListingPage", 
         "base.GenericPageWithSubNav", 
         "case_studies.CaseStudiesListingPage", 
-        "base.CookiePage", 
         "base.GenericPage",
         "sponsors.SponsorsPage"
     ]
@@ -151,41 +150,3 @@ class GenericPage(TranslatablePage):
         FieldPanel("introduction"),
         StreamFieldPanel("body"),
     ]
-
-class CookiePage(TranslatablePage):
-    """
-    Simple page class which allows doe rich text content.  Also allow analytics consent form to be added to the page.  Can only be added under the homepage with no children.
-    Overrides the default serve method to allow for setting cookie permissions
-    """
-
-    subpage_types = []
-    ajax_template = "base/cookie_page_ajax.html"
-
-    introduction = RichTextField(blank=True, default="")
-
-    body = StreamField([
-        ("cookie_section", blocks.CookieTableBlock()),
-        ("Analtyics_cookie_section", blocks.CookieTableBlock(template="streams/analytics_cookie_block.html")),
-    ], null=True, blank=True)
-
-    content_panels = TranslatablePage.content_panels + [
-        FieldPanel("introduction"),
-        StreamFieldPanel("body"),
-    ]
-
-    def serve(self, request, *args, **kwargs):
-        response = super().serve(request, *args, **kwargs)
-        if request.method == 'POST':
-            analytics = request.POST.get("analytics", "false")
-            response.set_cookie('cookie_notice', "true", max_age=settings.COOKIE_MAX_AGE)
-            response.set_cookie('analytics', analytics, max_age=settings.COOKIE_MAX_AGE)
-            if analytics == 'false':
-                # Delete any analytics cookies if the user opts out
-                domain = request.META['HTTP_HOST'].replace("www", "")
-                response.delete_cookie(('_gat_gtag_%s' % settings.ANALYTICS_ID).replace("-", "_"), domain=domain)
-                response.delete_cookie('_ga', domain=domain)
-                response.delete_cookie('_gid', domain=domain)
-                
-            request.COOKIES['analytics'] = analytics
-
-        return response

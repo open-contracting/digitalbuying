@@ -2,7 +2,6 @@ import gulp from 'gulp'
 import del from 'del'
 import gulpif from 'gulp-if'
 import stylelint from 'gulp-stylelint'
-import sass from 'gulp-sass'
 import sourcemaps from 'gulp-sourcemaps'
 import autoprefixer from 'gulp-autoprefixer'
 import csso from 'gulp-csso'
@@ -17,8 +16,9 @@ import plumber from 'gulp-plumber'
 import notifier from 'node-notifier'
 import standard from 'gulp-standard'
 
+const sass = require('gulp-sass')(require('sass'))
 const prod = process.env.NODE_ENV === 'production'
-const sassOpts = { outputStyle: 'extended', errLogToConsole: true, includePaths: 'node_modules' }
+const sassOpts = { errLogToConsole: true, includePaths: 'node_modules' }
 const paths = {
   javascripts: {
     src: ['frontend/javascripts/**/*.js'],
