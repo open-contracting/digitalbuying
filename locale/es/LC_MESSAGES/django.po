@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-08 21:35+0000\n"
+"POT-Creation-Date: 2025-01-08 21:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,58 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ictcg/base/models.py:89
-msgid "Masthead"
-msgstr ""
-
-#: ictcg/base/models.py:104
-msgid "Please enter description for the masthead image"
-msgstr ""
-
-#: ictcg/modules/admin.py:10
-msgid "More information module"
-msgstr ""
-
-#: ictcg/modules/admin.py:22
-msgid "Links module"
-msgstr ""
-
-#: ictcg/navigation/admin.py:9
-msgid "Main menu"
-msgstr ""
-
-#: ictcg/navigation/admin.py:19
-msgid "Footer menu"
-msgstr ""
-
-#: ictcg/navigation/admin.py:27
-msgid "Menus"
-msgstr ""
-
-#: ictcg/settings.py:250
-msgid "English"
-msgstr ""
-
-#: ictcg/settings.py:251
-msgid "LA Spanish"
-msgstr ""
-
-#: ictcg/settings.py:252
-msgid "Bahasa"
-msgstr ""
-
-#: ictcg/sponsors/admin.py:11
-msgid "Sponsor Logos"
-msgstr ""
-
-#: ictcg/streams/blocks.py:60
-msgid "Item"
-msgstr ""
-
-#: ictcg/streams/blocks.py:69
-msgid "Section title, max length 120 characters"
-msgstr ""
-
 #: ictcg/templates/base.html:36
 msgid "Skip to main content"
 msgstr "Saltar al contenido principal"
@@ -77,7 +25,7 @@ msgstr "Saltar al contenido principal"
 #: ictcg/templates/base/generic_page_with_sub_nav.html:16
 #: ictcg/templates/sponsors/sponsors_page.html:16
 msgid "Sub-Navigation"
-msgstr ""
+msgstr "Subnavegación"
 
 #: ictcg/templates/base/generic_page_with_sub_nav.html:23
 #: ictcg/templates/sponsors/sponsors_page.html:23

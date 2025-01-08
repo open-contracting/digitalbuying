@@ -1,13 +1,12 @@
 
 from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup, modeladmin_register
-from django.utils.translation import gettext_lazy as _
 from .models import MoreInformationModule, LinksModule
 
 class MoreInformationModuleAdmin(ModelAdmin):
     """More Information Module admin."""
 
     model = MoreInformationModule
-    menu_label = _("More information module")
+    menu_label = "More information module"
     menu_icon = "doc-full"
     menu_order = 000
     add_to_settings_menu = False
@@ -19,7 +18,7 @@ class LinksModuleAdmin(ModelAdmin):
     """Links module admin."""
 
     model = LinksModule
-    menu_label = _("Links module")
+    menu_label = "Links module"
     menu_icon = "doc-full"
     menu_order = 100
     add_to_settings_menu = False

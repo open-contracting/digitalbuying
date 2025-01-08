@@ -16,7 +16,6 @@ from pathlib import Path
 
 import dj_database_url
 import sentry_sdk
-from django.utils.translation import gettext_lazy as _
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import ignore_logger
 
@@ -247,9 +246,9 @@ if 'DJANGO_PROXY' in os.environ:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 LANGUAGES = (
-    ('en', _('English')),
-    ('es', _('LA Spanish')),
-    ('id', _('Bahasa')),
+    ('en', 'English'),
+    ('es', 'LA Spanish'),
+    ('id', 'Bahasa'),
 )
 
 MEDIA_ROOT = os.getenv('MEDIA_ROOT', '/data/media/' if production else BASE_DIR / 'media/')

@@ -1,6 +1,5 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
-from django.utils.translation import gettext_lazy as _
 
 
 class SimpleRichTextBlock(blocks.StructBlock):
@@ -57,7 +56,7 @@ class HomePageRichTextBlock(blocks.StructBlock):
 
 class HighlightListBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=120, help_text="Section title, max length 120 characters")
-    items_list = blocks.ListBlock(blocks.CharBlock(label=_("Item")))
+    items_list = blocks.ListBlock(blocks.CharBlock(label="Item"))
 
     class Meta:
         template = "streams/highlight_list_block.html"
