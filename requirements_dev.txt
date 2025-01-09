@@ -85,6 +85,8 @@ psycopg2==2.9.10
     # via -r requirements.txt
 psycopg2-binary==2.9.10
     # via -r requirements_dev.in
+pymemcache==4.0.0
+    # via -r requirements.txt
 pytz==2024.2
     # via
     #   -r requirements.txt

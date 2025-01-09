@@ -17,16 +17,16 @@ const prod = process.env.NODE_ENV === "production";
 const paths = {
     javascripts: {
         src: ["frontend/javascripts/**/*.js"],
-        dist: "ictcg/assets/javascripts",
+        dist: "ictcg/static/javascripts",
         manifest: "frontend/javascripts/application.js",
     },
     stylesheets: {
         src: ["frontend/stylesheets/**/*.scss"],
-        dist: "ictcg/assets/stylesheets",
+        dist: "ictcg/static/stylesheets",
     },
     images: {
         src: ["frontend/images/**/*"],
-        dist: "ictcg/assets/images",
+        dist: "ictcg/static/images",
     },
 };
 

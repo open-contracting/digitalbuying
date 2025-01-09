@@ -52,6 +52,8 @@ pillow==9.5.0
     # via wagtail
 psycopg2==2.9.10
     # via -r requirements.in
+pymemcache==4.0.0
+    # via -r requirements.in
 pytz==2024.2
     # via
     #   django

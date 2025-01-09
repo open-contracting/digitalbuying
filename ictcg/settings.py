@@ -168,7 +168,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = "assets/"
+STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -180,11 +180,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOCALE_PATHS = glob(str(BASE_DIR / "**" / "locale"))
 
-STATIC_ROOT = BASE_DIR / "assets"
+STATIC_ROOT = BASE_DIR / "static"
 
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
-STATICFILES_DIRS = [BASE_DIR / "ictcg" / "assets"]
+STATICFILES_DIRS = [BASE_DIR / "ictcg" / "static"]  # gulpfile.babel.js
 
 # https://docs.djangoproject.com/en/4.2/topics/logging/#django-security
 LOGGING = {
@@ -251,8 +251,10 @@ MEDIA_URL = "media/"
 
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": os.getenv("CACHES_LOCATION", "/data/cache/" if production else BASE_DIR / "cache/"),
+        "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache"
+        if production
+        else "django.core.cache.backends.dummy.DummyCache",
+        "LOCATION": os.getenv("MEMCACHED_URL", "127.0.0.1:11211") if production else None,
         "TIMEOUT": 604800,  # 7 days
     }
 }

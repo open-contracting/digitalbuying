@@ -7,18 +7,18 @@
   background-position: left center;
 
   &.twitter {
-    background-image: url('/assets/images/twitter-logo.svg');
+    background-image: url('/static/images/twitter-logo.svg');
   }
 
   &.facebook {
-    background-image: url('/assets/images/facebook-logo.svg');
+    background-image: url('/static/images/facebook-logo.svg');
   }
 
   &.linkedin {
-    background-image: url('/assets/images/linkedin-logo.svg');
+    background-image: url('/static/images/linkedin-logo.svg');
   }
 
   &.email {
-    background-image: url('/assets/images/email-logo.svg');
+    background-image: url('/static/images/email-logo.svg');
   }
 }
