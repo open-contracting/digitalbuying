@@ -16,6 +16,7 @@ certifi==2024.12.14
     # via
     #   -r requirements.txt
     #   requests
+    #   sentry-sdk
 charset-normalizer==3.4.1
     # via
     #   -r requirements.txt
@@ -28,7 +29,6 @@ django==3.1.14
     # via
     #   -r requirements.txt
     #   django-filter
-    #   django-storages
     #   django-taggit
     #   django-treebeard
     #   djangorestframework
@@ -41,8 +41,6 @@ django-modelcluster==5.3
     # via
     #   -r requirements.txt
     #   wagtail
-django-storages==1.12.3
-    # via -r requirements.txt
 django-taggit==1.5.1
     # via
     #   -r requirements.txt
@@ -97,6 +95,8 @@ requests==2.32.3
     # via
     #   -r requirements.txt
     #   wagtail
+sentry-sdk==2.19.2
+    # via -r requirements.txt
 six==1.17.0
     # via
     #   -r requirements.txt
@@ -114,10 +114,6 @@ tablib==3.6.1
     # via
     #   -r requirements.txt
     #   wagtail
-typing-extensions==4.12.2
-    # via
-    #   -r requirements.txt
-    #   asgiref
 unidecode==1.3.8
     # via
     #   -r requirements.txt
@@ -126,16 +122,17 @@ urllib3==1.26.20
     # via
     #   -r requirements.txt
     #   requests
+    #   sentry-sdk
 wagtail==2.11.9
-    # via -r requirements.txt
-wagtailtrans==2.1
+    # via
+    #   -r requirements.txt
+    #   wagtailtrans
+wagtailtrans @ git+https://github.com/carrotandcompany/wagtailtrans@914ed9c3eb60a5e6a2582142bf4c2c1946341d7f#egg=wagtailtrans
     # via -r requirements.txt
 webencodings==0.5.1
     # via
     #   -r requirements.txt
     #   html5lib
-whitenoise==6.7.0
-    # via -r requirements.txt
 willow==1.4.1
     # via
     #   -r requirements.txt
