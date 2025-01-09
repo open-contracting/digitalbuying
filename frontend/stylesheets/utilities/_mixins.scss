@@ -1,3 +1,5 @@
+@use "sass:map";
+
 /*
  * A public getter for the `$colours` map. Returns a hex colour as a string.
  * Use this instead of `map-get($colours)`.

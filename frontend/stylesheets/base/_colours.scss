@@ -13,7 +13,7 @@ $primary-colours: 'primary-1', 'primary-2', 'primary-3', 'primary-4';
     .ictcg-#{$colour}-background-opacity-#{$i} {
       $hex: colour($colour);
 
-      @include background-opacity($hex, $i / 10);
+      @include background-opacity($hex, $i * 0.1);
     }
   }
 }

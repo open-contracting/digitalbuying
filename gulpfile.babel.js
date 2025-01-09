@@ -7,24 +7,21 @@ import autoprefixer from "gulp-autoprefixer";
 import connect from "gulp-connect-php";
 import csso from "gulp-csso";
 import gulpif from "gulp-if";
-import plumber from "gulp-plumber";
 import sourcemaps from "gulp-sourcemaps";
 import uglify from "gulp-uglify";
-import notifier from "node-notifier";
 import buffer from "vinyl-buffer";
 import source from "vinyl-source-stream";
 
 const sass = require("gulp-sass")(require("sass"));
 const prod = process.env.NODE_ENV === "production";
-const sassOpts = { errLogToConsole: true, includePaths: "node_modules" };
 const paths = {
     javascripts: {
         src: ["frontend/javascripts/**/*.js"],
-        manifest: "frontend/javascripts/application.js",
         dist: "ictcg/assets/javascripts",
+        manifest: "frontend/javascripts/application.js",
     },
     stylesheets: {
-        src: ["frontend/stylesheets/**/*.scss", "!frontend/stylesheets/__tests__/*.scss"],
+        src: ["frontend/stylesheets/**/*.scss"],
         dist: "ictcg/assets/stylesheets",
     },
     images: {
@@ -43,41 +40,13 @@ gulp.task("clean", () =>
 gulp.task("stylesheets", () => {
     return gulp
         .src(paths.stylesheets.src)
-        .pipe(
-            plumber({
-                errorHandler: function (error) {
-                    console.log(error.message);
-                    gulpif(
-                        !prod,
-                        notifier.notify({
-                            title: "SCSS Error",
-                            message: error.message,
-                        }),
-                    );
-                    this.emit("end");
-                },
-            }),
-        )
-        .pipe(sass(sassOpts))
+        .pipe(sass({ errLogToConsole: true, includePaths: "node_modules", quietDeps: true }))
         .pipe(gulpif(!prod, sourcemaps.init()))
         .pipe(autoprefixer("last 2 versions"))
-        .pipe(
-            csso({
-                restructure: true,
-                sourceMap: true,
-                debug: true,
-            }),
-        )
+        .pipe(csso({ restructure: true, sourceMap: true, debug: true }))
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(paths.stylesheets.dist))
-        .pipe(
-            gulpif(
-                !prod,
-                browserSync.reload({
-                    stream: true,
-                }),
-            ),
-        );
+        .pipe(gulpif(!prod, browserSync.reload({ stream: true })));
 });
 
 gulp.task("images", () => {
@@ -97,7 +66,6 @@ gulp.task("javascripts", () => {
         console.log("bundling <<<<<<");
         return bundler
             .bundle()
-            .pipe(plumber())
             .pipe(source(paths.javascripts.manifest.split("/").slice(-1)[0]))
             .pipe(buffer())
             .pipe(uglify())
