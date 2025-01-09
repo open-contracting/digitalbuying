@@ -12,9 +12,7 @@ from wagtail.snippets.models import register_snippet
 
 
 class KeyModuleFields(models.Model):
-    """
-    Reuseable class for generic module data
-    """
+    """Reuseable class for generic module data"""
 
     class Meta:
         abstract = True
@@ -39,9 +37,7 @@ class KeyModuleFields(models.Model):
 
 
 class Links(models.Model):
-    """
-    Reuseable class for link data
-    """
+    """Reuseable class for link data"""
 
     class Meta:
         abstract = True

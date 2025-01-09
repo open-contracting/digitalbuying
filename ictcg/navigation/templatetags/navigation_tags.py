@@ -40,9 +40,8 @@ def main_menu(language):
     mainmenu = MainMenu.objects.filter(language=language).first()
     if mainmenu:
         return mainmenu
-    else:
-        # Default to en if not set for the other countries
-        return MainMenu.objects.filter(language="en").first()
+    # Default to en if not set for the other countries
+    return MainMenu.objects.filter(language="en").first()
 
 
 @register.simple_tag(takes_context=True)

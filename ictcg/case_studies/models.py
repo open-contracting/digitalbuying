@@ -51,9 +51,7 @@ class CaseStudyGuidelinesSectionTag(TaggedItemBase):
 
 
 class CaseStudyPage(TranslatablePage):
-    """
-    A TranslatablePage class used for case studies pages.
-    """
+    """A TranslatablePage class used for case studies pages."""
 
     parent_page_types = ["case_studies.CaseStudiesListingPage"]
     subpage_types = []
@@ -128,8 +126,7 @@ class CaseStudyPage(TranslatablePage):
         try:
             clear_case_study_cache(self.language.code)
         except Exception:
-            logging.error("Error deleting CaseStudyPage cache")
-            pass
+            logging.exception("Error deleting CaseStudyPage cache")
 
         return super().save(*args, **kwards)
 

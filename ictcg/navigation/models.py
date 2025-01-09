@@ -15,9 +15,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class MainMenu(ClusterableModel):
-    """
-    MainMenu class for header links. Contains Orderable MenuItem class.
-    """
+    """MainMenu class for header links. Contains Orderable MenuItem class."""
 
     admin_title = models.CharField(max_length=100, blank=False, null=True)
 
@@ -63,15 +61,12 @@ class MainMenu(ClusterableModel):
         try:
             clear_mainmenu_cache(self.language)
         except Exception:
-            logging.error("Error deleting menu cache")
-            pass
+            logging.exception("Error deleting menu cache")
         return super().save(*args, **kwards)
 
 
 class MenuItem(models.Model):
-    """
-    Reuseable class for menu item links
-    """
+    """Reuseable class for menu item links"""
 
     title = models.CharField(max_length=100, blank=True)
     url = models.CharField(max_length=500, blank=True)
@@ -89,7 +84,7 @@ class MenuItem(models.Model):
     def link(self):
         if self.page:
             return self.page.url
-        elif self.url:
+        if self.url:
             return self.url
         return "#"
 
@@ -105,9 +100,7 @@ class MainMenuItem(Orderable, MenuItem):
 
 
 class FooterMenu(ClusterableModel):
-    """
-    FooterMenu class for footer links. Contains Orderable MenuItem class.
-    """
+    """FooterMenu class for footer links. Contains Orderable MenuItem class."""
 
     admin_title = models.CharField(max_length=100, blank=False, null=True)
 
@@ -148,8 +141,7 @@ class FooterMenu(ClusterableModel):
         try:
             clear_footer_cache(self.language)
         except Exception:
-            logging.error("Error deleting footer cache")
-            pass
+            logging.exception("Error deleting footer cache")
         return super().save(*args, **kwards)
 
 

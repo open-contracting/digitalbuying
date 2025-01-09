@@ -51,7 +51,7 @@ class MenuItemTests(TestCase):
 
 class MainMenuItemTests(TestCase):
     def test_mainmenuitem_inherits_from_orderable_and_menuitem_classes(self):
-        assert issubclass(MainMenuItem, (Orderable, MenuItem))
+        assert issubclass(MainMenuItem, Orderable | MenuItem)
 
 
 class FooterMenuTests(TestCase):
@@ -78,7 +78,7 @@ class FooterMenuTests(TestCase):
 
 class FooterMenuItemTests(TestCase):
     def test_footermenuitem_inherits_from_orderable_and_menuitem_classes(self):
-        assert issubclass(FooterMenuItem, (Orderable, MenuItem))
+        assert issubclass(FooterMenuItem, Orderable | MenuItem)
 
 
 class ClearMainMenuCacheTest(TestCase):

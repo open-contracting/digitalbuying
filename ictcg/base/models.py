@@ -12,9 +12,7 @@ from ictcg.streams import blocks
 
 
 class HomePage(TranslatablePage):
-    """
-    Homepage class
-    """
+    """Homepage class"""
 
     parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
     subpage_types = [
@@ -57,10 +55,6 @@ class HomePage(TranslatablePage):
         null=True,
         blank=True,
     )
-
-    content_panels = TranslatablePage.content_panels + [
-        StreamFieldPanel("body"),
-    ]
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(

@@ -171,11 +171,11 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
         prev_page = self.get_prev_siblings().live().first()
         next_page = self.get_next_siblings().live().first()
 
-        if prev_page == None:
+        if prev_page is None:
             prev_page = section.specific
             prev_page.title = prev_page.subtitle
 
-        if next_page == None:
+        if next_page is None:
             next_page = section.get_next_siblings().live().first()
 
         context["prev_page"] = prev_page

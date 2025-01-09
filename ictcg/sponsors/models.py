@@ -28,8 +28,7 @@ class Sponsor(ClusterableModel):
         try:
             clear_sponsors_footer_cache(self.language)
         except Exception:
-            logging.error("Error deleting sponsors cache")
-            pass
+            logging.exception("Error deleting sponsors cache")
         return super().save(*args, **kwards)
 
 
