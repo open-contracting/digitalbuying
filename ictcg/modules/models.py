@@ -14,9 +14,6 @@ from wagtail.snippets.models import register_snippet
 class KeyModuleFields(models.Model):
     """Reuseable class for generic module data."""
 
-    class Meta:
-        abstract = True
-
     language = models.CharField(max_length=100, choices=settings.LANGUAGES)
 
     admin_title = models.CharField(
@@ -35,12 +32,12 @@ class KeyModuleFields(models.Model):
         FieldPanel("title"),
     ]
 
+    class Meta:
+        abstract = True
+
 
 class Links(models.Model):
     """Reuseable class for link data."""
-
-    class Meta:
-        abstract = True
 
     link_text = models.CharField(max_length=140, blank=True, help_text="Text for link")
 
@@ -53,6 +50,9 @@ class Links(models.Model):
         FieldPanel("url"),
         FieldPanel("open_in_new_tab"),
     ]
+
+    class Meta:
+        abstract = True
 
 
 @register_snippet
@@ -88,8 +88,8 @@ class OrderableLinks(Orderable, Links):
 @register_snippet
 class LinksModule(ClusterableModel, KeyModuleFields):
     """
-    A class that extends ClusterableModel and KeyModuleFields classes that is displayed as a snippet within the admin area.
-    This is used as a foreignField in the GuidancePage class.
+    A class that extends ClusterableModel and KeyModuleFields classes that is displayed as a snippet within the admin
+    area. This is used as a foreignField in the GuidancePage class.
     """
 
     panels = [

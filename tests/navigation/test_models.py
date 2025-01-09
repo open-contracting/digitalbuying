@@ -6,26 +6,26 @@ from django.test import TestCase
 from modelcluster.models import ClusterableModel
 from wagtail.core.models import Orderable, Page
 
-from ictcg.navigation.models import *
+from ictcg.navigation import models
 
 
 class MainMenuTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        MainMenu.objects.create(title="test title 1", language="en")
+        models.MainMenu.objects.create(title="test title 1", language="en")
 
     def test_mainmenu_inherits_from_translatable_page_class(self):
-        assert issubclass(MainMenu, ClusterableModel)
+        assert issubclass(models.MainMenu, ClusterableModel)
 
     def test_mainmenu_object_name(self):
-        main_menu = MainMenu.objects.get(title__exact="test title 1")
+        main_menu = models.MainMenu.objects.get(title__exact="test title 1")
         language = dict(settings.LANGUAGES)
         object_string = f"{main_menu.title} - {language[main_menu.language]}"
         self.assertEqual(object_string, str(main_menu))
 
-    @patch("ictcg.navigation.models.clear_mainmenu_cache")
+    @patch("ictcg.navigation.models.models.clear_mainmenu_cache")
     def test_clear_mainmenu_cache_is_called_on_save(self, mock):
-        main_menu = MainMenu.objects.get(title__exact="test title 1")
+        main_menu = models.MainMenu.objects.get(title__exact="test title 1")
         main_menu.save()
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)
@@ -35,42 +35,42 @@ class MenuItemTests(TestCase):
     fixtures = ["app.json"]
 
     def test_mainitem_inherits_from_translatable_page_class(self):
-        assert issubclass(MenuItem, Model)
+        assert issubclass(models.MenuItem, Model)
 
     def test_link_property_should_return_page_url_when_page_object_is_set(self):
         # Page ID 6 from fixtures - guidelines page
         guidelines_page = Page.objects.get(id=6)
-        menu_item = MenuItem.objects.create(title="Menu item 1", page=guidelines_page)
+        menu_item = models.MenuItem.objects.create(title="Menu item 1", page=guidelines_page)
         self.assertEqual(menu_item.link, guidelines_page.url)
 
     def test_link_property_should_return_local_url_when_page_object_is_not_set(self):
         test_url = "http://www.test.com"
-        menu_item = MenuItem.objects.create(title="Menu item 2", url=test_url)
+        menu_item = models.MenuItem.objects.create(title="Menu item 2", url=test_url)
         self.assertEqual(menu_item.link, test_url)
 
 
 class MainMenuItemTests(TestCase):
     def test_mainmenuitem_inherits_from_orderable_and_menuitem_classes(self):
-        assert issubclass(MainMenuItem, Orderable | MenuItem)
+        assert issubclass(models.MainMenuItem, Orderable | models.MenuItem)
 
 
 class FooterMenuTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        FooterMenu.objects.create(admin_title="Footer title 1", language="en")
+        models.FooterMenu.objects.create(admin_title="Footer title 1", language="en")
 
     def test_footermenu_inherits_from_translatable_page_class(self):
-        assert issubclass(FooterMenu, ClusterableModel)
+        assert issubclass(models.FooterMenu, ClusterableModel)
 
     def test_footermenu_object_name(self):
-        footer_menu = FooterMenu.objects.get(admin_title__exact="Footer title 1")
+        footer_menu = models.FooterMenu.objects.get(admin_title__exact="Footer title 1")
         language = dict(settings.LANGUAGES)
         object_string = f"{footer_menu.admin_title} - {language[footer_menu.language]}"
         self.assertEqual(object_string, str(footer_menu))
 
-    @patch("ictcg.navigation.models.clear_footer_cache")
+    @patch("ictcg.navigation.models.models.clear_footer_cache")
     def test_clear_footer_cache_is_called_on_save(self, mock):
-        footer_menu = FooterMenu.objects.get(admin_title__exact="Footer title 1")
+        footer_menu = models.FooterMenu.objects.get(admin_title__exact="Footer title 1")
         footer_menu.save()
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)
@@ -78,23 +78,23 @@ class FooterMenuTests(TestCase):
 
 class FooterMenuItemTests(TestCase):
     def test_footermenuitem_inherits_from_orderable_and_menuitem_classes(self):
-        assert issubclass(FooterMenuItem, Orderable | MenuItem)
+        assert issubclass(models.FooterMenuItem, Orderable | models.MenuItem)
 
 
 class ClearMainMenuCacheTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        MainMenu.objects.create(title="test title 1", language="en")
+        models.MainMenu.objects.create(title="test title 1", language="en")
 
     @patch("django.core.cache.cache.delete")
     def test_delete_is_called_when_clear_mainmenu_cache_is_called(self, mock):
-        clear_mainmenu_cache("en")
+        models.clear_mainmenu_cache("en")
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)
 
-    @patch("ictcg.navigation.models.clear_mainmenu_cache")
+    @patch("ictcg.navigation.models.models.clear_mainmenu_cache")
     def test_clear_mainmenu_cache_is_triggered_by_signal_on_model_delete(self, mock):
-        main_menu = MainMenu.objects.get(title__exact="test title 1")
+        main_menu = models.MainMenu.objects.get(title__exact="test title 1")
         main_menu.delete()
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)
@@ -103,17 +103,17 @@ class ClearMainMenuCacheTest(TestCase):
 class ClearFooterCacheTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        FooterMenu.objects.create(admin_title="Footer title 2", language="en")
+        models.FooterMenu.objects.create(admin_title="Footer title 2", language="en")
 
     @patch("django.core.cache.cache.delete_many")
     def test_delete_is_called_when_clear_footer_cache_is_called(self, mock):
-        clear_footer_cache("en")
+        models.clear_footer_cache("en")
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)
 
-    @patch("ictcg.navigation.models.clear_footer_cache")
+    @patch("ictcg.navigation.models.models.clear_footer_cache")
     def test_clear_footer_cache_is_triggered_by_signal_on_model_delete(self, mock):
-        footer_menu = FooterMenu.objects.get(admin_title__exact="Footer title 2")
+        footer_menu = models.FooterMenu.objects.get(admin_title__exact="Footer title 2")
         footer_menu.delete()
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)

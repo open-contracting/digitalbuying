@@ -8,8 +8,8 @@ from ictcg.modules.models import KeyModuleFields, Links, LinksModule, MoreInform
 
 class KeyModuleFieldsTests(WagtailPageTests):
     def test_meta_abstract_is_true(self):
-        Keyfields = KeyModuleFields()
-        self.assertTrue(Keyfields._meta.abstract)
+        keyfields = KeyModuleFields()
+        self.assertTrue(keyfields._meta.abstract)
 
     def test_key_module_fields_class_inherits_from_models_class(self):
         self.assertTrue(issubclass(KeyModuleFields, models.Model))
@@ -25,7 +25,7 @@ class LinksTests(WagtailPageTests):
 
 
 class MoreInformationModuleTests(WagtailPageTests):
-    def test_more_info_module_class_inherits_from_Key_module_fields(self):
+    def test_more_info_module_class_inherits_from_key_module_fields(self):
         self.assertTrue(issubclass(MoreInformationModule, KeyModuleFields))
 
     def test_more_info_object_name(self):

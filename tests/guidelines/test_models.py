@@ -58,7 +58,8 @@ class GuidelinesSectionPageTests(WagtailPageTests):
         response = self.client.get("/en/guidelines/prepare-and-plan/")
         self.assertContains(
             response,
-            '<a class="ictcg-pagination__link ictcg-pagination__link--next" href="/en/guidelines/prepare-and-plan/form-a-team/">',
+            '<a class="ictcg-pagination__link ictcg-pagination__link--next" '
+            'href="/en/guidelines/prepare-and-plan/form-a-team/">',
             status_code=200,
         )
 
@@ -117,7 +118,8 @@ class OnDeletePageSignalsTest(TestCase):
         # When delete is called on a GuidelinesSectionPage class clear_guidelines_section_cache should be called and
         # clear_guidelines_listing_cache should not be called
 
-        # Create a section page which has no children so we can test delete function without triggering other events based on the tree structure
+        # Create a section page which has no children so we can test delete function,
+        # without triggering other events based on the tree structure
         # ie, a child page also being deleted when the parent is removed
         guidelines_section_page = GuidelinesSectionPage.objects.create(
             path="00010002000100010003",

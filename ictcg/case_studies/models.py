@@ -140,6 +140,6 @@ def clear_case_study_cache(language_code):
 
 
 @receiver((pre_delete, page_published, page_unpublished), sender=CaseStudyPage)
-def on_guidance_page_delete(sender, instance, **kwargs):
+def on_guidance_page_delete(_sender, instance, **kwargs):
     """On a CaseStudyPage delete, clear the cache for case_study_block."""
     clear_case_study_cache(instance.language.code)

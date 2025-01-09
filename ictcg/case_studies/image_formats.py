@@ -5,7 +5,7 @@ from wagtail.images.formats import Format, register_image_format
 class CaptionedImageFormat(Format):
     def image_to_html(self, image, alt_text, extra_attributes=None):
         default_html = super().image_to_html(image, "", extra_attributes)
-        return format_html("<figure>{}<figcaption>{}</figcaption></figure>", default_html, mark_safe(alt_text))
+        return format_html("<figure>{}<figcaption>{}</figcaption></figure>", default_html, mark_safe(alt_text))  # noqa: S308 # investigate
 
 
 register_image_format(

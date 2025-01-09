@@ -24,7 +24,8 @@ class TemplateTagsBreadcrumbTests(TestCase):
 
     def test_breadcrumbs_return_correct_ancestor_data(self):
         # Get guidelines section page
-        # This is a level 3 page in the UI (Level 5 in database due to the parent root pages).  Home > Guidelines > Guidelines section
+        # This is a level 3 page in the UI (Level 5 in database due to the parent root pages).
+        # Home > Guidelines > Guidelines section
         guidelines_page = Page.objects.get(id=7)
         data = breadcrumbs({"self": guidelines_page, "request": []})
         ancestors = data["ancestors"]

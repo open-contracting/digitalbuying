@@ -7,6 +7,8 @@ from wagtail.core.models import Page
 from ictcg.guidelines.models import GuidelinesListingPage
 from ictcg.navigation.models import FooterMenu, MainMenu
 
+MINIMUM_DEPTH = 3
+
 register = template.Library()
 
 
@@ -15,10 +17,10 @@ register = template.Library()
 @register.inclusion_tag("includes/breadcrumbs.html", takes_context=True)
 def breadcrumbs(context):
     self = context.get("self")
-    if self is None or self.depth <= 2:
+    if self is None or self.depth < MINIMUM_DEPTH:
         ancestors = ()
     else:
-        ancestors = Page.objects.ancestor_of(self, inclusive=True).filter(depth__gt=2)
+        ancestors = Page.objects.ancestor_of(self, inclusive=True).filter(depth__gte=MINIMUM_DEPTH)
     parent = get_parent(ancestors, self.depth)
     return {
         "ancestors": ancestors,

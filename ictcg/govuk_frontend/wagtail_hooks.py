@@ -6,7 +6,8 @@ from wagtail.core import hooks
 @hooks.register("register_rich_text_features")
 def register_help_text_feature(features):
     """
-    Registering the `inset-text` feature, which uses the `govuk-inset-text` class
+    Register the `inset-text` feature, which uses the `govuk-inset-text` class.
+
     Stored as HTML with a `<div class="govuk-inset-text">` tag.
     """
     feature_name = "govuk-inset-text"

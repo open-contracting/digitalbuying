@@ -90,8 +90,11 @@ class HomePage(TranslatablePage):
 
 class GenericPageWithSubNav(TranslatablePage):
     """
-    Generic page class which allows rich text and quote components to be added.  Can only be added under the homepage but can be nested itself.
-    Page includes a sub navigation on the left of the layout for quick links to content on the page. This is auto genereated based on the body components.
+    Generic page class which allows rich text and quote components to be added.
+
+    Can only be added under the homepage but can be nested itself.
+    Page includes a sub navigation on the left of the layout for quick links to content on the page.
+    This is auto genereated based on the body components.
     """
 
     parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]

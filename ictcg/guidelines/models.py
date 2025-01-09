@@ -1,5 +1,3 @@
-import logging
-
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db import models
@@ -58,12 +56,9 @@ class GuidelinesListingPage(CacheClearMixin, TranslatablePage):
 
     def clear_from_caches(self):
         target = "guidelines_footer"
-        try:
-            language_code = self.language.code
-            target = make_template_fragment_key(target, [language_code])
-            cache.delete(target)
-        except Exception:
-            logging.warning("Error deleting %s cache", target)
+        language_code = self.language.code
+        target = make_template_fragment_key(target, [language_code])
+        cache.delete(target)
 
 
 class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
@@ -104,19 +99,13 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
 
     def clear_from_caches(self):
         target = "sections_and_pages_for_listing"
-        try:
-            listing_id = self.get_parent().id
-            target = make_template_fragment_key(target, [listing_id])
-            cache.delete(target)
-        except Exception:
-            logging.warning("Error deleting %s cache", target)
+        listing_id = self.get_parent().id
+        target = make_template_fragment_key(target, [listing_id])
+        cache.delete(target)
 
         target = "pages_for_section"
-        try:
-            target = make_template_fragment_key(target, [self.id])
-            cache.delete(target)
-        except Exception:
-            logging.warning("Error deleting %s cache", target)
+        target = make_template_fragment_key(target, [self.id])
+        cache.delete(target)
 
 
 class GuidancePage(CacheClearMixin, TranslatablePage):
@@ -197,20 +186,14 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
 
     def clear_from_caches(self):
         target = "sections_and_pages_for_listing"
-        try:
-            listing_id = self.get_parent().get_parent().id
-            target = make_template_fragment_key(target, [listing_id])
-            cache.delete(target)
-        except Exception:
-            logging.warning("Error deleting %s cache", target)
+        listing_id = self.get_parent().get_parent().id
+        target = make_template_fragment_key(target, [listing_id])
+        cache.delete(target)
 
         target = "pages_for_section"
-        try:
-            section_id = self.get_parent().id
-            target = make_template_fragment_key(target, [section_id])
-            cache.delete(target)
-        except Exception:
-            logging.warning("Error deleting %s cache", target)
+        section_id = self.get_parent().id
+        target = make_template_fragment_key(target, [section_id])
+        cache.delete(target)
 
 
 cache_clear_signals = (pre_delete, page_published, page_unpublished)
@@ -219,5 +202,5 @@ cache_clear_signals = (pre_delete, page_published, page_unpublished)
 @receiver(cache_clear_signals, sender=GuidelinesListingPage)
 @receiver(cache_clear_signals, sender=GuidelinesSectionPage)
 @receiver(cache_clear_signals, sender=GuidancePage)
-def clear_caches_on_delete(sender, instance, **kwargs):
+def clear_caches_on_delete(_sender, instance, **kwargs):
     instance.clear_from_caches()
