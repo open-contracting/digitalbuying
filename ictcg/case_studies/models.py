@@ -27,8 +27,8 @@ class CaseStudiesListingPage(TranslatablePage):
     parent_page_types = ["base.HomePage"]
     subpage_types = ["case_studies.CaseStudyPage"]
 
-    def get_context(self, request, *args, **kwards):
-        context = super().get_context(request, *args, **kwards)
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
         featured_case_studies = (
             CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE)
             .order_by("-publication_date")
@@ -104,8 +104,8 @@ class CaseStudyPage(TranslatablePage):
         index.SearchField("body"),
     ]
 
-    def get_context(self, request, *args, **kwards):
-        context = super().get_context(request, *args, **kwards)
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
         siblings = (
             CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE).order_by("-publication_date").live()
         )
@@ -124,13 +124,13 @@ class CaseStudyPage(TranslatablePage):
 
         return context
 
-    def save(self, *args, **kwards):
+    def save(self, *args, **kwargs):
         try:
             clear_case_study_cache(self.language.code)
         except Exception:
             logging.exception("Error deleting CaseStudyPage cache")
 
-        return super().save(*args, **kwards)
+        return super().save(*args, **kwargs)
 
 
 def clear_case_study_cache(language_code):

@@ -56,12 +56,12 @@ class MainMenu(ClusterableModel):
         language = dict(settings.LANGUAGES)
         return f"{self.title} - {language[self.language]}"
 
-    def save(self, *args, **kwards):
+    def save(self, *args, **kwargs):
         try:
             clear_mainmenu_cache(self.language)
         except Exception:
             logging.exception("Error deleting menu cache")
-        return super().save(*args, **kwards)
+        return super().save(*args, **kwargs)
 
 
 class MenuItem(models.Model):
@@ -138,12 +138,12 @@ class FooterMenu(ClusterableModel):
         language = dict(settings.LANGUAGES)
         return f"{self.admin_title} - {language[self.language]}"
 
-    def save(self, *args, **kwards):
+    def save(self, *args, **kwargs):
         try:
             clear_footer_cache(self.language)
         except Exception:
             logging.exception("Error deleting footer cache")
-        return super().save(*args, **kwards)
+        return super().save(*args, **kwargs)
 
 
 class FooterMenuItem(Orderable, MenuItem):

@@ -29,12 +29,12 @@ class Sponsor(ClusterableModel):
     def __str__(self):
         return f"Sponsors - {self.language}"
 
-    def save(self, *args, **kwards):
+    def save(self, *args, **kwargs):
         try:
             clear_sponsors_footer_cache(self.language)
         except Exception:
             logging.exception("Error deleting sponsors cache")
-        return super().save(*args, **kwards)
+        return super().save(*args, **kwargs)
 
 
 class SponsorItem(Orderable):

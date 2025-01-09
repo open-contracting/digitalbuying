@@ -161,8 +161,8 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
         index.SearchField("body"),
     ]
 
-    def get_context(self, request, *args, **kwards):
-        context = super().get_context(request, *args, **kwards)
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
         guidelines = GuidelinesListingPage.objects.ancestor_of(self).live().first()
         section = GuidelinesSectionPage.objects.ancestor_of(self).live().first()
 
