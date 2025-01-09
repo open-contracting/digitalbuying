@@ -117,7 +117,7 @@ class Migration(migrations.Migration):
                 (
                     "header_image",
                     models.ForeignKey(
-                        help_text="Image dimensions should be 1912px wide\u200a×\u200a714px high",
+                        help_text="Image dimensions should be 1912px wide\u200a×\u200a714px high",  # noqa: RUF001
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         related_name="+",

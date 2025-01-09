@@ -15,7 +15,6 @@ ignore = [
     # These should ideally be corrected.
     "DJ008",  # missing model __str__
 ]
-allowed-confusables = ["×"]
 
 [tool.ruff.lint.flake8-builtins]
 builtins-ignorelist = ["copyright"]
