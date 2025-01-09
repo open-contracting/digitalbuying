@@ -169,12 +169,12 @@ def clear_footer_cache(language_code):
 
 
 @receiver(pre_delete, sender=MainMenu)
-def on_main_menu_delete(_sender, instance, **kwargs):
+def on_main_menu_delete(sender, instance, **kwargs):
     """On main menu delete, clear the cache."""
     clear_mainmenu_cache(instance.language)
 
 
 @receiver(pre_delete, sender=FooterMenu)
-def on_footer_menu_delete(_sender, instance, **kwargs):
+def on_footer_menu_delete(sender, instance, **kwargs):
     """On footer menu delete, clear the cache."""
     clear_footer_cache(instance.language)

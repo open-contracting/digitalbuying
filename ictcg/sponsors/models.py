@@ -108,6 +108,6 @@ def clear_sponsors_footer_cache(language_code):
 
 
 @receiver(pre_delete, sender=Sponsor)
-def on_footer_menu_delete(_sender, instance, **kwargs):
+def on_footer_menu_delete(sender, instance, **kwargs):
     """On Sponsor delete, clear the cache."""
     clear_sponsors_footer_cache(instance.language)

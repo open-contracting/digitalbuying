@@ -202,5 +202,5 @@ cache_clear_signals = (pre_delete, page_published, page_unpublished)
 @receiver(cache_clear_signals, sender=GuidelinesListingPage)
 @receiver(cache_clear_signals, sender=GuidelinesSectionPage)
 @receiver(cache_clear_signals, sender=GuidancePage)
-def clear_caches_on_delete(_sender, instance, **kwargs):
+def clear_caches_on_delete(sender, instance, **kwargs):
     instance.clear_from_caches()
