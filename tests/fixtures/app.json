@@ -1,545 +1,473 @@
 [
-    {
-      "model":"wagtailtrans.language",
-      "pk":1,
-      "fields":{
-        "code":"en",
-        "is_default":true,
-        "position":0,
-        "live":true
-      }
-    },
-    {
-      "pk": 1,
-      "model": "wagtailcore.site",
-      "fields": {
-          "root_page": 3,
-          "hostname": "localhost",
-          "port": 80,
-          "is_default_site": true
-      }
-    },
-    {
-      "model":"auth.group",
-      "pk":1,
-      "fields":{
-        "name":"Moderators",
-        "permissions":[
-          [
-            "access_admin",
-            "wagtailadmin",
-            "admin"
-          ],
-          [
-            "add_document",
-            "wagtaildocs",
-            "document"
-          ],
-          [
-            "change_document",
-            "wagtaildocs",
-            "document"
-          ],
-          [
-            "delete_document",
-            "wagtaildocs",
-            "document"
-          ],
-          [
-            "add_image",
-            "wagtailimages",
-            "image"
-          ],
-          [
-            "change_image",
-            "wagtailimages",
-            "image"
-          ],
-          [
-            "delete_image",
-            "wagtailimages",
-            "image"
-          ]
-        ]
-      }
-    },
-    {
-      "model":"auth.user",
-      "pk":1,
-      "fields":{
-        "password":"pbkd",
-        "last_login":"2020-05-05T13:48:50.493Z",
-        "is_superuser":true,
-        "username":"gdmp.admin",
-        "first_name":"",
-        "last_name":"",
-        "email":"test.test@test.com",
-        "is_staff":true,
-        "is_active":true,
-        "date_joined":"2020-04-17T15:01:18.333Z",
-        "groups":[
-  
-        ],
-        "user_permissions":[
-  
-        ]
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablepage",
-      "pk":4,
-      "fields":{
-        "canonical_page":4,
-        "language":1
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablepage",
-      "pk":6,
-      "fields":{
-        "canonical_page":6,
-        "language":1
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablepage",
-      "pk":7,
-      "fields":{
-        "canonical_page":7,
-        "language":1
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablepage",
-      "pk":8,
-      "fields":{
-        "canonical_page":8,
-        "language":1
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablepage",
-      "pk":9,
-      "fields":{
-        "canonical_page":9,
-        "language":1
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablepage",
-      "pk":10,
-      "fields":{
-        "canonical_page":10,
-        "language":1
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablepage",
-      "pk":11,
-      "fields":{
-        "canonical_page":11,
-        "language":1
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablepage",
-      "pk":12,
-      "fields":{
-        "canonical_page":12,
-        "language":1
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablepage",
-      "pk":13,
-      "fields":{
-        "canonical_page":13,
-        "language":1
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablepage",
-      "pk":14,
-      "fields":{
-        "canonical_page":13,
-        "language":1
-      }
-    },
-    {
-      "model":"wagtailtrans.translatablesiterootpage",
-      "pk":3,
-      "fields":{}
-    },
-    {
-      "model":"wagtailcore.page",
-      "pk":1,
-      "fields":{
-        "path":"0001",
-        "depth":1,
-        "numchild":1,
-        "title":"Root",
-        "draft_title":"Root",
-        "slug":"root",
-        "content_type":[
-          "wagtailcore",
-          "page"
-        ],
-        "live":true,
-        "has_unpublished_changes":false,
-        "url_path":"/",
-        "owner":["gdmp.admin"]
-      }
-    },
-    {
-      "model":"wagtailcore.page",
-      "pk":3,
-      "fields":{
-        "path":"00010002",
-        "depth":2,
-        "numchild":2,
-        "title":"Root",
-        "draft_title":"Root",
-        "slug":"root",
-        "content_type":[
-          "wagtailtrans",
-          "translatablesiterootpage"
-        ],
-        "live":true,
-        "has_unpublished_changes":false,
-        "url_path":"/root/",
-        "owner":["gdmp.admin"]
-      }
-    },
-    {
-      "model":"wagtailcore.page",
-      "pk":4,
-      "fields":{
-        "path":"000100020001",
-        "depth":3,
-        "numchild":1,
-        "title":"Home",
-        "draft_title":"Home",
-        "slug":"en",
-        "content_type":[
-          "base",
-          "homepage"
-        ],
-        "live":true,
-        "has_unpublished_changes":false,
-        "url_path":"/root/en/",
-        "owner":["gdmp.admin"]
-      }
-    },
-    {
-      "model":"wagtailcore.page",
-      "pk":6,
-      "fields":{
-        "path":"0001000200010001",
-        "depth":4,
-        "numchild":2,
-        "title":"Guidelines",
-        "draft_title":"Guidelines",
-        "slug":"guidelines",
-        "content_type":[
-          "guidelines",
-          "guidelineslistingpage"
-        ],
-        "live":true,
-        "has_unpublished_changes":false,
-        "url_path":"/root/en/guidelines/",
-        "owner":["gdmp.admin"]
-      }
-    },
-    {
-      "model":"wagtailcore.page",
-      "pk":7,
-      "fields":{
-        "path":"00010002000100010001",
-        "depth":5,
-        "numchild":2,
-        "title":"Prepare and plan",
-        "draft_title":"Prepare and plan",
-        "slug":"prepare-and-plan",
-        "content_type":[
-          "guidelines",
-          "guidelinessectionpage"
-        ],
-        "live":true,
-        "has_unpublished_changes":false,
-        "url_path":"/root/en/guidelines/prepare-and-plan/",
-        "owner":["gdmp.admin"]
-      }
-    },
-    {
-      "model":"wagtailcore.page",
-      "pk":8,
-      "fields":{
-        "path":"00010002000100010002",
-        "depth":5,
-        "numchild":2,
-        "title":"Inform the market",
-        "draft_title":"Inform the market",
-        "slug":"inform-the-market",
-        "content_type":[
-          "guidelines",
-          "guidelinessectionpage"
-        ],
-        "live":true,
-        "has_unpublished_changes":false,
-        "url_path":"/root/en/guidelines/inform-the-market/",
-        "owner":["gdmp.admin"]
-      }
-    },
-    {
-      "model":"wagtailcore.page",
-      "pk":9,
-      "fields":{
-        "path":"000100020001000100010001",
-        "depth":6,
-        "numchild":0,
-        "title":"Form a team",
-        "draft_title":"Form a team",
-        "slug":"form-a-team",
-        "content_type":[
-          "guidelines",
-          "guidancepage"
-        ],
-        "live":true,
-        "has_unpublished_changes":false,
-        "url_path":"/root/en/guidelines/prepare-and-plan/form-a-team/",
-        "owner":["gdmp.admin"]
-      }
-    },
-    {
-      "model":"wagtailcore.page",
-      "pk":10,
-      "fields":{
-        "path":"000100020001000100010002",
-        "depth":6,
-        "numchild":0,
-        "title":"Understand user needs",
-        "draft_title":"Understand user needs",
-        "slug":"user-needs",
-        "content_type":[
-          "guidelines",
-          "guidancepage"
-        ],
-        "live":true,
-        "has_unpublished_changes":false,
-        "url_path":"/root/en/guidelines/prepare-and-plan/user-needs/",
-        "owner":["gdmp.admin"]
-      }
-    },
-    {
-      "model": "wagtailcore.page",
-      "pk": 11,
-      "fields": {
-        "path": "0001000200010003",
-        "depth": 4,
-        "numchild": 3,
-        "title": "Global case studies",
-        "draft_title": "Global case studies",
-        "slug": "case-studies",
-        "content_type": [
-          "case_studies",
-          "casestudieslistingpage"
-        ],
-        "live": true,
-        "has_unpublished_changes": false,
-        "url_path": "/root/en/case-studies/",
-        "owner": ["gdmp.admin"]
-      }
-    },
-    {
-      "model": "wagtailcore.page",
-      "pk": 12,
-      "fields": {
-        "path": "00010002000100030001",
-        "depth": 5,
-        "numchild": 0,
-        "title": "case study number 1",
-        "draft_title": "case study number 1",
-        "slug": "case-study-number-1",
-        "content_type": [
-          "case_studies",
-          "casestudypage"
-        ],
-        "live": true,
-        "has_unpublished_changes": false,
-        "url_path": "/root/en/case-studies/case-study-number-1/",
-        "owner": ["gdmp.admin"]
-      }
-    },
-    {
-      "model": "wagtailcore.page",
-      "pk": 13,
-      "fields": {
-        "path": "00010002000100030002",
-        "depth": 5,
-        "numchild": 0,
-        "title": "case study number 2",
-        "draft_title": "case study number 2",
-        "slug": "case-study-number-2",
-        "content_type": [
-          "case_studies",
-          "casestudypage"
-        ],
-        "live": true,
-        "has_unpublished_changes": false,
-        "url_path": "/root/en/case-studies/case-study-number-2/",
-        "owner": ["gdmp.admin"]
-      }
-    },
-    {
-      "model": "wagtailcore.page",
-      "pk": 14,
-      "fields": {
-        "path": "00010002000100030003",
-        "depth": 5,
-        "numchild": 0,
-        "title": "case study number 3",
-        "draft_title": "case study number 3",
-        "slug": "case-study-number-3",
-        "content_type": [
-          "case_studies",
-          "casestudypage"
-        ],
-        "live": true,
-        "has_unpublished_changes": false,
-        "url_path": "/root/en/case-studies/case-study-number-3/",
-        "owner": ["gdmp.admin"]
-      }
-    },
-    {
-      "model":"guidelines.guidelineslistingpage",
-      "pk":6,
-      "fields":{
-        "introduction":"<p>Step-by-step</p>"
-      }
-    },
-    {
-      "model":"guidelines.guidelinessectionpage",
-      "pk":7,
-      "fields":{
-        "subtitle":"Prepare and plan",
-        "section_colour":"primary-1",
-        "landing_page_summary":"summary"
-      }
-    },
-    {
-      "model":"guidelines.guidelinessectionpage",
-      "pk":8,
-      "fields":{
-        "subtitle":"Prepare and plan",
-        "section_colour":"primary-2",
-        "landing_page_summary":"summary"
-      }
-    },
-    {
-      "model":"guidelines.guidancepage",
-      "pk":9,
-      "fields":{
-        "body":"{}"
-      }
-    },
-    {
-      "model":"guidelines.guidancepage",
-      "pk":10,
-      "fields":{
-        "body":"{}"
-      }
-    },
-    {
-      "model":"base.homepage",
-      "pk":4,
-      "fields":{
-        "body":"<p>Home</p>"
-      }
-    },
-    {
-      "model": "case_studies.casestudieslistingpage",
-      "pk": 11,
-      "fields": {}
-    },
-    {
-      "model": "case_studies.casestudypage",
-      "pk": 12,
-      "fields": {
-        "introduction": "Case study number 1",
-        "header_image": 7,
-        "header_image_description": "Header images alt",
-        "publication_date": "2020-05-31",
-        "collaborator": "Mexico City Government",
-        "read_time": 5,
-        "body": ""
-      }
-    },
-    {
-      "model": "case_studies.casestudypage",
-      "pk": 13,
-      "fields": {
-        "introduction": "Case study number 2",
-        "header_image": 7,
-        "header_image_description": "Header images alt",
-        "publication_date": "2020-06-01",
-        "collaborator": "Australian DTA",
-        "read_time": 5,
-        "body": "[]"
-      }
-    },
-    {
-      "model": "case_studies.casestudypage",
-      "pk": 14,
-      "fields": {
-        "introduction": "Case study number 3",
-        "header_image": 7,
-        "header_image_description": "Test image",
-        "publication_date": "2020-05-01",
-        "collaborator": "GDS",
-        "read_time": 5,
-        "body": "[]"
-      }
-    },
-    {
-      "model": "wagtailimages.image",
-      "pk": 1,
-      "fields": {
-        "collection": 1,
-        "title": "example",
-        "file": "original_images/example-masthead-image_mdu8UxJ.png",
-        "width": 642,
-        "height": 608,
-        "created_at": "2020-05-13T08:44:00.225Z",
-        "uploaded_by_user": [
-            "gdmp.admin"
-        ],
-        "focal_point_x": null,
-        "focal_point_y": null,
-        "focal_point_width": null,
-        "focal_point_height": null,
-        "file_size": 129315,
-        "file_hash": "b6b41ac86a1cfa4c89eb29c906fdae4679965898"
-      }
-    },
-    {
-      "model": "wagtailimages.image",
-      "pk": 7,
-      "fields": {
-        "collection": 1,
-        "title": "0011ff.png",
-        "file": "original_images/0011ff.png",
-        "width": 1912,
-        "height": 714,
-        "created_at": "2020-05-27T10:47:28.314Z",
-        "uploaded_by_user": [
-            "gdmp.admin"
-        ],
-        "focal_point_x": null,
-        "focal_point_y": null,
-        "focal_point_width": null,
-        "focal_point_height": null,
-        "file_size": 6020,
-        "file_hash": "8d98e35219d84ea6e3673417ddac7dc5742922fc"
-      }
+  {
+    "model": "wagtailtrans.language",
+    "pk": 1,
+    "fields": {
+      "code": "en",
+      "is_default": true,
+      "position": 0,
+      "live": true
     }
-  ]
+  },
+  {
+    "pk": 1,
+    "model": "wagtailcore.site",
+    "fields": {
+      "root_page": 3,
+      "hostname": "localhost",
+      "port": 80,
+      "is_default_site": true
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "Moderators",
+      "permissions": [
+        ["access_admin", "wagtailadmin", "admin"],
+        ["add_document", "wagtaildocs", "document"],
+        ["change_document", "wagtaildocs", "document"],
+        ["delete_document", "wagtaildocs", "document"],
+        ["add_image", "wagtailimages", "image"],
+        ["change_image", "wagtailimages", "image"],
+        ["delete_image", "wagtailimages", "image"]
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkd",
+      "last_login": "2020-05-05T13:48:50.493Z",
+      "is_superuser": true,
+      "username": "gdmp.admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "test.test@test.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-04-17T15:01:18.333Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablepage",
+    "pk": 4,
+    "fields": {
+      "canonical_page": 4,
+      "language": 1
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablepage",
+    "pk": 6,
+    "fields": {
+      "canonical_page": 6,
+      "language": 1
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablepage",
+    "pk": 7,
+    "fields": {
+      "canonical_page": 7,
+      "language": 1
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablepage",
+    "pk": 8,
+    "fields": {
+      "canonical_page": 8,
+      "language": 1
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablepage",
+    "pk": 9,
+    "fields": {
+      "canonical_page": 9,
+      "language": 1
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablepage",
+    "pk": 10,
+    "fields": {
+      "canonical_page": 10,
+      "language": 1
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablepage",
+    "pk": 11,
+    "fields": {
+      "canonical_page": 11,
+      "language": 1
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablepage",
+    "pk": 12,
+    "fields": {
+      "canonical_page": 12,
+      "language": 1
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablepage",
+    "pk": 13,
+    "fields": {
+      "canonical_page": 13,
+      "language": 1
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablepage",
+    "pk": 14,
+    "fields": {
+      "canonical_page": 13,
+      "language": 1
+    }
+  },
+  {
+    "model": "wagtailtrans.translatablesiterootpage",
+    "pk": 3,
+    "fields": {}
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 1,
+    "fields": {
+      "path": "0001",
+      "depth": 1,
+      "numchild": 1,
+      "title": "Root",
+      "draft_title": "Root",
+      "slug": "root",
+      "content_type": ["wagtailcore", "page"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 3,
+    "fields": {
+      "path": "00010002",
+      "depth": 2,
+      "numchild": 2,
+      "title": "Root",
+      "draft_title": "Root",
+      "slug": "root",
+      "content_type": ["wagtailtrans", "translatablesiterootpage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 4,
+    "fields": {
+      "path": "000100020001",
+      "depth": 3,
+      "numchild": 1,
+      "title": "Home",
+      "draft_title": "Home",
+      "slug": "en",
+      "content_type": ["base", "homepage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/en/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 6,
+    "fields": {
+      "path": "0001000200010001",
+      "depth": 4,
+      "numchild": 2,
+      "title": "Guidelines",
+      "draft_title": "Guidelines",
+      "slug": "guidelines",
+      "content_type": ["guidelines", "guidelineslistingpage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/en/guidelines/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 7,
+    "fields": {
+      "path": "00010002000100010001",
+      "depth": 5,
+      "numchild": 2,
+      "title": "Prepare and plan",
+      "draft_title": "Prepare and plan",
+      "slug": "prepare-and-plan",
+      "content_type": ["guidelines", "guidelinessectionpage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/en/guidelines/prepare-and-plan/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 8,
+    "fields": {
+      "path": "00010002000100010002",
+      "depth": 5,
+      "numchild": 2,
+      "title": "Inform the market",
+      "draft_title": "Inform the market",
+      "slug": "inform-the-market",
+      "content_type": ["guidelines", "guidelinessectionpage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/en/guidelines/inform-the-market/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 9,
+    "fields": {
+      "path": "000100020001000100010001",
+      "depth": 6,
+      "numchild": 0,
+      "title": "Form a team",
+      "draft_title": "Form a team",
+      "slug": "form-a-team",
+      "content_type": ["guidelines", "guidancepage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/en/guidelines/prepare-and-plan/form-a-team/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 10,
+    "fields": {
+      "path": "000100020001000100010002",
+      "depth": 6,
+      "numchild": 0,
+      "title": "Understand user needs",
+      "draft_title": "Understand user needs",
+      "slug": "user-needs",
+      "content_type": ["guidelines", "guidancepage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/en/guidelines/prepare-and-plan/user-needs/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 11,
+    "fields": {
+      "path": "0001000200010003",
+      "depth": 4,
+      "numchild": 3,
+      "title": "Global case studies",
+      "draft_title": "Global case studies",
+      "slug": "case-studies",
+      "content_type": ["case_studies", "casestudieslistingpage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/en/case-studies/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 12,
+    "fields": {
+      "path": "00010002000100030001",
+      "depth": 5,
+      "numchild": 0,
+      "title": "case study number 1",
+      "draft_title": "case study number 1",
+      "slug": "case-study-number-1",
+      "content_type": ["case_studies", "casestudypage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/en/case-studies/case-study-number-1/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 13,
+    "fields": {
+      "path": "00010002000100030002",
+      "depth": 5,
+      "numchild": 0,
+      "title": "case study number 2",
+      "draft_title": "case study number 2",
+      "slug": "case-study-number-2",
+      "content_type": ["case_studies", "casestudypage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/en/case-studies/case-study-number-2/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 14,
+    "fields": {
+      "path": "00010002000100030003",
+      "depth": 5,
+      "numchild": 0,
+      "title": "case study number 3",
+      "draft_title": "case study number 3",
+      "slug": "case-study-number-3",
+      "content_type": ["case_studies", "casestudypage"],
+      "live": true,
+      "has_unpublished_changes": false,
+      "url_path": "/root/en/case-studies/case-study-number-3/",
+      "owner": ["gdmp.admin"]
+    }
+  },
+  {
+    "model": "guidelines.guidelineslistingpage",
+    "pk": 6,
+    "fields": {
+      "introduction": "<p>Step-by-step</p>"
+    }
+  },
+  {
+    "model": "guidelines.guidelinessectionpage",
+    "pk": 7,
+    "fields": {
+      "subtitle": "Prepare and plan",
+      "section_colour": "primary-1",
+      "landing_page_summary": "summary"
+    }
+  },
+  {
+    "model": "guidelines.guidelinessectionpage",
+    "pk": 8,
+    "fields": {
+      "subtitle": "Prepare and plan",
+      "section_colour": "primary-2",
+      "landing_page_summary": "summary"
+    }
+  },
+  {
+    "model": "guidelines.guidancepage",
+    "pk": 9,
+    "fields": {
+      "body": "{}"
+    }
+  },
+  {
+    "model": "guidelines.guidancepage",
+    "pk": 10,
+    "fields": {
+      "body": "{}"
+    }
+  },
+  {
+    "model": "base.homepage",
+    "pk": 4,
+    "fields": {
+      "body": "<p>Home</p>"
+    }
+  },
+  {
+    "model": "case_studies.casestudieslistingpage",
+    "pk": 11,
+    "fields": {}
+  },
+  {
+    "model": "case_studies.casestudypage",
+    "pk": 12,
+    "fields": {
+      "introduction": "Case study number 1",
+      "header_image": 7,
+      "header_image_description": "Header images alt",
+      "publication_date": "2020-05-31",
+      "collaborator": "Mexico City Government",
+      "read_time": 5,
+      "body": ""
+    }
+  },
+  {
+    "model": "case_studies.casestudypage",
+    "pk": 13,
+    "fields": {
+      "introduction": "Case study number 2",
+      "header_image": 7,
+      "header_image_description": "Header images alt",
+      "publication_date": "2020-06-01",
+      "collaborator": "Australian DTA",
+      "read_time": 5,
+      "body": "[]"
+    }
+  },
+  {
+    "model": "case_studies.casestudypage",
+    "pk": 14,
+    "fields": {
+      "introduction": "Case study number 3",
+      "header_image": 7,
+      "header_image_description": "Test image",
+      "publication_date": "2020-05-01",
+      "collaborator": "GDS",
+      "read_time": 5,
+      "body": "[]"
+    }
+  },
+  {
+    "model": "wagtailimages.image",
+    "pk": 1,
+    "fields": {
+      "collection": 1,
+      "title": "example",
+      "file": "original_images/example-masthead-image_mdu8UxJ.png",
+      "width": 642,
+      "height": 608,
+      "created_at": "2020-05-13T08:44:00.225Z",
+      "uploaded_by_user": ["gdmp.admin"],
+      "focal_point_x": null,
+      "focal_point_y": null,
+      "focal_point_width": null,
+      "focal_point_height": null,
+      "file_size": 129315,
+      "file_hash": "b6b41ac86a1cfa4c89eb29c906fdae4679965898"
+    }
+  },
+  {
+    "model": "wagtailimages.image",
+    "pk": 7,
+    "fields": {
+      "collection": 1,
+      "title": "0011ff.png",
+      "file": "original_images/0011ff.png",
+      "width": 1912,
+      "height": 714,
+      "created_at": "2020-05-27T10:47:28.314Z",
+      "uploaded_by_user": ["gdmp.admin"],
+      "focal_point_x": null,
+      "focal_point_y": null,
+      "focal_point_width": null,
+      "focal_point_height": null,
+      "file_size": 6020,
+      "file_hash": "8d98e35219d84ea6e3673417ddac7dc5742922fc"
+    }
+  }
+]
