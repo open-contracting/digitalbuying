@@ -44,7 +44,6 @@ Build static files, then:
 
 .. code:: bash
 
-   npx jest --verbose --coverage
    ./manage.py test
 
 Translate

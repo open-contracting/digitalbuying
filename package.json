@@ -21,7 +21,6 @@
     "gulp-sass": "5.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "2.0.1",
-    "jest": "^24.7.1",
     "lodash": "^4.17.19",
     "sass": "^1.83.1",
     "vinyl-buffer": "1.0.1",
@@ -40,14 +39,6 @@
     "transform": ["babelify"]
   },
   "browserslist": ["> 1%", "last 2 versions", "iOS >=10"],
-  "jest": {
-    "coverageThreshold": {
-      "global": {
-        "functions": 80,
-        "lines": 80
-      }
-    }
-  },
   "stylelint": {
     "extends": "stylelint-config-standard-scss",
     "rules": {
