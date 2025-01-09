@@ -1,11 +1,9 @@
 {% load static wagtailcore_tags i18n %}
-
 <!DOCTYPE html>
 <html lang="{{ page.language.code }}">
 
 <head>
-  <meta charset="utf-8" />
-
+  <meta charset="utf-8">
   <title>
     {% block title %}
       {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
@@ -17,47 +15,37 @@
       {% endwith %}
     {% endblock %}
   </title>
-
-  {% if self.search_description %}
+{% if self.search_description %}
     <meta name="description" content="{{ self.search_description }}">
-  {% endif %}
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}">
-
-  {# Global stylesheets #}
+{% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="{% static 'images/favicon.ico' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/application.css' %}">
-
+  {% include "includes/fathom.html" %}
   {% block meta_tags %}{% endblock %}
 </head>
-
 <body class="govuk-template__body {% block body_class %}{% endblock %}">
-  <a href="#main-title" class="govuk-skip-link">{% trans 'Skip to main content' %}</a>
 
-  {% include "includes/header.html" %}
+<a href="#main-title" class="govuk-skip-link">{% trans 'Skip to main content' %}</a>
 
-  {% block breadcrumbs %}{% endblock breadcrumbs %}
+{% include "includes/header.html" %}
 
-  <main id="main-content" role="main">
-    {% block banner %}{% endblock %}
+{% block breadcrumbs %}{% endblock breadcrumbs %}
 
-    <div class="govuk-width-container">
-    
-      <div class="ictcg-main-wrapper" >
-        {% block content %}{% endblock %}
-      </div>
+<main id="main-content" role="main">
+  {% block banner %}{% endblock %}
+
+  <div class="govuk-width-container">
+    <div class="ictcg-main-wrapper" >
+      {% block content %}{% endblock %}
+    </div>
   </div>
 </main>
- 
-  {% include "includes/footer.html" %}
 
-  {# Global javascript #}
-  <script>
-    document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
-  </script>
-  <script type="text/javascript" src="{% static 'javascripts/application.js' %}"></script>
+{% include "includes/footer.html" %}
+
+<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+<script src="{% static 'javascripts/application.js' %}"></script>
 
 </body>
-
 </html>
