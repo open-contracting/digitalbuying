@@ -1,6 +1,6 @@
+import { Button } from "govuk-frontend";
 import Accordion from "./components/accordion";
 import Header from "./components/header";
-import { Button } from "govuk-frontend";
 
 (() => {
     const $accordions = document.querySelectorAll('[data-module="govuk-accordion"]');
