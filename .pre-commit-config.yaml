@@ -4,6 +4,10 @@ ci:
 default_language_version:
     python: python3.11
 repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.6
+    hooks:
+      - id: ruff-format
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.5.14
     hooks:

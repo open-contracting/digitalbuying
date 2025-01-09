@@ -1,18 +1,18 @@
-from django.db import models
-from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel, StreamFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Orderable
-from wagtail.search import index
-from wagtailtrans.models import TranslatablePage
-from modelcluster.fields import ParentalKey
 from django.conf import settings
-
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
+from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
+from modelcluster.fields import ParentalKey
+from modelcluster.models import ClusterableModel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel, StreamFieldPanel
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Orderable
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
+from wagtailtrans.models import TranslatablePage
+
 from ictcg.streams import blocks
 
 

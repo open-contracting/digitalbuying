@@ -1,4 +1,5 @@
 from django import template
+
 from ictcg.sponsors.models import SponsorItem
 
 register = template.Library()

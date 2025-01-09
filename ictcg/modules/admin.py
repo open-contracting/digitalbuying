@@ -1,5 +1,6 @@
 from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup, modeladmin_register
-from .models import MoreInformationModule, LinksModule
+
+from .models import LinksModule, MoreInformationModule
 
 
 class MoreInformationModuleAdmin(ModelAdmin):

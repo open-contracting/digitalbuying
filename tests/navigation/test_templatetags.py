@@ -1,19 +1,19 @@
-from django.test import TestCase
-from django.template import Context, Template
-from django.db.models import Model
 from unittest.mock import Mock, patch
-from django.conf import settings
 
+from django.conf import settings
+from django.db.models import Model
+from django.template import Context, Template
+from django.test import TestCase
 from modelcluster.models import ClusterableModel
-from wagtail.core.models import Page, Orderable
+from wagtail.core.models import Orderable, Page
 
 from ictcg.navigation.models import MainMenu
 from ictcg.navigation.templatetags.navigation_tags import (
     breadcrumbs,
-    get_parent,
-    main_menu,
-    is_main_menu_link_active,
     get_footer_content,
+    get_parent,
+    is_main_menu_link_active,
+    main_menu,
 )
 
 

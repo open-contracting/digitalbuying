@@ -1,17 +1,18 @@
 import logging
-from django.db import models
+
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
+from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
-
-from wagtailtrans.models import TranslatablePage
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, ObjectList, TabbedInterface
+from wagtail.admin.edit_handlers import FieldPanel, ObjectList, StreamFieldPanel, TabbedInterface
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.core.signals import page_published, page_unpublished
-from wagtail.core.fields import RichTextField, StreamField
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtailtrans.models import TranslatablePage
+
 from ictcg.streams import blocks
 
 COLOUR_CHOICES = (

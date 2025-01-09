@@ -1,18 +1,17 @@
 import logging
-from django.db import models
+
 from django.conf import settings
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
+from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
-
-from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
-
-from wagtail.core.models import Orderable
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel, MultiFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
+from modelcluster.models import ClusterableModel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, PageChooserPanel
 from wagtail.core.fields import RichTextField
+from wagtail.core.models import Orderable
+from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class MainMenu(ClusterableModel):

@@ -1,9 +1,11 @@
+import urllib.parse
+
 from django import template
 from django.utils.translation import get_language
 from wagtail.core.models import Page
-from ictcg.navigation.models import MainMenu, FooterMenu
+
 from ictcg.guidelines.models import GuidelinesListingPage
-import urllib.parse
+from ictcg.navigation.models import FooterMenu, MainMenu
 
 register = template.Library()
 

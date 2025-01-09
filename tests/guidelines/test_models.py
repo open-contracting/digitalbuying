@@ -1,13 +1,12 @@
-from django.test import TestCase
 from unittest.mock import Mock, patch
 
+from django.test import TestCase
 from wagtail.core.models import Page
 from wagtail.tests.utils import WagtailPageTests
-
 from wagtailtrans.models import TranslatablePage
 
-from ictcg.guidelines.models import GuidelinesListingPage, GuidelinesSectionPage, GuidancePage
 from ictcg.base.models import HomePage
+from ictcg.guidelines.models import GuidancePage, GuidelinesListingPage, GuidelinesSectionPage
 
 
 class GuidelinesListingPageTests(WagtailPageTests):

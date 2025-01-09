@@ -1,5 +1,6 @@
 from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup, modeladmin_register
-from .models import MainMenu, FooterMenu
+
+from .models import FooterMenu, MainMenu
 
 
 class MainMenuAdmin(ModelAdmin):

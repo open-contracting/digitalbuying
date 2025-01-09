@@ -1,15 +1,13 @@
-from django.db import models
-from django.core.exceptions import ValidationError
 from django.conf import settings
-
-from wagtail.core.models import Page
+from django.core.exceptions import ValidationError
+from django.db import models
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, PageChooserPanel, StreamFieldPanel
 from wagtail.core.fields import RichTextField, StreamField
-from wagtailtrans.models import TranslatablePage
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
+from wagtailtrans.models import TranslatablePage
 
-from django.conf import settings
 from ictcg.streams import blocks
 
 

@@ -1,6 +1,7 @@
-from wagtail.tests.utils import WagtailPageTests
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.tests.utils import WagtailPageTests
+
 from ictcg.streams import blocks as ictgs_blocks
 
 

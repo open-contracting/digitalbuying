@@ -1,14 +1,13 @@
-from django.test import TestCase
 from django.core.exceptions import ValidationError
-
+from django.test import TestCase
 from wagtail.core.models import Page
+from wagtail.images.models import Image
 from wagtail.tests.utils import WagtailPageTests
 from wagtailtrans.models import TranslatablePage, TranslatableSiteRootPage
-from wagtail.images.models import Image
 
-from ictcg.guidelines.models import GuidelinesListingPage
 from ictcg.base.models import GenericPage, GenericPageWithSubNav, HomePage
 from ictcg.case_studies.models import CaseStudiesListingPage
+from ictcg.guidelines.models import GuidelinesListingPage
 from ictcg.sponsors.models import SponsorsPage
 
 

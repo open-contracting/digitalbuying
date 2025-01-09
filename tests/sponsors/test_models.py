@@ -1,14 +1,15 @@
-from django.test import TestCase
 from unittest.mock import Mock, patch
+
 from django.conf import settings
 from django.db.models import Model
-
+from django.test import TestCase
 from modelcluster.models import ClusterableModel
+from wagtail.core.models import Orderable, Page
 from wagtail.tests.utils import WagtailPageTests
-from wagtail.core.models import Page, Orderable
 from wagtailtrans.models import TranslatablePage
-from ictcg.sponsors.models import Sponsor, SponsorItem, clear_sponsors_footer_cache, SponsorsPage
+
 from ictcg.base.models import GenericPage, GenericPageWithSubNav, HomePage
+from ictcg.sponsors.models import Sponsor, SponsorItem, SponsorsPage, clear_sponsors_footer_cache
 
 
 class SponsorTests(TestCase):

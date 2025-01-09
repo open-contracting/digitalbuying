@@ -1,16 +1,15 @@
-from django.test import TestCase
 from unittest.mock import Mock, patch
-from django.core.exceptions import ValidationError
 
+from django.core.exceptions import ValidationError
+from django.test import TestCase
+from taggit.models import TaggedItemBase
 from wagtail.core.models import Page
+from wagtail.images.models import Image
 from wagtail.tests.utils import WagtailPageTests
 from wagtailtrans.models import TranslatablePage, TranslatableSiteRootPage
-from wagtail.images.models import Image
 
-from taggit.models import TaggedItemBase
-
-from ictcg.case_studies.models import CaseStudiesListingPage, CaseStudyPage, CaseStudyGuidelinesSectionTag
 from ictcg.base.models import HomePage
+from ictcg.case_studies.models import CaseStudiesListingPage, CaseStudyGuidelinesSectionTag, CaseStudyPage
 
 
 class CaseStudiesListingPageTests(WagtailPageTests):
