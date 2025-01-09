@@ -1,5 +1,5 @@
 [project]
-name = "digital-buying-guide"
+name = "digitalbuying"
 version = "0.0.0"
 
 [tool.ruff]

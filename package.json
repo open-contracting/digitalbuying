@@ -1,5 +1,5 @@
 {
-  "name": "digital-buying-guide",
+  "name": "digitalbuying",
   "version": "1.0.0",
   "dependencies": {
     "@babel/cli": "^7.4.3",

@@ -53,26 +53,7 @@ Translate
 
    manage.py makemessages
 
-Scheduled publishing
---------------------
-
-If you set up the correct periodic task, or run that task manually, you can set a page, or group of pages to publish at a specific time.
-
-You can dry run this task and it will print out what changes will be made:
-
-.. code:: bash
-
-   manage.py publish_scheduled_pages --dry-run
-
-Otherwise running the below will trigger the changes set to have already published:
-
-.. code:: bash
-
-   manage.py publish_scheduled_pages
-
-For more information on scheduling publishing this github comment is illuminating: https://github.com/wagtail/wagtail/issues/2366#issuecomment-197605338 Or the Wagtail docs: https://docs.wagtail.io/en/v2.0/reference/pages/theory.html#scheduled-publishing
-
-.. |Build Status| image:: https://github.com/open-contracting/digital-buying-guide/actions/workflows/ci.yml/badge.svg
-   :target: https://github.com/open-contracting/digital-buying-guide/actions/workflows/ci.yml
-.. |Coverage Status| image:: https://coveralls.io/repos/github/open-contracting/digital-buying-guide/badge.svg?branch=main
-   :target: https://coveralls.io/github/open-contracting/digital-buying-guide?branch=main
+.. |Build Status| image:: https://github.com/open-contracting/digitalbuying/actions/workflows/ci.yml/badge.svg
+   :target: https://github.com/open-contracting/digitalbuying/actions/workflows/ci.yml
+.. |Coverage Status| image:: https://coveralls.io/repos/github/open-contracting/digitalbuying/badge.svg?branch=main
+   :target: https://coveralls.io/github/open-contracting/digitalbuying?branch=main
