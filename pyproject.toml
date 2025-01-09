@@ -10,12 +10,19 @@ target-version = "py311"
 select = ["ALL"]
 ignore = [
     "ANN", "C901", "COM812", "D203", "D212", "D415", "EM", "ISC001", "PERF203", "PLR091", "Q000",
-    "D1",
+    "D1", "D205",
     "PTH",
+    # These should ideally be corrected.
+    "DJ001",  # nullable string fields
+    "DJ008",  # missing model __str__
 ]
+allowed-confusables = ["×", " "]
 
 [tool.ruff.lint.flake8-builtins]
 builtins-ignorelist = ["copyright"]
+
+[tool.ruff.lint.flake8-self]
+extend-ignore-names = ["_meta"]
 
 [tool.ruff.lint.flake8-unused-arguments]
 ignore-variadic-names = true
@@ -24,7 +31,7 @@ ignore-variadic-names = true
 "docs/*" = ["D100", "INP001"]
 "{*/signals,*/views,*/migrations/*}.py" = ["ARG001"]
 "{*/admin,*/routers,*/views,*/commands/*}.py" = ["ARG002"]
-"{*/admin,*/forms,*/models,*/routers,*/migrations/*,tests/*}.py" = ["RUF012"]
+"{*/admin,*/forms,*/models,*/routers,*/migrations/*,tests/*,*/blocks}.py" = ["RUF012"]
 "*/migrations/*" = ["E501"]
 "tests/*" = [
     "D", "FBT003", "INP001", "PLR2004", "PT", "S", "TRY003",

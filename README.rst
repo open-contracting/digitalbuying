@@ -72,7 +72,7 @@ Otherwise running the below will trigger the changes set to have already publish
 
 For more information on scheduling publishing this github comment is illuminating: https://github.com/wagtail/wagtail/issues/2366#issuecomment-197605338 Or the Wagtail docs: https://docs.wagtail.io/en/v2.0/reference/pages/theory.html#scheduled-publishing
 
-.. |Build Status| image:: https://github.com/open-contracting/digital-buying-guide/actions/workflows/ci.yml
+.. |Build Status| image:: https://github.com/open-contracting/digital-buying-guide/actions/workflows/ci.yml/badge.svg
    :target: https://github.com/open-contracting/digital-buying-guide/actions/workflows/ci.yml
 .. |Coverage Status| image:: https://coveralls.io/repos/github/open-contracting/digital-buying-guide/badge.svg?branch=main
    :target: https://coveralls.io/github/open-contracting/digital-buying-guide?branch=main
