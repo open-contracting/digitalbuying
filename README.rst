@@ -44,7 +44,7 @@ Build static files, then:
 
 .. code:: bash
 
-   npx gulp linting
+   npx gulp lint
    jest --verbose --coverage
    ./manage.py test
 

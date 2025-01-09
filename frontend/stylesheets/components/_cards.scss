@@ -39,7 +39,7 @@
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  padding: govuk-spacing(1) govuk-spacing(4) govuk-spacing(3) govuk-spacing(4);
+  padding: govuk-spacing(1) govuk-spacing(4) govuk-spacing(3);
 }
 
 .ictcg-card__meta {
@@ -59,10 +59,7 @@
 
 .ictcg-card__link::before {
   content: '';
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   overflow: hidden;
   position: absolute;
   z-index: 1;

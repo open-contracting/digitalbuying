@@ -4,7 +4,7 @@
 /* stylelint-disable  no-descending-specificity */
 
 .ictcg-pagination__list {
-  @include govuk-clearfix();
+  @include govuk-clearfix;
 }
 
 .ictcg-pagination-item--previous {

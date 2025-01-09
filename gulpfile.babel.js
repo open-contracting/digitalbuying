@@ -1,7 +1,6 @@
 import gulp from 'gulp'
 import del from 'del'
 import gulpif from 'gulp-if'
-import stylelint from 'gulp-stylelint'
 import sourcemaps from 'gulp-sourcemaps'
 import autoprefixer from 'gulp-autoprefixer'
 import csso from 'gulp-csso'
@@ -74,16 +73,6 @@ gulp.task('images', () => {
     .pipe(gulp.dest(paths.images.dist))
 })
 
-gulp.task('lint-stylesheets', () => {
-  return gulp.src(paths.stylesheets.src)
-    .pipe(stylelint({
-      reporters: [
-        { formatter: 'string', console: true }
-      ],
-      syntax: 'scss'
-    }))
-})
-
 gulp.task('javascripts', () => {
   const bundler = browserify({
     entries: [paths.javascripts.manifest],
@@ -145,4 +134,4 @@ gulp.task('serve', gulp.series('clean', gulp.parallel('browser-sync', 'watch')))
 
 gulp.task('build', gulp.series('clean', 'javascripts', 'stylesheets', 'images'))
 
-gulp.task('linting', gulp.parallel('lint-javascripts', 'lint-stylesheets'))
+gulp.task('lint', gulp.parallel('lint-javascripts'))
