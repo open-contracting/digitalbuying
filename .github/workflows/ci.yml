@@ -24,7 +24,7 @@ jobs:
       - name: Build static files
         shell: bash
         run: |
-          npx webpack --mode production
+          env NODE_ENV=production npx gulp build
           env DJANGO_ENV=production python manage.py collectstatic --noinput -v2
       - name: Run checks and tests
         env:
