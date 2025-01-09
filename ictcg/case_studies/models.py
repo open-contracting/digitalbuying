@@ -86,7 +86,8 @@ class CaseStudyPage(TranslatablePage):
         blank=True,
     )
 
-    content_panels = TranslatablePage.content_panels + [
+    content_panels = [
+        *TranslatablePage.content_panels,
         ImageChooserPanel("header_image"),
         FieldPanel("header_image_description"),
         FieldPanel("publication_date"),
@@ -97,7 +98,8 @@ class CaseStudyPage(TranslatablePage):
         StreamFieldPanel("body"),
     ]
 
-    search_fields = TranslatablePage.search_fields + [
+    search_fields = [
+        *TranslatablePage.search_fields,
         index.SearchField("title"),
         index.SearchField("body"),
     ]

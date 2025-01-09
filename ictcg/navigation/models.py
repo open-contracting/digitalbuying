@@ -95,7 +95,9 @@ class MainMenuItem(Orderable, MenuItem):
     Extending Orderable allow for links to be arranaged in the order choosen by the user.
     """
 
-    panels = MenuItem.panels + []
+    panels = [
+        *MenuItem.panels,
+    ]
     links = ParentalKey("MainMenu", related_name="menu_items")
 
 
@@ -151,7 +153,9 @@ class FooterMenuItem(Orderable, MenuItem):
     Extending Orderable allow for links to be arranaged in the order choosen by the user.
     """
 
-    panels = MenuItem.panels + []
+    panels = [
+        *MenuItem.panels,
+    ]
     links = ParentalKey("FooterMenu", related_name="footer_menu_items")
 
 

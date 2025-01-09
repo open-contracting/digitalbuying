@@ -19,7 +19,10 @@ from ictcg.streams import blocks
 class Sponsor(ClusterableModel):
     language = models.CharField(max_length=100, choices=settings.LANGUAGES)
 
-    panels = [FieldPanel("language"), InlinePanel("sponsor_items", label="Sponsor Item")]
+    panels = [
+        FieldPanel("language"),
+        InlinePanel("sponsor_items", label="Sponsor Item"),
+    ]
 
     def __str__(self):
         return f"Sponsors - {self.language}"
@@ -86,11 +89,13 @@ class SponsorsPage(TranslatablePage):
         blank=True,
     )
 
-    content_panels = TranslatablePage.content_panels + [
+    content_panels = [
+        *TranslatablePage.content_panels,
         StreamFieldPanel("body"),
     ]
 
-    search_fields = TranslatablePage.search_fields + [
+    search_fields = [
+        *TranslatablePage.search_fields,
         index.SearchField("body"),
     ]
 

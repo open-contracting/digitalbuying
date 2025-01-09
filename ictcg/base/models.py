@@ -56,7 +56,8 @@ class HomePage(TranslatablePage):
         blank=True,
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = [
+        *Page.content_panels,
         MultiFieldPanel(
             [
                 FieldPanel("masthead_title"),
@@ -71,7 +72,8 @@ class HomePage(TranslatablePage):
         StreamFieldPanel("body"),
     ]
 
-    search_fields = Page.search_fields + [
+    search_fields = [
+        *Page.search_fields,
         index.SearchField("masthead_title"),
         index.SearchField("masthead_description"),
         index.SearchField("body"),
@@ -107,7 +109,8 @@ class GenericPageWithSubNav(TranslatablePage):
         blank=True,
     )
 
-    content_panels = TranslatablePage.content_panels + [
+    content_panels = [
+        *TranslatablePage.content_panels,
         FieldPanel("navigation_title"),
         StreamFieldPanel("body"),
     ]
@@ -133,7 +136,8 @@ class GenericPage(TranslatablePage):
         blank=True,
     )
 
-    content_panels = TranslatablePage.content_panels + [
+    content_panels = [
+        *TranslatablePage.content_panels,
         FieldPanel("introduction"),
         StreamFieldPanel("body"),
     ]

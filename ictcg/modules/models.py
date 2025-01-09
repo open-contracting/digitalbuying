@@ -64,7 +64,8 @@ class MoreInformationModule(KeyModuleFields):
 
     description = RichTextField(blank=True, default="")
 
-    panels = KeyModuleFields.panels + [
+    panels = [
+        *KeyModuleFields.panels,
         FieldPanel("description"),
     ]
 
@@ -78,7 +79,9 @@ class OrderableLinks(Orderable, Links):
     Extending Orderable allow for links to be arranaged in the order choosen by the user.
     """
 
-    panels = Links.panels + []
+    panels = [
+        *Links.panels,
+    ]
     links = ParentalKey("LinksModule", related_name="orderable_links", default="")
 
 
@@ -89,7 +92,10 @@ class LinksModule(ClusterableModel, KeyModuleFields):
     This is used as a foreignField in the GuidancePage class.
     """
 
-    panels = KeyModuleFields.panels + [InlinePanel("orderable_links", label="Links")]
+    panels = [
+        *KeyModuleFields.panels,
+        InlinePanel("orderable_links", label="Links"),
+    ]
 
     def __str__(self):
         return f"{self.admin_title} - {self.language}"

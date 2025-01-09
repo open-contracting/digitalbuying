@@ -45,11 +45,13 @@ class GuidelinesListingPage(CacheClearMixin, TranslatablePage):
 
     introduction = RichTextField(blank=True, default="")
 
-    search_fields = Page.search_fields + [
+    search_fields = [
+        *Page.search_fields,
         index.SearchField("introduction"),
     ]
 
-    content_panels = Page.content_panels + [
+    content_panels = [
+        *Page.content_panels,
         FieldPanel("introduction"),
         StreamFieldPanel("information_banners"),
     ]
@@ -85,7 +87,8 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
         max_length=240, null=True, blank=False, help_text="Text to be shown on the guidelines landing page"
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = [
+        *Page.content_panels,
         FieldPanel("introduction"),
         FieldPanel("subtitle"),
         FieldPanel("body"),
@@ -93,7 +96,8 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
         FieldPanel("landing_page_summary"),
     ]
 
-    search_fields = Page.search_fields + [
+    search_fields = [
+        *Page.search_fields,
         index.SearchField("introduction"),
         index.SearchField("body"),
     ]
@@ -135,7 +139,8 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
         blank=True,
     )
 
-    content_panels = TranslatablePage.content_panels + [
+    content_panels = [
+        *TranslatablePage.content_panels,
         FieldPanel("introduction"),
         StreamFieldPanel("body"),
     ]
@@ -148,7 +153,10 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
         "modules.LinksModule", null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
     )
 
-    Sidebar_panels = [SnippetChooserPanel("more_information_module"), SnippetChooserPanel("links_module")]
+    Sidebar_panels = [
+        SnippetChooserPanel("more_information_module"),
+        SnippetChooserPanel("links_module"),
+    ]
 
     edit_handler = TabbedInterface(
         [
@@ -159,7 +167,8 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
         ]
     )
 
-    search_fields = Page.search_fields + [
+    search_fields = [
+        *Page.search_fields,
         index.SearchField("body"),
     ]
 
