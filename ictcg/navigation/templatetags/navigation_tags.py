@@ -28,7 +28,7 @@ def breadcrumbs(context):
 
 
 def get_parent(ancestors, child_depth):
-    """Get the parent based on the depth of the current item"""
+    """Get the parent based on the depth of the current item."""
     for item in ancestors:
         if item.depth == (child_depth - 1):
             return item

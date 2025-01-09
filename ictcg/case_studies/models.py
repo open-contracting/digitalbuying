@@ -21,7 +21,7 @@ from ictcg.streams import blocks
 class CaseStudiesListingPage(TranslatablePage):
     """
     A TranslatablePage class used for the entry to the case studies section of the site.
-    The page contains a list of the child (CaseStudyPage)
+    The page contains a list of the child (CaseStudyPage).
     """
 
     parent_page_types = ["base.HomePage"]
@@ -139,5 +139,5 @@ def clear_case_study_cache(language_code):
 
 @receiver((pre_delete, page_published, page_unpublished), sender=CaseStudyPage)
 def on_guidance_page_delete(sender, instance, **kwargs):
-    """On a CaseStudyPage delete, clear the cache for case_study_block"""
+    """On a CaseStudyPage delete, clear the cache for case_study_block."""
     clear_case_study_cache(instance.language.code)

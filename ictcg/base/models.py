@@ -12,7 +12,7 @@ from ictcg.streams import blocks
 
 
 class HomePage(TranslatablePage):
-    """Homepage class"""
+    """Homepage class."""
 
     parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
     subpage_types = [

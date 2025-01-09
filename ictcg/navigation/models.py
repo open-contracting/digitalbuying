@@ -66,7 +66,7 @@ class MainMenu(ClusterableModel):
 
 
 class MenuItem(models.Model):
-    """Reuseable class for menu item links"""
+    """Reuseable class for menu item links."""
 
     title = models.CharField(max_length=100, blank=True)
     url = models.CharField(max_length=500, blank=True)
@@ -92,7 +92,7 @@ class MenuItem(models.Model):
 class MainMenuItem(Orderable, MenuItem):
     """
     A class that extends Orderable and MenuItem classe for the main menu link items.
-    Extending Orderable allow for links to be arranaged in the order choosen by the user
+    Extending Orderable allow for links to be arranaged in the order choosen by the user.
     """
 
     panels = MenuItem.panels + []
@@ -148,7 +148,7 @@ class FooterMenu(ClusterableModel):
 class FooterMenuItem(Orderable, MenuItem):
     """
     A class that extends Orderable and MenuItem classe for the main menu link items.
-    Extending Orderable allow for links to be arranaged in the order choosen by the user
+    Extending Orderable allow for links to be arranaged in the order choosen by the user.
     """
 
     panels = MenuItem.panels + []
@@ -167,11 +167,11 @@ def clear_footer_cache(language_code):
 
 @receiver(pre_delete, sender=MainMenu)
 def on_main_menu_delete(sender, instance, **kwargs):
-    """On main menu delete, clear the cache"""
+    """On main menu delete, clear the cache."""
     clear_mainmenu_cache(instance.language)
 
 
 @receiver(pre_delete, sender=FooterMenu)
 def on_footer_menu_delete(sender, instance, **kwargs):
-    """On footer menu delete, clear the cache"""
+    """On footer menu delete, clear the cache."""
     clear_footer_cache(instance.language)

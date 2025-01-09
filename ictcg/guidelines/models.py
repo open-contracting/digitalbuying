@@ -118,7 +118,7 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
 class GuidancePage(CacheClearMixin, TranslatablePage):
     """
     A TranslatablePage class used for content pages (GuidancePages) within each guidelines section
-    (GuidelinesSectionPages)
+    (GuidelinesSectionPages).
     """
 
     parent_page_types = ["guidelines.GuidelinesSectionPage"]

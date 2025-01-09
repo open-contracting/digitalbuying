@@ -12,7 +12,7 @@ from wagtail.snippets.models import register_snippet
 
 
 class KeyModuleFields(models.Model):
-    """Reuseable class for generic module data"""
+    """Reuseable class for generic module data."""
 
     class Meta:
         abstract = True
@@ -37,7 +37,7 @@ class KeyModuleFields(models.Model):
 
 
 class Links(models.Model):
-    """Reuseable class for link data"""
+    """Reuseable class for link data."""
 
     class Meta:
         abstract = True
@@ -59,7 +59,7 @@ class Links(models.Model):
 class MoreInformationModule(KeyModuleFields):
     """
     A class that extends KeyModuleFields class that is displayed as a snippet within the admin area.
-    This is used as a foreignField in the GuidancePage class
+    This is used as a foreignField in the GuidancePage class.
     """
 
     description = RichTextField(blank=True, default="")
@@ -75,7 +75,7 @@ class MoreInformationModule(KeyModuleFields):
 class OrderableLinks(Orderable, Links):
     """
     A class that extends Orderable and Links classes.
-    Extending Orderable allow for links to be arranaged in the order choosen by the user
+    Extending Orderable allow for links to be arranaged in the order choosen by the user.
     """
 
     panels = Links.panels + []
