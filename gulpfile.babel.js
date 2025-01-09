@@ -13,7 +13,6 @@ import uglify from "gulp-uglify";
 import connect from "gulp-connect-php";
 import plumber from "gulp-plumber";
 import notifier from "node-notifier";
-import standard from "gulp-standard";
 
 const sass = require("gulp-sass")(require("sass"));
 const prod = process.env.NODE_ENV === "production";
@@ -117,18 +116,6 @@ gulp.task("javascripts", () => {
     return bundle();
 });
 
-gulp.task("lint-javascripts", () => {
-    return gulp
-        .src(paths.javascripts.src)
-        .pipe(standard())
-        .pipe(
-            standard.reporter("default", {
-                breakOnError: true,
-                quiet: true,
-            }),
-        );
-});
-
 gulp.task(
     "browser-sync",
     gulp.series(gulp.parallel("javascripts", "stylesheets"), () => {
@@ -151,5 +138,3 @@ gulp.task("watch", (done) => {
 gulp.task("serve", gulp.series("clean", gulp.parallel("browser-sync", "watch")));
 
 gulp.task("build", gulp.series("clean", "javascripts", "stylesheets", "images"));
-
-gulp.task("lint", gulp.parallel("lint-javascripts"));

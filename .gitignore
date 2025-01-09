@@ -4,7 +4,7 @@
 
 # Virtual environment
 /.ve
-/venv
+/.venv
 
 # Bytecode
 __pycache__
@@ -28,5 +28,6 @@ npm-debug.log
 
 # Project-specific
 /cache
+/coverage
 /assets
 /ictcg/assets
