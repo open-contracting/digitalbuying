@@ -78,7 +78,7 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
 
     section_colour = models.CharField(max_length=140, choices=COLOUR_CHOICES, null=False, blank=False)
 
-    landing_page_summary = models.CharField(
+    landing_page_summary = models.CharField(  # noqa: DJ001
         max_length=240, null=True, blank=False, help_text="Text to be shown on the guidelines landing page"
     )
 
@@ -202,5 +202,5 @@ cache_clear_signals = (pre_delete, page_published, page_unpublished)
 @receiver(cache_clear_signals, sender=GuidelinesListingPage)
 @receiver(cache_clear_signals, sender=GuidelinesSectionPage)
 @receiver(cache_clear_signals, sender=GuidancePage)
-def clear_caches_on_delete(sender, instance, **kwargs):
+def clear_caches_on_delete(sender, instance, **kwargs):  # noqa: ARG001
     instance.clear_from_caches()

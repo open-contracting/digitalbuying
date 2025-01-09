@@ -16,7 +16,7 @@ from wagtail.core.models import Orderable
 class MainMenu(ClusterableModel):
     """MainMenu class for header links. Contains Orderable MenuItem class."""
 
-    admin_title = models.CharField(max_length=100, blank=False, null=True)
+    admin_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
 
     title = models.CharField(max_length=100)
 
@@ -103,27 +103,15 @@ class MainMenuItem(Orderable, MenuItem):
 class FooterMenu(ClusterableModel):
     """FooterMenu class for footer links. Contains Orderable MenuItem class."""
 
-    admin_title = models.CharField(max_length=100, blank=False, null=True)
+    admin_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
 
     language = models.CharField(max_length=100, choices=settings.LANGUAGES)
 
-    quick_links_title = models.CharField(
-        max_length=100,
-        blank=False,
-        null=True,
-    )
+    quick_links_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
 
-    sponsors_title = models.CharField(
-        max_length=100,
-        blank=False,
-        null=True,
-    )
+    sponsors_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
 
-    translation_title = models.CharField(
-        max_length=100,
-        blank=False,
-        null=True,
-    )
+    translation_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
 
     panels = [
         FieldPanel("admin_title"),
@@ -169,12 +157,12 @@ def clear_footer_cache(language_code):
 
 
 @receiver(pre_delete, sender=MainMenu)
-def on_main_menu_delete(sender, instance, **kwargs):
+def on_main_menu_delete(sender, instance, **kwargs):  # noqa: ARG001
     """On main menu delete, clear the cache."""
     clear_mainmenu_cache(instance.language)
 
 
 @receiver(pre_delete, sender=FooterMenu)
-def on_footer_menu_delete(sender, instance, **kwargs):
+def on_footer_menu_delete(sender, instance, **kwargs):  # noqa: ARG001
     """On footer menu delete, clear the cache."""
     clear_footer_cache(instance.language)

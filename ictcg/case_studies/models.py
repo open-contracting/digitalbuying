@@ -63,7 +63,7 @@ class CaseStudyPage(TranslatablePage):
         null=True,
         related_name="+",
         on_delete=models.SET_NULL,
-        help_text="Image dimensions should be 1912px wide × 714px high",
+        help_text="Image dimensions should be 1912px wide × 714px high",  # noqa: RUF001 # HAIR SPACE
     )
 
     header_image_description = models.CharField(max_length=240)
@@ -140,6 +140,6 @@ def clear_case_study_cache(language_code):
 
 
 @receiver((pre_delete, page_published, page_unpublished), sender=CaseStudyPage)
-def on_guidance_page_delete(sender, instance, **kwargs):
+def on_guidance_page_delete(sender, instance, **kwargs):  # noqa: ARG001
     """On a CaseStudyPage delete, clear the cache for case_study_block."""
     clear_case_study_cache(instance.language.code)

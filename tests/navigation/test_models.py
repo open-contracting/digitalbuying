@@ -23,7 +23,7 @@ class MainMenuTests(TestCase):
         object_string = f"{main_menu.title} - {language[main_menu.language]}"
         self.assertEqual(object_string, str(main_menu))
 
-    @patch("ictcg.navigation.models.models.clear_mainmenu_cache")
+    @patch("ictcg.navigation.models.clear_mainmenu_cache")
     def test_clear_mainmenu_cache_is_called_on_save(self, mock):
         main_menu = models.MainMenu.objects.get(title__exact="test title 1")
         main_menu.save()
@@ -68,7 +68,7 @@ class FooterMenuTests(TestCase):
         object_string = f"{footer_menu.admin_title} - {language[footer_menu.language]}"
         self.assertEqual(object_string, str(footer_menu))
 
-    @patch("ictcg.navigation.models.models.clear_footer_cache")
+    @patch("ictcg.navigation.models.clear_footer_cache")
     def test_clear_footer_cache_is_called_on_save(self, mock):
         footer_menu = models.FooterMenu.objects.get(admin_title__exact="Footer title 1")
         footer_menu.save()
@@ -92,7 +92,7 @@ class ClearMainMenuCacheTest(TestCase):
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)
 
-    @patch("ictcg.navigation.models.models.clear_mainmenu_cache")
+    @patch("ictcg.navigation.models.clear_mainmenu_cache")
     def test_clear_mainmenu_cache_is_triggered_by_signal_on_model_delete(self, mock):
         main_menu = models.MainMenu.objects.get(title__exact="test title 1")
         main_menu.delete()
@@ -111,7 +111,7 @@ class ClearFooterCacheTest(TestCase):
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)
 
-    @patch("ictcg.navigation.models.models.clear_footer_cache")
+    @patch("ictcg.navigation.models.clear_footer_cache")
     def test_clear_footer_cache_is_triggered_by_signal_on_model_delete(self, mock):
         footer_menu = models.FooterMenu.objects.get(admin_title__exact="Footer title 2")
         footer_menu.delete()

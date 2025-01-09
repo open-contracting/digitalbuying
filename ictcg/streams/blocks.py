@@ -29,7 +29,7 @@ class RichTextWithTitleBlock(blocks.StructBlock):
 
 
 class TextAlignmentBlock(blocks.ChoiceBlock):
-    choices = [
+    choices = [  # noqa: RUF012
         ("left", "Left"),
         ("centre", "Centred"),
         ("right", "Right"),

@@ -51,7 +51,7 @@ class SponsorItem(Orderable):
         on_delete=models.SET_NULL,
     )
 
-    logo_description = models.CharField(max_length=240, null=True, help_text="Alt tag description for sponsor logo")
+    logo_description = models.CharField(max_length=240, null=True, help_text="Alt tag description for sponsor logo")  # noqa: DJ001
 
     show_in_footer = models.BooleanField(default=False, blank=True)
 
@@ -108,6 +108,6 @@ def clear_sponsors_footer_cache(language_code):
 
 
 @receiver(pre_delete, sender=Sponsor)
-def on_footer_menu_delete(sender, instance, **kwargs):
+def on_footer_menu_delete(sender, instance, **kwargs):  # noqa: ARG001
     """On Sponsor delete, clear the cache."""
     clear_sponsors_footer_cache(instance.language)
