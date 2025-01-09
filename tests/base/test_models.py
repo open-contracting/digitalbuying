@@ -1,6 +1,4 @@
 from django.core.exceptions import ValidationError
-from django.test import TestCase
-from wagtail.core.models import Page
 from wagtail.images.models import Image
 from wagtail.tests.utils import WagtailPageTests
 from wagtailtrans.models import TranslatablePage, TranslatableSiteRootPage

@@ -1,5 +1,4 @@
 from django.test import TestCase
-from wagtail.images.models import Image
 
 from ictcg.sponsors.templatetags.sponsors_tags import (
     get_footer_sponsors,

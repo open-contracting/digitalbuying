@@ -1,4 +1,4 @@
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 from django.conf import settings
 from django.db.models import Model

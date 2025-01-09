@@ -1,7 +1,4 @@
-from unittest.mock import Mock, patch
-
 from django.db import models
-from django.test import TestCase
 from modelcluster.models import ClusterableModel
 from wagtail.core.models import Orderable
 from wagtail.tests.utils import WagtailPageTests

@@ -8,10 +8,9 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, PageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable
-from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class MainMenu(ClusterableModel):

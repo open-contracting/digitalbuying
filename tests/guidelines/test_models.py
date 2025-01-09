@@ -1,7 +1,6 @@
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 from django.test import TestCase
-from wagtail.core.models import Page
 from wagtail.tests.utils import WagtailPageTests
 from wagtailtrans.models import TranslatablePage
 
