@@ -28,7 +28,6 @@ const paths = {
         src: ["frontend/images/**/*"],
         dist: "ictcg/assets/images",
     },
-    dist: "dist",
 };
 
 gulp.task("clean", () =>
