@@ -6,15 +6,120 @@ import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('base', '0006_auto_20200615_1406'),
+        ("base", "0006_auto_20200615_1406"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='homepage',
-            name='body',
-            field=wagtail.core.fields.StreamField([('rich_text_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120, required=False)), ('width', wagtail.core.blocks.ChoiceBlock(choices=[('full', 'Full Width'), ('half', 'Half Width')])), ('text_alignment', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('centre', 'Centred'), ('right', 'Right')])), ('content', wagtail.core.blocks.RichTextBlock(required=False))])), ('highlight_list_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120)), ('items_list', wagtail.core.blocks.ListBlock(wagtail.core.blocks.CharBlock(label='Item')))])), ('case_study_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120)), ('text_alignment', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('centre', 'Centred'), ('right', 'Right')])), ('content', wagtail.core.blocks.RichTextBlock()), ('button_text', wagtail.core.blocks.CharBlock(help_text='Text for button', max_length=120, required=False)), ('button_link', wagtail.core.blocks.PageChooserBlock())])), ('sponsors_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120, required=False)), ('width', wagtail.core.blocks.ChoiceBlock(choices=[('full', 'Full Width'), ('half', 'Half Width')])), ('text_alignment', wagtail.core.blocks.ChoiceBlock(choices=[('left', 'Left'), ('centre', 'Centred'), ('right', 'Right')])), ('content', wagtail.core.blocks.RichTextBlock(required=False))], template='streams/homepage_sponsors_block.html'))], blank=True, null=True),
+            model_name="homepage",
+            name="body",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "rich_text_section",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    "title",
+                                    wagtail.core.blocks.CharBlock(
+                                        help_text="Section title, max length 120 characters",
+                                        max_length=120,
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    "width",
+                                    wagtail.core.blocks.ChoiceBlock(
+                                        choices=[("full", "Full Width"), ("half", "Half Width")]
+                                    ),
+                                ),
+                                (
+                                    "text_alignment",
+                                    wagtail.core.blocks.ChoiceBlock(
+                                        choices=[("left", "Left"), ("centre", "Centred"), ("right", "Right")]
+                                    ),
+                                ),
+                                ("content", wagtail.core.blocks.RichTextBlock(required=False)),
+                            ]
+                        ),
+                    ),
+                    (
+                        "highlight_list_section",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    "title",
+                                    wagtail.core.blocks.CharBlock(
+                                        help_text="Section title, max length 120 characters", max_length=120
+                                    ),
+                                ),
+                                (
+                                    "items_list",
+                                    wagtail.core.blocks.ListBlock(wagtail.core.blocks.CharBlock(label="Item")),
+                                ),
+                            ]
+                        ),
+                    ),
+                    (
+                        "case_study_section",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    "title",
+                                    wagtail.core.blocks.CharBlock(
+                                        help_text="Section title, max length 120 characters", max_length=120
+                                    ),
+                                ),
+                                (
+                                    "text_alignment",
+                                    wagtail.core.blocks.ChoiceBlock(
+                                        choices=[("left", "Left"), ("centre", "Centred"), ("right", "Right")]
+                                    ),
+                                ),
+                                ("content", wagtail.core.blocks.RichTextBlock()),
+                                (
+                                    "button_text",
+                                    wagtail.core.blocks.CharBlock(
+                                        help_text="Text for button", max_length=120, required=False
+                                    ),
+                                ),
+                                ("button_link", wagtail.core.blocks.PageChooserBlock()),
+                            ]
+                        ),
+                    ),
+                    (
+                        "sponsors_section",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    "title",
+                                    wagtail.core.blocks.CharBlock(
+                                        help_text="Section title, max length 120 characters",
+                                        max_length=120,
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    "width",
+                                    wagtail.core.blocks.ChoiceBlock(
+                                        choices=[("full", "Full Width"), ("half", "Half Width")]
+                                    ),
+                                ),
+                                (
+                                    "text_alignment",
+                                    wagtail.core.blocks.ChoiceBlock(
+                                        choices=[("left", "Left"), ("centre", "Centred"), ("right", "Right")]
+                                    ),
+                                ),
+                                ("content", wagtail.core.blocks.RichTextBlock(required=False)),
+                            ],
+                            template="streams/homepage_sponsors_block.html",
+                        ),
+                    ),
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
     ]

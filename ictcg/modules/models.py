@@ -10,6 +10,7 @@ from wagtail.admin.edit_handlers import (
     InlinePanel,
 )
 
+
 class KeyModuleFields(models.Model):
     """
     Reuseable class for generic module data
@@ -18,16 +19,10 @@ class KeyModuleFields(models.Model):
     class Meta:
         abstract = True
 
-    language = models.CharField(
-        max_length=100,
-        choices=settings.LANGUAGES
-    )
+    language = models.CharField(max_length=100, choices=settings.LANGUAGES)
 
     admin_title = models.CharField(
-        max_length=140,
-        blank=False,
-        null=True,
-        help_text='Title to appear in the admin area'
+        max_length=140, blank=False, null=True, help_text="Title to appear in the admin area"
     )
 
     title = models.CharField(
@@ -51,11 +46,7 @@ class Links(models.Model):
     class Meta:
         abstract = True
 
-    link_text = models.CharField(
-        max_length=140,
-        blank=True,
-        help_text='Text for link'
-    )
+    link_text = models.CharField(max_length=140, blank=True, help_text="Text for link")
 
     url = models.URLField(null=True, blank=True)
 
@@ -63,15 +54,16 @@ class Links(models.Model):
 
     panels = [
         FieldPanel("link_text"),
-        FieldPanel('url'),
+        FieldPanel("url"),
         FieldPanel("open_in_new_tab"),
     ]
+
 
 @register_snippet
 class MoreInformationModule(KeyModuleFields):
     """
-     A class that extends KeyModuleFields class that is displayed as a snippet within the admin area.
-     This is used as a foreignField in the GuidancePage class
+    A class that extends KeyModuleFields class that is displayed as a snippet within the admin area.
+    This is used as a foreignField in the GuidancePage class
     """
 
     description = RichTextField(blank=True, default="")
@@ -83,25 +75,25 @@ class MoreInformationModule(KeyModuleFields):
     def __str__(self):
         return f"{self.admin_title} - {self.language}"
 
+
 class OrderableLinks(Orderable, Links):
     """
-     A class that extends Orderable and Links classes.
-     Extending Orderable allow for links to be arranaged in the order choosen by the user
+    A class that extends Orderable and Links classes.
+    Extending Orderable allow for links to be arranaged in the order choosen by the user
     """
+
     panels = Links.panels + []
-    links = ParentalKey(
-        "LinksModule", related_name="orderable_links", default='')
+    links = ParentalKey("LinksModule", related_name="orderable_links", default="")
 
 
 @register_snippet
 class LinksModule(ClusterableModel, KeyModuleFields):
     """
-     A class that extends ClusterableModel and KeyModuleFields classes that is displayed as a snippet within the admin area.
-     This is used as a foreignField in the GuidancePage class.
+    A class that extends ClusterableModel and KeyModuleFields classes that is displayed as a snippet within the admin area.
+    This is used as a foreignField in the GuidancePage class.
     """
-    panels = KeyModuleFields.panels + [
-        InlinePanel("orderable_links", label="Links")
-    ]
+
+    panels = KeyModuleFields.panels + [InlinePanel("orderable_links", label="Links")]
 
     def __str__(self):
         return f"{self.admin_title} - {self.language}"

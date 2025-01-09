@@ -9,61 +9,153 @@ import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('taggit', '0003_taggeditem_add_unique_index'),
-        ('wagtailtrans', '0009_create_initial_language'),
-        ('wagtailimages', '0001_squashed_0021'),
+        ("taggit", "0003_taggeditem_add_unique_index"),
+        ("wagtailtrans", "0009_create_initial_language"),
+        ("wagtailimages", "0001_squashed_0021"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CaseStudiesListingPage',
+            name="CaseStudiesListingPage",
             fields=[
-                ('translatablepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailtrans.TranslatablePage')),
+                (
+                    "translatablepage_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailtrans.TranslatablePage",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailtrans.translatablepage',),
+            bases=("wagtailtrans.translatablepage",),
         ),
         migrations.CreateModel(
-            name='CaseStudyGuidelinesSectionTag',
+            name="CaseStudyGuidelinesSectionTag",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='CaseStudyPage',
+            name="CaseStudyPage",
             fields=[
-                ('translatablepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailtrans.TranslatablePage')),
-                ('introduction', models.CharField(max_length=240)),
-                ('header_image_description', models.CharField(max_length=240)),
-                ('publication_date', models.DateField()),
-                ('collaborator', models.CharField(max_length=120)),
-                ('read_time', models.IntegerField(help_text='Time taken (in minutes) to read the case study')),
-                ('body', wagtail.core.fields.StreamField([('rich_text_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120)), ('hide_horizontal_rule', wagtail.core.blocks.BooleanBlock(required=False)), ('content', wagtail.core.blocks.RichTextBlock())])), ('quote_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Quote section title, max length 120 characters', max_length=120)), ('hide_horizontal_rule', wagtail.core.blocks.BooleanBlock(required=False)), ('content_top', wagtail.core.blocks.RichTextBlock()), ('quote', wagtail.core.blocks.CharBlock(help_text='Quote', max_length=300)), ('attribution', wagtail.core.blocks.CharBlock(help_text='Quote attribution', max_length=120)), ('content_bottom', wagtail.core.blocks.RichTextBlock(required=False))]))], blank=True, null=True)),
-                ('header_image', models.ForeignKey(help_text='Image dimensions should be 1912px wide\u200a×\u200a714px high', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
-                ('section_tags', modelcluster.contrib.taggit.ClusterTaggableManager(blank=True, help_text='A comma-separated list of tags.', through='case_studies.CaseStudyGuidelinesSectionTag', to='taggit.Tag', verbose_name='Tags')),
+                (
+                    "translatablepage_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailtrans.TranslatablePage",
+                    ),
+                ),
+                ("introduction", models.CharField(max_length=240)),
+                ("header_image_description", models.CharField(max_length=240)),
+                ("publication_date", models.DateField()),
+                ("collaborator", models.CharField(max_length=120)),
+                ("read_time", models.IntegerField(help_text="Time taken (in minutes) to read the case study")),
+                (
+                    "body",
+                    wagtail.core.fields.StreamField(
+                        [
+                            (
+                                "rich_text_section",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "title",
+                                            wagtail.core.blocks.CharBlock(
+                                                help_text="Section title, max length 120 characters", max_length=120
+                                            ),
+                                        ),
+                                        ("hide_horizontal_rule", wagtail.core.blocks.BooleanBlock(required=False)),
+                                        ("content", wagtail.core.blocks.RichTextBlock()),
+                                    ]
+                                ),
+                            ),
+                            (
+                                "quote_section",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "title",
+                                            wagtail.core.blocks.CharBlock(
+                                                help_text="Quote section title, max length 120 characters",
+                                                max_length=120,
+                                            ),
+                                        ),
+                                        ("hide_horizontal_rule", wagtail.core.blocks.BooleanBlock(required=False)),
+                                        ("content_top", wagtail.core.blocks.RichTextBlock()),
+                                        ("quote", wagtail.core.blocks.CharBlock(help_text="Quote", max_length=300)),
+                                        (
+                                            "attribution",
+                                            wagtail.core.blocks.CharBlock(
+                                                help_text="Quote attribution", max_length=120
+                                            ),
+                                        ),
+                                        ("content_bottom", wagtail.core.blocks.RichTextBlock(required=False)),
+                                    ]
+                                ),
+                            ),
+                        ],
+                        blank=True,
+                        null=True,
+                    ),
+                ),
+                (
+                    "header_image",
+                    models.ForeignKey(
+                        help_text="Image dimensions should be 1912px wide\u200a×\u200a714px high",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailimages.Image",
+                    ),
+                ),
+                (
+                    "section_tags",
+                    modelcluster.contrib.taggit.ClusterTaggableManager(
+                        blank=True,
+                        help_text="A comma-separated list of tags.",
+                        through="case_studies.CaseStudyGuidelinesSectionTag",
+                        to="taggit.Tag",
+                        verbose_name="Tags",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailtrans.translatablepage',),
+            bases=("wagtailtrans.translatablepage",),
         ),
         migrations.AddField(
-            model_name='casestudyguidelinessectiontag',
-            name='content_object',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='case_study_section_items', to='case_studies.CaseStudyPage'),
+            model_name="casestudyguidelinessectiontag",
+            name="content_object",
+            field=modelcluster.fields.ParentalKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="case_study_section_items",
+                to="case_studies.CaseStudyPage",
+            ),
         ),
         migrations.AddField(
-            model_name='casestudyguidelinessectiontag',
-            name='tag',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='case_studies_casestudyguidelinessectiontag_items', to='taggit.Tag'),
+            model_name="casestudyguidelinessectiontag",
+            name="tag",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="case_studies_casestudyguidelinessectiontag_items",
+                to="taggit.Tag",
+            ),
         ),
     ]

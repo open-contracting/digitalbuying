@@ -4,18 +4,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('navigation', '0004_mainmenu_phase_banner_description'),
+        ("navigation", "0004_mainmenu_phase_banner_description"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='footermenu',
-            name='translation_title',
+            model_name="footermenu",
+            name="translation_title",
             field=models.CharField(max_length=100, null=True),
         ),
         migrations.DeleteModel(
-            name='SponsorItem',
+            name="SponsorItem",
         ),
     ]

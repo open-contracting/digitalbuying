@@ -6,15 +6,38 @@ import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('guidelines', '0008_auto_20200623_1404'),
+        ("guidelines", "0008_auto_20200623_1404"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='guidelineslistingpage',
-            name='information_banners',
-            field=wagtail.core.fields.StreamField([('information_banner', wagtail.core.blocks.StructBlock([('heading', wagtail.core.blocks.CharBlock(help_text='Banner heading, max length 120 characters', max_length=120)), ('content', wagtail.core.blocks.RichTextBlock(features=('bold', 'italic', 'link', 'document-link', 'hr', 'ul', 'ol')))]))], blank=True, null=True),
+            model_name="guidelineslistingpage",
+            name="information_banners",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "information_banner",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    "heading",
+                                    wagtail.core.blocks.CharBlock(
+                                        help_text="Banner heading, max length 120 characters", max_length=120
+                                    ),
+                                ),
+                                (
+                                    "content",
+                                    wagtail.core.blocks.RichTextBlock(
+                                        features=("bold", "italic", "link", "document-link", "hr", "ul", "ol")
+                                    ),
+                                ),
+                            ]
+                        ),
+                    )
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
     ]

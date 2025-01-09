@@ -1,6 +1,7 @@
 from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup, modeladmin_register
 from .models import MainMenu, FooterMenu
 
+
 class MainMenuAdmin(ModelAdmin):
     """Main menu admin."""
 
@@ -11,6 +12,7 @@ class MainMenuAdmin(ModelAdmin):
     add_to_settings_menu = False
     exclude_from_explorer = False
 
+
 class FooterMenuAdmin(ModelAdmin):
     """Footer menu admin."""
 
@@ -20,6 +22,7 @@ class FooterMenuAdmin(ModelAdmin):
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
+
 
 @modeladmin_register
 class MenusGroup(ModelAdminGroup):

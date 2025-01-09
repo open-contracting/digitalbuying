@@ -1,6 +1,6 @@
-
 from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup, modeladmin_register
 from .models import MoreInformationModule, LinksModule
+
 
 class MoreInformationModuleAdmin(ModelAdmin):
     """More Information Module admin."""
@@ -11,8 +11,12 @@ class MoreInformationModuleAdmin(ModelAdmin):
     menu_order = 000
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("language", "admin_title",)
+    list_display = (
+        "language",
+        "admin_title",
+    )
     list_filter = ("language",)
+
 
 class LinksModuleAdmin(ModelAdmin):
     """Links module admin."""
@@ -23,8 +27,12 @@ class LinksModuleAdmin(ModelAdmin):
     menu_order = 100
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("language", "admin_title",)
+    list_display = (
+        "language",
+        "admin_title",
+    )
     list_filter = ("language",)
+
 
 @modeladmin_register
 class ModulesGroup(ModelAdminGroup):

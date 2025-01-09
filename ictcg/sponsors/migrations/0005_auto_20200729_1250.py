@@ -8,27 +8,115 @@ import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailtrans', '0009_create_initial_language'),
-        ('sponsors', '0004_auto_20200618_1002'),
+        ("wagtailtrans", "0009_create_initial_language"),
+        ("sponsors", "0004_auto_20200618_1002"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='SponsorsPage',
+            name="SponsorsPage",
             fields=[
-                ('translatablepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailtrans.TranslatablePage')),
-                ('body', wagtail.core.fields.StreamField([('rich_text_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120)), ('content', wagtail.core.blocks.RichTextBlock())])), ('sponsors_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120)), ('content', wagtail.core.blocks.RichTextBlock())], template='streams/sponsors_block.html')), ('supports_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text="Do's and dont's title", max_length=200)), ('introduction', wagtail.core.blocks.RichTextBlock()), ('logos', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock([('logo', wagtail.images.blocks.ImageChooserBlock(help_text='Logo of supporter', required=True)), ('url', wagtail.core.blocks.URLBlock(help_text='URL of supporter', max_length=250)), ('logo_description', wagtail.core.blocks.CharBlock(help_text='Alt description for the image', max_length=250))])))]))], blank=True, null=True)),
+                (
+                    "translatablepage_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailtrans.TranslatablePage",
+                    ),
+                ),
+                (
+                    "body",
+                    wagtail.core.fields.StreamField(
+                        [
+                            (
+                                "rich_text_section",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "title",
+                                            wagtail.core.blocks.CharBlock(
+                                                help_text="Section title, max length 120 characters", max_length=120
+                                            ),
+                                        ),
+                                        ("content", wagtail.core.blocks.RichTextBlock()),
+                                    ]
+                                ),
+                            ),
+                            (
+                                "sponsors_section",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "title",
+                                            wagtail.core.blocks.CharBlock(
+                                                help_text="Section title, max length 120 characters", max_length=120
+                                            ),
+                                        ),
+                                        ("content", wagtail.core.blocks.RichTextBlock()),
+                                    ],
+                                    template="streams/sponsors_block.html",
+                                ),
+                            ),
+                            (
+                                "supports_section",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "title",
+                                            wagtail.core.blocks.CharBlock(
+                                                help_text="Do's and dont's title", max_length=200
+                                            ),
+                                        ),
+                                        ("introduction", wagtail.core.blocks.RichTextBlock()),
+                                        (
+                                            "logos",
+                                            wagtail.core.blocks.ListBlock(
+                                                wagtail.core.blocks.StructBlock(
+                                                    [
+                                                        (
+                                                            "logo",
+                                                            wagtail.images.blocks.ImageChooserBlock(
+                                                                help_text="Logo of supporter", required=True
+                                                            ),
+                                                        ),
+                                                        (
+                                                            "url",
+                                                            wagtail.core.blocks.URLBlock(
+                                                                help_text="URL of supporter", max_length=250
+                                                            ),
+                                                        ),
+                                                        (
+                                                            "logo_description",
+                                                            wagtail.core.blocks.CharBlock(
+                                                                help_text="Alt description for the image",
+                                                                max_length=250,
+                                                            ),
+                                                        ),
+                                                    ]
+                                                )
+                                            ),
+                                        ),
+                                    ]
+                                ),
+                            ),
+                        ],
+                        blank=True,
+                        null=True,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailtrans.translatablepage',),
+            bases=("wagtailtrans.translatablepage",),
         ),
         migrations.AddField(
-            model_name='sponsoritem',
-            name='show_on_sponsorship',
+            model_name="sponsoritem",
+            name="show_on_sponsorship",
             field=models.BooleanField(blank=True, default=False),
         ),
     ]

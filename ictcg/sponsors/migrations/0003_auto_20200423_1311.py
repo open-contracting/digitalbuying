@@ -5,21 +5,26 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailimages', '0001_squashed_0021'),
-        ('sponsors', '0002_auto_20200414_1435'),
+        ("wagtailimages", "0001_squashed_0021"),
+        ("sponsors", "0002_auto_20200414_1435"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='sponsoritem',
-            name='logo',
-            field=models.ForeignKey(help_text='Sponsor image or logo', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image'),
+            model_name="sponsoritem",
+            name="logo",
+            field=models.ForeignKey(
+                help_text="Sponsor image or logo",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtailimages.Image",
+            ),
         ),
         migrations.AlterField(
-            model_name='sponsoritem',
-            name='url',
-            field=models.URLField(blank=True, help_text='URL for sponsor link'),
+            model_name="sponsoritem",
+            name="url",
+            field=models.URLField(blank=True, help_text="URL for sponsor link"),
         ),
     ]

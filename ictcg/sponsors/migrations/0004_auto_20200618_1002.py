@@ -4,33 +4,32 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('sponsors', '0003_auto_20200423_1311'),
+        ("sponsors", "0003_auto_20200423_1311"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='sponsor',
-            name='introduction',
+            model_name="sponsor",
+            name="introduction",
         ),
         migrations.RemoveField(
-            model_name='sponsor',
-            name='title',
+            model_name="sponsor",
+            name="title",
         ),
         migrations.AddField(
-            model_name='sponsoritem',
-            name='logo_description',
-            field=models.CharField(help_text='Alt tag description for sponsor logo', max_length=240, null=True),
+            model_name="sponsoritem",
+            name="logo_description",
+            field=models.CharField(help_text="Alt tag description for sponsor logo", max_length=240, null=True),
         ),
         migrations.AddField(
-            model_name='sponsoritem',
-            name='show_in_footer',
+            model_name="sponsoritem",
+            name="show_in_footer",
             field=models.BooleanField(blank=True, default=False),
         ),
         migrations.AddField(
-            model_name='sponsoritem',
-            name='show_on_homepage',
+            model_name="sponsoritem",
+            name="show_on_homepage",
             field=models.BooleanField(blank=True, default=False),
         ),
     ]

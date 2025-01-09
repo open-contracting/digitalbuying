@@ -10,11 +10,11 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 
 urlpatterns = [
-    path('admin/', include(wagtailadmin_urls)),
-    path('documents/', include(wagtaildocs_urls)),
-    path('sitemap.xml', sitemap),
+    path("admin/", include(wagtailadmin_urls)),
+    path("documents/", include(wagtaildocs_urls)),
+    path("sitemap.xml", sitemap),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's serving mechanism
-    re_path(r'', include(wagtail_urls)),
+    re_path(r"", include(wagtail_urls)),
 ]

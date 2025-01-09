@@ -6,15 +6,45 @@ import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('case_studies', '0002_auto_20200615_1406'),
+        ("case_studies", "0002_auto_20200615_1406"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='casestudypage',
-            name='body',
-            field=wagtail.core.fields.StreamField([('rich_text_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120)), ('content', wagtail.core.blocks.RichTextBlock())])), ('quote_section', wagtail.core.blocks.StructBlock([('quote', wagtail.core.blocks.CharBlock(help_text='Quote', max_length=300)), ('attribution', wagtail.core.blocks.CharBlock(help_text='Quote attribution', max_length=120))]))], blank=True, null=True),
+            model_name="casestudypage",
+            name="body",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "rich_text_section",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    "title",
+                                    wagtail.core.blocks.CharBlock(
+                                        help_text="Section title, max length 120 characters", max_length=120
+                                    ),
+                                ),
+                                ("content", wagtail.core.blocks.RichTextBlock()),
+                            ]
+                        ),
+                    ),
+                    (
+                        "quote_section",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("quote", wagtail.core.blocks.CharBlock(help_text="Quote", max_length=300)),
+                                (
+                                    "attribution",
+                                    wagtail.core.blocks.CharBlock(help_text="Quote attribution", max_length=120),
+                                ),
+                            ]
+                        ),
+                    ),
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
     ]

@@ -7,23 +7,68 @@ import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailtrans', '0009_create_initial_language'),
-        ('base', '0009_cookiepage'),
+        ("wagtailtrans", "0009_create_initial_language"),
+        ("base", "0009_cookiepage"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='GenericPage',
+            name="GenericPage",
             fields=[
-                ('translatablepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailtrans.TranslatablePage')),
-                ('introduction', wagtail.core.fields.RichTextField(blank=True, default='')),
-                ('body', wagtail.core.fields.StreamField([('rich_text_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120)), ('content', wagtail.core.blocks.RichTextBlock())])), ('quote_section', wagtail.core.blocks.StructBlock([('quote', wagtail.core.blocks.CharBlock(help_text='Quote', max_length=300)), ('attribution', wagtail.core.blocks.CharBlock(help_text='Quote attribution', max_length=120))]))], blank=True, null=True)),
+                (
+                    "translatablepage_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailtrans.TranslatablePage",
+                    ),
+                ),
+                ("introduction", wagtail.core.fields.RichTextField(blank=True, default="")),
+                (
+                    "body",
+                    wagtail.core.fields.StreamField(
+                        [
+                            (
+                                "rich_text_section",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "title",
+                                            wagtail.core.blocks.CharBlock(
+                                                help_text="Section title, max length 120 characters", max_length=120
+                                            ),
+                                        ),
+                                        ("content", wagtail.core.blocks.RichTextBlock()),
+                                    ]
+                                ),
+                            ),
+                            (
+                                "quote_section",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        ("quote", wagtail.core.blocks.CharBlock(help_text="Quote", max_length=300)),
+                                        (
+                                            "attribution",
+                                            wagtail.core.blocks.CharBlock(
+                                                help_text="Quote attribution", max_length=120
+                                            ),
+                                        ),
+                                    ]
+                                ),
+                            ),
+                        ],
+                        blank=True,
+                        null=True,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailtrans.translatablepage',),
+            bases=("wagtailtrans.translatablepage",),
         ),
     ]

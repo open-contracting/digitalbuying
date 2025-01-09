@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('base', '0002_genericpagewithsubnav'),
+        ("base", "0002_genericpagewithsubnav"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='homepage',
-            name='masthead_image_description',
-            field=models.CharField(blank=True, help_text='Alt tag description for image', max_length=240, null=True),
+            model_name="homepage",
+            name="masthead_image_description",
+            field=models.CharField(blank=True, help_text="Alt tag description for image", max_length=240, null=True),
         ),
     ]

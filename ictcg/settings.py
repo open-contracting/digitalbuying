@@ -19,8 +19,8 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import ignore_logger
 
-production = os.getenv('DJANGO_ENV') == 'production'
-local_access = 'LOCAL_ACCESS' in os.environ or 'ALLOWED_HOSTS' not in os.environ
+production = os.getenv("DJANGO_ENV") == "production"
+local_access = "LOCAL_ACCESS" in os.environ or "ALLOWED_HOSTS" not in os.environ
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,112 +30,107 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', '%r6!#s1!$6y9s7-fz3_ua@x7_mkuq2jvg^ava^1zy@_sq(0z&%')
+SECRET_KEY = os.getenv("SECRET_KEY", "%r6!#s1!$6y9s7-fz3_ua@x7_mkuq2jvg^ava^1zy@_sq(0z&%")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", str(not production)) == "True"
 
-ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', '0.0.0.0']  # noqa: S104 # Docker
-if 'ALLOWED_HOSTS' in os.environ:
-    ALLOWED_HOSTS.extend(os.getenv('ALLOWED_HOSTS').split(','))
+ALLOWED_HOSTS = [".localhost", "127.0.0.1", "[::1]", "0.0.0.0"]  # noqa: S104 # Docker
+if "ALLOWED_HOSTS" in os.environ:
+    ALLOWED_HOSTS.extend(os.getenv("ALLOWED_HOSTS").split(","))
 
 
 # Application definition
 
 # https://docs.wagtail.org/en/stable/advanced_topics/add_to_django_project.html#settings-py
 INSTALLED_APPS = [
-    'ictcg.base',
-    'ictcg.govuk_frontend',
-    'ictcg.guidelines',
-    'ictcg.streams',
-    'ictcg.sponsors',
-    'ictcg.navigation',
-    'ictcg.modules',
-    'ictcg.case_studies',
-
-    'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
-    'wagtail.images',
-    'wagtail.search',
-    'wagtail.admin',
+    "ictcg.base",
+    "ictcg.govuk_frontend",
+    "ictcg.guidelines",
+    "ictcg.streams",
+    "ictcg.sponsors",
+    "ictcg.navigation",
+    "ictcg.modules",
+    "ictcg.case_studies",
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
     # https://docs.wagtail.org/en/stable/reference/contrib/legacy_richtext.html
-    'wagtail.contrib.legacy.richtext',
-    'wagtail.core',
-
+    "wagtail.contrib.legacy.richtext",
+    "wagtail.core",
     # https://docs.wagtail.org/en/v2.14.2/reference/contrib/postgres_search.html#postgres-search
-    'wagtail.contrib.postgres_search',
+    "wagtail.contrib.postgres_search",
     # https://docs.wagtail.org/en/stable/reference/contrib/settings.html
-    'wagtail.contrib.settings',
-
+    "wagtail.contrib.settings",
     # https://docs.wagtail.org/en/v5.2.7/reference/contrib/modeladmin/index.html
-    'wagtail.contrib.modeladmin',
-    'modelcluster',
-    'taggit',
-
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "wagtail.contrib.modeladmin",
+    "modelcluster",
+    "taggit",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
     # https://docs.wagtail.org/en/stable/reference/contrib/sitemaps.html
     "django.contrib.sitemaps",
-
-    'wagtailtrans',
+    "wagtailtrans",
 ]
 
 
 MIDDLEWARE = [
     # This site is not affected by BREACH, because it doesn't reflect user data.
     # https://docs.djangoproject.com/en/4.2/ref/middleware/#django.middleware.gzip.GZipMiddleware
-    'django.middleware.gzip.GZipMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.gzip.GZipMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
     # Replaces django.middleware.locale.LocaleMiddleware.
     # https://wagtailtrans.readthedocs.io/en/latest/getting_started.html
-    'wagtailtrans.middleware.TranslationMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    "wagtailtrans.middleware.TranslationMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
     # https://docs.wagtail.org/en/stable/reference/contrib/redirects.html
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
-ROOT_URLCONF = 'ictcg.urls'
+ROOT_URLCONF = "ictcg.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'ictcg' / 'templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.template.context_processors.i18n',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'ictcg.context_processors.from_settings',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "ictcg" / "templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.template.context_processors.i18n",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "ictcg.context_processors.from_settings",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'ictcg.wsgi.application'
+WSGI_APPLICATION = "ictcg.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgresql:///digitalbuyingguide?application_name=digitalbuyingguide'),
+    "default": dj_database_url.config(default="postgresql:///digitalbuyingguide?application_name=digitalbuyingguide"),
 }
 
 
@@ -144,16 +139,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -161,9 +156,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = "en"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -173,23 +168,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = 'assets/'
+STATIC_URL = "assets/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # Project-specific Django configuration
 
-LOCALE_PATHS = glob(str(BASE_DIR / '**' / 'locale'))
+LOCALE_PATHS = glob(str(BASE_DIR / "**" / "locale"))
 
-STATIC_ROOT = BASE_DIR / 'assets'
+STATIC_ROOT = BASE_DIR / "assets"
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
-STATICFILES_DIRS = [BASE_DIR / 'ictcg' / 'assets']
+STATICFILES_DIRS = [BASE_DIR / "ictcg" / "assets"]
 
 # https://docs.djangoproject.com/en/4.2/topics/logging/#django-security
 LOGGING = {
@@ -232,43 +227,43 @@ if production and not local_access:
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = True
-    SECURE_REFERRER_POLICY = 'same-origin'  # default in Django >= 3.1
+    SECURE_REFERRER_POLICY = "same-origin"  # default in Django >= 3.1
 
     # https://docs.djangoproject.com/en/4.2/ref/middleware/#http-strict-transport-security
-    if 'SECURE_HSTS_SECONDS' in os.environ:
-        SECURE_HSTS_SECONDS = int(os.getenv('SECURE_HSTS_SECONDS'))
+    if "SECURE_HSTS_SECONDS" in os.environ:
+        SECURE_HSTS_SECONDS = int(os.getenv("SECURE_HSTS_SECONDS"))
         SECURE_HSTS_INCLUDE_SUBDOMAINS = True
         SECURE_HSTS_PRELOAD = True
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#secure-proxy-ssl-header
-if 'DJANGO_PROXY' in os.environ:
+if "DJANGO_PROXY" in os.environ:
     USE_X_FORWARDED_HOST = True
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 LANGUAGES = (
-    ('en', 'English'),
-    ('es', 'LA Spanish'),
-    ('id', 'Bahasa'),
+    ("en", "English"),
+    ("es", "LA Spanish"),
+    ("id", "Bahasa"),
 )
 
-MEDIA_ROOT = os.getenv('MEDIA_ROOT', '/data/media/' if production else BASE_DIR / 'media/')
-MEDIA_URL = 'media/'
+MEDIA_ROOT = os.getenv("MEDIA_ROOT", "/data/media/" if production else BASE_DIR / "media/")
+MEDIA_URL = "media/"
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': os.getenv('CACHES_LOCATION', '/data/cache/' if production else BASE_DIR / 'cache/'),
-        'TIMEOUT': 604800,  # 7 days
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.getenv("CACHES_LOCATION", "/data/cache/" if production else BASE_DIR / "cache/"),
+        "TIMEOUT": 604800,  # 7 days
     }
 }
 
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
 
-FIXTURE_DIRS = [BASE_DIR / 'tests' / 'fixtures']
+FIXTURE_DIRS = [BASE_DIR / "tests" / "fixtures"]
 
 
 # Dependency configuration
@@ -290,11 +285,11 @@ WAGTAIL_SITE_NAME = "ictcg"
 #
 # WAGTAILADMIN_BASE_URL in 3.0.
 # https://docs.wagtail.org/en/stable/releases/3.0.html#other-features
-BASE_URL = 'https://www.digitalbuyingguide.org'
+BASE_URL = "https://www.digitalbuyingguide.org"
 
 WAGTAILSEARCH_BACKENDS = {
-    'default': {
-        'BACKEND': 'wagtail.contrib.postgres_search.backend',
+    "default": {
+        "BACKEND": "wagtail.contrib.postgres_search.backend",
     },
 }
 

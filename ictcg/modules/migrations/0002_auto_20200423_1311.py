@@ -4,30 +4,29 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('modules', '0001_squashed_0002_auto_20200422_1348'),
+        ("modules", "0001_squashed_0002_auto_20200422_1348"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='linksmodule',
-            name='admin_title',
-            field=models.CharField(help_text='Title to appear in the admin area', max_length=140, null=True),
+            model_name="linksmodule",
+            name="admin_title",
+            field=models.CharField(help_text="Title to appear in the admin area", max_length=140, null=True),
         ),
         migrations.AlterField(
-            model_name='moreinformationmodule',
-            name='admin_title',
-            field=models.CharField(help_text='Title to appear in the admin area', max_length=140, null=True),
+            model_name="moreinformationmodule",
+            name="admin_title",
+            field=models.CharField(help_text="Title to appear in the admin area", max_length=140, null=True),
         ),
         migrations.AlterField(
-            model_name='moreinformationmodule',
-            name='link_text',
-            field=models.CharField(blank=True, help_text='Text for link', max_length=140),
+            model_name="moreinformationmodule",
+            name="link_text",
+            field=models.CharField(blank=True, help_text="Text for link", max_length=140),
         ),
         migrations.AlterField(
-            model_name='orderablelinks',
-            name='link_text',
-            field=models.CharField(blank=True, help_text='Text for link', max_length=140),
+            model_name="orderablelinks",
+            name="link_text",
+            field=models.CharField(blank=True, help_text="Text for link", max_length=140),
         ),
     ]

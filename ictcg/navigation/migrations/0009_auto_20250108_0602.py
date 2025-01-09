@@ -4,30 +4,29 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('navigation', '0008_footermenu_quick_links_title'),
+        ("navigation", "0008_footermenu_quick_links_title"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='mainmenu',
-            name='cookie_banner_button_text',
+            model_name="mainmenu",
+            name="cookie_banner_button_text",
         ),
         migrations.RemoveField(
-            model_name='mainmenu',
-            name='cookie_banner_description',
+            model_name="mainmenu",
+            name="cookie_banner_description",
         ),
         migrations.RemoveField(
-            model_name='mainmenu',
-            name='cookie_banner_preferences_link_text',
+            model_name="mainmenu",
+            name="cookie_banner_preferences_link_text",
         ),
         migrations.RemoveField(
-            model_name='mainmenu',
-            name='cookie_banner_title',
+            model_name="mainmenu",
+            name="cookie_banner_title",
         ),
         migrations.RemoveField(
-            model_name='mainmenu',
-            name='cookie_page',
+            model_name="mainmenu",
+            name="cookie_page",
         ),
     ]

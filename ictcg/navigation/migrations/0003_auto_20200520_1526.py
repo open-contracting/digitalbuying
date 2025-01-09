@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('navigation', '0002_auto_20200504_0835_squashed_0006_footermenu_sponsors_title'),
+        ("navigation", "0002_auto_20200504_0835_squashed_0006_footermenu_sponsors_title"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='mainmenu',
-            name='logo_description',
-            field=models.CharField(help_text='Alt tag description for logo', max_length=240, null=True),
+            model_name="mainmenu",
+            name="logo_description",
+            field=models.CharField(help_text="Alt tag description for logo", max_length=240, null=True),
         ),
         migrations.AddField(
-            model_name='sponsoritem',
-            name='logo_description',
-            field=models.CharField(help_text='Alt tag description for sponsor logo', max_length=240, null=True),
+            model_name="sponsoritem",
+            name="logo_description",
+            field=models.CharField(help_text="Alt tag description for sponsor logo", max_length=240, null=True),
         ),
     ]

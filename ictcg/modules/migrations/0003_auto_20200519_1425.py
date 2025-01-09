@@ -5,27 +5,26 @@ import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('modules', '0002_auto_20200423_1311'),
+        ("modules", "0002_auto_20200423_1311"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='moreinformationmodule',
-            name='link_text',
+            model_name="moreinformationmodule",
+            name="link_text",
         ),
         migrations.RemoveField(
-            model_name='moreinformationmodule',
-            name='open_in_new_tab',
+            model_name="moreinformationmodule",
+            name="open_in_new_tab",
         ),
         migrations.RemoveField(
-            model_name='moreinformationmodule',
-            name='url',
+            model_name="moreinformationmodule",
+            name="url",
         ),
         migrations.AlterField(
-            model_name='moreinformationmodule',
-            name='description',
-            field=wagtail.core.fields.RichTextField(blank=True, default=''),
+            model_name="moreinformationmodule",
+            name="description",
+            field=wagtail.core.fields.RichTextField(blank=True, default=""),
         ),
     ]

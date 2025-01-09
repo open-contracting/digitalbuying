@@ -4,15 +4,22 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('guidelines', '0002_auto_20200423_1311'),
+        ("guidelines", "0002_auto_20200423_1311"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='guidelinessectionpage',
-            name='section_colour',
-            field=models.CharField(choices=[('#28a197', 'Turqoise'), ('#007FC2', 'Light Blue'), ('#002F49', 'Dark Blue'), ('#7f97ab', 'Grey')], max_length=140),
+            model_name="guidelinessectionpage",
+            name="section_colour",
+            field=models.CharField(
+                choices=[
+                    ("#28a197", "Turqoise"),
+                    ("#007FC2", "Light Blue"),
+                    ("#002F49", "Dark Blue"),
+                    ("#7f97ab", "Grey"),
+                ],
+                max_length=140,
+            ),
         ),
     ]

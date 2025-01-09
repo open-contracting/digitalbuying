@@ -8,23 +8,71 @@ import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailtrans', '0009_create_initial_language'),
-        ('base', '0008_auto_20200623_1404'),
+        ("wagtailtrans", "0009_create_initial_language"),
+        ("base", "0008_auto_20200623_1404"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CookiePage',
+            name="CookiePage",
             fields=[
-                ('translatablepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailtrans.TranslatablePage')),
-                ('introduction', wagtail.core.fields.RichTextField(blank=True, default='')),
-                ('body', wagtail.core.fields.StreamField([('cookie_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120)), ('content', wagtail.core.blocks.RichTextBlock()), ('table', wagtail.contrib.table_block.blocks.TableBlock())])), ('Analtyics_cookie_section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(help_text='Section title, max length 120 characters', max_length=120)), ('content', wagtail.core.blocks.RichTextBlock()), ('table', wagtail.contrib.table_block.blocks.TableBlock())], template='streams/analytics_cookie_block.html'))], blank=True, null=True)),
+                (
+                    "translatablepage_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailtrans.TranslatablePage",
+                    ),
+                ),
+                ("introduction", wagtail.core.fields.RichTextField(blank=True, default="")),
+                (
+                    "body",
+                    wagtail.core.fields.StreamField(
+                        [
+                            (
+                                "cookie_section",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "title",
+                                            wagtail.core.blocks.CharBlock(
+                                                help_text="Section title, max length 120 characters", max_length=120
+                                            ),
+                                        ),
+                                        ("content", wagtail.core.blocks.RichTextBlock()),
+                                        ("table", wagtail.contrib.table_block.blocks.TableBlock()),
+                                    ]
+                                ),
+                            ),
+                            (
+                                "Analtyics_cookie_section",
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            "title",
+                                            wagtail.core.blocks.CharBlock(
+                                                help_text="Section title, max length 120 characters", max_length=120
+                                            ),
+                                        ),
+                                        ("content", wagtail.core.blocks.RichTextBlock()),
+                                        ("table", wagtail.contrib.table_block.blocks.TableBlock()),
+                                    ],
+                                    template="streams/analytics_cookie_block.html",
+                                ),
+                            ),
+                        ],
+                        blank=True,
+                        null=True,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailtrans.translatablepage',),
+            bases=("wagtailtrans.translatablepage",),
         ),
     ]

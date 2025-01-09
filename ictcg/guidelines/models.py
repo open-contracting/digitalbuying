@@ -15,19 +15,18 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from ictcg.streams import blocks
 
 COLOUR_CHOICES = (
-    ('primary-1', 'Primary 1'),
-    ('primary-2', 'Primary 2'),
-    ('primary-3', 'Primary 3'),
-    ('primary-4', 'Primary 4'),
+    ("primary-1", "Primary 1"),
+    ("primary-2", "Primary 2"),
+    ("primary-3", "Primary 3"),
+    ("primary-4", "Primary 4"),
 )
 
 
 class CacheClearMixin:
-
     def clear_from_caches(self):
         raise NotImplementedError("clear_from_caches function is required for subclasses")
 
-    def save(self,  *args, **kwargs):
+    def save(self, *args, **kwargs):
         self.clear_from_caches()
         return super().save(*args, **kwargs)
 
@@ -46,12 +45,12 @@ class GuidelinesListingPage(CacheClearMixin, TranslatablePage):
     introduction = RichTextField(blank=True, default="")
 
     search_fields = Page.search_fields + [
-        index.SearchField('introduction'),
+        index.SearchField("introduction"),
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('introduction'),
-        StreamFieldPanel('information_banners'),
+        FieldPanel("introduction"),
+        StreamFieldPanel("information_banners"),
     ]
 
     def clear_from_caches(self):
@@ -61,7 +60,7 @@ class GuidelinesListingPage(CacheClearMixin, TranslatablePage):
             target = make_template_fragment_key(target, [language_code])
             cache.delete(target)
         except Exception:
-            logging.warning('Error deleting %s cache', target)
+            logging.warning("Error deleting %s cache", target)
 
 
 class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
@@ -75,25 +74,14 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
 
     introduction = RichTextField(blank=True, default="")
 
-    subtitle = models.CharField(
-        max_length=140,
-        blank=False
-    )
+    subtitle = models.CharField(max_length=140, blank=False)
 
     body = RichTextField(blank=True, default="")
 
-    section_colour = models.CharField(
-        max_length=140,
-        choices=COLOUR_CHOICES,
-        null=False,
-        blank=False
-    )
+    section_colour = models.CharField(max_length=140, choices=COLOUR_CHOICES, null=False, blank=False)
 
     landing_page_summary = models.CharField(
-        max_length=240,
-        null=True,
-        blank=False,
-        help_text="Text to be shown on the guidelines landing page"
+        max_length=240, null=True, blank=False, help_text="Text to be shown on the guidelines landing page"
     )
 
     content_panels = Page.content_panels + [
@@ -105,8 +93,8 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
     ]
 
     search_fields = Page.search_fields + [
-        index.SearchField('introduction'),
-        index.SearchField('body'),
+        index.SearchField("introduction"),
+        index.SearchField("body"),
     ]
 
     def clear_from_caches(self):
@@ -116,14 +104,14 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
             target = make_template_fragment_key(target, [listing_id])
             cache.delete(target)
         except Exception:
-            logging.warning('Error deleting %s cache', target)
+            logging.warning("Error deleting %s cache", target)
 
         target = "pages_for_section"
         try:
             target = make_template_fragment_key(target, [self.id])
             cache.delete(target)
         except Exception:
-            logging.warning('Error deleting %s cache', target)
+            logging.warning("Error deleting %s cache", target)
 
 
 class GuidancePage(CacheClearMixin, TranslatablePage):
@@ -135,13 +123,16 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
     parent_page_types = ["guidelines.GuidelinesSectionPage"]
     subpage_types = []
 
-
     introduction = RichTextField(blank=True, default="")
 
-    body = StreamField([
-        ("content_section", blocks.RichTextWithTitleBlock()),
-        ("dos_and_donts", blocks.DosAndDontsBlock()),
-    ], null=True, blank=True)
+    body = StreamField(
+        [
+            ("content_section", blocks.RichTextWithTitleBlock()),
+            ("dos_and_donts", blocks.DosAndDontsBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
 
     content_panels = TranslatablePage.content_panels + [
         FieldPanel("introduction"),
@@ -149,35 +140,26 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
     ]
 
     more_information_module = models.ForeignKey(
-        'modules.MoreInformationModule',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
+        "modules.MoreInformationModule", null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
     )
 
     links_module = models.ForeignKey(
-        'modules.LinksModule',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
+        "modules.LinksModule", null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
     )
 
-    Sidebar_panels = [
-        SnippetChooserPanel("more_information_module"),
-        SnippetChooserPanel("links_module")
-    ]
+    Sidebar_panels = [SnippetChooserPanel("more_information_module"), SnippetChooserPanel("links_module")]
 
-    edit_handler = TabbedInterface([
-        ObjectList(content_panels, heading='Content'),
-        ObjectList(Sidebar_panels, heading='Sidebar'),
-        ObjectList(TranslatablePage.settings_panels, heading='Settings'),
-        ObjectList(TranslatablePage.promote_panels, heading='Promote')
-    ])
+    edit_handler = TabbedInterface(
+        [
+            ObjectList(content_panels, heading="Content"),
+            ObjectList(Sidebar_panels, heading="Sidebar"),
+            ObjectList(TranslatablePage.settings_panels, heading="Settings"),
+            ObjectList(TranslatablePage.promote_panels, heading="Promote"),
+        ]
+    )
 
     search_fields = Page.search_fields + [
-        index.SearchField('body'),
+        index.SearchField("body"),
     ]
 
     def get_context(self, request, *args, **kwards):
@@ -195,11 +177,11 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
         if next_page == None:
             next_page = section.get_next_siblings().live().first()
 
-        context['prev_page'] = prev_page
-        context['next_page'] = next_page
+        context["prev_page"] = prev_page
+        context["next_page"] = next_page
 
-        context['guidelines'] = guidelines
-        context['section'] = section
+        context["guidelines"] = guidelines
+        context["section"] = section
 
         return context
 
@@ -210,7 +192,7 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
             target = make_template_fragment_key(target, [listing_id])
             cache.delete(target)
         except Exception:
-            logging.warning('Error deleting %s cache', target)
+            logging.warning("Error deleting %s cache", target)
 
         target = "pages_for_section"
         try:
@@ -218,10 +200,11 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
             target = make_template_fragment_key(target, [section_id])
             cache.delete(target)
         except Exception:
-            logging.warning('Error deleting %s cache', target)
+            logging.warning("Error deleting %s cache", target)
 
 
 cache_clear_signals = (pre_delete, page_published, page_unpublished)
+
 
 @receiver(cache_clear_signals, sender=GuidelinesListingPage)
 @receiver(cache_clear_signals, sender=GuidelinesSectionPage)

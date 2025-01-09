@@ -4,8 +4,7 @@ from wagtail.images.blocks import ImageChooserBlock
 
 class SimpleRichTextBlock(blocks.StructBlock):
     description = blocks.CharBlock(
-        max_length=120,
-        help_text="Non visible description, max length 120 characters, used for html id."
+        max_length=120, help_text="Non visible description, max length 120 characters, used for html id."
     )
     content = blocks.RichTextBlock()
 
@@ -15,7 +14,7 @@ class SimpleRichTextBlock(blocks.StructBlock):
 
 class InformationBanner(blocks.StructBlock):
     heading = blocks.CharBlock(max_length=120, help_text="Banner heading, max length 120 characters")
-    content = blocks.RichTextBlock(features=('bold', 'italic', 'link', 'document-link', 'hr', 'ul', 'ol'))
+    content = blocks.RichTextBlock(features=("bold", "italic", "link", "document-link", "hr", "ul", "ol"))
 
     class Meta:
         template = "streams/information_banner.html"
@@ -31,22 +30,25 @@ class RichTextWithTitleBlock(blocks.StructBlock):
 
 class TextAlignmentBlock(blocks.ChoiceBlock):
     choices = [
-        ('left', 'Left'),
-        ('centre', 'Centred'),
-        ('right', 'Right'),
+        ("left", "Left"),
+        ("centre", "Centred"),
+        ("right", "Right"),
     ]
 
 
 class HomePageRichTextBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=120, required=False, help_text="Section title, max length 120 characters")
 
-    width = blocks.ChoiceBlock(choices=[
-        ('full', 'Full Width'),
-        ('half', 'Half Width'),
-        ('two-thirds', 'Two Thirds'),
-    ], default='full')
+    width = blocks.ChoiceBlock(
+        choices=[
+            ("full", "Full Width"),
+            ("half", "Half Width"),
+            ("two-thirds", "Two Thirds"),
+        ],
+        default="full",
+    )
 
-    text_alignment = TextAlignmentBlock(default='left')
+    text_alignment = TextAlignmentBlock(default="left")
 
     content = blocks.RichTextBlock(required=False)
 
@@ -65,7 +67,7 @@ class HighlightListBlock(blocks.StructBlock):
 
 class CaseStudyBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=120, help_text="Section title, max length 120 characters")
-    text_alignment = TextAlignmentBlock(default='left')
+    text_alignment = TextAlignmentBlock(default="left")
     content = blocks.RichTextBlock()
 
     button_text = blocks.CharBlock(max_length=120, required=False, help_text="Text for button")
@@ -83,13 +85,9 @@ class DoOrDontCard(blocks.StructBlock):
 class DosAndDontsBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=200, help_text="Do's and dont's title")
 
-    dos = blocks.ListBlock(
-        DoOrDontCard()
-    )
+    dos = blocks.ListBlock(DoOrDontCard())
 
-    donts = blocks.ListBlock(
-        DoOrDontCard()
-    )
+    donts = blocks.ListBlock(DoOrDontCard())
 
     class Meta:
         template = "streams/do_dont_list.html"
@@ -115,9 +113,8 @@ class SupportersBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=200, help_text="Do's and dont's title")
     introduction = blocks.RichTextBlock()
 
-    logos = blocks.ListBlock(
-        LogoItem()
-    )
+    logos = blocks.ListBlock(LogoItem())
+
     class Meta:
         template = "streams/supports_block.html"
         icon = "image"

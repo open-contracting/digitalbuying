@@ -9,8 +9,9 @@ from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePane
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
-from django.conf import settings 
+from django.conf import settings
 from ictcg.streams import blocks
+
 
 class HomePage(TranslatablePage):
     """
@@ -19,57 +20,45 @@ class HomePage(TranslatablePage):
 
     parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
     subpage_types = [
-        "guidelines.GuidelinesListingPage", 
-        "base.GenericPageWithSubNav", 
-        "case_studies.CaseStudiesListingPage", 
+        "guidelines.GuidelinesListingPage",
+        "base.GenericPageWithSubNav",
+        "case_studies.CaseStudiesListingPage",
         "base.GenericPage",
-        "sponsors.SponsorsPage"
+        "sponsors.SponsorsPage",
     ]
 
-    masthead_title = models.CharField(
-        max_length=240,
-        null=True,
-        help_text="Title for masthead component"
-    )
+    masthead_title = models.CharField(max_length=240, null=True, help_text="Title for masthead component")
 
     masthead_description = RichTextField(blank=True, default="")
 
     masthead_link = models.ForeignKey(
-        'wagtailcore.Page',
-        null=True,
-        blank=True,
-        related_name="+",
-        on_delete=models.SET_NULL
+        "wagtailcore.Page", null=True, blank=True, related_name="+", on_delete=models.SET_NULL
     )
 
-    masthead_link_title = models.CharField(
-        max_length=240,
-        null=True,
-        blank=True,
-        help_text="Title for link"
-    )
+    masthead_link_title = models.CharField(max_length=240, null=True, blank=True, help_text="Title for link")
 
     masthead_image = models.ForeignKey(
-        'wagtailimages.Image',
+        "wagtailimages.Image",
         blank=True,
         null=True,
-        related_name='+',
+        related_name="+",
         on_delete=models.SET_NULL,
     )
 
     masthead_image_description = models.CharField(
-        max_length=240,
-        null=True,
-        blank=True,
-        help_text="Alt tag description for image"
+        max_length=240, null=True, blank=True, help_text="Alt tag description for image"
     )
 
-    body = StreamField([
-        ("rich_text_section", blocks.HomePageRichTextBlock()),
-        ("highlight_list_section", blocks.HighlightListBlock()),
-        ("case_study_section", blocks.CaseStudyBlock()),
-        ("sponsors_section", blocks.HomePageRichTextBlock(template = "streams/homepage_sponsors_block.html")),
-    ], null=True, blank=True)
+    body = StreamField(
+        [
+            ("rich_text_section", blocks.HomePageRichTextBlock()),
+            ("highlight_list_section", blocks.HighlightListBlock()),
+            ("case_study_section", blocks.CaseStudyBlock()),
+            ("sponsors_section", blocks.HomePageRichTextBlock(template="streams/homepage_sponsors_block.html")),
+        ],
+        null=True,
+        blank=True,
+    )
 
     content_panels = TranslatablePage.content_panels + [
         StreamFieldPanel("body"),
@@ -85,23 +74,26 @@ class HomePage(TranslatablePage):
                 ImageChooserPanel("masthead_image"),
                 FieldPanel("masthead_image_description"),
             ],
-            heading='Masthead',
+            heading="Masthead",
         ),
         StreamFieldPanel("body"),
     ]
 
     search_fields = Page.search_fields + [
-        index.SearchField('masthead_title'),
-        index.SearchField('masthead_description'),
-        index.SearchField('body'),
+        index.SearchField("masthead_title"),
+        index.SearchField("masthead_description"),
+        index.SearchField("body"),
     ]
 
     def clean(self):
         super().clean()
         if self.masthead_image and not self.masthead_image_description:
-            raise ValidationError({
-            'masthead_image_description': "Please enter description for the masthead image", 
-        })
+            raise ValidationError(
+                {
+                    "masthead_image_description": "Please enter description for the masthead image",
+                }
+            )
+
 
 class GenericPageWithSubNav(TranslatablePage):
     """
@@ -112,22 +104,22 @@ class GenericPageWithSubNav(TranslatablePage):
     parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]
     subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage", "sponsors.SponsorsPage"]
 
-    navigation_title = models.CharField(
-        max_length=120,
+    navigation_title = models.CharField(max_length=120, null=True, blank=True, help_text="Title for Navigation")
+
+    body = StreamField(
+        [
+            ("rich_text_section", blocks.RichTextWithTitleBlock()),
+            ("quote_section", blocks.QuoteBlock()),
+        ],
         null=True,
         blank=True,
-        help_text="Title for Navigation"
     )
-
-    body = StreamField([
-        ("rich_text_section", blocks.RichTextWithTitleBlock()),
-        ("quote_section", blocks.QuoteBlock()),
-    ], null=True, blank=True)
 
     content_panels = TranslatablePage.content_panels + [
         FieldPanel("navigation_title"),
         StreamFieldPanel("body"),
     ]
+
 
 class GenericPage(TranslatablePage):
     """
@@ -140,10 +132,14 @@ class GenericPage(TranslatablePage):
 
     introduction = RichTextField(blank=True, default="")
 
-    body = StreamField([
-        ("rich_text_section", blocks.RichTextWithTitleBlock()),
-        ("quote_section", blocks.QuoteBlock()),
-    ], null=True, blank=True)
+    body = StreamField(
+        [
+            ("rich_text_section", blocks.RichTextWithTitleBlock()),
+            ("quote_section", blocks.QuoteBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
 
     content_panels = TranslatablePage.content_panels + [
         FieldPanel("introduction"),

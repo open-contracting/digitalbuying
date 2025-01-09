@@ -4,18 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('navigation', '0005_auto_20200618_1322'),
+        ("navigation", "0005_auto_20200618_1322"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='mainmenu',
-            name='logo',
+            model_name="mainmenu",
+            name="logo",
         ),
         migrations.RemoveField(
-            model_name='mainmenu',
-            name='logo_description',
+            model_name="mainmenu",
+            name="logo_description",
         ),
     ]

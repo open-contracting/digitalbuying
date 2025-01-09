@@ -1,6 +1,6 @@
-
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 from .models import Sponsor
+
 
 @modeladmin_register
 class SponsorsAdmin(ModelAdmin):
