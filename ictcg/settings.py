@@ -285,7 +285,7 @@ WAGTAIL_SITE_NAME = "ictcg"
 #
 # WAGTAILADMIN_BASE_URL in 3.0.
 # https://docs.wagtail.org/en/stable/releases/3.0.html#other-features
-BASE_URL = "https://www.digitalbuyingguide.org"
+BASE_URL = "https://digitalbuying.open-contracting.org"
 
 WAGTAILSEARCH_BACKENDS = {
     "default": {
