@@ -5,5 +5,5 @@ django-taggit
 psycopg2
 redis[hiredis]
 sentry-sdk
-wagtail==2.11.9
+wagtail==5.2.6
 git+https://github.com/carrotandcompany/wagtailtrans@master#egg=wagtailtrans
