@@ -40,6 +40,8 @@ draftjs-exporter==2.1.7
     # via wagtail
 et-xmlfile==2.0.0
     # via openpyxl
+hiredis==3.1.0
+    # via redis
 html5lib==1.1
     # via wagtail
 idna==3.10
@@ -52,13 +54,13 @@ pillow==9.5.0
     # via wagtail
 psycopg2==2.9.10
     # via -r requirements.in
-pymemcache==4.0.0
-    # via -r requirements.in
 pytz==2024.2
     # via
     #   django
     #   django-modelcluster
     #   l18n
+redis==5.2.1
+    # via -r requirements.in
 requests==2.32.3
     # via wagtail
 sentry-sdk==2.19.2

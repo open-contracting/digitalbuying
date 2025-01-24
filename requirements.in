@@ -3,7 +3,7 @@ django
 django-modelcluster
 django-taggit
 psycopg2
-pymemcache
+redis[hiredis]
 sentry-sdk
 wagtail==2.11.9
 git+https://github.com/carrotandcompany/wagtailtrans@master#egg=wagtailtrans

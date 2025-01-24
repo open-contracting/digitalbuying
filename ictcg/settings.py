@@ -251,10 +251,8 @@ MEDIA_URL = "media/"
 
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache"
-        if production
-        else "django.core.cache.backends.dummy.DummyCache",
-        "LOCATION": os.getenv("MEMCACHED_URL", "127.0.0.1:11211") if production else None,
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": os.getenv("REDIS_URL", "redis://localhost:6379/0"),
         "TIMEOUT": 604800,  # 7 days
     }
 }
