@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class SponsorsConfig(AppConfig):
-    name = "sponsors"
+class ModulesConfig(AppConfig):
+    name = "navigation"
     default_auto_field = "django.db.models.AutoField"
