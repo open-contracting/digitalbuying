@@ -2,8 +2,8 @@ dj-database-url
 django
 django-modelcluster
 django-taggit
-psycopg2
+mysqlclient
 redis[hiredis]
 sentry-sdk
-wagtail==2.11.9
+wagtail<2.16
 git+https://github.com/carrotandcompany/wagtailtrans@master#egg=wagtailtrans
