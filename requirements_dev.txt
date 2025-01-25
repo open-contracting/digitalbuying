@@ -75,6 +75,8 @@ l18n==2021.3
     # via
     #   -r requirements.txt
     #   wagtail
+mysqlclient==2.2.7
+    # via -r requirements.txt
 openpyxl==3.1.5
     # via
     #   -r requirements.txt
@@ -83,10 +85,6 @@ pillow==9.5.0
     # via
     #   -r requirements.txt
     #   wagtail
-psycopg2==2.9.10
-    # via -r requirements.txt
-psycopg2-binary==2.9.10
-    # via -r requirements_dev.in
 pytz==2024.2
     # via
     #   -r requirements.txt

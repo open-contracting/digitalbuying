@@ -64,8 +64,6 @@ INSTALLED_APPS = [
     # https://docs.wagtail.org/en/stable/reference/contrib/legacy_richtext.html
     "wagtail.contrib.legacy.richtext",
     "wagtail.core",
-    # https://docs.wagtail.org/en/v2.14.2/reference/contrib/postgres_search.html#postgres-search
-    "wagtail.contrib.postgres_search",
     # https://docs.wagtail.org/en/stable/reference/contrib/settings.html
     "wagtail.contrib.settings",
     # https://docs.wagtail.org/en/v5.2.7/reference/contrib/modeladmin/index.html
@@ -129,7 +127,7 @@ WSGI_APPLICATION = "ictcg.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    "default": dj_database_url.config(default="postgresql:///digitalbuyingguide?application_name=digitalbuyingguide"),
+    "default": dj_database_url.config(default="mysql://root@127.0.0.1/digitalbuying"),
 }
 
 
@@ -286,12 +284,6 @@ WAGTAIL_SITE_NAME = "ictcg"
 # WAGTAILADMIN_BASE_URL in 3.0.
 # https://docs.wagtail.org/en/stable/releases/3.0.html#other-features
 BASE_URL = "https://digitalbuying.open-contracting.org"
-
-WAGTAILSEARCH_BACKENDS = {
-    "default": {
-        "BACKEND": "wagtail.contrib.postgres_search.backend",
-    },
-}
 
 # https://wagtailtrans.readthedocs.io/en/latest/settings.html
 WAGTAILTRANS_HIDE_TRANSLATION_TREES = True

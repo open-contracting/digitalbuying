@@ -28,8 +28,9 @@ jobs:
           env DJANGO_ENV=production python manage.py collectstatic --noinput -v2
       - name: Run checks and tests
         env:
+          # https://github.com/open-contracting/digitalbuying/issues/2
           PYTHONWARNINGS: error,ignore::DeprecationWarning:django.utils.version,ignore::DeprecationWarning:django.http.request,ignore::DeprecationWarning:willow.image,ignore::DeprecationWarning:l18n.translation,ignore:::wagtail.core.signals,ignore:::wagtail.documents.models,ignore:::wagtail.admin.signals,ignore:::wagtail.core.models,ignore:::wagtailtrans.urls.translations,ignore:::wagtailtrans.wagtail_hooks
-          DATABASE_URL: postgresql://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/postgres
+          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports[3306] }}/mysql
         shell: bash
         run: |
           ./manage.py migrate
@@ -38,14 +39,14 @@ jobs:
           coverage run --source ictcg manage.py test
       - uses: coverallsapp/github-action@v2
     services:
-      postgres:
-        image: postgres:15
+      mysql:
+        image: mysql:8.0
         env:
-          POSTGRES_PASSWORD: postgres
+          MYSQL_ROOT_PASSWORD: root
         options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
         ports:
-          - 5432/tcp
+          - 3306/tcp

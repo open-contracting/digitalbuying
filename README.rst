@@ -8,7 +8,7 @@ Setup
 
 .. code:: bash
 
-   createdb digitalbuyingguide
+   mysql -u root -e "create database digitalbuying"
    npm install
    pip install -r requirements.txt
    ./manage.py migrate
