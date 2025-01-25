@@ -34,9 +34,9 @@ jobs:
         shell: bash
         run: |
           ./manage.py migrate
-          ./manage.py makemigrations --check --dry-run
+          ./manage.py makemigrations --check --dry-run base case_studies guidelines modules navigation sponsors streams
           ./manage.py check --fail-level WARNING
-          coverage run --source ictcg manage.py test
+          coverage run --source ictcg,base,case_studies,guidelines,modules,navigation,sponsors,streams manage.py test
       - uses: coverallsapp/github-action@v2
     services:
       mysql:
