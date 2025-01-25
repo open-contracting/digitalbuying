@@ -40,7 +40,7 @@ gulp.task("stylesheets", () => {
         .src(paths.stylesheets.src)
         .pipe(sass({ errLogToConsole: true, includePaths: "node_modules", quietDeps: true }))
         .pipe(gulpif(!prod, sourcemaps.init()))
-        .pipe(autoprefixer("last 2 versions"))
+        .pipe(autoprefixer({ env: "last 2 versions" }))
         .pipe(csso({ restructure: true, sourceMap: true, debug: true }))
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(paths.stylesheets.dist))
