@@ -3,7 +3,6 @@ import browserSync from "browser-sync";
 import browserify from "browserify";
 import del from "del";
 import gulp from "gulp";
-import autoprefixer from "gulp-autoprefixer";
 import csso from "gulp-csso";
 import gulpif from "gulp-if";
 import sourcemaps from "gulp-sourcemaps";
@@ -40,7 +39,6 @@ gulp.task("stylesheets", () => {
         .src(paths.stylesheets.src)
         .pipe(sass({ errLogToConsole: true, includePaths: "node_modules", quietDeps: true }))
         .pipe(gulpif(!prod, sourcemaps.init()))
-        .pipe(autoprefixer({ env: "last 2 versions" }))
         .pipe(csso({ restructure: true, sourceMap: true, debug: true }))
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(paths.stylesheets.dist))
