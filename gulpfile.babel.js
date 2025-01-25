@@ -4,7 +4,6 @@ import browserify from "browserify";
 import del from "del";
 import gulp from "gulp";
 import autoprefixer from "gulp-autoprefixer";
-import connect from "gulp-connect-php";
 import csso from "gulp-csso";
 import gulpif from "gulp-if";
 import sourcemaps from "gulp-sourcemaps";
@@ -86,11 +85,9 @@ gulp.task("javascripts", () => {
 gulp.task(
     "browser-sync",
     gulp.series(gulp.parallel("javascripts", "stylesheets"), () => {
-        connect.server({}, () => {
-            browserSync({
-                open: false,
-                proxy: "127.0.0.1:8000",
-            });
+        browserSync.init({
+            open: false,
+            proxy: "127.0.0.1:8000",
         });
     }),
 );

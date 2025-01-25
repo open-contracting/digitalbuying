@@ -16,7 +16,6 @@
     "govuk-frontend": "^3.9.1",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
-    "gulp-connect-php": "^0.0.2",
     "gulp-csso": "^3.0.1",
     "gulp-if": "2.0.2",
     "gulp-sass": "5.0.0",
