@@ -75,6 +75,8 @@ l18n==2021.3
     # via
     #   -r requirements.txt
     #   wagtail
+mysqlclient==2.2.7
+    # via -r requirements.txt
 openpyxl==3.1.5
     # via
     #   -r requirements.txt

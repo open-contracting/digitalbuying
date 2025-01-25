@@ -2,6 +2,7 @@ dj-database-url
 django
 django-modelcluster
 django-taggit
+mysqlclient
 psycopg2
 redis[hiredis]
 sentry-sdk
