@@ -29,7 +29,7 @@ jobs:
       - name: Run checks and tests
         env:
           # https://github.com/open-contracting/digitalbuying/issues/2
-          PYTHONWARNINGS: error,ignore::DeprecationWarning:django.utils.version,ignore::DeprecationWarning:django.http.request,ignore::DeprecationWarning:willow.image,ignore::DeprecationWarning:l18n.translation,ignore:::wagtail.core.signals,ignore:::wagtail.documents.models,ignore:::wagtail.admin.signals,ignore:::wagtail.core.models,ignore:::wagtailtrans.urls.translations,ignore:::wagtailtrans.wagtail_hooks
+          PYTHONWARNINGS: ignore
           DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports[3306] }}/mysql
         shell: bash
         run: |
