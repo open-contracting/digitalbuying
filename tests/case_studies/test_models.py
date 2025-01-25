@@ -4,8 +4,8 @@ from taggit.models import TaggedItemBase
 from wagtail.tests.utils import WagtailPageTests
 from wagtailtrans.models import TranslatablePage
 
-from ictcg.base.models import HomePage
-from ictcg.case_studies.models import CaseStudiesListingPage, CaseStudyGuidelinesSectionTag, CaseStudyPage
+from base.models import HomePage
+from case_studies.models import CaseStudiesListingPage, CaseStudyGuidelinesSectionTag, CaseStudyPage
 
 
 class CaseStudiesListingPageTests(WagtailPageTests):
@@ -83,7 +83,7 @@ class CaseStudyPageTests(WagtailPageTests):
         self.assertFalse("next_page" in response.context)
         self.assertEqual(response.context["prev_page"].pk, 12)
 
-    @patch("ictcg.case_studies.models.clear_case_study_cache")
+    @patch("case_studies.models.clear_case_study_cache")
     def test_clear_cache_is_called_on_save(self, mock):
         # When save is called on a CaseStudyPage class clear_case_study_cache should be called
         case_study = CaseStudyPage.objects.get(id="13")

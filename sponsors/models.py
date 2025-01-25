@@ -15,7 +15,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtailtrans.models import TranslatablePage
 
-from ictcg.streams import blocks
+from streams import blocks
 
 
 class Sponsor(ClusterableModel):

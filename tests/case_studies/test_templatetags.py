@@ -1,8 +1,8 @@
 from django.test import TestCase
 from wagtail.images.models import Image
 
-from ictcg.case_studies.models import CaseStudyPage
-from ictcg.case_studies.templatetags.case_studies_tags import get_latest_case_studies
+from case_studies.models import CaseStudyPage
+from case_studies.templatetags.case_studies_tags import get_latest_case_studies
 
 
 class TemplateTagsCaseStudiesTests(TestCase):

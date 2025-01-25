@@ -3,10 +3,10 @@ from wagtail.images.models import Image
 from wagtail.tests.utils import WagtailPageTests
 from wagtailtrans.models import TranslatablePage, TranslatableSiteRootPage
 
-from ictcg.base.models import GenericPage, GenericPageWithSubNav, HomePage
-from ictcg.case_studies.models import CaseStudiesListingPage
-from ictcg.guidelines.models import GuidelinesListingPage
-from ictcg.sponsors.models import SponsorsPage
+from base.models import GenericPage, GenericPageWithSubNav, HomePage
+from case_studies.models import CaseStudiesListingPage
+from guidelines.models import GuidelinesListingPage
+from sponsors.models import SponsorsPage
 
 
 class HomePageTests(WagtailPageTests):

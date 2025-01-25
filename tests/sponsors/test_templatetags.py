@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from ictcg.sponsors.templatetags.sponsors_tags import (
+from sponsors.templatetags.sponsors_tags import (
     get_footer_sponsors,
     get_homepage_sponsors,
     get_sponsorship_page_sponsors,

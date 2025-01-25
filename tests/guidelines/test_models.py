@@ -4,8 +4,8 @@ from django.test import TestCase
 from wagtail.tests.utils import WagtailPageTests
 from wagtailtrans.models import TranslatablePage
 
-from ictcg.base.models import HomePage
-from ictcg.guidelines.models import GuidancePage, GuidelinesListingPage, GuidelinesSectionPage
+from base.models import HomePage
+from guidelines.models import GuidancePage, GuidelinesListingPage, GuidelinesSectionPage
 
 
 class GuidelinesListingPageTests(WagtailPageTests):
@@ -39,7 +39,7 @@ class GuidelinesSectionPageTests(WagtailPageTests):
     def test_section_page_inherits_from_translatable_page_class(self):
         assert issubclass(GuidelinesListingPage, TranslatablePage)
 
-    @patch("ictcg.guidelines.models.GuidelinesSectionPage.clear_from_caches")
+    @patch("guidelines.models.GuidelinesSectionPage.clear_from_caches")
     def test_clear_cache_is_called_on_save(self, clear_from_caches):
         # When save is called on a GuidelinesSectionPage class clear_guidelines_listing_cache should be called
         GuidelinesSectionPage.objects.create(
@@ -102,7 +102,7 @@ class GuidancePageTests(WagtailPageTests):
         self.assertEqual(response.context["prev_page"].pk, 9)
         self.assertEqual(response.context["next_page"].pk, 8)
 
-    @patch("ictcg.guidelines.models.GuidancePage.clear_from_caches")
+    @patch("guidelines.models.GuidancePage.clear_from_caches")
     def test_clear_cache_is_called_on_save(self, clear_from_caches):
         GuidancePage.objects.create(path="000100020001000100010003", depth="6", title="Test guidance page")
 
@@ -113,7 +113,7 @@ class GuidancePageTests(WagtailPageTests):
 class OnDeletePageSignalsTest(TestCase):
     fixtures = ["app.json"]
 
-    @patch("ictcg.guidelines.models.GuidancePage.clear_from_caches")
+    @patch("guidelines.models.GuidancePage.clear_from_caches")
     def test_cache_is_cleared_on_guidelines_section_page_delete(self, clear_from_caches):
         # When delete is called on a GuidelinesSectionPage class clear_guidelines_section_cache should be called and
         # clear_guidelines_listing_cache should not be called
@@ -133,7 +133,7 @@ class OnDeletePageSignalsTest(TestCase):
 
         self.assertFalse(clear_from_caches.called)
 
-    @patch("ictcg.guidelines.models.GuidancePage.clear_from_caches")
+    @patch("guidelines.models.GuidancePage.clear_from_caches")
     def test_cache_is_cleared_on_guidance_page_delete(self, clear_from_caches):
         # When delete is called on a GuidancePage class clear_guidelines_section_cache and
         # clear_guidelines_listing_cache should both be called

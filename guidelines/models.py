@@ -11,7 +11,7 @@ from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtailtrans.models import TranslatablePage
 
-from ictcg.streams import blocks
+from streams import blocks
 
 COLOUR_CHOICES = (
     ("primary-1", "Primary 1"),

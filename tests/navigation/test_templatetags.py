@@ -2,7 +2,7 @@ from django.conf import settings
 from django.test import TestCase
 from wagtail.core.models import Page
 
-from ictcg.navigation.templatetags.navigation_tags import (
+from navigation.templatetags.navigation_tags import (
     breadcrumbs,
     get_footer_content,
     get_parent,

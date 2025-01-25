@@ -44,14 +44,13 @@ if "ALLOWED_HOSTS" in os.environ:
 
 # https://docs.wagtail.org/en/stable/advanced_topics/add_to_django_project.html#settings-py
 INSTALLED_APPS = [
-    "ictcg.base",
-    "ictcg.govuk_frontend",
-    "ictcg.guidelines",
-    "ictcg.streams",
-    "ictcg.sponsors",
-    "ictcg.navigation",
-    "ictcg.modules",
-    "ictcg.case_studies",
+    "base",
+    "guidelines",
+    "streams",
+    "sponsors",
+    "navigation",
+    "modules",
+    "case_studies",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -249,13 +248,14 @@ LANGUAGES = (
 MEDIA_ROOT = os.getenv("MEDIA_ROOT", "/data/media/" if production else BASE_DIR / "media/")
 MEDIA_URL = "media/"
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": os.getenv("REDIS_URL", "redis://localhost:6379/0"),
-        "TIMEOUT": 604800,  # 7 days
+if production:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.getenv("REDIS_URL", "redis://localhost:6379/0"),
+            "TIMEOUT": 604800,  # 7 days
+        }
     }
-}
 
 EMAIL_HOST = os.getenv("EMAIL_HOST")
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))

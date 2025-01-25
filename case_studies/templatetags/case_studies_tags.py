@@ -1,6 +1,6 @@
 from django import template
 
-from ictcg.case_studies.models import CaseStudyPage
+from case_studies.models import CaseStudyPage
 
 register = template.Library()
 

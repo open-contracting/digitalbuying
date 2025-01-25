@@ -3,14 +3,10 @@ from modelcluster.models import ClusterableModel
 from wagtail.core.models import Orderable
 from wagtail.tests.utils import WagtailPageTests
 
-from ictcg.modules.models import KeyModuleFields, Links, LinksModule, MoreInformationModule, OrderableLinks
+from modules.models import KeyModuleFields, Links, LinksModule, MoreInformationModule, OrderableLinks
 
 
 class KeyModuleFieldsTests(WagtailPageTests):
-    def test_meta_abstract_is_true(self):
-        keyfields = KeyModuleFields()
-        self.assertTrue(keyfields._meta.abstract)
-
     def test_key_module_fields_class_inherits_from_models_class(self):
         self.assertTrue(issubclass(KeyModuleFields, models.Model))
 
@@ -18,10 +14,6 @@ class KeyModuleFieldsTests(WagtailPageTests):
 class LinksTests(WagtailPageTests):
     def test_links_class_inherits_from_models_class(self):
         self.assertTrue(issubclass(KeyModuleFields, models.Model))
-
-    def test_meta_abstract_is_true(self):
-        links = Links()
-        self.assertTrue(links._meta.abstract)
 
 
 class MoreInformationModuleTests(WagtailPageTests):

@@ -6,8 +6,8 @@ from wagtail.core.models import Orderable
 from wagtail.tests.utils import WagtailPageTests
 from wagtailtrans.models import TranslatablePage
 
-from ictcg.base.models import GenericPage, GenericPageWithSubNav, HomePage
-from ictcg.sponsors.models import Sponsor, SponsorItem, SponsorsPage, clear_sponsors_footer_cache
+from base.models import GenericPage, GenericPageWithSubNav, HomePage
+from sponsors.models import Sponsor, SponsorItem, SponsorsPage, clear_sponsors_footer_cache
 
 
 class SponsorTests(TestCase):
@@ -21,14 +21,14 @@ class SponsorTests(TestCase):
         object_string = f"Sponsors - {sponsor.language}"
         self.assertEqual(object_string, str(sponsor))
 
-    @patch("ictcg.sponsors.models.clear_sponsors_footer_cache")
+    @patch("sponsors.models.clear_sponsors_footer_cache")
     def test_clear_sponsors_footer_cache_is_called_on_save(self, mock):
         sponsor = Sponsor.objects.get(language="en")
         sponsor.save()
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)
 
-    @patch("ictcg.sponsors.models.clear_sponsors_footer_cache")
+    @patch("sponsors.models.clear_sponsors_footer_cache")
     def test_clear_sponsors_footer_cache_is_triggered_by_signal_on_model_delete(self, mock):
         sponsor = Sponsor.objects.get(language="en")
         sponsor.delete()

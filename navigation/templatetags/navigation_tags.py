@@ -4,8 +4,8 @@ from django import template
 from django.utils.translation import get_language
 from wagtail.core.models import Page
 
-from ictcg.guidelines.models import GuidelinesListingPage
-from ictcg.navigation.models import FooterMenu, MainMenu
+from guidelines.models import GuidelinesListingPage
+from navigation.models import FooterMenu, MainMenu
 
 MINIMUM_DEPTH = 3
 
