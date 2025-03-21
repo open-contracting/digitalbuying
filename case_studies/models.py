@@ -17,6 +17,8 @@ from wagtailtrans.models import TranslatablePage
 
 from streams import blocks
 
+logger = logging.getLogger(__name__)
+
 
 class CaseStudiesListingPage(TranslatablePage):
     """
@@ -128,7 +130,7 @@ class CaseStudyPage(TranslatablePage):
         try:
             clear_case_study_cache(self.language.code)
         except Exception:
-            logging.exception("Error deleting CaseStudyPage cache")
+            logger.exception("Error deleting CaseStudyPage cache")
 
         return super().save(*args, **kwargs)
 

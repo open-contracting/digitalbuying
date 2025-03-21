@@ -12,6 +12,8 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, PageChooserPane
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable
 
+logger = logging.getLogger(__name__)
+
 
 class MainMenu(ClusterableModel):
     """MainMenu class for header links. Contains Orderable MenuItem class."""
@@ -60,7 +62,7 @@ class MainMenu(ClusterableModel):
         try:
             clear_mainmenu_cache(self.language)
         except Exception:
-            logging.exception("Error deleting menu cache")
+            logger.exception("Error deleting menu cache")
         return super().save(*args, **kwargs)
 
 
@@ -130,7 +132,7 @@ class FooterMenu(ClusterableModel):
         try:
             clear_footer_cache(self.language)
         except Exception:
-            logging.exception("Error deleting footer cache")
+            logger.exception("Error deleting footer cache")
         return super().save(*args, **kwargs)
 
 

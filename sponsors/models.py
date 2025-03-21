@@ -17,6 +17,8 @@ from wagtailtrans.models import TranslatablePage
 
 from streams import blocks
 
+logger = logging.getLogger(__name__)
+
 
 class Sponsor(ClusterableModel):
     language = models.CharField(max_length=100, choices=settings.LANGUAGES)
@@ -33,7 +35,7 @@ class Sponsor(ClusterableModel):
         try:
             clear_sponsors_footer_cache(self.language)
         except Exception:
-            logging.exception("Error deleting sponsors cache")
+            logger.exception("Error deleting sponsors cache")
         return super().save(*args, **kwargs)
 
 
