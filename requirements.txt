@@ -40,6 +40,8 @@ draftjs-exporter==2.1.7
     # via wagtail
 et-xmlfile==2.0.0
     # via openpyxl
+gunicorn==23.0.0
+    # via -r requirements.in
 hiredis==3.1.0
     # via redis
 html5lib==1.1
@@ -52,6 +54,8 @@ mysqlclient==2.2.7
     # via -r requirements.in
 openpyxl==3.1.5
     # via tablib
+packaging==25.0
+    # via gunicorn
 pillow==9.5.0
     # via wagtail
 psycopg2==2.9.10

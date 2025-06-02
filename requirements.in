@@ -2,6 +2,7 @@ dj-database-url
 django
 django-modelcluster
 django-taggit
+gunicorn
 mysqlclient
 psycopg2
 redis[hiredis]
