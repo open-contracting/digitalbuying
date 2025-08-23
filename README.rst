@@ -46,13 +46,6 @@ Build static files, then:
 
    ./manage.py test
 
-Translate
----------
-
-.. code:: bash
-
-   manage.py makemessages
-
 .. |Build Status| image:: https://github.com/open-contracting/digitalbuying/actions/workflows/ci.yml/badge.svg
    :target: https://github.com/open-contracting/digitalbuying/actions/workflows/ci.yml
 .. |Coverage Status| image:: https://coveralls.io/repos/github/open-contracting/digitalbuying/badge.svg?branch=main
