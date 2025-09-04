@@ -64,9 +64,7 @@ et-xmlfile==2.0.0
 gunicorn==23.0.0
     # via -r requirements.txt
 hiredis==3.1.0
-    # via
-    #   -r requirements.txt
-    #   redis
+    # via -r requirements.txt
 html5lib==1.1
     # via
     #   -r requirements.txt
@@ -103,7 +101,7 @@ pytz==2024.2
     #   django
     #   django-modelcluster
     #   l18n
-redis[hiredis]==5.2.1
+redis==5.2.1
     # via -r requirements.txt
 requests==2.32.4
     # via
@@ -124,7 +122,7 @@ sqlparse==0.5.3
     # via
     #   -r requirements.txt
     #   django
-tablib[xls,xlsx]==3.6.1
+tablib==3.6.1
     # via
     #   -r requirements.txt
     #   wagtail
@@ -141,7 +139,7 @@ wagtail==2.11.9
     # via
     #   -r requirements.txt
     #   wagtailtrans
-wagtailtrans @ git+https://github.com/carrotandcompany/wagtailtrans@master
+wagtailtrans @ git+https://github.com/carrotandcompany/wagtailtrans@914ed9c3eb60a5e6a2582142bf4c2c1946341d7f#egg=wagtailtrans
     # via -r requirements.txt
 webencodings==0.5.1
     # via
