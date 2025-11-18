@@ -48,5 +48,5 @@ Build static files, then:
 
 .. |Build Status| image:: https://github.com/open-contracting/digitalbuying/actions/workflows/ci.yml/badge.svg
    :target: https://github.com/open-contracting/digitalbuying/actions/workflows/ci.yml
-.. |Coverage Status| image:: https://coveralls.io/repos/github/open-contracting/digitalbuying/badge.svg?branch=main
-   :target: https://coveralls.io/github/open-contracting/digitalbuying?branch=main
+.. |Coverage Status| image:: https://codecov.io/github/open-contracting/digitalbuying/graph/badge.svg
+   :target: https://codecov.io/github/open-contracting/digitalbuying
