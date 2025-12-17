@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN groupadd -r runner && useradd --no-log-init -r -g runner runner
 
 # Must match the settings.MEDIA_ROOT default value.
-RUN mkdir -p /data/media && chown -R runner:runner /data/media
+RUN mkdir -p /data/media
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
