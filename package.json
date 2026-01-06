@@ -29,13 +29,23 @@
     "stylelint-config-standard-scss": "^14.0.0"
   },
   "babel": {
-    "presets": ["@babel/preset-env"],
-    "plugins": ["@babel/plugin-proposal-class-properties"]
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
   },
   "browserify": {
-    "transform": ["babelify"]
+    "transform": [
+      "babelify"
+    ]
   },
-  "browserslist": ["> 1%", "last 2 versions", "iOS >=10"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "iOS >=10"
+  ],
   "stylelint": {
     "extends": "stylelint-config-standard-scss",
     "rules": {
