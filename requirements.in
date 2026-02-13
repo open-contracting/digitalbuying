@@ -7,5 +7,5 @@ mysqlclient
 psycopg2
 redis[hiredis]
 sentry-sdk
-wagtail==2.11.9
+wagtail==6.3.6
 git+https://github.com/carrotandcompany/wagtailtrans@master#egg=wagtailtrans
