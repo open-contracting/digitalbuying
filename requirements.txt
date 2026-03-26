@@ -67,7 +67,7 @@ pytz==2024.2
     #   l18n
 redis[hiredis]==5.2.1
     # via -r requirements.in
-requests==2.32.4
+requests==2.33.0
     # via wagtail
 sentry-sdk==2.19.2
     # via -r requirements.in
