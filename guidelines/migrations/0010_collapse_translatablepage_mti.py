@@ -6,12 +6,9 @@ from django.db import migrations, models
 
 def copy_page_ptr(apps, schema_editor):
     with schema_editor.connection.cursor() as cursor:
-        for table in (
-            "guidelines_guidancepage",
-            "guidelines_guidelineslistingpage",
-            "guidelines_guidelinessectionpage",
-        ):
-            cursor.execute(f"UPDATE {table} SET page_ptr_id = translatablepage_ptr_id")
+        cursor.execute("UPDATE guidelines_guidancepage SET page_ptr_id = translatablepage_ptr_id")
+        cursor.execute("UPDATE guidelines_guidelineslistingpage SET page_ptr_id = translatablepage_ptr_id")
+        cursor.execute("UPDATE guidelines_guidelinessectionpage SET page_ptr_id = translatablepage_ptr_id")
 
 
 class Migration(migrations.Migration):

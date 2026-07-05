@@ -8,8 +8,9 @@ from django.db import migrations, models
 
 def copy_page_ptr(apps, schema_editor):
     with schema_editor.connection.cursor() as cursor:
-        for table in ("base_genericpage", "base_genericpagewithsubnav", "base_homepage"):
-            cursor.execute(f"UPDATE {table} SET page_ptr_id = translatablepage_ptr_id")
+        cursor.execute("UPDATE base_genericpage SET page_ptr_id = translatablepage_ptr_id")
+        cursor.execute("UPDATE base_genericpagewithsubnav SET page_ptr_id = translatablepage_ptr_id")
+        cursor.execute("UPDATE base_homepage SET page_ptr_id = translatablepage_ptr_id")
 
 
 class Migration(migrations.Migration):
