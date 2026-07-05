@@ -23,6 +23,10 @@ charset-normalizer==3.4.7
     #   requests
 coverage==7.6.10
     # via -r requirements_dev.in
+defusedxml==0.7.1
+    # via
+    #   -r requirements.txt
+    #   willow
 dj-database-url==2.2.0
     # via -r requirements.txt
 django==3.2.25
@@ -69,6 +73,10 @@ et-xmlfile==2.0.0
     # via
     #   -r requirements.txt
     #   openpyxl
+filetype==1.2.0
+    # via
+    #   -r requirements.txt
+    #   willow
 gunicorn==26.0.0
     # via -r requirements.txt
 hiredis==3.4.0
@@ -144,17 +152,17 @@ urllib3==2.7.0
     #   -r requirements.txt
     #   requests
     #   sentry-sdk
-wagtail==4.2.4
+wagtail==5.0.5
     # via
     #   -r requirements.txt
     #   wagtail-localize
-wagtail-localize==1.4
+wagtail-localize==1.8.3
     # via -r requirements.txt
 webencodings==0.5.1
     # via
     #   -r requirements.txt
     #   html5lib
-willow==1.4.1
+willow==1.6.3
     # via
     #   -r requirements.txt
     #   wagtail
