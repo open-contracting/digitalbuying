@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.test import TestCase
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 from navigation.templatetags.navigation_tags import (
     breadcrumbs,

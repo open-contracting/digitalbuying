@@ -1,9 +1,8 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, PageChooserPanel, StreamFieldPanel
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page
 from wagtail.search import index
 
 from streams import blocks
@@ -52,6 +51,7 @@ class HomePage(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
 
     content_panels = [
@@ -60,14 +60,14 @@ class HomePage(Page):
             [
                 FieldPanel("masthead_title"),
                 FieldPanel("masthead_description"),
-                PageChooserPanel("masthead_link"),
+                FieldPanel("masthead_link"),
                 FieldPanel("masthead_link_title"),
-                ImageChooserPanel("masthead_image"),
+                FieldPanel("masthead_image"),
                 FieldPanel("masthead_image_description"),
             ],
             heading="Masthead",
         ),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     search_fields = [
@@ -108,12 +108,13 @@ class GenericPageWithSubNav(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
 
     content_panels = [
         *Page.content_panels,
         FieldPanel("navigation_title"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
@@ -135,10 +136,11 @@ class GenericPage(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
 
     content_panels = [
         *Page.content_panels,
         FieldPanel("introduction"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]

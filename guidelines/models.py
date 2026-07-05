@@ -3,12 +3,11 @@ from django.core.cache.utils import make_template_fragment_key
 from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
-from wagtail.admin.edit_handlers import FieldPanel, ObjectList, StreamFieldPanel, TabbedInterface
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page
-from wagtail.core.signals import page_published, page_unpublished
+from wagtail.admin.panels import FieldPanel, ObjectList, TabbedInterface
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page
 from wagtail.search import index
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.signals import page_published, page_unpublished
 
 from streams import blocks
 
@@ -38,7 +37,9 @@ class GuidelinesListingPage(CacheClearMixin, Page):
     parent_page_types = ["base.HomePage"]
     subpage_types = ["guidelines.GuidelinesSectionPage"]
 
-    information_banners = StreamField([("information_banner", blocks.InformationBanner())], null=True, blank=True)
+    information_banners = StreamField(
+        [("information_banner", blocks.InformationBanner())], null=True, blank=True, use_json_field=True
+    )
 
     introduction = RichTextField(blank=True, default="")
 
@@ -50,7 +51,7 @@ class GuidelinesListingPage(CacheClearMixin, Page):
     content_panels = [
         *Page.content_panels,
         FieldPanel("introduction"),
-        StreamFieldPanel("information_banners"),
+        FieldPanel("information_banners"),
     ]
 
     def clear_from_caches(self):
@@ -125,12 +126,13 @@ class GuidancePage(CacheClearMixin, Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
 
     content_panels = [
         *Page.content_panels,
         FieldPanel("introduction"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     more_information_module = models.ForeignKey(
@@ -142,8 +144,8 @@ class GuidancePage(CacheClearMixin, Page):
     )
 
     Sidebar_panels = [
-        SnippetChooserPanel("more_information_module"),
-        SnippetChooserPanel("links_module"),
+        FieldPanel("more_information_module"),
+        FieldPanel("links_module"),
     ]
 
     edit_handler = TabbedInterface(

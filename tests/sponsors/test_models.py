@@ -2,8 +2,8 @@ from unittest.mock import patch
 
 from django.test import TestCase
 from modelcluster.models import ClusterableModel
-from wagtail.core.models import Orderable, Page
-from wagtail.tests.utils import WagtailPageTests
+from wagtail.models import Orderable, Page
+from wagtail.test.utils import WagtailPageTests
 
 from base.models import GenericPage, GenericPageWithSubNav, HomePage
 from sponsors.models import Sponsor, SponsorItem, SponsorsPage, clear_sponsors_footer_cache

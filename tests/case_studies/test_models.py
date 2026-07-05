@@ -1,8 +1,8 @@
 from unittest.mock import patch
 
 from taggit.models import TaggedItemBase
-from wagtail.core.models import Page
-from wagtail.tests.utils import WagtailPageTests
+from wagtail.models import Page
+from wagtail.test.utils import WagtailPageTests
 
 from base.models import HomePage
 from case_studies.models import CaseStudiesListingPage, CaseStudyGuidelinesSectionTag, CaseStudyPage

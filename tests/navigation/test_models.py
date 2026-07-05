@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db.models import Model
 from django.test import TestCase
 from modelcluster.models import ClusterableModel
-from wagtail.core.models import Orderable, Page
+from wagtail.models import Orderable, Page
 
 from navigation import models
 

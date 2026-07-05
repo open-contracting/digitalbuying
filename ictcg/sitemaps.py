@@ -1,6 +1,6 @@
 from django.db.models import Q
 from wagtail.contrib.sitemaps import Sitemap
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 
 class LocalisedSitemap(Sitemap):

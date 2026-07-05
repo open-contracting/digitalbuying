@@ -2,7 +2,7 @@ import urllib.parse
 
 from django import template
 from django.utils.translation import get_language
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 from guidelines.models import GuidelinesListingPage
 from navigation.models import FooterMenu, MainMenu

@@ -1,7 +1,7 @@
 from django.db import models
 from modelcluster.models import ClusterableModel
-from wagtail.core.models import Orderable
-from wagtail.tests.utils import WagtailPageTests
+from wagtail.models import Orderable
+from wagtail.test.utils import WagtailPageTests
 
 from modules.models import KeyModuleFields, Links, LinksModule, MoreInformationModule, OrderableLinks
 

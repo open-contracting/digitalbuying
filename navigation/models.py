@@ -8,9 +8,9 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
-from wagtail.core.fields import RichTextField
-from wagtail.core.models import Orderable
+from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.fields import RichTextField
+from wagtail.models import Orderable
 
 logger = logging.getLogger(__name__)
 
@@ -77,7 +77,7 @@ class MenuItem(models.Model):
     panels = [
         FieldPanel("title"),
         FieldPanel("url"),
-        PageChooserPanel("page"),
+        FieldPanel("page"),
         FieldPanel("open_in_new_tab"),
     ]
 

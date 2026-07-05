@@ -8,12 +8,11 @@ from django.dispatch import receiver
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.core.fields import StreamField
-from wagtail.core.models import Page
-from wagtail.core.signals import page_published, page_unpublished
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.panels import FieldPanel
+from wagtail.fields import StreamField
+from wagtail.models import Page
 from wagtail.search import index
+from wagtail.signals import page_published, page_unpublished
 
 from streams import blocks
 
@@ -86,18 +85,19 @@ class CaseStudyPage(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
 
     content_panels = [
         *Page.content_panels,
-        ImageChooserPanel("header_image"),
+        FieldPanel("header_image"),
         FieldPanel("header_image_description"),
         FieldPanel("publication_date"),
         FieldPanel("read_time"),
         FieldPanel("collaborator"),
         FieldPanel("section_tags"),
         FieldPanel("introduction"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     search_fields = [

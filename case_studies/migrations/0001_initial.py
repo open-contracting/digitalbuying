@@ -3,8 +3,8 @@
 import django.db.models.deletion
 import modelcluster.contrib.taggit
 import modelcluster.fields
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 from django.db import migrations, models
 
 
@@ -56,44 +56,42 @@ class Migration(migrations.Migration):
                 ("read_time", models.IntegerField(help_text="Time taken (in minutes) to read the case study")),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 "rich_text_section",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 help_text="Section title, max length 120 characters", max_length=120
                                             ),
                                         ),
-                                        ("hide_horizontal_rule", wagtail.core.blocks.BooleanBlock(required=False)),
-                                        ("content", wagtail.core.blocks.RichTextBlock()),
+                                        ("hide_horizontal_rule", wagtail.blocks.BooleanBlock(required=False)),
+                                        ("content", wagtail.blocks.RichTextBlock()),
                                     ]
                                 ),
                             ),
                             (
                                 "quote_section",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 help_text="Quote section title, max length 120 characters",
                                                 max_length=120,
                                             ),
                                         ),
-                                        ("hide_horizontal_rule", wagtail.core.blocks.BooleanBlock(required=False)),
-                                        ("content_top", wagtail.core.blocks.RichTextBlock()),
-                                        ("quote", wagtail.core.blocks.CharBlock(help_text="Quote", max_length=300)),
+                                        ("hide_horizontal_rule", wagtail.blocks.BooleanBlock(required=False)),
+                                        ("content_top", wagtail.blocks.RichTextBlock()),
+                                        ("quote", wagtail.blocks.CharBlock(help_text="Quote", max_length=300)),
                                         (
                                             "attribution",
-                                            wagtail.core.blocks.CharBlock(
-                                                help_text="Quote attribution", max_length=120
-                                            ),
+                                            wagtail.blocks.CharBlock(help_text="Quote attribution", max_length=120),
                                         ),
-                                        ("content_bottom", wagtail.core.blocks.RichTextBlock(required=False)),
+                                        ("content_bottom", wagtail.blocks.RichTextBlock(required=False)),
                                     ]
                                 ),
                             ),

@@ -66,7 +66,7 @@ INSTALLED_APPS = [
     "wagtail.admin",
     # https://docs.wagtail.org/en/stable/reference/contrib/legacy_richtext.html
     "wagtail.contrib.legacy.richtext",
-    "wagtail.core",
+    "wagtail",
     # https://docs.wagtail.org/en/stable/reference/contrib/settings.html
     "wagtail.contrib.settings",
     # https://docs.wagtail.org/en/v5.2.7/reference/contrib/modeladmin/index.html
@@ -290,10 +290,7 @@ WAGTAIL_SITE_NAME = "ictcg"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-#
-# WAGTAILADMIN_BASE_URL in 3.0.
-# https://docs.wagtail.org/en/stable/releases/3.0.html#other-features
-BASE_URL = "https://digitalbuying.open-contracting.org"
+WAGTAILADMIN_BASE_URL = "https://digitalbuying.open-contracting.org"
 
 
 # Project configuration

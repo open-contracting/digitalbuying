@@ -8,10 +8,9 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
-from wagtail.core.fields import StreamField
-from wagtail.core.models import Orderable, Page
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.fields import StreamField
+from wagtail.models import Orderable, Page
 from wagtail.search import index
 
 from streams import blocks
@@ -63,7 +62,7 @@ class SponsorItem(Orderable):
     panels = [
         FieldPanel("name"),
         FieldPanel("url"),
-        ImageChooserPanel("logo"),
+        FieldPanel("logo"),
         FieldPanel("logo_description"),
         FieldPanel("show_in_footer"),
         FieldPanel("show_on_homepage"),
@@ -90,11 +89,12 @@ class SponsorsPage(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
 
     content_panels = [
         *Page.content_panels,
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     search_fields = [

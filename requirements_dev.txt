@@ -30,6 +30,8 @@ django==3.2.25
     #   -r requirements.txt
     #   dj-database-url
     #   django-filter
+    #   django-modelcluster
+    #   django-permissionedforms
     #   django-taggit
     #   django-treebeard
     #   djangorestframework
@@ -39,7 +41,11 @@ django-filter==21.1
     # via
     #   -r requirements.txt
     #   wagtail
-django-modelcluster==5.3
+django-modelcluster==6.3
+    # via
+    #   -r requirements.txt
+    #   wagtail
+django-permissionedforms==0.1
     # via
     #   -r requirements.txt
     #   wagtail
@@ -142,7 +148,7 @@ urllib3==2.7.0
     #   -r requirements.txt
     #   requests
     #   sentry-sdk
-wagtail==2.16.3
+wagtail==3.0.3
     # via
     #   -r requirements.txt
     #   wagtail-localize

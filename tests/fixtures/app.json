@@ -288,21 +288,21 @@
     "model": "guidelines.guidancepage",
     "pk": 9,
     "fields": {
-      "body": "{}"
+      "body": "[]"
     }
   },
   {
     "model": "guidelines.guidancepage",
     "pk": 10,
     "fields": {
-      "body": "{}"
+      "body": "[]"
     }
   },
   {
     "model": "base.homepage",
     "pk": 4,
     "fields": {
-      "body": "<p>Home</p>"
+      "body": "[]"
     }
   },
   {
@@ -320,7 +320,7 @@
       "publication_date": "2020-05-31",
       "collaborator": "Mexico City Government",
       "read_time": 5,
-      "body": ""
+      "body": "[]"
     }
   },
   {

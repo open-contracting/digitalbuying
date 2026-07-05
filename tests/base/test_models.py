@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
-from wagtail.core.models import Page
 from wagtail.images.models import Image
-from wagtail.tests.utils import WagtailPageTests
+from wagtail.models import Page
+from wagtail.test.utils import WagtailPageTests
 
 from base.models import GenericPage, GenericPageWithSubNav, HomePage
 from case_studies.models import CaseStudiesListingPage
