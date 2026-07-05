@@ -49,7 +49,7 @@ django-filter==23.5
     # via
     #   -r requirements.txt
     #   wagtail
-django-modelcluster==6.3
+django-modelcluster==6.5
     # via
     #   -r requirements.txt
     #   wagtail
@@ -65,7 +65,7 @@ django-taggit==5.0.1
     # via
     #   -r requirements.txt
     #   wagtail
-django-tasks==0.8.1
+django-tasks==0.12.0
     # via
     #   -r requirements.txt
     #   modelsearch
@@ -102,7 +102,7 @@ laces==0.1.2
     # via
     #   -r requirements.txt
     #   wagtail
-modelsearch==1.1.1
+modelsearch==1.2.2
     # via
     #   -r requirements.txt
     #   wagtail
@@ -129,10 +129,6 @@ polib==1.2.0
     # via
     #   -r requirements.txt
     #   wagtail-localize
-pytz==2026.2
-    # via
-    #   -r requirements.txt
-    #   django-modelcluster
 redis==8.0.1
     # via -r requirements.txt
 requests==2.34.2
@@ -165,7 +161,7 @@ urllib3==2.7.0
     #   -r requirements.txt
     #   requests
     #   sentry-sdk
-wagtail==7.2.3
+wagtail==7.3.3
     # via
     #   -r requirements.txt
     #   wagtail-localize

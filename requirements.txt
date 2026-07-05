@@ -34,7 +34,7 @@ django==4.2.30
     #   wagtail-localize
 django-filter==23.5
     # via wagtail
-django-modelcluster==6.3
+django-modelcluster==6.5
     # via
     #   -r requirements.in
     #   wagtail
@@ -46,7 +46,7 @@ django-taggit==5.0.1
     # via
     #   -r requirements.in
     #   wagtail
-django-tasks==0.8.1
+django-tasks==0.12.0
     # via
     #   modelsearch
     #   wagtail
@@ -68,7 +68,7 @@ idna==3.18
     # via requests
 laces==0.1.2
     # via wagtail
-modelsearch==1.1.1
+modelsearch==1.2.2
     # via wagtail
 mysqlclient==2.2.8
     # via -r requirements.in
@@ -84,8 +84,6 @@ pillow-heif==0.22.0
     # via willow
 polib==1.2.0
     # via wagtail-localize
-pytz==2026.2
-    # via django-modelcluster
 redis==8.0.1
     # via -r requirements.in
 requests==2.34.2
@@ -108,7 +106,7 @@ urllib3==2.7.0
     # via
     #   requests
     #   sentry-sdk
-wagtail==7.2.3
+wagtail==7.3.3
     # via
     #   -r requirements.in
     #   wagtail-localize
