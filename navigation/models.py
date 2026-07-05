@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class MainMenu(ClusterableModel):
     """MainMenu class for header links. Contains Orderable MenuItem class."""
 
-    admin_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
+    admin_title = models.CharField(max_length=100, blank=False)
 
     title = models.CharField(max_length=100)
 
@@ -108,15 +108,15 @@ class MainMenuItem(Orderable, MenuItem):
 class FooterMenu(ClusterableModel):
     """FooterMenu class for footer links. Contains Orderable MenuItem class."""
 
-    admin_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
+    admin_title = models.CharField(max_length=100, blank=False)
 
     language = models.CharField(max_length=100, choices=settings.LANGUAGES)
 
-    quick_links_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
+    quick_links_title = models.CharField(max_length=100, blank=False)
 
-    sponsors_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
+    sponsors_title = models.CharField(max_length=100, blank=False)
 
-    translation_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
+    translation_title = models.CharField(max_length=100, blank=False)
 
     panels = [
         FieldPanel("admin_title"),

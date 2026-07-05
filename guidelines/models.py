@@ -76,8 +76,8 @@ class GuidelinesSectionPage(CacheClearMixin, Page):
 
     section_colour = models.CharField(max_length=140, choices=COLOUR_CHOICES, null=False, blank=False)
 
-    landing_page_summary = models.CharField(  # noqa: DJ001
-        max_length=240, null=True, blank=False, help_text="Text to be shown on the guidelines landing page"
+    landing_page_summary = models.CharField(
+        max_length=240, blank=False, help_text="Text to be shown on the guidelines landing page"
     )
 
     content_panels = [

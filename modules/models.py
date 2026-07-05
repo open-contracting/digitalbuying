@@ -15,11 +15,9 @@ class KeyModuleFields(models.Model):
 
     language = models.CharField(max_length=100, choices=settings.LANGUAGES)
 
-    admin_title = models.CharField(  # noqa: DJ001
-        max_length=140, blank=False, null=True, help_text="Title to appear in the admin area"
-    )
+    admin_title = models.CharField(max_length=140, blank=False, help_text="Title to appear in the admin area")
 
-    title = models.CharField(max_length=140, blank=False, null=True)  # noqa: DJ001
+    title = models.CharField(max_length=140, blank=False)
 
     panels = [
         FieldPanel("language"),
@@ -36,7 +34,7 @@ class Links(models.Model):
 
     link_text = models.CharField(max_length=140, blank=True, help_text="Text for link")
 
-    url = models.URLField(null=True, blank=True)  # noqa: DJ001
+    url = models.URLField(blank=True)
 
     open_in_new_tab = models.BooleanField(default=False, blank=True)
 

@@ -51,7 +51,7 @@ class SponsorItem(Orderable):
         on_delete=models.SET_NULL,
     )
 
-    logo_description = models.CharField(max_length=240, null=True, help_text="Alt tag description for sponsor logo")  # noqa: DJ001
+    logo_description = models.CharField(max_length=240, blank=True, help_text="Alt tag description for sponsor logo")
 
     show_in_footer = models.BooleanField(default=False, blank=True)
 

@@ -20,7 +20,7 @@ class HomePage(Page):
         "sponsors.SponsorsPage",
     ]
 
-    masthead_title = models.CharField(max_length=240, null=True, help_text="Title for masthead component")  # noqa: DJ001
+    masthead_title = models.CharField(max_length=240, blank=True, help_text="Title for masthead component")
 
     masthead_description = RichTextField(blank=True, default="")
 
@@ -28,7 +28,7 @@ class HomePage(Page):
         "wagtailcore.Page", null=True, blank=True, related_name="+", on_delete=models.SET_NULL
     )
 
-    masthead_link_title = models.CharField(max_length=240, null=True, blank=True, help_text="Title for link")  # noqa: DJ001
+    masthead_link_title = models.CharField(max_length=240, blank=True, help_text="Title for link")
 
     masthead_image = models.ForeignKey(
         "wagtailimages.Image",
@@ -38,8 +38,8 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
     )
 
-    masthead_image_description = models.CharField(  # noqa: DJ001
-        max_length=240, null=True, blank=True, help_text="Alt tag description for image"
+    masthead_image_description = models.CharField(
+        max_length=240, blank=True, help_text="Alt tag description for image"
     )
 
     body = StreamField(
@@ -98,7 +98,7 @@ class GenericPageWithSubNav(Page):
     parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]
     subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage", "sponsors.SponsorsPage"]
 
-    navigation_title = models.CharField(max_length=120, null=True, blank=True, help_text="Title for Navigation")  # noqa: DJ001
+    navigation_title = models.CharField(max_length=120, blank=True, help_text="Title for Navigation")
 
     body = StreamField(
         [
