@@ -9,7 +9,7 @@ Setup
 .. code:: bash
 
    mysql -u root -e "create database digitalbuying"
-   npm install
+   pnpm install
    pip install -r requirements.txt
    ./manage.py migrate
    ./manage.py createsuperuser
@@ -25,7 +25,7 @@ In another shell session:
 
 .. code:: bash
 
-   npx gulp serve
+   pnpm exec gulp serve
 
 Open http://localhost:8000
 
@@ -34,7 +34,7 @@ Build static files
 
 .. code:: bash
 
-   env NODE_ENV=production npx gulp build
+   env NODE_ENV=production pnpm exec gulp build
    ./manage.py collectstatic
 
 Test

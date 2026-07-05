@@ -1,6 +1,7 @@
 {
   "name": "digitalbuying",
   "version": "1.0.0",
+  "packageManager": "pnpm@11.9.0",
   "dependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.23.2",
