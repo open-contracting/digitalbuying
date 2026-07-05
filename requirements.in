@@ -6,5 +6,5 @@ gunicorn
 mysqlclient
 redis[hiredis]
 sentry-sdk
-wagtail>=6.4,<7
+wagtail>=7,<7.1
 wagtail-localize
