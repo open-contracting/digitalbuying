@@ -1,17 +1,16 @@
-from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup, modeladmin_register
+from wagtail.snippets.models import register_snippet
+from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
 
 from .models import LinksModule, MoreInformationModule
 
 
-class MoreInformationModuleAdmin(ModelAdmin):
+class MoreInformationModuleViewSet(SnippetViewSet):
     """More Information Module admin."""
 
     model = MoreInformationModule
     menu_label = "More information module"
-    menu_icon = "doc-full"
-    menu_order = 000
-    add_to_settings_menu = False
-    exclude_from_explorer = False
+    icon = "doc-full"
+    menu_order = 0
     list_display = (
         "language",
         "admin_title",
@@ -19,15 +18,13 @@ class MoreInformationModuleAdmin(ModelAdmin):
     list_filter = ("language",)
 
 
-class LinksModuleAdmin(ModelAdmin):
+class LinksModuleViewSet(SnippetViewSet):
     """Links module admin."""
 
     model = LinksModule
     menu_label = "Links module"
-    menu_icon = "doc-full"
+    icon = "doc-full"
     menu_order = 100
-    add_to_settings_menu = False
-    exclude_from_explorer = False
     list_display = (
         "language",
         "admin_title",
@@ -35,9 +32,12 @@ class LinksModuleAdmin(ModelAdmin):
     list_filter = ("language",)
 
 
-@modeladmin_register
-class ModulesGroup(ModelAdminGroup):
+class ModulesGroup(SnippetViewSetGroup):
     menu_label = "Modules"
     menu_icon = "form"
     menu_order = 300
-    items = (MoreInformationModuleAdmin, LinksModuleAdmin)
+    add_to_admin_menu = True
+    items = (MoreInformationModuleViewSet, LinksModuleViewSet)
+
+
+register_snippet(ModulesGroup)

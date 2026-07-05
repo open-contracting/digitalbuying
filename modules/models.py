@@ -8,7 +8,6 @@ from wagtail.admin.panels import (
 )
 from wagtail.fields import RichTextField
 from wagtail.models import Orderable
-from wagtail.snippets.models import register_snippet
 
 
 class KeyModuleFields(models.Model):
@@ -51,7 +50,6 @@ class Links(models.Model):
         abstract = True
 
 
-@register_snippet
 class MoreInformationModule(KeyModuleFields):
     """
     A class that extends KeyModuleFields class that is displayed as a snippet within the admin area.
@@ -81,7 +79,6 @@ class OrderableLinks(Orderable, Links):
     links = ParentalKey("LinksModule", related_name="orderable_links", default="")
 
 
-@register_snippet
 class LinksModule(ClusterableModel, KeyModuleFields):
     """
     A class that extends ClusterableModel and KeyModuleFields classes that is displayed as a snippet within the admin

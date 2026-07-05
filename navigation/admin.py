@@ -1,33 +1,31 @@
-from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup, modeladmin_register
+from wagtail.snippets.models import register_snippet
+from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
 
 from .models import FooterMenu, MainMenu
 
 
-class MainMenuAdmin(ModelAdmin):
+class MainMenuViewSet(SnippetViewSet):
     """Main menu admin."""
 
     model = MainMenu
     menu_label = "Main menu"
-    menu_icon = "list-ul"
-    menu_order = 200
-    add_to_settings_menu = False
-    exclude_from_explorer = False
+    icon = "list-ul"
 
 
-class FooterMenuAdmin(ModelAdmin):
+class FooterMenuViewSet(SnippetViewSet):
     """Footer menu admin."""
 
     model = FooterMenu
     menu_label = "Footer menu"
-    menu_icon = "list-ul"
-    menu_order = 200
-    add_to_settings_menu = False
-    exclude_from_explorer = False
+    icon = "list-ul"
 
 
-@modeladmin_register
-class MenusGroup(ModelAdminGroup):
+class MenusGroup(SnippetViewSetGroup):
     menu_label = "Menus"
     menu_icon = "form"
     menu_order = 300
-    items = (MainMenuAdmin, FooterMenuAdmin)
+    add_to_admin_menu = True
+    items = (MainMenuViewSet, FooterMenuViewSet)
+
+
+register_snippet(MenusGroup)

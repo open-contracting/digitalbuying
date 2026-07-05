@@ -69,8 +69,6 @@ INSTALLED_APPS = [
     "wagtail",
     # https://docs.wagtail.org/en/stable/reference/contrib/settings.html
     "wagtail.contrib.settings",
-    # https://docs.wagtail.org/en/v5.2.7/reference/contrib/modeladmin/index.html
-    "wagtail.contrib.modeladmin",
     "modelcluster",
     "taggit",
     "django.contrib.admin",
