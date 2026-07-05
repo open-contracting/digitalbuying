@@ -46,7 +46,7 @@ jobs:
           ./manage.py makemigrations --check --dry-run base case_studies guidelines modules navigation sponsors streams
           ./manage.py check --fail-level WARNING
           coverage run --source ictcg,base,case_studies,guidelines,modules,navigation,sponsors,streams manage.py test
-      - uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
+      - uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           fail_ci_if_error: true
     services:
