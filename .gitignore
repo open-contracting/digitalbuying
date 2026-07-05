@@ -28,8 +28,8 @@ npm-debug.log
 
 # Project-specific
 /coverage
-/ictcg/static/*
-!/ictcg/static/robots.txt
+/core/static/*
+!/core/static/robots.txt
 
 # Received data dump + local DB snapshots (not committed)
 /dbg/

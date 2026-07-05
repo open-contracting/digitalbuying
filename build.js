@@ -1,5 +1,5 @@
 // Frontend build: bundles/minifies JavaScript and compiles SCSS (with
-// Autoprefixer) into ictcg/static/. Replaces the previous gulp pipeline.
+// Autoprefixer) into core/static/. Replaces the previous gulp pipeline.
 //   node build.js           one-off build (set NODE_ENV=production to minify)
 //   node build.js --watch   rebuild on change
 import autoprefixer from "autoprefixer";
@@ -12,11 +12,11 @@ const production = process.env.NODE_ENV === "production";
 const options = {
     entryPoints: {
         // Keys set the output path under outdir, preserving the existing layout
-        // (ictcg/static/javascripts/application.js, .../stylesheets/application.css).
+        // (core/static/javascripts/application.js, .../stylesheets/application.css).
         "javascripts/application": "frontend/javascripts/application.js",
         "stylesheets/application": "frontend/stylesheets/application.scss",
     },
-    outdir: "ictcg/static",
+    outdir: "core/static",
     bundle: true,
     // Leave these root-absolute url() references (served by Django at runtime)
     // untouched rather than trying to bundle them. Scoped to the real prefixes so

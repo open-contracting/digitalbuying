@@ -8,7 +8,7 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
 
-from ictcg.sitemaps import LocalisedSitemap
+from core.sitemaps import LocalisedSitemap
 
 urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
