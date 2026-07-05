@@ -56,6 +56,9 @@ INSTALLED_APPS = [
     "wagtail.embeds",
     "wagtail.sites",
     "wagtail.users",
+    # https://www.wagtail-localize.org/ (must precede wagtail.snippets)
+    "wagtail_localize",
+    "wagtail_localize.locales",
     "wagtail.snippets",
     "wagtail.documents",
     "wagtail.images",
@@ -78,6 +81,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # https://docs.wagtail.org/en/stable/reference/contrib/sitemaps.html
     "django.contrib.sitemaps",
+    # Kept temporarily during the migration to wagtail-localize; removed once
+    # page models no longer inherit wagtailtrans.TranslatablePage.
     "wagtailtrans",
 ]
 
@@ -87,9 +92,8 @@ MIDDLEWARE = [
     # https://docs.djangoproject.com/en/4.2/ref/middleware/#django.middleware.gzip.GZipMiddleware
     "django.middleware.gzip.GZipMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    # Replaces django.middleware.locale.LocaleMiddleware.
-    # https://wagtailtrans.readthedocs.io/en/latest/getting_started.html
-    "wagtailtrans.middleware.TranslationMiddleware",
+    # https://docs.wagtail.org/en/v2.15.6/advanced_topics/i18n.html
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -243,6 +247,15 @@ LANGUAGES = (
     ("id", "Bahasa"),
 )
 
+# https://docs.wagtail.org/en/v2.15.6/advanced_topics/i18n.html
+WAGTAIL_I18N_ENABLED = True
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES
+
+# Disable wagtailtrans tree-syncing during the migration to wagtail-localize so
+# it doesn't create/sync translation pages as we restructure the tree and
+# collapse the model inheritance. (wagtailtrans is removed entirely afterwards.)
+WAGTAILTRANS_SYNC_TREE = False
+
 MEDIA_ROOT = os.getenv("MEDIA_ROOT", "/data/media/" if production else BASE_DIR / "media/")
 MEDIA_URL = "media/"
 
@@ -289,9 +302,6 @@ WAGTAIL_SITE_NAME = "ictcg"
 # WAGTAILADMIN_BASE_URL in 3.0.
 # https://docs.wagtail.org/en/stable/releases/3.0.html#other-features
 BASE_URL = "https://digitalbuying.open-contracting.org"
-
-# https://wagtailtrans.readthedocs.io/en/latest/settings.html
-WAGTAILTRANS_HIDE_TRANSLATION_TREES = True
 
 
 # Project configuration
