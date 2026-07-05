@@ -148,7 +148,7 @@ urllib3==2.7.0
     #   -r requirements.txt
     #   requests
     #   sentry-sdk
-wagtail==3.0.3
+wagtail==4.0.4
     # via
     #   -r requirements.txt
     #   wagtail-localize
