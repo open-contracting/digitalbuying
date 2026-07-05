@@ -23,7 +23,9 @@ django==4.2.30
     #   django-filter
     #   django-modelcluster
     #   django-permissionedforms
+    #   django-stubs-ext
     #   django-taggit
+    #   django-tasks
     #   django-treebeard
     #   djangorestframework
     #   laces
@@ -37,10 +39,14 @@ django-modelcluster==6.3
     #   wagtail
 django-permissionedforms==0.1
     # via wagtail
+django-stubs-ext==6.0.6
+    # via django-tasks
 django-taggit==5.0.1
     # via
     #   -r requirements.in
     #   wagtail
+django-tasks==0.6.1
+    # via wagtail
 django-treebeard==4.7.1
     # via wagtail
 djangorestframework==3.15.1
@@ -57,8 +63,6 @@ hiredis==3.4.0
     # via redis
 idna==3.18
     # via requests
-l18n==2021.3
-    # via wagtail
 laces==0.1.2
     # via wagtail
 mysqlclient==2.2.8
@@ -76,17 +80,13 @@ pillow-heif==0.22.0
 polib==1.2.0
     # via wagtail-localize
 pytz==2026.2
-    # via
-    #   django-modelcluster
-    #   l18n
+    # via django-modelcluster
 redis==8.0.1
     # via -r requirements.in
 requests==2.34.2
     # via wagtail
 sentry-sdk==2.63.0
     # via -r requirements.in
-six==1.17.0
-    # via l18n
 soupsieve==2.8.4
     # via beautifulsoup4
 sqlparse==0.5.5
@@ -96,12 +96,14 @@ telepath==0.3.1
 typing-extensions==4.15.0
     # via
     #   dj-database-url
+    #   django-stubs-ext
+    #   django-tasks
     #   wagtail-localize
 urllib3==2.7.0
     # via
     #   requests
     #   sentry-sdk
-wagtail==6.3.8
+wagtail==6.4.2
     # via
     #   -r requirements.in
     #   wagtail-localize
