@@ -30,7 +30,7 @@ django-modelcluster==5.3
     # via
     #   -r requirements.in
     #   wagtail
-django-taggit==1.5.1
+django-taggit==2.1.0
     # via
     #   -r requirements.in
     #   wagtail
@@ -93,7 +93,7 @@ urllib3==2.7.0
     # via
     #   requests
     #   sentry-sdk
-wagtail==2.15.6
+wagtail==2.16.3
     # via
     #   -r requirements.in
     #   wagtail-localize
