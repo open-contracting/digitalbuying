@@ -20,7 +20,7 @@ if ($mainmenus) {
 
 const $buttons = document.querySelectorAll('a[role="button"]');
 
-if ($button) {
+if ($buttons) {
     for (const item of $buttons) {
         new Button(item).init();
     }

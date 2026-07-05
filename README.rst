@@ -21,11 +21,11 @@ Serve
 
    ./manage.py runserver
 
-In another shell session:
+In another shell session, rebuild the JavaScript and CSS on change:
 
 .. code:: bash
 
-   pnpm exec gulp serve
+   node build.js --watch
 
 Open http://localhost:8000
 
@@ -34,7 +34,7 @@ Build static files
 
 .. code:: bash
 
-   env NODE_ENV=production pnpm exec gulp build
+   env NODE_ENV=production node build.js
    ./manage.py collectstatic
 
 Test

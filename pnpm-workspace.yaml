@@ -1,10 +1,8 @@
 # https://pnpm.io/settings
 minimumReleaseAge: 10080
 trustPolicy: no-downgrade
-trustPolicyExclude:
-  - semver@5.7.2
-  - semver@6.3.1
-  - ua-parser-js@1.0.41
+# esbuild + @parcel/watcher ship prebuilt binaries via optional dependencies, so
+# their install scripts aren't needed (CI/Docker also install with --ignore-scripts).
 allowBuilds:
-  '@parcel/watcher': false # via gulp/browser-sync (prebuilt binary is used)
-  es5-ext: false # via browser-sync
+  '@parcel/watcher': false
+  esbuild: false

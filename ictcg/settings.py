@@ -202,7 +202,10 @@ STORAGES = {
     "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"},
 }
 
-STATICFILES_DIRS = [BASE_DIR / "ictcg" / "static"]  # gulpfile.babel.js
+STATICFILES_DIRS = [
+    BASE_DIR / "ictcg" / "static",  # build.js output (JavaScript + CSS)
+    ("images", BASE_DIR / "frontend" / "images"),  # served at /static/images/
+]
 
 # https://docs.djangoproject.com/en/5.2/topics/logging/#django-security
 LOGGING = {

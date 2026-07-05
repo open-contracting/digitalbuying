@@ -26,7 +26,7 @@ jobs:
       - name: Build static files
         shell: bash
         run: |
-          env NODE_ENV=production pnpm exec gulp build
+          env NODE_ENV=production node build.js
           env DJANGO_ENV=production python manage.py collectstatic --noinput -v2
       - name: Run checks and tests
         env:
