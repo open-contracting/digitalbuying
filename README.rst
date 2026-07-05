@@ -8,8 +8,8 @@ Setup
 
 .. code:: bash
 
-   createdb digitalbuyingguide
-   npm install
+   mysql -u root -e "create database digitalbuying"
+   pnpm install
    pip install -r requirements.txt
    ./manage.py migrate
    ./manage.py createsuperuser
@@ -21,11 +21,11 @@ Serve
 
    ./manage.py runserver
 
-In another shell session:
+In another shell session, rebuild the JavaScript and CSS on change:
 
 .. code:: bash
 
-   npx gulp serve
+   node build.js --watch
 
 Open http://localhost:8000
 
@@ -34,7 +34,7 @@ Build static files
 
 .. code:: bash
 
-   env NODE_ENV=production npx gulp build
+   env NODE_ENV=production node build.js
    ./manage.py collectstatic
 
 Test

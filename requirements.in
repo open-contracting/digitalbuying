@@ -1,11 +1,10 @@
 dj-database-url
-django
+django>=5.2,<5.3
 django-modelcluster
 django-taggit
 gunicorn
 mysqlclient
-psycopg2
 redis[hiredis]
 sentry-sdk
-wagtail==2.11.9
-git+https://github.com/carrotandcompany/wagtailtrans@master#egg=wagtailtrans
+wagtail>=7.4,<7.5
+wagtail-localize

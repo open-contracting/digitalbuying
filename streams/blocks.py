@@ -1,4 +1,4 @@
-from wagtail.core import blocks
+from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
 
@@ -62,7 +62,7 @@ class HighlightListBlock(blocks.StructBlock):
 
     class Meta:
         template = "streams/highlight_list_block.html"
-        icon = "tick"
+        icon = "check"
 
 
 class CaseStudyBlock(blocks.StructBlock):

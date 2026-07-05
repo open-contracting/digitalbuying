@@ -1,14 +1,14 @@
 from unittest.mock import patch
 
 from django.test import TestCase
-from wagtail.tests.utils import WagtailPageTests
-from wagtailtrans.models import TranslatablePage
+from wagtail.models import Page
+from wagtail.test.utils import WagtailPageTestCase
 
 from base.models import HomePage
 from guidelines.models import GuidancePage, GuidelinesListingPage, GuidelinesSectionPage
 
 
-class GuidelinesListingPageTests(WagtailPageTests):
+class GuidelinesListingPageTests(WagtailPageTestCase):
     def test_listing_page_can_be_created_under_homepage(self):
         # You can create a GuidelinesListingPage under an HomePage
         self.assertCanCreateAt(HomePage, GuidelinesListingPage)
@@ -21,11 +21,11 @@ class GuidelinesListingPageTests(WagtailPageTests):
         # You can not create a GuidancePage under an GuidelinesListingPage
         self.assertCanNotCreateAt(GuidelinesListingPage, GuidancePage)
 
-    def test_listing_page_inherits_from_translatable_page_class(self):
-        assert issubclass(GuidelinesListingPage, TranslatablePage)
+    def test_listing_page_inherits_from_page_class(self):
+        assert issubclass(GuidelinesListingPage, Page)
 
 
-class GuidelinesSectionPageTests(WagtailPageTests):
+class GuidelinesSectionPageTests(WagtailPageTestCase):
     fixtures = ["app.json"]
 
     def test_section_page_can_only_be_created_under_list_page(self):
@@ -36,8 +36,8 @@ class GuidelinesSectionPageTests(WagtailPageTests):
         # An GuidancePage can be created inder an GuidelinesListingPage
         self.assertCanCreateAt(GuidelinesSectionPage, GuidancePage)
 
-    def test_section_page_inherits_from_translatable_page_class(self):
-        assert issubclass(GuidelinesListingPage, TranslatablePage)
+    def test_section_page_inherits_from_page_class(self):
+        assert issubclass(GuidelinesSectionPage, Page)
 
     @patch("guidelines.models.GuidelinesSectionPage.clear_from_caches")
     def test_clear_cache_is_called_on_save(self, clear_from_caches):
@@ -64,15 +64,15 @@ class GuidelinesSectionPageTests(WagtailPageTests):
         )
 
 
-class GuidancePageTests(WagtailPageTests):
+class GuidancePageTests(WagtailPageTestCase):
     fixtures = ["app.json"]
 
     def test_guidance_page_can_only_be_created_under_section_page(self):
         # An GuidelinesSectionPage can only be created under an GuidelinesListingPage
         self.assertAllowedParentPageTypes(GuidancePage, {GuidelinesSectionPage})
 
-    def test_guidance_page_inherits_from_translatable_page_class(self):
-        assert issubclass(GuidelinesListingPage, TranslatablePage)
+    def test_guidance_page_inherits_from_page_class(self):
+        assert issubclass(GuidancePage, Page)
 
     def test_guidance_page_pagination_links_first_page_in_section(self):
         # Ensure the data for the pagation links is correct

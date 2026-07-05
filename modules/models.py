@@ -2,13 +2,12 @@ from django.conf import settings
 from django.db import models
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
 )
-from wagtail.core.fields import RichTextField
-from wagtail.core.models import Orderable
-from wagtail.snippets.models import register_snippet
+from wagtail.fields import RichTextField
+from wagtail.models import Orderable
 
 
 class KeyModuleFields(models.Model):
@@ -16,11 +15,9 @@ class KeyModuleFields(models.Model):
 
     language = models.CharField(max_length=100, choices=settings.LANGUAGES)
 
-    admin_title = models.CharField(  # noqa: DJ001
-        max_length=140, blank=False, null=True, help_text="Title to appear in the admin area"
-    )
+    admin_title = models.CharField(max_length=140, blank=False, help_text="Title to appear in the admin area")
 
-    title = models.CharField(max_length=140, blank=False, null=True)  # noqa: DJ001
+    title = models.CharField(max_length=140, blank=False)
 
     panels = [
         FieldPanel("language"),
@@ -37,7 +34,7 @@ class Links(models.Model):
 
     link_text = models.CharField(max_length=140, blank=True, help_text="Text for link")
 
-    url = models.URLField(null=True, blank=True)  # noqa: DJ001
+    url = models.URLField(blank=True)
 
     open_in_new_tab = models.BooleanField(default=False, blank=True)
 
@@ -51,7 +48,6 @@ class Links(models.Model):
         abstract = True
 
 
-@register_snippet
 class MoreInformationModule(KeyModuleFields):
     """
     A class that extends KeyModuleFields class that is displayed as a snippet within the admin area.
@@ -80,8 +76,10 @@ class OrderableLinks(Orderable, Links):
     ]
     links = ParentalKey("LinksModule", related_name="orderable_links", default="")
 
+    def __str__(self):
+        return self.link_text
 
-@register_snippet
+
 class LinksModule(ClusterableModel, KeyModuleFields):
     """
     A class that extends ClusterableModel and KeyModuleFields classes that is displayed as a snippet within the admin

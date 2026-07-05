@@ -3,7 +3,7 @@
     "model": "navigation.mainmenu",
     "pk": 1,
     "fields": {
-      "admin_title": null,
+      "admin_title": "",
       "title": "main menu",
       "language": "en",
       "button_text": "Menu",
@@ -15,7 +15,7 @@
     "model": "navigation.mainmenu",
     "pk": 2,
     "fields": {
-      "admin_title": null,
+      "admin_title": "",
       "title": "main menu",
       "language": "es",
       "button_text": "Menu",
@@ -117,7 +117,7 @@
     "model": "navigation.menuitem",
     "pk": 10,
     "fields": {
-      "title": "La guía",
+      "title": "La gu\u00eda",
       "url": "",
       "page": 7,
       "open_in_new_tab": false
@@ -127,7 +127,7 @@
     "model": "navigation.menuitem",
     "pk": 11,
     "fields": {
-      "title": "La guía",
+      "title": "La gu\u00eda",
       "url": "",
       "page": 7,
       "open_in_new_tab": false

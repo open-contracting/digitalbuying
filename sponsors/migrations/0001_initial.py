@@ -2,7 +2,7 @@
 
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 from django.db import migrations, models
 
 
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
                 ("language", models.CharField(choices=[("en", "en"), ("es", "es"), ("id", "id")], max_length=100)),
                 ("title", models.CharField(max_length=100)),
-                ("introduction", wagtail.core.fields.RichTextField(blank=True)),
+                ("introduction", wagtail.fields.RichTextField(blank=True)),
             ],
             options={
                 "abstract": False,

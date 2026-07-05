@@ -8,12 +8,10 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
-from wagtail.core.fields import StreamField
-from wagtail.core.models import Orderable
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.fields import StreamField
+from wagtail.models import Orderable, Page
 from wagtail.search import index
-from wagtailtrans.models import TranslatablePage
 
 from streams import blocks
 
@@ -53,7 +51,7 @@ class SponsorItem(Orderable):
         on_delete=models.SET_NULL,
     )
 
-    logo_description = models.CharField(max_length=240, null=True, help_text="Alt tag description for sponsor logo")  # noqa: DJ001
+    logo_description = models.CharField(max_length=240, blank=True, help_text="Alt tag description for sponsor logo")
 
     show_in_footer = models.BooleanField(default=False, blank=True)
 
@@ -64,7 +62,7 @@ class SponsorItem(Orderable):
     panels = [
         FieldPanel("name"),
         FieldPanel("url"),
-        ImageChooserPanel("logo"),
+        FieldPanel("logo"),
         FieldPanel("logo_description"),
         FieldPanel("show_in_footer"),
         FieldPanel("show_on_homepage"),
@@ -74,7 +72,7 @@ class SponsorItem(Orderable):
     sponsor = ParentalKey("Sponsor", related_name="sponsor_items", default="")
 
 
-class SponsorsPage(TranslatablePage):
+class SponsorsPage(Page):
     """
     SponsorsPage page - allows for listing of site sponsors along with additional supporters and contributors
     Can be nested under the homepage or generic pages.
@@ -94,12 +92,12 @@ class SponsorsPage(TranslatablePage):
     )
 
     content_panels = [
-        *TranslatablePage.content_panels,
-        StreamFieldPanel("body"),
+        *Page.content_panels,
+        FieldPanel("body"),
     ]
 
     search_fields = [
-        *TranslatablePage.search_fields,
+        *Page.search_fields,
         index.SearchField("body"),
     ]
 

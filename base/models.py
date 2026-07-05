@@ -1,19 +1,17 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, PageChooserPanel, StreamFieldPanel
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page
 from wagtail.search import index
-from wagtailtrans.models import TranslatablePage
 
 from streams import blocks
 
 
-class HomePage(TranslatablePage):
+class HomePage(Page):
     """Homepage class."""
 
-    parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
+    parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
         "guidelines.GuidelinesListingPage",
         "base.GenericPageWithSubNav",
@@ -22,7 +20,7 @@ class HomePage(TranslatablePage):
         "sponsors.SponsorsPage",
     ]
 
-    masthead_title = models.CharField(max_length=240, null=True, help_text="Title for masthead component")  # noqa: DJ001
+    masthead_title = models.CharField(max_length=240, blank=True, help_text="Title for masthead component")
 
     masthead_description = RichTextField(blank=True, default="")
 
@@ -30,7 +28,7 @@ class HomePage(TranslatablePage):
         "wagtailcore.Page", null=True, blank=True, related_name="+", on_delete=models.SET_NULL
     )
 
-    masthead_link_title = models.CharField(max_length=240, null=True, blank=True, help_text="Title for link")  # noqa: DJ001
+    masthead_link_title = models.CharField(max_length=240, blank=True, help_text="Title for link")
 
     masthead_image = models.ForeignKey(
         "wagtailimages.Image",
@@ -40,8 +38,8 @@ class HomePage(TranslatablePage):
         on_delete=models.SET_NULL,
     )
 
-    masthead_image_description = models.CharField(  # noqa: DJ001
-        max_length=240, null=True, blank=True, help_text="Alt tag description for image"
+    masthead_image_description = models.CharField(
+        max_length=240, blank=True, help_text="Alt tag description for image"
     )
 
     body = StreamField(
@@ -61,14 +59,14 @@ class HomePage(TranslatablePage):
             [
                 FieldPanel("masthead_title"),
                 FieldPanel("masthead_description"),
-                PageChooserPanel("masthead_link"),
+                FieldPanel("masthead_link"),
                 FieldPanel("masthead_link_title"),
-                ImageChooserPanel("masthead_image"),
+                FieldPanel("masthead_image"),
                 FieldPanel("masthead_image_description"),
             ],
             heading="Masthead",
         ),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     search_fields = [
@@ -88,7 +86,7 @@ class HomePage(TranslatablePage):
             )
 
 
-class GenericPageWithSubNav(TranslatablePage):
+class GenericPageWithSubNav(Page):
     """
     Generic page class which allows rich text and quote components to be added.
 
@@ -100,7 +98,7 @@ class GenericPageWithSubNav(TranslatablePage):
     parent_page_types = ["base.HomePage", "base.GenericPageWithSubNav", "base.GenericPage"]
     subpage_types = ["base.GenericPageWithSubNav", "base.GenericPage", "sponsors.SponsorsPage"]
 
-    navigation_title = models.CharField(max_length=120, null=True, blank=True, help_text="Title for Navigation")  # noqa: DJ001
+    navigation_title = models.CharField(max_length=120, blank=True, help_text="Title for Navigation")
 
     body = StreamField(
         [
@@ -112,13 +110,13 @@ class GenericPageWithSubNav(TranslatablePage):
     )
 
     content_panels = [
-        *TranslatablePage.content_panels,
+        *Page.content_panels,
         FieldPanel("navigation_title"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
-class GenericPage(TranslatablePage):
+class GenericPage(Page):
     """
     Generic page class which allows rich text and quote components to be added.
     Similar page to GenericPageWithSubNav but does not include the sub-navigation component.
@@ -139,7 +137,7 @@ class GenericPage(TranslatablePage):
     )
 
     content_panels = [
-        *TranslatablePage.content_panels,
+        *Page.content_panels,
         FieldPanel("introduction"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]

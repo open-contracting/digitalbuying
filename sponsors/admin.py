@@ -1,17 +1,19 @@
-from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
+from wagtail.snippets.models import register_snippet
+from wagtail.snippets.views.snippets import SnippetViewSet
 
 from .models import Sponsor
 
 
-@modeladmin_register
-class SponsorsAdmin(ModelAdmin):
+class SponsorsViewSet(SnippetViewSet):
     """Sponsors admin."""
 
     model = Sponsor
     menu_label = "Sponsor Logos"
-    menu_icon = "placeholder"
+    icon = "placeholder"
     menu_order = 290
-    add_to_settings_menu = False
-    exclude_from_explorer = False
+    add_to_admin_menu = True
     list_display = ("language",)
     list_filter = ("language",)
+
+
+register_snippet(SponsorsViewSet)

@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailtrans_tags wagtailimages_tags i18n navigation_tags sponsors_tags cache %}
+{% load wagtailcore_tags wagtailimages_tags i18n navigation_tags sponsors_tags cache %}
 {% get_footer_content as footer  %}
 
 <footer class="govuk-footer ictcg-margin-top-9 ictcg-padding-top-6 ictcg-padding-bottom-0" role="contentinfo">
@@ -22,16 +22,14 @@
         <div class="govuk-footer__section ictcg-footer__section">
           <h2 class="govuk-footer__heading ictcg-footer__heading govuk-heading-m">{{ footer.footer_content.translation_title }}</h2>
           <ul class="govuk-footer__list ">
-            {% get_translations page homepage_fallback=False include_self=True as translations %}
-            {% for language, page in translations.items %}
-              {% get_language_info for language.code as lang %}
-              {% if language.code != request.LANGUAGE_CODE %}
-                <li class="">
-                  <a class="govuk-footer__link ictcg-footer__link ictcg-capitalize" href="{{ page.url }}" lang="{{ language.code }}">
-                    {{ lang.name_local }}
-                  </a>
-                </li>
-              {% endif %}
+            {% page_translations page as translations %}
+            {% for translation in translations %}
+              {% get_language_info for translation.locale.language_code as lang %}
+              <li class="">
+                <a class="govuk-footer__link ictcg-footer__link ictcg-capitalize" href="{{ translation.url }}" lang="{{ translation.locale.language_code }}">
+                  {{ lang.name_local }}
+                </a>
+              </li>
             {% endfor %}
           </ul>
         </div>

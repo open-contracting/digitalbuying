@@ -1,0 +1,8 @@
+# https://pnpm.io/settings
+minimumReleaseAge: 10080
+trustPolicy: no-downgrade
+# esbuild + @parcel/watcher ship prebuilt binaries via optional dependencies, so
+# their install scripts aren't needed (CI/Docker also install with --ignore-scripts).
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: false

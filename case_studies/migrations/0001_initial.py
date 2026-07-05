@@ -3,8 +3,8 @@
 import django.db.models.deletion
 import modelcluster.contrib.taggit
 import modelcluster.fields
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 from django.db import migrations, models
 
 
@@ -13,7 +13,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("taggit", "0003_taggeditem_add_unique_index"),
-        ("wagtailtrans", "0009_create_initial_language"),
         ("wagtailimages", "0001_squashed_0021"),
     ]
 
@@ -23,20 +22,14 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "translatablepage_ptr",
-                    models.OneToOneField(
-                        auto_created=True,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        parent_link=True,
-                        primary_key=True,
-                        serialize=False,
-                        to="wagtailtrans.TranslatablePage",
+                    models.IntegerField(
+                        auto_created=True, db_column="translatablepage_ptr_id", primary_key=True, serialize=False
                     ),
                 ),
             ],
             options={
                 "abstract": False,
             },
-            bases=("wagtailtrans.translatablepage",),
         ),
         migrations.CreateModel(
             name="CaseStudyGuidelinesSectionTag",
@@ -52,13 +45,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "translatablepage_ptr",
-                    models.OneToOneField(
-                        auto_created=True,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        parent_link=True,
-                        primary_key=True,
-                        serialize=False,
-                        to="wagtailtrans.TranslatablePage",
+                    models.IntegerField(
+                        auto_created=True, db_column="translatablepage_ptr_id", primary_key=True, serialize=False
                     ),
                 ),
                 ("introduction", models.CharField(max_length=240)),
@@ -68,44 +56,42 @@ class Migration(migrations.Migration):
                 ("read_time", models.IntegerField(help_text="Time taken (in minutes) to read the case study")),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 "rich_text_section",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 help_text="Section title, max length 120 characters", max_length=120
                                             ),
                                         ),
-                                        ("hide_horizontal_rule", wagtail.core.blocks.BooleanBlock(required=False)),
-                                        ("content", wagtail.core.blocks.RichTextBlock()),
+                                        ("hide_horizontal_rule", wagtail.blocks.BooleanBlock(required=False)),
+                                        ("content", wagtail.blocks.RichTextBlock()),
                                     ]
                                 ),
                             ),
                             (
                                 "quote_section",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 help_text="Quote section title, max length 120 characters",
                                                 max_length=120,
                                             ),
                                         ),
-                                        ("hide_horizontal_rule", wagtail.core.blocks.BooleanBlock(required=False)),
-                                        ("content_top", wagtail.core.blocks.RichTextBlock()),
-                                        ("quote", wagtail.core.blocks.CharBlock(help_text="Quote", max_length=300)),
+                                        ("hide_horizontal_rule", wagtail.blocks.BooleanBlock(required=False)),
+                                        ("content_top", wagtail.blocks.RichTextBlock()),
+                                        ("quote", wagtail.blocks.CharBlock(help_text="Quote", max_length=300)),
                                         (
                                             "attribution",
-                                            wagtail.core.blocks.CharBlock(
-                                                help_text="Quote attribution", max_length=120
-                                            ),
+                                            wagtail.blocks.CharBlock(help_text="Quote attribution", max_length=120),
                                         ),
-                                        ("content_bottom", wagtail.core.blocks.RichTextBlock(required=False)),
+                                        ("content_bottom", wagtail.blocks.RichTextBlock(required=False)),
                                     ]
                                 ),
                             ),
@@ -138,7 +124,6 @@ class Migration(migrations.Migration):
             options={
                 "abstract": False,
             },
-            bases=("wagtailtrans.translatablepage",),
         ),
         migrations.AddField(
             model_name="casestudyguidelinessectiontag",

@@ -8,7 +8,6 @@ class Migration(migrations.Migration):
     dependencies = [
         ("modules", "0002_auto_20200423_1311"),
         ("contenttypes", "0002_remove_content_type_name"),
-        ("wagtailtrans", "0009_create_initial_language"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ("wagtailredirects", "0006_redirect_increase_max_length"),
         ("wagtailforms", "0004_add_verbose_name_plural"),

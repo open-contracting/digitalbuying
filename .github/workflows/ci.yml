@@ -8,15 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: pnpm
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: pip
           cache-dependency-path: '**/requirements*.txt'
-      - run: npm install
+      - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pip install -r requirements.txt
       # Check requirements.txt contains production requirements.
       - run: ./manage.py --help
@@ -24,30 +26,38 @@ jobs:
       - name: Build static files
         shell: bash
         run: |
-          env NODE_ENV=production npx gulp build
+          env NODE_ENV=production node build.js
           env DJANGO_ENV=production python manage.py collectstatic --noinput -v2
+      # The database and its test database must use the case- and accent-sensitive
+      # utf8mb4_0900_as_cs collation (see settings.py). The mysql:8.0 image's server
+      # default is utf8mb4_0900_ai_ci, so create the database explicitly; otherwise
+      # its columns clash with the connection collation ("illegal mix of collations").
+      - name: Create database
+        run: >-
+          mysql -h 127.0.0.1 -P ${{ job.services.mysql.ports[3306] }} -u root -proot
+          -e "CREATE DATABASE digitalbuying CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs"
       - name: Run checks and tests
         env:
-          PYTHONWARNINGS: error,ignore::DeprecationWarning:django.utils.version,ignore::DeprecationWarning:django.http.request,ignore::DeprecationWarning:willow.image,ignore::DeprecationWarning:l18n.translation,ignore:::wagtail.core.signals,ignore:::wagtail.documents.models,ignore:::wagtail.admin.signals,ignore:::wagtail.core.models,ignore:::wagtailtrans.urls.translations,ignore:::wagtailtrans.wagtail_hooks
-          DATABASE_URL: postgresql://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/postgres
+          PYTHONWARNINGS: error
+          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports[3306] }}/digitalbuying
         shell: bash
         run: |
           ./manage.py migrate
-          ./manage.py makemigrations --check --dry-run
+          ./manage.py makemigrations --check --dry-run base case_studies guidelines modules navigation sponsors streams
           ./manage.py check --fail-level WARNING
-          coverage run --source ictcg manage.py test
-      - uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
+          coverage run --source core,base,case_studies,guidelines,modules,navigation,sponsors,streams manage.py test
+      - uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           fail_ci_if_error: true
     services:
-      postgres:
-        image: postgres:15
+      mysql:
+        image: mysql:8.0
         env:
-          POSTGRES_PASSWORD: postgres
+          MYSQL_ROOT_PASSWORD: root
         options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
         ports:
-          - 5432/tcp
+          - 3306/tcp

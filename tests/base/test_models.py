@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from wagtail.images.models import Image
-from wagtail.tests.utils import WagtailPageTests
-from wagtailtrans.models import TranslatablePage, TranslatableSiteRootPage
+from wagtail.models import Page
+from wagtail.test.utils import WagtailPageTestCase
 
 from base.models import GenericPage, GenericPageWithSubNav, HomePage
 from case_studies.models import CaseStudiesListingPage
@@ -9,12 +9,12 @@ from guidelines.models import GuidelinesListingPage
 from sponsors.models import SponsorsPage
 
 
-class HomePageTests(WagtailPageTests):
+class HomePageTests(WagtailPageTestCase):
     fixtures = ["app.json"]
 
-    def test_homepage_can_be_created_under_translatablesitetootpage(self):
-        # You can create a HomePage under an the TranslatableSiteRootPage
-        self.assertCanCreateAt(TranslatableSiteRootPage, HomePage)
+    def test_homepage_can_be_created_under_root(self):
+        # You can create a HomePage under the Wagtail root page
+        self.assertCanCreateAt(Page, HomePage)
 
     def test_listing_page_can_be_created_under_homepage(self):
         # You can create a GuidelinesSectionPage under the HomePage
@@ -36,8 +36,8 @@ class HomePageTests(WagtailPageTests):
         # You can create a SponsorsPage under the HomePage
         self.assertCanCreateAt(HomePage, SponsorsPage)
 
-    def test_listing_page_inherits_from_translatable_page_class(self):
-        assert issubclass(HomePage, TranslatablePage)
+    def test_listing_page_inherits_from_page_class(self):
+        assert issubclass(HomePage, Page)
 
     def test_validation_error_when_masthead_image_set_but_masthead_image_description_is_missing(self):
         image = Image.objects.get(id=1)
@@ -52,7 +52,7 @@ class HomePageTests(WagtailPageTests):
             )
 
 
-class GenericPageTests(WagtailPageTests):
+class GenericPageTests(WagtailPageTestCase):
     def test_generic_page_can_be_created_under_homepage(self):
         # You can create GenericPage under the HomePage
         self.assertCanCreateAt(HomePage, GenericPage)
@@ -69,11 +69,11 @@ class GenericPageTests(WagtailPageTests):
         # You can create a SponsorsPage under a GenericPage
         self.assertCanCreateAt(GenericPage, SponsorsPage)
 
-    def test_generic_page_inherits_from_translatable_page_class(self):
-        assert issubclass(GenericPageWithSubNav, TranslatablePage)
+    def test_generic_page_inherits_from_page_class(self):
+        assert issubclass(GenericPageWithSubNav, Page)
 
 
-class GenericPageWithSubNavTests(WagtailPageTests):
+class GenericPageWithSubNavTests(WagtailPageTestCase):
     def test_generic_page_with_sub_nav_can_be_created_under_homepage(self):
         # You can create a GenericPageWithSubNav under the HomePage
         self.assertCanCreateAt(HomePage, GenericPageWithSubNav)
@@ -90,5 +90,5 @@ class GenericPageWithSubNavTests(WagtailPageTests):
         # You can create a SponsorsPage under a GenericPageWithSubNav
         self.assertCanCreateAt(GenericPageWithSubNav, SponsorsPage)
 
-    def test_generic_page_inherits_from_translatable_page_class(self):
-        assert issubclass(GenericPageWithSubNav, TranslatablePage)
+    def test_generic_page_inherits_from_page_class(self):
+        assert issubclass(GenericPageWithSubNav, Page)

@@ -8,9 +8,9 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
-from wagtail.core.fields import RichTextField
-from wagtail.core.models import Orderable
+from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.fields import RichTextField
+from wagtail.models import Orderable
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class MainMenu(ClusterableModel):
     """MainMenu class for header links. Contains Orderable MenuItem class."""
 
-    admin_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
+    admin_title = models.CharField(max_length=100, blank=False)
 
     title = models.CharField(max_length=100)
 
@@ -77,9 +77,12 @@ class MenuItem(models.Model):
     panels = [
         FieldPanel("title"),
         FieldPanel("url"),
-        PageChooserPanel("page"),
+        FieldPanel("page"),
         FieldPanel("open_in_new_tab"),
     ]
+
+    def __str__(self):
+        return self.title
 
     @property
     def link(self):
@@ -105,15 +108,15 @@ class MainMenuItem(Orderable, MenuItem):
 class FooterMenu(ClusterableModel):
     """FooterMenu class for footer links. Contains Orderable MenuItem class."""
 
-    admin_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
+    admin_title = models.CharField(max_length=100, blank=False)
 
     language = models.CharField(max_length=100, choices=settings.LANGUAGES)
 
-    quick_links_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
+    quick_links_title = models.CharField(max_length=100, blank=False)
 
-    sponsors_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
+    sponsors_title = models.CharField(max_length=100, blank=False)
 
-    translation_title = models.CharField(max_length=100, blank=False, null=True)  # noqa: DJ001
+    translation_title = models.CharField(max_length=100, blank=False)
 
     panels = [
         FieldPanel("admin_title"),

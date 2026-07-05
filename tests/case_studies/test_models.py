@@ -1,14 +1,14 @@
 from unittest.mock import patch
 
 from taggit.models import TaggedItemBase
-from wagtail.tests.utils import WagtailPageTests
-from wagtailtrans.models import TranslatablePage
+from wagtail.models import Page
+from wagtail.test.utils import WagtailPageTestCase
 
 from base.models import HomePage
 from case_studies.models import CaseStudiesListingPage, CaseStudyGuidelinesSectionTag, CaseStudyPage
 
 
-class CaseStudiesListingPageTests(WagtailPageTests):
+class CaseStudiesListingPageTests(WagtailPageTestCase):
     fixtures = ["app.json"]
     # Order of case studies should as below based on publication date (newest first)
     # PK 13 - case-study-number-2 - 2020-06-01
@@ -23,8 +23,8 @@ class CaseStudiesListingPageTests(WagtailPageTests):
         # You can create a CaseStudyPage under an CaseStudiesListingPage
         self.assertCanCreateAt(CaseStudiesListingPage, CaseStudyPage)
 
-    def test_listing_page_inherits_from_translatable_page_class(self):
-        assert issubclass(CaseStudiesListingPage, TranslatablePage)
+    def test_listing_page_inherits_from_page_class(self):
+        assert issubclass(CaseStudiesListingPage, Page)
 
     def test_case_studies_listing_context(self):
         # Test we get the correct featured article from the context based on publication_date
@@ -38,12 +38,12 @@ class CaseStudiesListingPageTests(WagtailPageTests):
         self.assertEqual(case_studies[1].pk, 14)
 
 
-class CaseStudyGuidelinesSectionTagTests(WagtailPageTests):
+class CaseStudyGuidelinesSectionTagTests(WagtailPageTestCase):
     def test_case_study_section_tags_class_inherits_from_tagged_itme_base_class(self):
         assert issubclass(CaseStudyGuidelinesSectionTag, TaggedItemBase)
 
 
-class CaseStudyPageTests(WagtailPageTests):
+class CaseStudyPageTests(WagtailPageTestCase):
     fixtures = ["app.json"]
     # Order of case studies should as below based on publication date (newest first)
     # PK 13 - case-study-number-2 - 2020-06-01
