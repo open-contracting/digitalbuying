@@ -39,6 +39,10 @@ ALLOWED_HOSTS = [".localhost", "127.0.0.1", "[::1]", "0.0.0.0"]  # noqa: S104 # 
 if "ALLOWED_HOSTS" in os.environ:
     ALLOWED_HOSTS.extend(os.getenv("ALLOWED_HOSTS").split(","))
 
+# Wagtail's page editor can submit many form fields for complex StreamField pages.
+# https://docs.wagtail.org/en/stable/releases/6.4.html
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
+
 
 # Application definition
 
