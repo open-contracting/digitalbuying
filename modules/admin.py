@@ -10,7 +10,6 @@ class MoreInformationModuleViewSet(SnippetViewSet):
     model = MoreInformationModule
     menu_label = "More information module"
     icon = "doc-full"
-    menu_order = 0
     list_display = (
         "language",
         "admin_title",
@@ -24,7 +23,6 @@ class LinksModuleViewSet(SnippetViewSet):
     model = LinksModule
     menu_label = "Links module"
     icon = "doc-full"
-    menu_order = 100
     list_display = (
         "language",
         "admin_title",
