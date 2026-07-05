@@ -4,7 +4,7 @@ anyascii==0.3.3
     # via wagtail
 asgiref==3.11.1
     # via django
-beautifulsoup4==4.9.3
+beautifulsoup4==4.15.0
     # via wagtail
 certifi==2026.6.17
     # via
@@ -16,7 +16,7 @@ defusedxml==0.7.1
     # via willow
 dj-database-url==2.2.0
     # via -r requirements.in
-django==4.2.30
+django==5.2.15
     # via
     #   -r requirements.in
     #   dj-database-url
@@ -50,7 +50,7 @@ django-tasks==0.12.0
     # via
     #   modelsearch
     #   wagtail
-django-treebeard==4.7.1
+django-treebeard==5.3.0
     # via wagtail
 djangorestframework==3.15.1
     # via wagtail
@@ -68,7 +68,7 @@ idna==3.18
     # via requests
 laces==0.1.2
     # via wagtail
-modelsearch==1.2.2
+modelsearch==1.3.1
     # via wagtail
 mysqlclient==2.2.8
     # via -r requirements.in
@@ -98,6 +98,7 @@ telepath==0.3.1
     # via wagtail
 typing-extensions==4.15.0
     # via
+    #   beautifulsoup4
     #   dj-database-url
     #   django-stubs-ext
     #   django-tasks
@@ -106,11 +107,11 @@ urllib3==2.7.0
     # via
     #   requests
     #   sentry-sdk
-wagtail==7.3.3
+wagtail==7.4.2
     # via
     #   -r requirements.in
     #   wagtail-localize
-wagtail-localize==1.8.3
+wagtail-localize==1.13.1
     # via -r requirements.in
 willow==1.11.0
     # via wagtail

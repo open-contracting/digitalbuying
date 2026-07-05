@@ -133,6 +133,17 @@ DATABASES = {
     "default": dj_database_url.config(default="mysql://root@127.0.0.1/digitalbuying"),
 }
 
+# The database uses the case- and accent-sensitive utf8mb4_0900_as_cs collation.
+# Set the connection collation to match (otherwise the connection defaults to
+# utf8mb4_0900_ai_ci, so e.g. CAST(... AS CHAR) clashes with _as_cs columns —
+# "illegal mix of collations"), and create the test database with it too.
+if DATABASES["default"].get("ENGINE") == "django.db.backends.mysql":
+    DATABASES["default"].setdefault("OPTIONS", {})
+    DATABASES["default"]["OPTIONS"]["charset"] = "utf8mb4"
+    DATABASES["default"]["OPTIONS"]["collation"] = "utf8mb4_0900_as_cs"
+    DATABASES["default"]["TEST"] = {"CHARSET": "utf8mb4", "COLLATION": "utf8mb4_0900_as_cs"}
+    DATABASES["default"]["TEST"] = {"CHARSET": "utf8mb4", "COLLATION": "utf8mb4_0900_as_cs"}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -174,6 +185,10 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Wagtail's Page/Collection managers trip django-treebeard's forward-compatibility
+# check for Treebeard 6; this is a Wagtail/treebeard matter, not project code.
+SILENCED_SYSTEM_CHECKS = ["treebeard.E001"]
 
 
 # Project-specific Django configuration
