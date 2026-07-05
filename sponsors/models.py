@@ -89,7 +89,6 @@ class SponsorsPage(Page):
         ],
         null=True,
         blank=True,
-        use_json_field=True,
     )
 
     content_panels = [

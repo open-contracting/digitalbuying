@@ -37,9 +37,7 @@ class GuidelinesListingPage(CacheClearMixin, Page):
     parent_page_types = ["base.HomePage"]
     subpage_types = ["guidelines.GuidelinesSectionPage"]
 
-    information_banners = StreamField(
-        [("information_banner", blocks.InformationBanner())], null=True, blank=True, use_json_field=True
-    )
+    information_banners = StreamField([("information_banner", blocks.InformationBanner())], null=True, blank=True)
 
     introduction = RichTextField(blank=True, default="")
 
@@ -126,7 +124,6 @@ class GuidancePage(CacheClearMixin, Page):
         ],
         null=True,
         blank=True,
-        use_json_field=True,
     )
 
     content_panels = [

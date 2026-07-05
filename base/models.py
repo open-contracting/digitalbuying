@@ -51,7 +51,6 @@ class HomePage(Page):
         ],
         null=True,
         blank=True,
-        use_json_field=True,
     )
 
     content_panels = [
@@ -108,7 +107,6 @@ class GenericPageWithSubNav(Page):
         ],
         null=True,
         blank=True,
-        use_json_field=True,
     )
 
     content_panels = [
@@ -136,7 +134,6 @@ class GenericPage(Page):
         ],
         null=True,
         blank=True,
-        use_json_field=True,
     )
 
     content_panels = [

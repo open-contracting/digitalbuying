@@ -39,6 +39,7 @@ django==4.2.30
     #   django-taggit
     #   django-treebeard
     #   djangorestframework
+    #   laces
     #   wagtail
     #   wagtail-localize
 django-filter==23.5
@@ -53,7 +54,7 @@ django-permissionedforms==0.1
     # via
     #   -r requirements.txt
     #   wagtail
-django-taggit==2.1.0
+django-taggit==5.0.1
     # via
     #   -r requirements.txt
     #   wagtail
@@ -90,6 +91,10 @@ idna==3.18
     #   -r requirements.txt
     #   requests
 l18n==2021.3
+    # via
+    #   -r requirements.txt
+    #   wagtail
+laces==0.1.2
     # via
     #   -r requirements.txt
     #   wagtail
@@ -156,7 +161,7 @@ urllib3==2.7.0
     #   -r requirements.txt
     #   requests
     #   sentry-sdk
-wagtail==5.2.8
+wagtail==6.0.6
     # via
     #   -r requirements.txt
     #   wagtail-localize
