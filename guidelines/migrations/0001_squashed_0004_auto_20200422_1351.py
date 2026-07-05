@@ -10,7 +10,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("wagtailtrans", "0009_create_initial_language"),
         ("modules", "0001_squashed_0002_auto_20200422_1348"),
     ]
 
@@ -20,13 +19,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "translatablepage_ptr",
-                    models.OneToOneField(
-                        auto_created=True,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        parent_link=True,
-                        primary_key=True,
-                        serialize=False,
-                        to="wagtailtrans.TranslatablePage",
+                    models.IntegerField(
+                        auto_created=True, db_column="translatablepage_ptr_id", primary_key=True, serialize=False
                     ),
                 ),
                 ("introduction", wagtail.core.fields.RichTextField(blank=True, default="")),
@@ -34,20 +28,14 @@ class Migration(migrations.Migration):
             options={
                 "abstract": False,
             },
-            bases=("wagtailtrans.translatablepage",),
         ),
         migrations.CreateModel(
             name="GuidelinesSectionPage",
             fields=[
                 (
                     "translatablepage_ptr",
-                    models.OneToOneField(
-                        auto_created=True,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        parent_link=True,
-                        primary_key=True,
-                        serialize=False,
-                        to="wagtailtrans.TranslatablePage",
+                    models.IntegerField(
+                        auto_created=True, db_column="translatablepage_ptr_id", primary_key=True, serialize=False
                     ),
                 ),
                 ("subtitle", models.CharField(max_length=140)),
@@ -95,20 +83,14 @@ class Migration(migrations.Migration):
             options={
                 "abstract": False,
             },
-            bases=("wagtailtrans.translatablepage",),
         ),
         migrations.CreateModel(
             name="GuidelinePage",
             fields=[
                 (
                     "translatablepage_ptr",
-                    models.OneToOneField(
-                        auto_created=True,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        parent_link=True,
-                        primary_key=True,
-                        serialize=False,
-                        to="wagtailtrans.TranslatablePage",
+                    models.IntegerField(
+                        auto_created=True, db_column="translatablepage_ptr_id", primary_key=True, serialize=False
                     ),
                 ),
                 (
@@ -201,6 +183,5 @@ class Migration(migrations.Migration):
             options={
                 "abstract": False,
             },
-            bases=("wagtailtrans.translatablepage",),
         ),
     ]

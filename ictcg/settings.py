@@ -81,9 +81,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # https://docs.wagtail.org/en/stable/reference/contrib/sitemaps.html
     "django.contrib.sitemaps",
-    # Kept temporarily during the migration to wagtail-localize; removed once
-    # page models no longer inherit wagtailtrans.TranslatablePage.
-    "wagtailtrans",
 ]
 
 
@@ -250,11 +247,6 @@ LANGUAGES = (
 # https://docs.wagtail.org/en/v2.15.6/advanced_topics/i18n.html
 WAGTAIL_I18N_ENABLED = True
 WAGTAIL_CONTENT_LANGUAGES = LANGUAGES
-
-# Disable wagtailtrans tree-syncing during the migration to wagtail-localize so
-# it doesn't create/sync translation pages as we restructure the tree and
-# collapse the model inheritance. (wagtailtrans is removed entirely afterwards.)
-WAGTAILTRANS_SYNC_TREE = False
 
 MEDIA_ROOT = os.getenv("MEDIA_ROOT", "/data/media/" if production else BASE_DIR / "media/")
 MEDIA_URL = "media/"

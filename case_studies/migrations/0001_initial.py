@@ -13,7 +13,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("taggit", "0003_taggeditem_add_unique_index"),
-        ("wagtailtrans", "0009_create_initial_language"),
         ("wagtailimages", "0001_squashed_0021"),
     ]
 
@@ -23,20 +22,14 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "translatablepage_ptr",
-                    models.OneToOneField(
-                        auto_created=True,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        parent_link=True,
-                        primary_key=True,
-                        serialize=False,
-                        to="wagtailtrans.TranslatablePage",
+                    models.IntegerField(
+                        auto_created=True, db_column="translatablepage_ptr_id", primary_key=True, serialize=False
                     ),
                 ),
             ],
             options={
                 "abstract": False,
             },
-            bases=("wagtailtrans.translatablepage",),
         ),
         migrations.CreateModel(
             name="CaseStudyGuidelinesSectionTag",
@@ -52,13 +45,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "translatablepage_ptr",
-                    models.OneToOneField(
-                        auto_created=True,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        parent_link=True,
-                        primary_key=True,
-                        serialize=False,
-                        to="wagtailtrans.TranslatablePage",
+                    models.IntegerField(
+                        auto_created=True, db_column="translatablepage_ptr_id", primary_key=True, serialize=False
                     ),
                 ),
                 ("introduction", models.CharField(max_length=240)),
@@ -138,7 +126,6 @@ class Migration(migrations.Migration):
             options={
                 "abstract": False,
             },
-            bases=("wagtailtrans.translatablepage",),
         ),
         migrations.AddField(
             model_name="casestudyguidelinessectiontag",

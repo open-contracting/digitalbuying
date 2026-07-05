@@ -10,7 +10,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("wagtailtrans", "0009_create_initial_language"),
         ("wagtailcore", "0045_assign_unlock_grouppagepermission"),
         ("wagtailimages", "0001_squashed_0021"),
     ]
@@ -21,13 +20,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "translatablepage_ptr",
-                    models.OneToOneField(
-                        auto_created=True,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        parent_link=True,
-                        primary_key=True,
-                        serialize=False,
-                        to="wagtailtrans.TranslatablePage",
+                    models.IntegerField(
+                        auto_created=True, db_column="translatablepage_ptr_id", primary_key=True, serialize=False
                     ),
                 ),
                 (
@@ -86,6 +80,5 @@ class Migration(migrations.Migration):
             options={
                 "abstract": False,
             },
-            bases=("wagtailtrans.translatablepage",),
         ),
     ]

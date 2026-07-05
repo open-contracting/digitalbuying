@@ -9,7 +9,6 @@ class Migration(migrations.Migration):
     dependencies = [
         ("wagtailforms", "0004_add_verbose_name_plural"),
         ("wagtailcore", "0059_apply_collection_ordering"),
-        ("wagtailtrans", "0009_create_initial_language"),
         ("wagtailredirects", "0006_redirect_increase_max_length"),
         ("base", "0010_genericpage"),
     ]
