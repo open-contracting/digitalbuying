@@ -127,7 +127,7 @@ WSGI_APPLICATION = "ictcg.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    "default": dj_database_url.config(default="postgresql:///digitalbuyingguide?application_name=digitalbuyingguide"),
+    "default": dj_database_url.config(default="mysql://root@127.0.0.1/digitalbuying"),
 }
 
 
@@ -260,6 +260,11 @@ EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True") == "True"
+
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-from-email
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "noreply@noreply.open-contracting.org")
+# https://docs.wagtail.org/en/stable/reference/settings.html#wagtailadmin-notification-from-email
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = DEFAULT_FROM_EMAIL
 
 FIXTURE_DIRS = [BASE_DIR / "tests" / "fixtures"]
 
