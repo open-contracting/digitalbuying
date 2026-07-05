@@ -2,13 +2,13 @@ from unittest.mock import patch
 
 from django.test import TestCase
 from wagtail.models import Page
-from wagtail.test.utils import WagtailPageTests
+from wagtail.test.utils import WagtailPageTestCase
 
 from base.models import HomePage
 from guidelines.models import GuidancePage, GuidelinesListingPage, GuidelinesSectionPage
 
 
-class GuidelinesListingPageTests(WagtailPageTests):
+class GuidelinesListingPageTests(WagtailPageTestCase):
     def test_listing_page_can_be_created_under_homepage(self):
         # You can create a GuidelinesListingPage under an HomePage
         self.assertCanCreateAt(HomePage, GuidelinesListingPage)
@@ -25,7 +25,7 @@ class GuidelinesListingPageTests(WagtailPageTests):
         assert issubclass(GuidelinesListingPage, Page)
 
 
-class GuidelinesSectionPageTests(WagtailPageTests):
+class GuidelinesSectionPageTests(WagtailPageTestCase):
     fixtures = ["app.json"]
 
     def test_section_page_can_only_be_created_under_list_page(self):
@@ -64,7 +64,7 @@ class GuidelinesSectionPageTests(WagtailPageTests):
         )
 
 
-class GuidancePageTests(WagtailPageTests):
+class GuidancePageTests(WagtailPageTestCase):
     fixtures = ["app.json"]
 
     def test_guidance_page_can_only_be_created_under_section_page(self):

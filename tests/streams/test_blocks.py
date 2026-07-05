@@ -1,11 +1,11 @@
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.test.utils import WagtailPageTests
+from wagtail.test.utils import WagtailPageTestCase
 
 from streams import blocks as ictgs_blocks
 
 
-class RichTextBlockTests(WagtailPageTests):
+class RichTextBlockTests(WagtailPageTestCase):
     def test_rich_text_block_subclass(self):
         assert issubclass(ictgs_blocks.RichTextWithTitleBlock, blocks.StructBlock)
 
@@ -24,12 +24,12 @@ class RichTextBlockTests(WagtailPageTests):
         )
 
 
-class TextAlignmentBlockTests(WagtailPageTests):
+class TextAlignmentBlockTests(WagtailPageTestCase):
     def test_text_alignment_block_subclass(self):
         assert issubclass(ictgs_blocks.TextAlignmentBlock, blocks.ChoiceBlock)
 
 
-class HomePageRichTextBlockTests(WagtailPageTests):
+class HomePageRichTextBlockTests(WagtailPageTestCase):
     def test_home_page_rich_text_block_subclass(self):
         assert issubclass(ictgs_blocks.HomePageRichTextBlock, blocks.StructBlock)
 
@@ -48,7 +48,7 @@ class HomePageRichTextBlockTests(WagtailPageTests):
         self.assertEqual(ictgs_blocks.HomePageRichTextBlock().get_template(), "streams/homepage_richtext_block.html")
 
 
-class HighlightListBlockTests(WagtailPageTests):
+class HighlightListBlockTests(WagtailPageTestCase):
     def test_highlight_list_block_subclass(self):
         assert issubclass(ictgs_blocks.HighlightListBlock, blocks.StructBlock)
 
@@ -65,7 +65,7 @@ class HighlightListBlockTests(WagtailPageTests):
         self.assertEqual(ictgs_blocks.HighlightListBlock().get_template(), "streams/highlight_list_block.html")
 
 
-class CaseStudyBlockTests(WagtailPageTests):
+class CaseStudyBlockTests(WagtailPageTestCase):
     def test_case_study_block_subclass(self):
         assert issubclass(ictgs_blocks.CaseStudyBlock, blocks.StructBlock)
 
@@ -85,7 +85,7 @@ class CaseStudyBlockTests(WagtailPageTests):
         self.assertEqual(ictgs_blocks.CaseStudyBlock().get_template(), "streams/case_study_block.html")
 
 
-class DoDontCardTests(WagtailPageTests):
+class DoDontCardTests(WagtailPageTestCase):
     def test_do_dont_card_subclass(self):
         assert issubclass(ictgs_blocks.DoOrDontCard, blocks.StructBlock)
 
@@ -98,7 +98,7 @@ class DoDontCardTests(WagtailPageTests):
         self.assertEqual(len(child_blocks), 1)
 
 
-class DoDontBlockTests(WagtailPageTests):
+class DoDontBlockTests(WagtailPageTestCase):
     def test_do_dont_block_subclass(self):
         assert issubclass(ictgs_blocks.DosAndDontsBlock, blocks.StructBlock)
 
@@ -116,7 +116,7 @@ class DoDontBlockTests(WagtailPageTests):
         self.assertEqual(ictgs_blocks.DosAndDontsBlock().get_template(), "streams/do_dont_list.html")
 
 
-class QuoteBlockTests(WagtailPageTests):
+class QuoteBlockTests(WagtailPageTestCase):
     def test_quote_block_subclass(self):
         assert issubclass(ictgs_blocks.QuoteBlock, blocks.StructBlock)
 
@@ -133,7 +133,7 @@ class QuoteBlockTests(WagtailPageTests):
         self.assertEqual(ictgs_blocks.QuoteBlock().get_template(), "streams/quote_block.html")
 
 
-class LogoItemTests(WagtailPageTests):
+class LogoItemTests(WagtailPageTestCase):
     def test_logo_item_block_subclass(self):
         assert issubclass(ictgs_blocks.LogoItem, blocks.StructBlock)
 
@@ -148,7 +148,7 @@ class LogoItemTests(WagtailPageTests):
         self.assertEqual(len(child_blocks), 3)
 
 
-class SupportersBlockTests(WagtailPageTests):
+class SupportersBlockTests(WagtailPageTestCase):
     def test_supporters_block_subclass(self):
         assert issubclass(ictgs_blocks.SupportersBlock, blocks.StructBlock)
 

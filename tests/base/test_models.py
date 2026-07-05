@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from wagtail.images.models import Image
 from wagtail.models import Page
-from wagtail.test.utils import WagtailPageTests
+from wagtail.test.utils import WagtailPageTestCase
 
 from base.models import GenericPage, GenericPageWithSubNav, HomePage
 from case_studies.models import CaseStudiesListingPage
@@ -9,7 +9,7 @@ from guidelines.models import GuidelinesListingPage
 from sponsors.models import SponsorsPage
 
 
-class HomePageTests(WagtailPageTests):
+class HomePageTests(WagtailPageTestCase):
     fixtures = ["app.json"]
 
     def test_homepage_can_be_created_under_root(self):
@@ -52,7 +52,7 @@ class HomePageTests(WagtailPageTests):
             )
 
 
-class GenericPageTests(WagtailPageTests):
+class GenericPageTests(WagtailPageTestCase):
     def test_generic_page_can_be_created_under_homepage(self):
         # You can create GenericPage under the HomePage
         self.assertCanCreateAt(HomePage, GenericPage)
@@ -73,7 +73,7 @@ class GenericPageTests(WagtailPageTests):
         assert issubclass(GenericPageWithSubNav, Page)
 
 
-class GenericPageWithSubNavTests(WagtailPageTests):
+class GenericPageWithSubNavTests(WagtailPageTestCase):
     def test_generic_page_with_sub_nav_can_be_created_under_homepage(self):
         # You can create a GenericPageWithSubNav under the HomePage
         self.assertCanCreateAt(HomePage, GenericPageWithSubNav)
