@@ -34,6 +34,7 @@ django==3.2.25
     #   django-treebeard
     #   djangorestframework
     #   wagtail
+    #   wagtail-localize
 django-filter==21.1
     # via
     #   -r requirements.txt
@@ -92,6 +93,10 @@ pillow==9.5.0
     # via
     #   -r requirements.txt
     #   wagtail
+polib==1.2.0
+    # via
+    #   -r requirements.txt
+    #   wagtail-localize
 pytz==2026.2
     # via
     #   -r requirements.txt
@@ -131,6 +136,7 @@ typing-extensions==4.15.0
     # via
     #   -r requirements.txt
     #   dj-database-url
+    #   wagtail-localize
 urllib3==2.7.0
     # via
     #   -r requirements.txt
@@ -139,8 +145,8 @@ urllib3==2.7.0
 wagtail==2.15.6
     # via
     #   -r requirements.txt
-    #   wagtailtrans
-wagtailtrans @ git+https://github.com/carrotandcompany/wagtailtrans@914ed9c3eb60a5e6a2582142bf4c2c1946341d7f#egg=wagtailtrans
+    #   wagtail-localize
+wagtail-localize==1.4
     # via -r requirements.txt
 webencodings==0.5.1
     # via

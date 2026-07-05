@@ -7,4 +7,4 @@ mysqlclient
 redis[hiredis]
 sentry-sdk
 wagtail<2.16
-git+https://github.com/carrotandcompany/wagtailtrans@master#egg=wagtailtrans
+wagtail-localize
