@@ -10,10 +10,9 @@ from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
-from wagtail.core.models import Orderable
+from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
-from wagtailtrans.models import TranslatablePage
 
 from streams import blocks
 
@@ -74,7 +73,7 @@ class SponsorItem(Orderable):
     sponsor = ParentalKey("Sponsor", related_name="sponsor_items", default="")
 
 
-class SponsorsPage(TranslatablePage):
+class SponsorsPage(Page):
     """
     SponsorsPage page - allows for listing of site sponsors along with additional supporters and contributors
     Can be nested under the homepage or generic pages.
@@ -94,12 +93,12 @@ class SponsorsPage(TranslatablePage):
     )
 
     content_panels = [
-        *TranslatablePage.content_panels,
+        *Page.content_panels,
         StreamFieldPanel("body"),
     ]
 
     search_fields = [
-        *TranslatablePage.search_fields,
+        *Page.search_fields,
         index.SearchField("body"),
     ]
 

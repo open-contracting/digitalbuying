@@ -18,8 +18,8 @@ class TemplateTagsCaseStudiesTests(TestCase):
         # Also test we still only get 3 results back.  Fixture data contains 3 case studies
         image = Image.objects.get(id=1)
         new_case_study = CaseStudyPage.objects.create(
-            path="00010002000100030004",
-            depth="5",
+            path="0001000200030004",
+            depth="4",
             title="New case study 4",
             header_image=image,
             header_image_description="Alt tag",

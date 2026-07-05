@@ -9,7 +9,6 @@ from wagtail.core.models import Page
 from wagtail.core.signals import page_published, page_unpublished
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
-from wagtailtrans.models import TranslatablePage
 
 from streams import blocks
 
@@ -30,7 +29,7 @@ class CacheClearMixin:
         return super().save(*args, **kwargs)
 
 
-class GuidelinesListingPage(CacheClearMixin, TranslatablePage):
+class GuidelinesListingPage(CacheClearMixin, Page):
     """
     A TranslatablePage class used for the entry to the guidelines section of the site.
     The page lists the sections (GuidelinesSectionPages) within the guidelines.
@@ -56,12 +55,12 @@ class GuidelinesListingPage(CacheClearMixin, TranslatablePage):
 
     def clear_from_caches(self):
         target = "guidelines_footer"
-        language_code = self.language.code
+        language_code = self.locale.language_code
         target = make_template_fragment_key(target, [language_code])
         cache.delete(target)
 
 
-class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
+class GuidelinesSectionPage(CacheClearMixin, Page):
     """
     A TranslatablePage class used for each section with the guidelines.
     The page lists the pages (GuidancePages) within the section.
@@ -108,7 +107,7 @@ class GuidelinesSectionPage(CacheClearMixin, TranslatablePage):
         cache.delete(target)
 
 
-class GuidancePage(CacheClearMixin, TranslatablePage):
+class GuidancePage(CacheClearMixin, Page):
     """
     A TranslatablePage class used for content pages (GuidancePages) within each guidelines section
     (GuidelinesSectionPages).
@@ -129,7 +128,7 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
     )
 
     content_panels = [
-        *TranslatablePage.content_panels,
+        *Page.content_panels,
         FieldPanel("introduction"),
         StreamFieldPanel("body"),
     ]
@@ -151,8 +150,8 @@ class GuidancePage(CacheClearMixin, TranslatablePage):
         [
             ObjectList(content_panels, heading="Content"),
             ObjectList(Sidebar_panels, heading="Sidebar"),
-            ObjectList(TranslatablePage.settings_panels, heading="Settings"),
-            ObjectList(TranslatablePage.promote_panels, heading="Promote"),
+            ObjectList(Page.settings_panels, heading="Settings"),
+            ObjectList(Page.promote_panels, heading="Promote"),
         ]
     )
 

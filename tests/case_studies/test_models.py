@@ -1,8 +1,8 @@
 from unittest.mock import patch
 
 from taggit.models import TaggedItemBase
+from wagtail.core.models import Page
 from wagtail.tests.utils import WagtailPageTests
-from wagtailtrans.models import TranslatablePage
 
 from base.models import HomePage
 from case_studies.models import CaseStudiesListingPage, CaseStudyGuidelinesSectionTag, CaseStudyPage
@@ -23,8 +23,8 @@ class CaseStudiesListingPageTests(WagtailPageTests):
         # You can create a CaseStudyPage under an CaseStudiesListingPage
         self.assertCanCreateAt(CaseStudiesListingPage, CaseStudyPage)
 
-    def test_listing_page_inherits_from_translatable_page_class(self):
-        assert issubclass(CaseStudiesListingPage, TranslatablePage)
+    def test_listing_page_inherits_from_page_class(self):
+        assert issubclass(CaseStudiesListingPage, Page)
 
     def test_case_studies_listing_context(self):
         # Test we get the correct featured article from the context based on publication_date

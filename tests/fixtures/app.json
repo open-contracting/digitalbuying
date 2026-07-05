@@ -1,19 +1,16 @@
 [
   {
-    "model": "wagtailtrans.language",
+    "model": "wagtailcore.locale",
     "pk": 1,
     "fields": {
-      "code": "en",
-      "is_default": true,
-      "position": 0,
-      "live": true
+      "language_code": "en"
     }
   },
   {
     "pk": 1,
     "model": "wagtailcore.site",
     "fields": {
-      "root_page": 3,
+      "root_page": 4,
       "hostname": "localhost",
       "port": 80,
       "is_default_site": true
@@ -54,91 +51,6 @@
     }
   },
   {
-    "model": "wagtailtrans.translatablepage",
-    "pk": 4,
-    "fields": {
-      "canonical_page": 4,
-      "language": 1
-    }
-  },
-  {
-    "model": "wagtailtrans.translatablepage",
-    "pk": 6,
-    "fields": {
-      "canonical_page": 6,
-      "language": 1
-    }
-  },
-  {
-    "model": "wagtailtrans.translatablepage",
-    "pk": 7,
-    "fields": {
-      "canonical_page": 7,
-      "language": 1
-    }
-  },
-  {
-    "model": "wagtailtrans.translatablepage",
-    "pk": 8,
-    "fields": {
-      "canonical_page": 8,
-      "language": 1
-    }
-  },
-  {
-    "model": "wagtailtrans.translatablepage",
-    "pk": 9,
-    "fields": {
-      "canonical_page": 9,
-      "language": 1
-    }
-  },
-  {
-    "model": "wagtailtrans.translatablepage",
-    "pk": 10,
-    "fields": {
-      "canonical_page": 10,
-      "language": 1
-    }
-  },
-  {
-    "model": "wagtailtrans.translatablepage",
-    "pk": 11,
-    "fields": {
-      "canonical_page": 11,
-      "language": 1
-    }
-  },
-  {
-    "model": "wagtailtrans.translatablepage",
-    "pk": 12,
-    "fields": {
-      "canonical_page": 12,
-      "language": 1
-    }
-  },
-  {
-    "model": "wagtailtrans.translatablepage",
-    "pk": 13,
-    "fields": {
-      "canonical_page": 13,
-      "language": 1
-    }
-  },
-  {
-    "model": "wagtailtrans.translatablepage",
-    "pk": 14,
-    "fields": {
-      "canonical_page": 13,
-      "language": 1
-    }
-  },
-  {
-    "model": "wagtailtrans.translatablesiterootpage",
-    "pk": 3,
-    "fields": {}
-  },
-  {
     "model": "wagtailcore.page",
     "pk": 1,
     "fields": {
@@ -152,32 +64,17 @@
       "live": true,
       "has_unpublished_changes": false,
       "url_path": "/",
-      "owner": ["gdmp.admin"]
-    }
-  },
-  {
-    "model": "wagtailcore.page",
-    "pk": 3,
-    "fields": {
-      "path": "00010002",
-      "depth": 2,
-      "numchild": 2,
-      "title": "Root",
-      "draft_title": "Root",
-      "slug": "root",
-      "content_type": ["wagtailtrans", "translatablesiterootpage"],
-      "live": true,
-      "has_unpublished_changes": false,
-      "url_path": "/root/",
-      "owner": ["gdmp.admin"]
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "92f149aa-be0d-46ad-8659-1327e1bb67fc"
     }
   },
   {
     "model": "wagtailcore.page",
     "pk": 4,
     "fields": {
-      "path": "000100020001",
-      "depth": 3,
+      "path": "00010002",
+      "depth": 2,
       "numchild": 1,
       "title": "Home",
       "draft_title": "Home",
@@ -185,16 +82,18 @@
       "content_type": ["base", "homepage"],
       "live": true,
       "has_unpublished_changes": false,
-      "url_path": "/root/en/",
-      "owner": ["gdmp.admin"]
+      "url_path": "/en/",
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "db93106f-e692-4b8a-a582-abd07a1648e4"
     }
   },
   {
     "model": "wagtailcore.page",
     "pk": 6,
     "fields": {
-      "path": "0001000200010001",
-      "depth": 4,
+      "path": "000100020001",
+      "depth": 3,
       "numchild": 2,
       "title": "Guidelines",
       "draft_title": "Guidelines",
@@ -202,16 +101,18 @@
       "content_type": ["guidelines", "guidelineslistingpage"],
       "live": true,
       "has_unpublished_changes": false,
-      "url_path": "/root/en/guidelines/",
-      "owner": ["gdmp.admin"]
+      "url_path": "/en/guidelines/",
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "40a878de-5b2f-4447-8caa-ec0f948c187b"
     }
   },
   {
     "model": "wagtailcore.page",
     "pk": 7,
     "fields": {
-      "path": "00010002000100010001",
-      "depth": 5,
+      "path": "0001000200010001",
+      "depth": 4,
       "numchild": 2,
       "title": "Prepare and plan",
       "draft_title": "Prepare and plan",
@@ -219,16 +120,18 @@
       "content_type": ["guidelines", "guidelinessectionpage"],
       "live": true,
       "has_unpublished_changes": false,
-      "url_path": "/root/en/guidelines/prepare-and-plan/",
-      "owner": ["gdmp.admin"]
+      "url_path": "/en/guidelines/prepare-and-plan/",
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "7cbca15f-119d-4c22-b7a8-e12ae9c708e1"
     }
   },
   {
     "model": "wagtailcore.page",
     "pk": 8,
     "fields": {
-      "path": "00010002000100010002",
-      "depth": 5,
+      "path": "0001000200010002",
+      "depth": 4,
       "numchild": 2,
       "title": "Inform the market",
       "draft_title": "Inform the market",
@@ -236,16 +139,18 @@
       "content_type": ["guidelines", "guidelinessectionpage"],
       "live": true,
       "has_unpublished_changes": false,
-      "url_path": "/root/en/guidelines/inform-the-market/",
-      "owner": ["gdmp.admin"]
+      "url_path": "/en/guidelines/inform-the-market/",
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "68f7a49a-cc65-43f6-84c9-806e908328a9"
     }
   },
   {
     "model": "wagtailcore.page",
     "pk": 9,
     "fields": {
-      "path": "000100020001000100010001",
-      "depth": 6,
+      "path": "00010002000100010001",
+      "depth": 5,
       "numchild": 0,
       "title": "Form a team",
       "draft_title": "Form a team",
@@ -253,16 +158,18 @@
       "content_type": ["guidelines", "guidancepage"],
       "live": true,
       "has_unpublished_changes": false,
-      "url_path": "/root/en/guidelines/prepare-and-plan/form-a-team/",
-      "owner": ["gdmp.admin"]
+      "url_path": "/en/guidelines/prepare-and-plan/form-a-team/",
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "9611f9a0-715c-42fa-b816-883cf795c131"
     }
   },
   {
     "model": "wagtailcore.page",
     "pk": 10,
     "fields": {
-      "path": "000100020001000100010002",
-      "depth": 6,
+      "path": "00010002000100010002",
+      "depth": 5,
       "numchild": 0,
       "title": "Understand user needs",
       "draft_title": "Understand user needs",
@@ -270,16 +177,18 @@
       "content_type": ["guidelines", "guidancepage"],
       "live": true,
       "has_unpublished_changes": false,
-      "url_path": "/root/en/guidelines/prepare-and-plan/user-needs/",
-      "owner": ["gdmp.admin"]
+      "url_path": "/en/guidelines/prepare-and-plan/user-needs/",
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "e7e32f17-9b29-4c28-a992-19034d11d73a"
     }
   },
   {
     "model": "wagtailcore.page",
     "pk": 11,
     "fields": {
-      "path": "0001000200010003",
-      "depth": 4,
+      "path": "000100020003",
+      "depth": 3,
       "numchild": 3,
       "title": "Global case studies",
       "draft_title": "Global case studies",
@@ -287,16 +196,18 @@
       "content_type": ["case_studies", "casestudieslistingpage"],
       "live": true,
       "has_unpublished_changes": false,
-      "url_path": "/root/en/case-studies/",
-      "owner": ["gdmp.admin"]
+      "url_path": "/en/case-studies/",
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "995ec710-42ec-4a87-8ee9-52c85ea3d718"
     }
   },
   {
     "model": "wagtailcore.page",
     "pk": 12,
     "fields": {
-      "path": "00010002000100030001",
-      "depth": 5,
+      "path": "0001000200030001",
+      "depth": 4,
       "numchild": 0,
       "title": "case study number 1",
       "draft_title": "case study number 1",
@@ -304,16 +215,18 @@
       "content_type": ["case_studies", "casestudypage"],
       "live": true,
       "has_unpublished_changes": false,
-      "url_path": "/root/en/case-studies/case-study-number-1/",
-      "owner": ["gdmp.admin"]
+      "url_path": "/en/case-studies/case-study-number-1/",
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "697ac125-a1f0-4c32-9714-a18cf57d01ad"
     }
   },
   {
     "model": "wagtailcore.page",
     "pk": 13,
     "fields": {
-      "path": "00010002000100030002",
-      "depth": 5,
+      "path": "0001000200030002",
+      "depth": 4,
       "numchild": 0,
       "title": "case study number 2",
       "draft_title": "case study number 2",
@@ -321,16 +234,18 @@
       "content_type": ["case_studies", "casestudypage"],
       "live": true,
       "has_unpublished_changes": false,
-      "url_path": "/root/en/case-studies/case-study-number-2/",
-      "owner": ["gdmp.admin"]
+      "url_path": "/en/case-studies/case-study-number-2/",
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "07b365f8-ef1a-4da8-a4b8-bf2140454575"
     }
   },
   {
     "model": "wagtailcore.page",
     "pk": 14,
     "fields": {
-      "path": "00010002000100030003",
-      "depth": 5,
+      "path": "0001000200030003",
+      "depth": 4,
       "numchild": 0,
       "title": "case study number 3",
       "draft_title": "case study number 3",
@@ -338,8 +253,10 @@
       "content_type": ["case_studies", "casestudypage"],
       "live": true,
       "has_unpublished_changes": false,
-      "url_path": "/root/en/case-studies/case-study-number-3/",
-      "owner": ["gdmp.admin"]
+      "url_path": "/en/case-studies/case-study-number-3/",
+      "owner": ["gdmp.admin"],
+      "locale": 1,
+      "translation_key": "f49844d8-dfae-4265-911e-882f599f5ca1"
     }
   },
   {

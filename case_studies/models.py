@@ -10,17 +10,17 @@ from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
+from wagtail.core.models import Page
 from wagtail.core.signals import page_published, page_unpublished
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
-from wagtailtrans.models import TranslatablePage
 
 from streams import blocks
 
 logger = logging.getLogger(__name__)
 
 
-class CaseStudiesListingPage(TranslatablePage):
+class CaseStudiesListingPage(Page):
     """
     A TranslatablePage class used for the entry to the case studies section of the site.
     The page contains a list of the child (CaseStudyPage).
@@ -32,7 +32,7 @@ class CaseStudiesListingPage(TranslatablePage):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         featured_case_studies = (
-            CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE)
+            CaseStudyPage.objects.filter(locale__language_code=request.LANGUAGE_CODE)
             .order_by("-publication_date")
             .live()
             .first()
@@ -40,7 +40,7 @@ class CaseStudiesListingPage(TranslatablePage):
         context["featured_case_studies"] = featured_case_studies
         if featured_case_studies:
             context["case_studies"] = (
-                CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE)
+                CaseStudyPage.objects.filter(locale__language_code=request.LANGUAGE_CODE)
                 .exclude(pk=featured_case_studies.pk)
                 .order_by("-publication_date")
                 .live()
@@ -52,7 +52,7 @@ class CaseStudyGuidelinesSectionTag(TaggedItemBase):
     content_object = ParentalKey("CaseStudyPage", on_delete=models.CASCADE, related_name="case_study_section_items")
 
 
-class CaseStudyPage(TranslatablePage):
+class CaseStudyPage(Page):
     """A TranslatablePage class used for case studies pages."""
 
     parent_page_types = ["case_studies.CaseStudiesListingPage"]
@@ -89,7 +89,7 @@ class CaseStudyPage(TranslatablePage):
     )
 
     content_panels = [
-        *TranslatablePage.content_panels,
+        *Page.content_panels,
         ImageChooserPanel("header_image"),
         FieldPanel("header_image_description"),
         FieldPanel("publication_date"),
@@ -101,7 +101,7 @@ class CaseStudyPage(TranslatablePage):
     ]
 
     search_fields = [
-        *TranslatablePage.search_fields,
+        *Page.search_fields,
         index.SearchField("title"),
         index.SearchField("body"),
     ]
@@ -109,7 +109,9 @@ class CaseStudyPage(TranslatablePage):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         siblings = (
-            CaseStudyPage.objects.filter(language__code=request.LANGUAGE_CODE).order_by("-publication_date").live()
+            CaseStudyPage.objects.filter(locale__language_code=request.LANGUAGE_CODE)
+            .order_by("-publication_date")
+            .live()
         )
         case_study_list = list(siblings.values_list("pk", flat=True))
 
@@ -128,7 +130,7 @@ class CaseStudyPage(TranslatablePage):
 
     def save(self, *args, **kwargs):
         try:
-            clear_case_study_cache(self.language.code)
+            clear_case_study_cache(self.locale.language_code)
         except Exception:
             logger.exception("Error deleting CaseStudyPage cache")
 
@@ -144,4 +146,4 @@ def clear_case_study_cache(language_code):
 @receiver((pre_delete, page_published, page_unpublished), sender=CaseStudyPage)
 def on_guidance_page_delete(sender, instance, **kwargs):  # noqa: ARG001
     """On a CaseStudyPage delete, clear the cache for case_study_block."""
-    clear_case_study_cache(instance.language.code)
+    clear_case_study_cache(instance.locale.language_code)

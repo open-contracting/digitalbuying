@@ -7,13 +7,21 @@ from wagtail.core.models import Page
 from guidelines.models import GuidelinesListingPage
 from navigation.models import FooterMenu, MainMenu
 
-MINIMUM_DEPTH = 3
+MINIMUM_DEPTH = 2
 
 register = template.Library()
 
 
+@register.simple_tag()
+def page_translations(page):
+    """Live translations of a page in other locales (for the language switcher)."""
+    if page is None:
+        return Page.objects.none()
+    return page.get_translations().live()
+
+
 # Retrieves the ancestors of the current page,
-# filtering out the top 2 levels (root and translation-root)
+# filtering out the root (the per-language home is the first breadcrumb)
 @register.inclusion_tag("includes/breadcrumbs.html", takes_context=True)
 def breadcrumbs(context):
     self = context.get("self")
@@ -57,7 +65,7 @@ def is_main_menu_link_active(context, link):
 @register.simple_tag()
 def get_footer_content():
     language = get_language()
-    guildelines = GuidelinesListingPage.objects.filter(language__code=language).live()
+    guildelines = GuidelinesListingPage.objects.filter(locale__language_code=language).live()
     footer_content = FooterMenu.objects.filter(language=language).first()
     return {
         "guildelines": guildelines,

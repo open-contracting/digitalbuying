@@ -30,3 +30,9 @@ npm-debug.log
 /coverage
 /ictcg/static/*
 !/ictcg/static/robots.txt
+
+# Received data dump + local DB snapshots (not committed)
+/dbg/
+# Local dev helper scripts
+/restore.sh
+/migrate_to_mysql.sh

@@ -1,6 +1,6 @@
 {% load static wagtailcore_tags i18n %}
 <!DOCTYPE html>
-<html lang="{{ page.language.code }}">
+<html lang="{{ request.LANGUAGE_CODE|default:'en' }}">
 
 <head>
   <meta charset="utf-8">

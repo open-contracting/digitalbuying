@@ -35,13 +35,13 @@ class TemplateTagsBreadcrumbTests(TestCase):
         self.assertEqual(parent.title, "Guidelines")
 
     def test_get_parent(self):
-        # Get guidance page (ID 9), depth of the page should be 6
-        # Parent depth should be 1 less (5)
+        # Get guidance page (ID 9), depth of the page should be 5
+        # Parent depth should be 1 less (4)
         guidance_page = Page.objects.get(id=9)
-        ancestors = Page.objects.ancestor_of(guidance_page, inclusive=True).filter(depth__gt=2)
+        ancestors = Page.objects.ancestor_of(guidance_page, inclusive=True).filter(depth__gt=1)
         parent = get_parent(ancestors, guidance_page.depth)
         self.assertEqual(parent.depth, guidance_page.depth - 1)
-        self.assertEqual(parent.depth, 5)
+        self.assertEqual(parent.depth, 4)
 
 
 class TemplateTagsMainMenuTests(TestCase):

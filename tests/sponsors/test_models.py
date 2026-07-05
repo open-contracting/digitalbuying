@@ -2,9 +2,8 @@ from unittest.mock import patch
 
 from django.test import TestCase
 from modelcluster.models import ClusterableModel
-from wagtail.core.models import Orderable
+from wagtail.core.models import Orderable, Page
 from wagtail.tests.utils import WagtailPageTests
-from wagtailtrans.models import TranslatablePage
 
 from base.models import GenericPage, GenericPageWithSubNav, HomePage
 from sponsors.models import Sponsor, SponsorItem, SponsorsPage, clear_sponsors_footer_cache
@@ -68,5 +67,5 @@ class SponsorsPageTests(WagtailPageTests):
         # You can nested SponsorsPage under GenericPageWithSubNav
         self.assertCanCreateAt(GenericPageWithSubNav, SponsorsPage)
 
-    def test_generic_page_inherits_from_translatable_page_class(self):
-        assert issubclass(SponsorsPage, TranslatablePage)
+    def test_generic_page_inherits_from_page_class(self):
+        assert issubclass(SponsorsPage, Page)

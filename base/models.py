@@ -5,15 +5,14 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
-from wagtailtrans.models import TranslatablePage
 
 from streams import blocks
 
 
-class HomePage(TranslatablePage):
+class HomePage(Page):
     """Homepage class."""
 
-    parent_page_types = ["wagtailtrans.TranslatableSiteRootPage"]
+    parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
         "guidelines.GuidelinesListingPage",
         "base.GenericPageWithSubNav",
@@ -88,7 +87,7 @@ class HomePage(TranslatablePage):
             )
 
 
-class GenericPageWithSubNav(TranslatablePage):
+class GenericPageWithSubNav(Page):
     """
     Generic page class which allows rich text and quote components to be added.
 
@@ -112,13 +111,13 @@ class GenericPageWithSubNav(TranslatablePage):
     )
 
     content_panels = [
-        *TranslatablePage.content_panels,
+        *Page.content_panels,
         FieldPanel("navigation_title"),
         StreamFieldPanel("body"),
     ]
 
 
-class GenericPage(TranslatablePage):
+class GenericPage(Page):
     """
     Generic page class which allows rich text and quote components to be added.
     Similar page to GenericPageWithSubNav but does not include the sub-navigation component.
@@ -139,7 +138,7 @@ class GenericPage(TranslatablePage):
     )
 
     content_panels = [
-        *TranslatablePage.content_panels,
+        *Page.content_panels,
         FieldPanel("introduction"),
         StreamFieldPanel("body"),
     ]

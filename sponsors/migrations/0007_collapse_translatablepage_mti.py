@@ -1,0 +1,41 @@
+# Phase 4a of migrating off wagtailtrans: add a direct page_ptr parent link to
+# wagtailcore.Page alongside translatablepage_ptr, copying the (equal) id.
+import django.db.models.deletion
+from django.db import migrations, models
+
+
+def copy_page_ptr(apps, schema_editor):
+    with schema_editor.connection.cursor() as cursor:
+        cursor.execute("UPDATE sponsors_sponsorspage SET page_ptr_id = translatablepage_ptr_id")
+
+
+class Migration(migrations.Migration):
+    atomic = False
+
+    dependencies = [
+        ("wagtailcore", "0066_collection_management_permissions"),
+        ("sponsors", "0006_auto_20260705_0022"),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name="sponsorspage",
+            name="page_ptr",
+            field=models.OneToOneField(
+                auto_created=True,
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                parent_link=False,
+                to="wagtailcore.page",
+            ),
+        ),
+        migrations.RunPython(copy_page_ptr, migrations.RunPython.noop),
+        migrations.AlterField(
+            model_name="sponsorspage",
+            name="page_ptr",
+            field=models.OneToOneField(
+                auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, to="wagtailcore.page"
+            ),
+        ),
+    ]
