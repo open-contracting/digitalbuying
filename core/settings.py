@@ -267,7 +267,7 @@ LANGUAGES = (
     ("id", "Bahasa"),
 )
 
-# https://docs.wagtail.org/en/v2.15.6/advanced_topics/i18n.html
+# https://docs.wagtail.org/en/stable/advanced_topics/i18n.html
 WAGTAIL_I18N_ENABLED = True
 WAGTAIL_CONTENT_LANGUAGES = LANGUAGES
 

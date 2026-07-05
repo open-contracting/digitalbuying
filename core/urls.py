@@ -19,7 +19,7 @@ urlpatterns = [
 
 # Language-prefixed URLs (/en/, /es/, /id/). For anything not caught by a more
 # specific rule above, hand over to Wagtail's serving mechanism.
-# https://docs.wagtail.org/en/v2.15.6/advanced_topics/i18n.html
+# https://docs.wagtail.org/en/stable/advanced_topics/i18n.html
 urlpatterns += i18n_patterns(
     re_path(r"", include(wagtail_urls)),
 )
