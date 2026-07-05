@@ -4,8 +4,7 @@ django-modelcluster
 django-taggit
 gunicorn
 mysqlclient
-psycopg2
 redis[hiredis]
 sentry-sdk
-wagtail==2.11.9
+wagtail<2.16
 git+https://github.com/carrotandcompany/wagtailtrans@master#egg=wagtailtrans
