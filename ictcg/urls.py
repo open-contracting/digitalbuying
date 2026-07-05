@@ -8,10 +8,12 @@ from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from ictcg.sitemaps import LocalisedSitemap
+
 urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
-    path("sitemap.xml", sitemap),
+    path("sitemap.xml", sitemap, {"sitemaps": {"wagtail": LocalisedSitemap}}),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
 
