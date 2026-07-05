@@ -78,6 +78,9 @@ class OrderableLinks(Orderable, Links):
     ]
     links = ParentalKey("LinksModule", related_name="orderable_links", default="")
 
+    def __str__(self):
+        return self.link_text
+
 
 class LinksModule(ClusterableModel, KeyModuleFields):
     """

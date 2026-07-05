@@ -81,6 +81,9 @@ class MenuItem(models.Model):
         FieldPanel("open_in_new_tab"),
     ]
 
+    def __str__(self):
+        return self.title
+
     @property
     def link(self):
         if self.page:
