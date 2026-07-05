@@ -1,5 +1,5 @@
 dj-database-url
-django
+django>=4.2,<4.3
 django-modelcluster
 django-taggit
 gunicorn

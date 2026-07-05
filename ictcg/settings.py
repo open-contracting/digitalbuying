@@ -178,7 +178,11 @@ LOCALE_PATHS = glob(str(BASE_DIR / "**" / "locale"))
 
 STATIC_ROOT = BASE_DIR / "static"
 
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+# https://docs.djangoproject.com/en/4.2/ref/settings/#storages
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"},
+}
 
 STATICFILES_DIRS = [BASE_DIR / "ictcg" / "static"]  # gulpfile.babel.js
 

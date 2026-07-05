@@ -29,7 +29,7 @@ defusedxml==0.7.1
     #   willow
 dj-database-url==2.2.0
     # via -r requirements.txt
-django==3.2.25
+django==4.2.30
     # via
     #   -r requirements.txt
     #   dj-database-url
@@ -119,7 +119,6 @@ polib==1.2.0
 pytz==2026.2
     # via
     #   -r requirements.txt
-    #   django
     #   django-modelcluster
     #   l18n
 redis==8.0.1
