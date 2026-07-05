@@ -28,10 +28,18 @@ jobs:
         run: |
           env NODE_ENV=production node build.js
           env DJANGO_ENV=production python manage.py collectstatic --noinput -v2
+      # The database and its test database must use the case- and accent-sensitive
+      # utf8mb4_0900_as_cs collation (see settings.py). The mysql:8.0 image's server
+      # default is utf8mb4_0900_ai_ci, so create the database explicitly; otherwise
+      # its columns clash with the connection collation ("illegal mix of collations").
+      - name: Create database
+        run: >-
+          mysql -h 127.0.0.1 -P ${{ job.services.mysql.ports[3306] }} -u root -proot
+          -e "CREATE DATABASE digitalbuying CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs"
       - name: Run checks and tests
         env:
           PYTHONWARNINGS: error
-          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports[3306] }}/mysql
+          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports[3306] }}/digitalbuying
         shell: bash
         run: |
           ./manage.py migrate
