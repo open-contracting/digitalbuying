@@ -10,10 +10,8 @@ const production = process.env.NODE_ENV === "production";
 
 const options = {
     entryPoints: {
-        // Keys set the output path under outdir, preserving the existing layout:
-        // core/static/javascripts/application.js and core/static/stylesheets/application.css.
-        "javascripts/application": "frontend/javascripts/application.js",
-        "stylesheets/application": "frontend/stylesheets/application.scss",
+        "javascripts/application": "src/javascripts/application.js",
+        "stylesheets/application": "src/stylesheets/application.scss",
     },
     outdir: "core/static",
     bundle: true,
