@@ -205,8 +205,11 @@ STORAGES = {
 STATICFILES_DIRS = [
     BASE_DIR / "core" / "static",  # build.js output (JavaScript + CSS)
     ("images", BASE_DIR / "src" / "images"),  # served at /static/images/
-    ("govuk", BASE_DIR / "node_modules" / "govuk-frontend" / "govuk" / "assets"),  # served at /static/govuk/
 ]
+
+GOVUK_ASSETS_DIR = BASE_DIR / "node_modules" / "govuk-frontend" / "govuk" / "assets"
+if GOVUK_ASSETS_DIR.is_dir():
+    STATICFILES_DIRS.append(("govuk", GOVUK_ASSETS_DIR))  # served at /static/govuk/
 
 # https://docs.djangoproject.com/en/5.2/topics/logging/#django-security
 LOGGING = {
