@@ -17,10 +17,10 @@ const options = {
     },
     outdir: "core/static",
     bundle: true,
-    // Leave these root-absolute url() references (served by Django at runtime)
-    // untouched rather than trying to bundle them. Scoped to the real prefixes so
-    // it doesn't also externalise JS imports (whose resolved paths are absolute).
-    external: ["/static/*", "/application/*"],
+    // Leave root-absolute url() references (served by Django at runtime) untouched
+    // rather than trying to bundle them. Scoped to /static/ so it doesn't also
+    // externalise JS imports (whose resolved paths are absolute).
+    external: ["/static/*"],
     // Match the browserslist floor (iOS 10) that the old Babel config targeted.
     target: ["es2015"],
     minify: production,
