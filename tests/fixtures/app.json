@@ -302,6 +302,7 @@
     "model": "base.homepage",
     "pk": 4,
     "fields": {
+      "masthead_title": "How to apply the best standards in digital buying for the public sector",
       "body": "[]"
     }
   },
