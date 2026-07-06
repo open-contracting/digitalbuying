@@ -117,7 +117,7 @@
     "model": "navigation.menuitem",
     "pk": 10,
     "fields": {
-      "title": "La gu\u00eda",
+      "title": "La guía",
       "url": "",
       "page": 7,
       "open_in_new_tab": false
@@ -127,7 +127,7 @@
     "model": "navigation.menuitem",
     "pk": 11,
     "fields": {
-      "title": "La gu\u00eda",
+      "title": "La guía",
       "url": "",
       "page": 7,
       "open_in_new_tab": false
