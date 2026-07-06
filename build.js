@@ -1,5 +1,4 @@
-// Frontend build: bundles/minifies JavaScript and compiles SCSS (with
-// Autoprefixer) into core/static/. Replaces the previous gulp pipeline.
+// Frontend build: bundles/minifies JavaScript and compiles SCSS (with Autoprefixer) into core/static/.
 //   node build.js           one-off build (set NODE_ENV=production to minify)
 //   node build.js --watch   rebuild on change
 import autoprefixer from "autoprefixer";
@@ -11,8 +10,8 @@ const production = process.env.NODE_ENV === "production";
 
 const options = {
     entryPoints: {
-        // Keys set the output path under outdir, preserving the existing layout
-        // (core/static/javascripts/application.js, .../stylesheets/application.css).
+        // Keys set the output path under outdir, preserving the existing layout:
+        // core/static/javascripts/application.js and core/static/stylesheets/application.css.
         "javascripts/application": "frontend/javascripts/application.js",
         "stylesheets/application": "frontend/stylesheets/application.scss",
     },
