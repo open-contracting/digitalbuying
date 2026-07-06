@@ -322,3 +322,6 @@ FATHOM = {
     "domain": os.getenv("FATHOM_ANALYTICS_DOMAIN") or "cdn.usefathom.com",
     "id": os.getenv("FATHOM_ANALYTICS_ID"),
 }
+
+# Serve STATIC_ROOT on the same port as runserver, to check a production build locally.
+SERVE_STATIC = os.getenv("SERVE_STATIC") == "True"
