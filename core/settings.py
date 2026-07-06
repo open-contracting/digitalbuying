@@ -204,7 +204,8 @@ STORAGES = {
 
 STATICFILES_DIRS = [
     BASE_DIR / "core" / "static",  # build.js output (JavaScript + CSS)
-    ("images", BASE_DIR / "frontend" / "images"),  # served at /static/images/
+    ("images", BASE_DIR / "src" / "images"),  # served at /static/images/
+    ("govuk", BASE_DIR / "node_modules" / "govuk-frontend" / "govuk" / "assets"),  # served at /static/govuk/
 ]
 
 # https://docs.djangoproject.com/en/5.2/topics/logging/#django-security
@@ -321,3 +322,6 @@ FATHOM = {
     "domain": os.getenv("FATHOM_ANALYTICS_DOMAIN") or "cdn.usefathom.com",
     "id": os.getenv("FATHOM_ANALYTICS_ID"),
 }
+
+# Serve STATIC_ROOT on the same port as runserver, to check a production build locally.
+SERVE_STATIC = os.getenv("SERVE_STATIC") == "True"

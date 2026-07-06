@@ -3,24 +3,18 @@
   "version": "1.0.0",
   "type": "module",
   "packageManager": "pnpm@11.9.0",
-  "dependencies": {
-    "govuk-frontend": "^3.9.1"
-  },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
     "esbuild": "^0.25.0",
     "esbuild-sass-plugin": "^3.3.0",
+    "govuk-frontend": "^3.9.1",
+    "knip": "^6.23.0",
+    "pa11y-ci": "^4.1.1",
     "postcss": "^8.5.0",
-    "sass": "^1.83.1",
+    "puppeteer": "24.43.1",
     "stylelint": "^16.12.0",
-    "stylelint-config-standard": "^36.0.1",
     "stylelint-config-standard-scss": "^14.0.0"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "iOS >=10"
-  ],
   "stylelint": {
     "extends": "stylelint-config-standard-scss",
     "rules": {

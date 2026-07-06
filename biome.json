@@ -6,6 +6,9 @@
     "useIgnoreFile": true,
     "defaultBranch": "main"
   },
+  "files": {
+    "includes": ["**", "!core/templates/**/*.html"]
+  },
   "assist": {
     "actions": {
       "source": {

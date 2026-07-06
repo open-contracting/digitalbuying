@@ -1,0 +1,61 @@
+name: Accessibility
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  build:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disable AppArmor  # https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+      - uses: actions/checkout@v7.0.0
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6.4.0
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v6.2.0
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: '**/requirements*.txt'
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm exec puppeteer browsers install chrome
+      - run: pip install -r requirements.txt
+      - name: Create database
+        run: >-
+          mysql -h 127.0.0.1 -P ${{ job.services.mysql.ports[3306] }} -u root -proot
+          -e "CREATE DATABASE digitalbuying CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs"
+      - name: Build
+        env:
+          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports[3306] }}/digitalbuying
+          NODE_ENV: production
+        shell: bash
+        run: |
+          node build.js
+          env DJANGO_ENV=production python manage.py collectstatic --noinput -v2
+          python manage.py migrate
+          python manage.py loaddata tests/fixtures/app.json tests/fixtures/navigation.json tests/fixtures/sponsors.json
+      - name: Serve
+        env:
+          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports[3306] }}/digitalbuying
+          DJANGO_ENV: production
+          SERVE_STATIC: 'True'
+        run: |
+          python manage.py runserver &
+          sleep 5
+      - run: pnpm exec pa11y-ci -c pa11y.default.json -s http://127.0.0.1:8000/sitemap.xml -f localhost -r 127.0.0.1:8000
+      - run: pnpm exec pa11y-ci -c pa11y.mobile.json -s http://127.0.0.1:8000/sitemap.xml -f localhost -r 127.0.0.1:8000
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+        ports:
+          - 3306/tcp
