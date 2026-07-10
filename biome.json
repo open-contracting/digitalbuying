@@ -5,25 +5,9 @@
     "useIgnoreFile": true,
     "defaultBranch": "main"
   },
-  "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  },
-  "linter": {
-    "enabled": true
-  },
   "formatter": {
     "indentStyle": "space",
-    "indentWidth": 4,
     "lineWidth": 119
-  },
-  "json": {
-    "formatter": {
-      "indentWidth": 2
-    }
   },
   "files": {
     "includes": ["**", "!core/templates/**/*.html"]
