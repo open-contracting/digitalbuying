@@ -45,8 +45,22 @@ jobs:
         run: |
           python manage.py runserver &
           sleep 5
-      - run: pnpm exec pa11y-ci -c pa11y.default.json -s http://127.0.0.1:8000/sitemap.xml -f localhost -r 127.0.0.1:8000
-      - run: pnpm exec pa11y-ci -c pa11y.mobile.json -s http://127.0.0.1:8000/sitemap.xml -f localhost -r 127.0.0.1:8000
+      - env:
+          PA11Y_STRATEGY: ignore
+        run: pnpm exec pa11y-ci -c pa11y.default.cjs -s http://127.0.0.1:8000/sitemap.xml -f localhost -r 127.0.0.1:8000
+      - env:
+          PA11Y_STRATEGY: ignore
+        run: pnpm exec pa11y-ci -c pa11y.mobile.cjs -s http://127.0.0.1:8000/sitemap.xml -f localhost -r 127.0.0.1:8000
+      - env:
+          PA11Y_INCLUDE_WARNINGS: 1
+          PA11Y_SUPPRESS_KNOWN_WARNINGS: 1
+          PA11Y_STRATEGY: ignore
+        run: pnpm exec pa11y-ci -c pa11y.default.cjs -s http://127.0.0.1:8000/sitemap.xml -f localhost -r 127.0.0.1:8000
+      - env:
+          PA11Y_INCLUDE_WARNINGS: 1
+          PA11Y_SUPPRESS_KNOWN_WARNINGS: 1
+          PA11Y_STRATEGY: hideElements
+        run: pnpm exec pa11y-ci -c pa11y.default.cjs -s http://127.0.0.1:8000/sitemap.xml -f localhost -r 127.0.0.1:8000
     services:
       mysql:
         image: mysql:8.0
