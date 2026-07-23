@@ -271,7 +271,7 @@
     "pk": 7,
     "fields": {
       "subtitle": "Prepare and plan",
-      "section_colour": "primary-1",
+      "section_colour": "primary-3",
       "landing_page_summary": "summary"
     }
   },
@@ -285,17 +285,28 @@
     }
   },
   {
+    "model": "modules.moreinformationmodule",
+    "pk": 1,
+    "fields": {
+      "language": "en",
+      "admin_title": "A11y test module",
+      "title": "Related guidance",
+      "description": "<p>Read the <a href=\"https://standard.open-contracting.org/\">OCDS documentation</a> for more detail.</p>"
+    }
+  },
+  {
     "model": "guidelines.guidancepage",
     "pk": 9,
     "fields": {
-      "body": "[]"
+      "body": "[]",
+      "more_information_module": 1
     }
   },
   {
     "model": "guidelines.guidancepage",
     "pk": 10,
     "fields": {
-      "body": "[]"
+      "body": "[{\"id\": \"fc6111d9-0552-4375-b9a5-63acb07a6566\", \"type\": \"content_section\", \"value\": {\"title\": \"Working with the team\", \"content\": \"<p>Coordinate with the <a href=\\\"https://example.org/a\\\">delivery team</a> and the <a href=\\\"https://example.org/b\\\">policy team</a> early on.</p><p><b>Framework agreements</b></p><div class=\\\"govuk-inset-text\\\"><p>Keep procurement decisions transparent.</p></div>\"}}]"
     }
   },
   {
