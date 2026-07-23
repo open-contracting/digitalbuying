@@ -6,4 +6,22 @@
       @include govuk-font($size: 16, $weight: normal);
     }
   }
+
+  a {
+    &:link {
+      color: #1a6ab0;
+    }
+
+    &:visited {
+      color: colour('link-visited');
+    }
+
+    &:hover {
+      color: colour('link-hover');
+    }
+
+    &:focus {
+      color: colour('text');
+    }
+  }
 }
