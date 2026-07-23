@@ -118,10 +118,6 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Siguiente"
 
-#: ictcg/templates/includes/phase-banner.html:9
-msgid "Beta"
-msgstr "Beta"
-
 #: ictcg/templates/includes/social-links.html:4
 msgid "Share this case study:"
 msgstr "Compartir este estudio de caso"

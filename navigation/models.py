@@ -9,7 +9,6 @@ from django.dispatch import receiver
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel, InlinePanel
-from wagtail.fields import RichTextField
 from wagtail.models import Orderable
 
 logger = logging.getLogger(__name__)
@@ -38,19 +37,12 @@ class MainMenu(ClusterableModel):
         help_text="Description for navigation aria label",
     )
 
-    phase_banner_description = RichTextField(
-        blank=True,
-        default="",
-        help_text="Text area for phase banner description",
-    )
-
     panels = [
         FieldPanel("title"),
         FieldPanel("language"),
         FieldPanel("button_text"),
         FieldPanel("button_aria_label"),
         FieldPanel("navigation_aria_label"),
-        FieldPanel("phase_banner_description"),
         InlinePanel("menu_items", label="Menu Item"),
     ]
 

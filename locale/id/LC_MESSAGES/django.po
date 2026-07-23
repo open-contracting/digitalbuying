@@ -118,10 +118,6 @@ msgstr "Sebelumnya"
 msgid "Next"
 msgstr "Berikutnya"
 
-#: ictcg/templates/includes/phase-banner.html:9
-msgid "Beta"
-msgstr "Beta"
-
 #: ictcg/templates/includes/social-links.html:4
 msgid "Share this case study:"
 msgstr "Bagikan studi kasus ini:"
