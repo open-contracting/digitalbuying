@@ -1,4 +1,4 @@
-const base = require("./pa11y.default.js");
+const base = require("./pa11y.default.cjs");
 
 module.exports = {
   ...base,
