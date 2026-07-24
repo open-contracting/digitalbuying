@@ -8,6 +8,5 @@ jobs:
     secrets:
       personal-access-token: ${{ secrets.PAT }}
     with:
-      python-version: '3.11'
       # Defer indentation to biome format.
       ocds-noindent: 'yes'
