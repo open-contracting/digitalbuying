@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-08 21:39+0000\n"
+"POT-Creation-Date: 2026-08-04 18:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,159 +18,159 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ictcg/templates/base.html:36
+#: core/templates/base.html:32
 msgid "Skip to main content"
 msgstr "Lewati ke konten utama"
 
-#: ictcg/templates/base/generic_page_with_sub_nav.html:16
-#: ictcg/templates/sponsors/sponsors_page.html:16
+#: core/templates/base/generic_page_with_sub_nav.html:16
+#: core/templates/sponsors/sponsors_page.html:16
 msgid "Sub-Navigation"
 msgstr "Sub-Navigasi"
 
-#: ictcg/templates/base/generic_page_with_sub_nav.html:23
-#: ictcg/templates/sponsors/sponsors_page.html:23
+#: core/templates/base/generic_page_with_sub_nav.html:23
+#: core/templates/sponsors/sponsors_page.html:23
 msgid "(Same page link)"
 msgstr "(Tautan laman yang sama)"
 
-#: ictcg/templates/case_studies/case_studies_listing_page.html:13
+#: core/templates/case_studies/case_studies_listing_page.html:13
 msgid "Results"
 msgstr "Hasil"
 
-#: ictcg/templates/case_studies/case_study_page.html:44
-#: ictcg/templates/includes/card.html:20
+#: core/templates/case_studies/case_study_page.html:44
+#: core/templates/includes/card.html:20
 msgid "minute read"
 msgstr "menit baca"
 
-#: ictcg/templates/case_studies/case_study_page.html:74
+#: core/templates/case_studies/case_study_page.html:74
 msgid "Tags:"
 msgstr "Tag:"
 
-#: ictcg/templates/guidelines/guidelines_listing_page.html:25
+#: core/templates/guidelines/guidelines_listing_page.html:25
 msgid "Open all"
 msgstr "Buka semua"
 
-#: ictcg/templates/guidelines/guidelines_listing_page.html:25
+#: core/templates/guidelines/guidelines_listing_page.html:25
 msgid "Close all"
 msgstr "Tutup semua"
 
-#: ictcg/templates/guidelines/guidelines_section_page.html:20
+#: core/templates/guidelines/guidelines_section_page.html:20
 msgid "Pages in this section"
 msgstr "Laman pada bagian ini"
 
-#: ictcg/templates/guidelines/guidelines_section_page.html:21
-#: ictcg/templates/sponsors/sponsors_page.html:18
+#: core/templates/guidelines/guidelines_section_page.html:21
+#: core/templates/sponsors/sponsors_page.html:18
 msgid "Contents"
 msgstr "Daftar Isi"
 
-#: ictcg/templates/includes/breadcrumbs.html:23
+#: core/templates/includes/breadcrumbs.html:23
 msgid "Back to "
 msgstr "Kembali ke "
 
-#: ictcg/templates/includes/footer.html:49
-#: ictcg/templates/includes/footer.html:65
-#: ictcg/templates/includes/header.html:21
-#: ictcg/templates/includes/links-module.html:11
-#: ictcg/templates/includes/social-links.html:16
-#: ictcg/templates/includes/social-links.html:29
-#: ictcg/templates/includes/social-links.html:42
-#: ictcg/templates/includes/social-links.html:55
-#: ictcg/templates/includes/supporter-logos.html:6
+#: core/templates/includes/footer.html:47
+#: core/templates/includes/footer.html:63
+#: core/templates/includes/header.html:21
+#: core/templates/includes/links-module.html:11
+#: core/templates/includes/social-links.html:16
+#: core/templates/includes/social-links.html:29
+#: core/templates/includes/social-links.html:42
+#: core/templates/includes/social-links.html:55
+#: core/templates/includes/supporter-logos.html:6
 msgid "(opens in a new tab)"
 msgstr "(membuka di tab baru)"
 
-#: ictcg/templates/includes/footer.html:57
+#: core/templates/includes/footer.html:55
 msgid "Support links"
 msgstr "Tautan dukungan"
 
-#: ictcg/templates/includes/footer.html:73
+#: core/templates/includes/footer.html:71
 msgid "Built by the"
 msgstr "Dikembangkan oleh"
 
-#: ictcg/templates/includes/footer.html:73
+#: core/templates/includes/footer.html:71
 msgid "Government Digital Service"
 msgstr "Government Digital Service"
 
-#: ictcg/templates/includes/footer.html:80
+#: core/templates/includes/footer.html:78
 msgid "All content is available under the"
 msgstr "Semua konten tersedia di bagian"
 
-#: ictcg/templates/includes/footer.html:81
+#: core/templates/includes/footer.html:79
 msgid "Open Government Licence v3.0"
 msgstr "Open Government Licence v3.0"
 
-#: ictcg/templates/includes/footer.html:81
+#: core/templates/includes/footer.html:79
 msgid "except where otherwise stated"
 msgstr "kecuali jika dinyatakan lain"
 
-#: ictcg/templates/includes/header.html:7
+#: core/templates/includes/header.html:7
 msgid "Go to the Digital Buying Guide homepage"
 msgstr "Kembali ke Panduan Pembelian Digital Laman beranda"
 
-#: ictcg/templates/includes/header.html:8
+#: core/templates/includes/header.html:8
 msgid "Digital Buying Guide"
 msgstr "Panduan Pembelian Digital"
 
-#: ictcg/templates/includes/pagination.html:9
+#: core/templates/includes/pagination.html:9
 msgid "Previous"
 msgstr "Sebelumnya"
 
-#: ictcg/templates/includes/pagination.html:21
+#: core/templates/includes/pagination.html:21
 msgid "Next"
 msgstr "Berikutnya"
 
-#: ictcg/templates/includes/social-links.html:4
+#: core/templates/includes/social-links.html:4
 msgid "Share this case study:"
 msgstr "Bagikan studi kasus ini:"
 
-#: ictcg/templates/includes/social-links.html:12
+#: core/templates/includes/social-links.html:12
 msgid "Share case study on Twitter"
 msgstr "Bagikan studi kasus ke Twitter"
 
-#: ictcg/templates/includes/social-links.html:14
-#: ictcg/templates/includes/social-links.html:27
-#: ictcg/templates/includes/social-links.html:40
-#: ictcg/templates/includes/social-links.html:53
+#: core/templates/includes/social-links.html:14
+#: core/templates/includes/social-links.html:27
+#: core/templates/includes/social-links.html:40
+#: core/templates/includes/social-links.html:53
 msgid "Share case study on "
 msgstr "Bagikan studi kasus ke"
 
-#: ictcg/templates/includes/social-links.html:15
+#: core/templates/includes/social-links.html:15
 msgid "Twitter"
 msgstr "Twitter"
 
-#: ictcg/templates/includes/social-links.html:25
+#: core/templates/includes/social-links.html:25
 msgid "Share case study on Facebook"
 msgstr "Bagikan studi kasus ke Facebook"
 
-#: ictcg/templates/includes/social-links.html:28
+#: core/templates/includes/social-links.html:28
 msgid "Facebook"
 msgstr "Facebook"
 
-#: ictcg/templates/includes/social-links.html:38
+#: core/templates/includes/social-links.html:38
 msgid "Share case study on LinkedIn"
 msgstr "Bagikan studi kasus ke LinkedIn"
 
-#: ictcg/templates/includes/social-links.html:41
+#: core/templates/includes/social-links.html:41
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: ictcg/templates/includes/social-links.html:48
+#: core/templates/includes/social-links.html:48
 msgid "I wanted to share this post with you from the Digital Buying Guide"
 msgstr ""
 "Saya ingin membagikan postingan ini dengan Anda dari Panduan Pembelian "
 "Digital"
 
-#: ictcg/templates/includes/social-links.html:51
+#: core/templates/includes/social-links.html:51
 msgid "Share case study on Email"
 msgstr "Bagikan studi kasus ke Email"
 
-#: ictcg/templates/includes/social-links.html:54
+#: core/templates/includes/social-links.html:54
 msgid "Email"
 msgstr "Email"
 
-#: ictcg/templates/streams/do_dont_list.html:6
+#: core/templates/streams/do_dont_list.html:6
 msgid "Do"
 msgstr "Anjuran"
 
-#: ictcg/templates/streams/do_dont_list.html:19
+#: core/templates/streams/do_dont_list.html:19
 msgid "Don't"
 msgstr "Larangan"
