@@ -191,7 +191,7 @@ SILENCED_SYSTEM_CHECKS = ["treebeard.E001"]
 
 # Project-specific Django configuration
 
-LOCALE_PATHS = list(BASE_DIR.glob("*/locale"))
+LOCALE_PATHS = [BASE_DIR / "locale"]
 
 STATIC_ROOT = BASE_DIR / "static"
 
