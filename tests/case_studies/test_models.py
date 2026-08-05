@@ -36,6 +36,19 @@ class CaseStudiesListingPageTests(WagtailPageTestCase):
         self.assertEqual(featured_case_study.pk, 13)
         self.assertEqual(case_studies[0].pk, 12)
         self.assertEqual(case_studies[1].pk, 14)
+        self.assertEqual(response.context["case_studies_count"], 3)
+        self.assertContains(response, "3 results")
+
+    def test_case_studies_listing_context_without_case_studies(self):
+        # The count includes the featured case study, but must not count one that doesn't exist
+        CaseStudyPage.objects.all().delete()
+
+        response = self.client.get("/en/case-studies/")
+
+        self.assertIsNone(response.context["featured_case_studies"])
+        self.assertEqual(len(response.context["case_studies"]), 0)
+        self.assertEqual(response.context["case_studies_count"], 0)
+        self.assertContains(response, "0 results")
 
 
 class CaseStudyGuidelinesSectionTagTests(WagtailPageTestCase):

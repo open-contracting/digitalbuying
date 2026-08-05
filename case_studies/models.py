@@ -30,20 +30,18 @@ class CaseStudiesListingPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        featured_case_studies = (
+        all_case_studies = (
             CaseStudyPage.objects.filter(locale__language_code=request.LANGUAGE_CODE)
             .order_by("-publication_date")
             .live()
-            .first()
         )
+        # The most recently published case study is displayed on its own, above the others.
+        featured_case_studies = all_case_studies.first()
         context["featured_case_studies"] = featured_case_studies
-        if featured_case_studies:
-            context["case_studies"] = (
-                CaseStudyPage.objects.filter(locale__language_code=request.LANGUAGE_CODE)
-                .exclude(pk=featured_case_studies.pk)
-                .order_by("-publication_date")
-                .live()
-            )
+        context["case_studies"] = (
+            all_case_studies.exclude(pk=featured_case_studies.pk) if featured_case_studies else all_case_studies
+        )
+        context["case_studies_count"] = all_case_studies.count()
         return context
 
 
