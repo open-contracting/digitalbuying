@@ -4,17 +4,17 @@
   "type": "module",
   "packageManager": "pnpm@11.9.0",
   "devDependencies": {
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "^10.5.2",
     "browserslist": "^4.28.4",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.25.12",
     "esbuild-plugin-browserslist": "^4.0.0",
-    "esbuild-sass-plugin": "^3.3.0",
-    "govuk-frontend": "^3.9.1",
+    "esbuild-sass-plugin": "^3.7.0",
+    "govuk-frontend": "^3.15.0",
     "knip": "^6.23.0",
     "pa11y-ci": "^4.1.1",
-    "postcss": "^8.5.0",
+    "postcss": "^8.5.24",
     "puppeteer": "24.43.1",
-    "stylelint": "^16.12.0",
+    "stylelint": "^16.26.1",
     "stylelint-config-standard-scss": "^14.0.0"
   },
   "stylelint": {
