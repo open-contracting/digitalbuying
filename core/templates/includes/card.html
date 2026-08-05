@@ -17,7 +17,13 @@
           <span class="govuk-visually-hidden">{{ item.publication_date|date:"d F Y" }}</span>
           <span aria-hidden="true">{{ item.publication_date|date:"d M Y" }}</span>
         </time>
-        <span class="ictcg-card__meta-item">{{ item.read_time }} {% trans 'minute read' %}</span>
+        <span class="ictcg-card__meta-item">
+          {% blocktrans trimmed count minutes=item.read_time %}
+            {{ minutes }} minute read
+          {% plural %}
+            {{ minutes }} minute read
+          {% endblocktrans %}
+        </span>
       </div>
       <a class="ictcg-card__link" href="{% pageurl item %}">
         {% if case_study_block %}

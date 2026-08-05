@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-04 18:42+0000\n"
+"POT-Creation-Date: 2026-08-04 19:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,16 +32,22 @@ msgstr "Subnavegación"
 msgid "(Same page link)"
 msgstr "(Enlace de la misma página)"
 
-#: core/templates/case_studies/case_studies_listing_page.html:13
-msgid "Results"
-msgstr "Resultados"
+#: core/templates/case_studies/case_studies_listing_page.html:15
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] "%(counter)s resultado"
+msgstr[1] "%(counter)s resultados"
 
-#: core/templates/case_studies/case_study_page.html:44
-#: core/templates/includes/card.html:20
-msgid "minute read"
-msgstr "tiempo de lectura"
+#: core/templates/case_studies/case_study_page.html:45
+#: core/templates/includes/card.html:21
+#, python-format
+msgid "%(minutes)s minute read"
+msgid_plural "%(minutes)s minute read"
+msgstr[0] "%(minutes)s minuto de lectura"
+msgstr[1] "%(minutes)s minutos de lectura"
 
-#: core/templates/case_studies/case_study_page.html:74
+#: core/templates/case_studies/case_study_page.html:80
 msgid "Tags:"
 msgstr "Etiquetas"
 
@@ -62,18 +68,23 @@ msgstr "Páginas en esta sección"
 msgid "Contents"
 msgstr "Contenidos"
 
+#: core/templates/includes/breadcrumbs.html:8
+msgid "Breadcrumb"
+msgstr ""
+
 #: core/templates/includes/breadcrumbs.html:23
-msgid "Back to "
-msgstr "Volver a"
+#, python-format
+msgid "Back to %(title)s"
+msgstr "Volver a %(title)s"
 
 #: core/templates/includes/footer.html:47
 #: core/templates/includes/footer.html:63
 #: core/templates/includes/header.html:21
 #: core/templates/includes/links-module.html:11
-#: core/templates/includes/social-links.html:16
-#: core/templates/includes/social-links.html:29
-#: core/templates/includes/social-links.html:42
-#: core/templates/includes/social-links.html:55
+#: core/templates/includes/social-links.html:15
+#: core/templates/includes/social-links.html:27
+#: core/templates/includes/social-links.html:39
+#: core/templates/includes/social-links.html:52
 #: core/templates/includes/supporter-logos.html:6
 msgid "(opens in a new tab)"
 msgstr "(se abre en una nueva pestaña)"
@@ -83,24 +94,29 @@ msgid "Support links"
 msgstr "Enlaces de soporte"
 
 #: core/templates/includes/footer.html:71
-msgid "Built by the"
-msgstr "Creado por el"
+#, python-format
+msgid ""
+"Maintained by <a class=\"govuk-footer__link\" href=\"%(url)s\">Open "
+"Contracting Partnership</a>."
+msgstr ""
 
-#: core/templates/includes/footer.html:71
-msgid "Government Digital Service"
-msgstr "Government Digital Service"
+#: core/templates/includes/footer.html:74
+#, python-format
+msgid ""
+"Originally developed by the <a class=\"govuk-footer__link\" "
+"href=\"%(url)s\">Government Digital Service</a>."
+msgstr ""
 
-#: core/templates/includes/footer.html:78
-msgid "All content is available under the"
-msgstr "Todo el contenido está disponible bajo la"
-
-#: core/templates/includes/footer.html:79
-msgid "Open Government Licence v3.0"
-msgstr "Licencia gubernamental abierta v3.0"
-
-#: core/templates/includes/footer.html:79
-msgid "except where otherwise stated"
-msgstr "excepto cuando se indique lo contrario"
+#: core/templates/includes/footer.html:83
+#, python-format
+msgid ""
+"All content is available under the <a class=\"govuk-footer__link\" "
+"href=\"%(url)s\" rel=\"license\">Open Government Licence v3.0</a>, except "
+"where otherwise stated."
+msgstr ""
+"Todo el contenido está disponible bajo la <a class=\"govuk-footer__link\" "
+"href=\"%(url)s\" rel=\"license\">Licencia gubernamental abierta v3.0</a>, "
+"excepto cuando se indique lo contrario."
 
 #: core/templates/includes/header.html:7
 msgid "Go to the Digital Buying Guide homepage"
@@ -109,6 +125,15 @@ msgstr "Volver a Guía para compras digitales Página de inicio"
 #: core/templates/includes/header.html:8
 msgid "Digital Buying Guide"
 msgstr "Guía para compras digitales"
+
+#: core/templates/includes/header.html:13
+msgctxt "navigation landmark"
+msgid "Main"
+msgstr ""
+
+#: core/templates/includes/pagination.html:4
+msgid "Pagination"
+msgstr ""
 
 #: core/templates/includes/pagination.html:9
 msgid "Previous"
@@ -122,47 +147,28 @@ msgstr "Siguiente"
 msgid "Share this case study:"
 msgstr "Compartir este estudio de caso"
 
-#: core/templates/includes/social-links.html:12
+#: core/templates/includes/social-links.html:13
 msgid "Share case study on Twitter"
 msgstr "Compartir el estudio de caso sobre Twitter"
-
-#: core/templates/includes/social-links.html:14
-#: core/templates/includes/social-links.html:27
-#: core/templates/includes/social-links.html:40
-#: core/templates/includes/social-links.html:53
-msgid "Share case study on "
-msgstr "Compartir el estudio de caso sobre"
-
-#: core/templates/includes/social-links.html:15
-msgid "Twitter"
-msgstr "Twitter"
 
 #: core/templates/includes/social-links.html:25
 msgid "Share case study on Facebook"
 msgstr "Compartir el estudio de caso sobre Facebook"
 
-#: core/templates/includes/social-links.html:28
-msgid "Facebook"
-msgstr "Facebook"
-
-#: core/templates/includes/social-links.html:38
+#: core/templates/includes/social-links.html:37
 msgid "Share case study on LinkedIn"
 msgstr "Compartir el estudio de caso sobre LinkedIn"
 
-#: core/templates/includes/social-links.html:41
-msgid "LinkedIn"
-msgstr "LinkedIn"
-
-#: core/templates/includes/social-links.html:48
+#: core/templates/includes/social-links.html:43
 msgid "I wanted to share this post with you from the Digital Buying Guide"
 msgstr ""
 "Quería compartir con usted esta publicación de la Guía para compras digitales"
 
-#: core/templates/includes/social-links.html:51
+#: core/templates/includes/social-links.html:50
 msgid "Share case study on Email"
 msgstr "Compartir el estudio de caso sobre Correo electrónico"
 
-#: core/templates/includes/social-links.html:54
+#: core/templates/includes/social-links.html:51
 msgid "Email"
 msgstr "Correo electrónico"
 

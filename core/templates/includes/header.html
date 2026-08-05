@@ -10,7 +10,7 @@
     </div>
     <div class="ictcg-header__content">
       <button type="button" class="ictcg-header__menu-button ictcg-js-header-toggle" aria-controls="MainNavigation" aria-label="{{mainmenu.button_aria_label}}">{{mainmenu.button_text}}</button>
-      <nav aria-label="Main">
+      <nav aria-label="{% trans 'Main' context 'navigation landmark' %}">
         <ul id="MainNavigation" class="ictcg-header__navigation " aria-label="{{mainmenu.navigation_aria_label}}">
           {% cache 604800 header_navigation_links request.LANGUAGE_CODE %}
             {% for item in mainmenu.menu_items.all %}

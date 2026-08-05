@@ -5,7 +5,7 @@
     <div class="govuk-width-container">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-          <nav class="ictcg-breadcrumbs" aria-label="Breadcrumb">
+          <nav class="ictcg-breadcrumbs" aria-label="{% trans 'Breadcrumb' %}">
             <ol class="ictcg-breadcrumbs__list">
               {% for item in ancestors %}
               <li class="ictcg-breadcrumbs__list-item" {% if forloop.counter == ancestors|length %}aria-current="page"{% endif %}>
@@ -20,7 +20,9 @@
             {% if parent %}
               <p class="ictcg-breadcrumbs__back">
                 <a class="ictcg-breadcrumbs__link" href="{% pageurl parent %}">
-                  {% trans 'Back to ' %} {{parent.title}}
+                  {% blocktrans trimmed with title=parent.title %}
+                    Back to {{ title }}
+                  {% endblocktrans %}
                 </a>
               </p>
             {% endif %}

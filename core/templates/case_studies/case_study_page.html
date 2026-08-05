@@ -41,7 +41,13 @@
               <span aria-hidden="true">{{ page.publication_date|date:"d M Y" }}</span>
             </time>
           </p>
-          <p class="ictcg-font-16 ictcg-case-study-header__readtime">{{ page.read_time }} {% trans 'minute read' %}</p>
+          <p class="ictcg-font-16 ictcg-case-study-header__readtime">
+            {% blocktrans trimmed count minutes=page.read_time %}
+              {{ minutes }} minute read
+            {% plural %}
+              {{ minutes }} minute read
+            {% endblocktrans %}
+          </p>
         </div>
       </div>
   </div>
