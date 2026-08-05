@@ -68,7 +68,7 @@ msgstr "Daftar Isi"
 
 #: core/templates/includes/breadcrumbs.html:8
 msgid "Breadcrumb"
-msgstr ""
+msgstr "Tautan navigasi"
 
 #: core/templates/includes/breadcrumbs.html:23
 #, python-format
@@ -97,6 +97,8 @@ msgid ""
 "Maintained by <a class=\"govuk-footer__link\" href=\"%(url)s\">Open "
 "Contracting Partnership</a>."
 msgstr ""
+"Dikelola oleh <a class=\"govuk-footer__link\" href=\"%(url)s\">Open "
+"Contracting Partnership</a>."
 
 #: core/templates/includes/footer.html:74
 #, python-format
@@ -104,6 +106,8 @@ msgid ""
 "Originally developed by the <a class=\"govuk-footer__link\" "
 "href=\"%(url)s\">Government Digital Service</a>."
 msgstr ""
+"Awalnya dikembangkan oleh <a class=\"govuk-footer__link\" "
+"href=\"%(url)s\">Government Digital Service</a>."
 
 #: core/templates/includes/footer.html:83
 #, python-format
@@ -127,11 +131,11 @@ msgstr "Panduan Pembelian Digital"
 #: core/templates/includes/header.html:13
 msgctxt "navigation landmark"
 msgid "Main"
-msgstr ""
+msgstr "Utama"
 
 #: core/templates/includes/pagination.html:4
 msgid "Pagination"
-msgstr ""
+msgstr "Penomoran halaman"
 
 #: core/templates/includes/pagination.html:9
 msgid "Previous"
