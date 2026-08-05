@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-04 19:59+0000\n"
+"POT-Creation-Date: 2026-08-05 02:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr "Subnavegación"
 msgid "(Same page link)"
 msgstr "(Enlace de la misma página)"
 
-#: core/templates/case_studies/case_studies_listing_page.html:15
+#: core/templates/case_studies/case_studies_listing_page.html:14
 #, python-format
 msgid "%(counter)s result"
 msgid_plural "%(counter)s results"
@@ -49,7 +49,7 @@ msgstr[1] "%(minutes)s minutos de lectura"
 
 #: core/templates/case_studies/case_study_page.html:80
 msgid "Tags:"
-msgstr "Etiquetas"
+msgstr "Etiquetas:"
 
 #: core/templates/guidelines/guidelines_listing_page.html:25
 msgid "Open all"
@@ -124,7 +124,7 @@ msgstr ""
 
 #: core/templates/includes/header.html:7
 msgid "Go to the Digital Buying Guide homepage"
-msgstr "Volver a Guía para compras digitales Página de inicio"
+msgstr "Ir a la página de inicio de la Guía para compras digitales"
 
 #: core/templates/includes/header.html:8
 msgid "Digital Buying Guide"
@@ -149,19 +149,19 @@ msgstr "Siguiente"
 
 #: core/templates/includes/social-links.html:4
 msgid "Share this case study:"
-msgstr "Compartir este estudio de caso"
+msgstr "Compartir este estudio de caso:"
 
 #: core/templates/includes/social-links.html:13
 msgid "Share case study on Twitter"
-msgstr "Compartir el estudio de caso sobre Twitter"
+msgstr "Compartir el estudio de caso en Twitter"
 
 #: core/templates/includes/social-links.html:25
 msgid "Share case study on Facebook"
-msgstr "Compartir el estudio de caso sobre Facebook"
+msgstr "Compartir el estudio de caso en Facebook"
 
 #: core/templates/includes/social-links.html:37
 msgid "Share case study on LinkedIn"
-msgstr "Compartir el estudio de caso sobre LinkedIn"
+msgstr "Compartir el estudio de caso en LinkedIn"
 
 #: core/templates/includes/social-links.html:43
 msgid "I wanted to share this post with you from the Digital Buying Guide"
@@ -170,16 +170,18 @@ msgstr ""
 
 #: core/templates/includes/social-links.html:50
 msgid "Share case study on Email"
-msgstr "Compartir el estudio de caso sobre Correo electrónico"
+msgstr "Compartir el estudio de caso por correo electrónico"
 
 #: core/templates/includes/social-links.html:51
 msgid "Email"
 msgstr "Correo electrónico"
 
 #: core/templates/streams/do_dont_list.html:6
+msgctxt "dos and don'ts list"
 msgid "Do"
 msgstr "Se debe"
 
 #: core/templates/streams/do_dont_list.html:19
+msgctxt "dos and don'ts list"
 msgid "Don't"
 msgstr "No se debe"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-04 19:59+0000\n"
+"POT-Creation-Date: 2026-08-05 02:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr "Sub-Navigasi"
 msgid "(Same page link)"
 msgstr "(Tautan laman yang sama)"
 
-#: core/templates/case_studies/case_studies_listing_page.html:15
+#: core/templates/case_studies/case_studies_listing_page.html:14
 #, python-format
 msgid "%(counter)s result"
 msgid_plural "%(counter)s results"
@@ -122,7 +122,7 @@ msgstr ""
 
 #: core/templates/includes/header.html:7
 msgid "Go to the Digital Buying Guide homepage"
-msgstr "Kembali ke Panduan Pembelian Digital Laman beranda"
+msgstr "Buka laman beranda Panduan Pembelian Digital"
 
 #: core/templates/includes/header.html:8
 msgid "Digital Buying Guide"
@@ -176,9 +176,11 @@ msgid "Email"
 msgstr "Email"
 
 #: core/templates/streams/do_dont_list.html:6
+msgctxt "dos and don'ts list"
 msgid "Do"
 msgstr "Anjuran"
 
 #: core/templates/streams/do_dont_list.html:19
+msgctxt "dos and don'ts list"
 msgid "Don't"
 msgstr "Larangan"
