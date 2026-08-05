@@ -6,7 +6,7 @@
     <li>
       <a
         class="ictcg-social-links__link twitter"
-        href="https://twitter.com/intent/tweet?url={{request.build_absolute_uri|urlencode}}&text={{ page.title }}"
+        href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}&amp;text={{ page.title|urlencode }}"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -30,7 +30,7 @@
     <li>
       <a
         class="ictcg-social-links__link linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri|urlencode }}&title={{ page.title }}"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ request.build_absolute_uri|urlencode }}&amp;title={{ page.title|urlencode }}"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -43,7 +43,7 @@
       {% trans 'I wanted to share this post with you from the Digital Buying Guide' as email_subject %}
       <a
         class="ictcg-social-links__link email"
-        href="mailto:?subject={{ email_subject|urlencode }}&body={{ page.title }} {{ request.build_absolute_uri }}"
+        href="mailto:?subject={{ email_subject|urlencode }}&amp;body={{ page.title|urlencode }}%20{{ request.build_absolute_uri|urlencode }}"
         target="_blank"
         rel="noopener noreferrer"
       >
