@@ -46,6 +46,8 @@ Build static files, then:
 
    ./manage.py test
 
+For `Pa11y <https://ocp-software-handbook.readthedocs.io/en/latest/python/a11y.html>`__, use ``-f https://digitalbuying.open-contracting.org`` locally (CI uses `` -f localhost``).
+
 .. |Build Status| image:: https://github.com/open-contracting/digitalbuying/actions/workflows/ci.yml/badge.svg
    :target: https://github.com/open-contracting/digitalbuying/actions/workflows/ci.yml
 .. |Coverage Status| image:: https://codecov.io/github/open-contracting/digitalbuying/graph/badge.svg

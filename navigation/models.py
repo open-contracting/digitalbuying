@@ -25,12 +25,6 @@ class MainMenu(ClusterableModel):
 
     button_text = models.CharField(max_length=100, blank=False, null=False, default="Menu")
 
-    button_aria_label = models.CharField(
-        max_length=100,
-        default="Show or hide Top Level Navigation",
-        help_text="Description for navigation button aria label",
-    )
-
     navigation_aria_label = models.CharField(
         max_length=100,
         default="Top Level Navigation",
@@ -41,7 +35,6 @@ class MainMenu(ClusterableModel):
         FieldPanel("title"),
         FieldPanel("language"),
         FieldPanel("button_text"),
-        FieldPanel("button_aria_label"),
         FieldPanel("navigation_aria_label"),
         InlinePanel("menu_items", label="Menu Item"),
     ]

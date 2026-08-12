@@ -7,7 +7,6 @@
       "title": "main menu",
       "language": "en",
       "button_text": "Menu",
-      "button_aria_label": "Show or hide Top Level Navigation",
       "navigation_aria_label": "Top Level Navigation"
     }
   },
@@ -19,7 +18,6 @@
       "title": "main menu",
       "language": "es",
       "button_text": "Menu",
-      "button_aria_label": "Show or hide Top Level Navigation",
       "navigation_aria_label": "Top Level Navigation"
     }
   },
