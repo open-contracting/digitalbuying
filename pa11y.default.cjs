@@ -2,10 +2,7 @@ const strategy = process.env.PA11Y_STRATEGY;
 const includeWarnings = "PA11Y_INCLUDE_WARNINGS" in process.env;
 const suppressKnownWarnings = "PA11Y_SUPPRESS_KNOWN_WARNINGS" in process.env;
 
-const knownErrors = {
-  rules: [],
-  selectors: [],
-};
+const knownErrors = [];
 
 const knownWarnings = [
   {
@@ -53,23 +50,32 @@ const knownWarnings = [
   },
 ];
 
-const suppressions = [knownErrors, ...(includeWarnings && suppressKnownWarnings ? knownWarnings : [])];
+function createDefaults(extraKnownWarnings = []) {
+  const suppressions = [
+    ...knownErrors,
+    ...(includeWarnings && suppressKnownWarnings ? [...knownWarnings, ...extraKnownWarnings] : []),
+  ];
 
-const withoutSelectors = suppressions.filter((suppression) => !suppression.selectors.length);
-const withSelectors = suppressions.filter((suppression) => suppression.selectors.length);
+  const withoutSelectors = suppressions.filter((suppression) => !suppression.selectors.length);
+  const withSelectors = suppressions.filter((suppression) => suppression.selectors.length);
 
-const hideElements = strategy === "hideElements" ? withSelectors.flatMap((suppression) => suppression.selectors) : [];
-const ignore = [
-  ...withoutSelectors.flatMap((suppression) => suppression.rules),
-  ...(strategy === "ignore" ? withSelectors.flatMap((suppression) => suppression.rules) : []),
-];
+  const hideElements =
+    strategy === "hideElements" ? withSelectors.flatMap((suppression) => suppression.selectors) : [];
+  const ignore = [
+    ...withoutSelectors.flatMap((suppression) => suppression.rules),
+    ...(strategy === "ignore" ? withSelectors.flatMap((suppression) => suppression.rules) : []),
+  ];
 
-module.exports = {
-  defaults: {
+  return {
     runners: ["htmlcs", "axe"],
     levelCapWhenNeedsReview: "warning",
     includeWarnings: includeWarnings,
     ...(hideElements.length ? { hideElements: hideElements.join(", ") } : {}),
     ...(ignore.length ? { ignore: ignore } : {}),
-  },
+  };
+}
+
+module.exports = {
+  createDefaults,
+  defaults: createDefaults(),
 };
