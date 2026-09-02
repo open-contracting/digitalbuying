@@ -1,5 +1,3 @@
-import urllib.parse
-
 from django import template
 from django.utils.translation import get_language
 from wagtail.models import Page
@@ -60,14 +58,6 @@ def menu_item_link(context, item):
     if item.page:
         return item.page.get_url(context.get("request")) or "#"  # don't render "None" for a non-routable page
     return item.url or "#"
-
-
-@register.simple_tag(takes_context=True)
-def is_main_menu_link_active(context, link):
-    request = context.get("request")
-    if request:
-        return urllib.parse.unquote(link) in request.path
-    return False
 
 
 @register.simple_tag()

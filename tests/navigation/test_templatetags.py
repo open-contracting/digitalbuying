@@ -7,7 +7,6 @@ from navigation.templatetags.navigation_tags import (
     breadcrumbs,
     get_footer_content,
     get_parent,
-    is_main_menu_link_active,
     main_menu,
     menu_item_link,
 )
@@ -60,12 +59,6 @@ class TemplateTagsMainMenuTests(TestCase):
         # When a menu is not found, should return english by default
         menu = main_menu("it")
         self.assertEqual("main menu - English", str(menu))
-
-    def test_is_main_menu_link_active(self):
-        # Should return true when the menu item link property is also in the requested url
-        response = self.client.get("/en/guidelines")
-        context = {"request": response.wsgi_request}
-        self.assertTrue(is_main_menu_link_active(context, "guidelines"))
 
 
 class TemplateTagsMenuItemLinkTests(TestCase):
