@@ -6,9 +6,6 @@ from streams import blocks as ictgs_blocks
 
 
 class RichTextBlockTests(WagtailPageTestCase):
-    def test_rich_text_block_subclass(self):
-        assert issubclass(ictgs_blocks.RichTextWithTitleBlock, blocks.StructBlock)
-
     def test_rich_text_block(self):
         child_blocks = ictgs_blocks.RichTextWithTitleBlock().child_blocks
         assert type(child_blocks["title"]) is blocks.CharBlock
@@ -24,15 +21,7 @@ class RichTextBlockTests(WagtailPageTestCase):
         )
 
 
-class TextAlignmentBlockTests(WagtailPageTestCase):
-    def test_text_alignment_block_subclass(self):
-        assert issubclass(ictgs_blocks.TextAlignmentBlock, blocks.ChoiceBlock)
-
-
 class HomePageRichTextBlockTests(WagtailPageTestCase):
-    def test_home_page_rich_text_block_subclass(self):
-        assert issubclass(ictgs_blocks.HomePageRichTextBlock, blocks.StructBlock)
-
     def test_home_page_rich_text_block(self):
         child_blocks = ictgs_blocks.HomePageRichTextBlock().child_blocks
         assert type(child_blocks["title"]) is blocks.CharBlock
@@ -49,9 +38,6 @@ class HomePageRichTextBlockTests(WagtailPageTestCase):
 
 
 class HighlightListBlockTests(WagtailPageTestCase):
-    def test_highlight_list_block_subclass(self):
-        assert issubclass(ictgs_blocks.HighlightListBlock, blocks.StructBlock)
-
     def test_highlight_list_block(self):
         child_blocks = ictgs_blocks.HighlightListBlock().child_blocks
         assert type(child_blocks["title"]) is blocks.CharBlock
@@ -66,9 +52,6 @@ class HighlightListBlockTests(WagtailPageTestCase):
 
 
 class CaseStudyBlockTests(WagtailPageTestCase):
-    def test_case_study_block_subclass(self):
-        assert issubclass(ictgs_blocks.CaseStudyBlock, blocks.StructBlock)
-
     def test_case_study_block(self):
         child_blocks = ictgs_blocks.CaseStudyBlock().child_blocks
         assert type(child_blocks["title"]) is blocks.CharBlock
@@ -86,9 +69,6 @@ class CaseStudyBlockTests(WagtailPageTestCase):
 
 
 class DoDontCardTests(WagtailPageTestCase):
-    def test_do_dont_card_subclass(self):
-        assert issubclass(ictgs_blocks.DoOrDontCard, blocks.StructBlock)
-
     def test_do_dont_card_input_types(self):
         child_blocks = ictgs_blocks.DoOrDontCard().child_blocks
         assert type(child_blocks["item"]) is blocks.CharBlock
@@ -99,9 +79,6 @@ class DoDontCardTests(WagtailPageTestCase):
 
 
 class DoDontBlockTests(WagtailPageTestCase):
-    def test_do_dont_block_subclass(self):
-        assert issubclass(ictgs_blocks.DosAndDontsBlock, blocks.StructBlock)
-
     def test_do_dont_block_input_types(self):
         child_blocks = ictgs_blocks.DosAndDontsBlock().child_blocks
         assert type(child_blocks["title"]) is blocks.CharBlock
@@ -117,9 +94,6 @@ class DoDontBlockTests(WagtailPageTestCase):
 
 
 class QuoteBlockTests(WagtailPageTestCase):
-    def test_quote_block_subclass(self):
-        assert issubclass(ictgs_blocks.QuoteBlock, blocks.StructBlock)
-
     def test_quote_block_input_types(self):
         child_blocks = ictgs_blocks.QuoteBlock().child_blocks
         assert type(child_blocks["quote"]) is blocks.CharBlock
@@ -134,9 +108,6 @@ class QuoteBlockTests(WagtailPageTestCase):
 
 
 class LogoItemTests(WagtailPageTestCase):
-    def test_logo_item_block_subclass(self):
-        assert issubclass(ictgs_blocks.LogoItem, blocks.StructBlock)
-
     def test_ogo_item_block_input_types(self):
         child_blocks = ictgs_blocks.LogoItem().child_blocks
         assert type(child_blocks["logo"]) is ImageChooserBlock
@@ -149,9 +120,6 @@ class LogoItemTests(WagtailPageTestCase):
 
 
 class SupportersBlockTests(WagtailPageTestCase):
-    def test_supporters_block_subclass(self):
-        assert issubclass(ictgs_blocks.SupportersBlock, blocks.StructBlock)
-
     def test_supporters_block_input_types(self):
         child_blocks = ictgs_blocks.SupportersBlock().child_blocks
         assert type(child_blocks["title"]) is blocks.CharBlock

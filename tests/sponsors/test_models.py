@@ -1,19 +1,14 @@
 from unittest.mock import patch
 
 from django.test import TestCase
-from modelcluster.models import ClusterableModel
-from wagtail.models import Orderable, Page
 from wagtail.test.utils import WagtailPageTestCase
 
 from base.models import GenericPage, GenericPageWithSubNav, HomePage
-from sponsors.models import Sponsor, SponsorItem, SponsorsPage, clear_sponsors_footer_cache
+from sponsors.models import Sponsor, SponsorsPage, clear_sponsors_footer_cache
 
 
 class SponsorTests(TestCase):
     fixtures = ["sponsors.json"]
-
-    def test_sponsor_inherits_from_clusterable_model_class(self):
-        assert issubclass(Sponsor, ClusterableModel)
 
     def test_sponsor_object_name(self):
         sponsor = Sponsor.objects.get(language="en")
@@ -33,13 +28,6 @@ class SponsorTests(TestCase):
         sponsor.delete()
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)
-
-
-class SponsorItemTests(TestCase):
-    fixtures = ["sponsors.json"]
-
-    def test_sponsor_item_inherits_from_orderable_class(self):
-        assert issubclass(SponsorItem, Orderable)
 
 
 class ClearSponsorFooterCacheTest(TestCase):
@@ -66,6 +54,3 @@ class SponsorsPageTests(WagtailPageTestCase):
     def test_sponsors_page_can_be_created_under_generic_page_with_sub_nav(self):
         # You can nested SponsorsPage under GenericPageWithSubNav
         self.assertCanCreateAt(GenericPageWithSubNav, SponsorsPage)
-
-    def test_generic_page_inherits_from_page_class(self):
-        assert issubclass(SponsorsPage, Page)

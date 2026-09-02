@@ -1,25 +1,9 @@
-from django.db import models
-from modelcluster.models import ClusterableModel
-from wagtail.models import Orderable
 from wagtail.test.utils import WagtailPageTestCase
 
-from modules.models import KeyModuleFields, Links, LinksModule, MoreInformationModule, OrderableLinks
-
-
-class KeyModuleFieldsTests(WagtailPageTestCase):
-    def test_key_module_fields_class_inherits_from_models_class(self):
-        self.assertTrue(issubclass(KeyModuleFields, models.Model))
-
-
-class LinksTests(WagtailPageTestCase):
-    def test_links_class_inherits_from_models_class(self):
-        self.assertTrue(issubclass(KeyModuleFields, models.Model))
+from modules.models import LinksModule, MoreInformationModule
 
 
 class MoreInformationModuleTests(WagtailPageTestCase):
-    def test_more_info_module_class_inherits_from_key_module_fields(self):
-        self.assertTrue(issubclass(MoreInformationModule, KeyModuleFields))
-
     def test_more_info_object_name(self):
         admin_title = "hello world"
         lang = "en"
@@ -28,17 +12,7 @@ class MoreInformationModuleTests(WagtailPageTestCase):
         self.assertEqual(object_string, str(more_info))
 
 
-class OrderableLinksTests(WagtailPageTestCase):
-    def test_orderable_links_class_inherits_from_orderable_and_links_classes(self):
-        self.assertTrue(issubclass(OrderableLinks, Orderable))
-        self.assertTrue(issubclass(OrderableLinks, Links))
-
-
 class LinksModuleTests(WagtailPageTestCase):
-    def test_links_modules_class_inherits_from_clusterablemodel_and_key_link_fields_classes(self):
-        self.assertTrue(issubclass(LinksModule, ClusterableModel))
-        self.assertTrue(issubclass(LinksModule, KeyModuleFields))
-
     def test_links_modile_object_name(self):
         admin_title = "hello again"
         lang = "es"

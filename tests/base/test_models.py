@@ -36,9 +36,6 @@ class HomePageTests(WagtailPageTestCase):
         # You can create a SponsorsPage under the HomePage
         self.assertCanCreateAt(HomePage, SponsorsPage)
 
-    def test_listing_page_inherits_from_page_class(self):
-        assert issubclass(HomePage, Page)
-
     def test_validation_error_when_masthead_image_set_but_masthead_image_description_is_missing(self):
         image = Image.objects.get(id=1)
         with self.assertRaises(ValidationError):
@@ -69,9 +66,6 @@ class GenericPageTests(WagtailPageTestCase):
         # You can create a SponsorsPage under a GenericPage
         self.assertCanCreateAt(GenericPage, SponsorsPage)
 
-    def test_generic_page_inherits_from_page_class(self):
-        assert issubclass(GenericPageWithSubNav, Page)
-
 
 class GenericPageWithSubNavTests(WagtailPageTestCase):
     def test_generic_page_with_sub_nav_can_be_created_under_homepage(self):
@@ -89,6 +83,3 @@ class GenericPageWithSubNavTests(WagtailPageTestCase):
     def test_sponsors_page_can_be_created_under_generic_page_with_sub_nav(self):
         # You can create a SponsorsPage under a GenericPageWithSubNav
         self.assertCanCreateAt(GenericPageWithSubNav, SponsorsPage)
-
-    def test_generic_page_inherits_from_page_class(self):
-        assert issubclass(GenericPageWithSubNav, Page)

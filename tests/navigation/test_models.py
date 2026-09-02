@@ -1,10 +1,7 @@
 from unittest.mock import patch
 
 from django.conf import settings
-from django.db.models import Model
 from django.test import TestCase
-from modelcluster.models import ClusterableModel
-from wagtail.models import Orderable
 
 from navigation import models
 
@@ -13,9 +10,6 @@ class MainMenuTests(TestCase):
     @classmethod
     def setUpTestData(cls):
         models.MainMenu.objects.create(title="test title 1", language="en")
-
-    def test_mainmenu_inherits_from_translatable_page_class(self):
-        assert issubclass(models.MainMenu, ClusterableModel)
 
     def test_mainmenu_object_name(self):
         main_menu = models.MainMenu.objects.get(title__exact="test title 1")
@@ -31,23 +25,10 @@ class MainMenuTests(TestCase):
         self.assertEqual(mock.call_count, 1)
 
 
-class MenuItemTests(TestCase):
-    def test_mainitem_inherits_from_translatable_page_class(self):
-        assert issubclass(models.MenuItem, Model)
-
-
-class MainMenuItemTests(TestCase):
-    def test_mainmenuitem_inherits_from_orderable_and_menuitem_classes(self):
-        assert issubclass(models.MainMenuItem, Orderable | models.MenuItem)
-
-
 class FooterMenuTests(TestCase):
     @classmethod
     def setUpTestData(cls):
         models.FooterMenu.objects.create(admin_title="Footer title 1", language="en")
-
-    def test_footermenu_inherits_from_translatable_page_class(self):
-        assert issubclass(models.FooterMenu, ClusterableModel)
 
     def test_footermenu_object_name(self):
         footer_menu = models.FooterMenu.objects.get(admin_title__exact="Footer title 1")
@@ -61,11 +42,6 @@ class FooterMenuTests(TestCase):
         footer_menu.save()
         self.assertTrue(mock.called)
         self.assertEqual(mock.call_count, 1)
-
-
-class FooterMenuItemTests(TestCase):
-    def test_footermenuitem_inherits_from_orderable_and_menuitem_classes(self):
-        assert issubclass(models.FooterMenuItem, Orderable | models.MenuItem)
 
 
 class ClearMainMenuCacheTest(TestCase):

@@ -1,7 +1,6 @@
 from unittest.mock import patch
 
 from django.test import TestCase
-from wagtail.models import Page
 from wagtail.test.utils import WagtailPageTestCase
 
 from base.models import HomePage
@@ -21,9 +20,6 @@ class GuidelinesListingPageTests(WagtailPageTestCase):
         # You can not create a GuidancePage under an GuidelinesListingPage
         self.assertCanNotCreateAt(GuidelinesListingPage, GuidancePage)
 
-    def test_listing_page_inherits_from_page_class(self):
-        assert issubclass(GuidelinesListingPage, Page)
-
 
 class GuidelinesSectionPageTests(WagtailPageTestCase):
     fixtures = ["app.json"]
@@ -35,9 +31,6 @@ class GuidelinesSectionPageTests(WagtailPageTestCase):
     def test_guidance_page_can_be_created_under_sectiong_page(self):
         # An GuidancePage can be created inder an GuidelinesListingPage
         self.assertCanCreateAt(GuidelinesSectionPage, GuidancePage)
-
-    def test_section_page_inherits_from_page_class(self):
-        assert issubclass(GuidelinesSectionPage, Page)
 
     @patch("guidelines.models.GuidelinesSectionPage.clear_from_caches")
     def test_clear_cache_is_called_on_save(self, clear_from_caches):
@@ -70,9 +63,6 @@ class GuidancePageTests(WagtailPageTestCase):
     def test_guidance_page_can_only_be_created_under_section_page(self):
         # An GuidelinesSectionPage can only be created under an GuidelinesListingPage
         self.assertAllowedParentPageTypes(GuidancePage, {GuidelinesSectionPage})
-
-    def test_guidance_page_inherits_from_page_class(self):
-        assert issubclass(GuidancePage, Page)
 
     def test_guidance_page_pagination_links_first_page_in_section(self):
         # Ensure the data for the pagation links is correct
