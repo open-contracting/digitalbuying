@@ -73,14 +73,6 @@ class MenuItem(models.Model):
     def __str__(self):
         return self.title
 
-    @property
-    def link(self):
-        if self.page:
-            return self.page.url
-        if self.url:
-            return self.url
-        return "#"
-
 
 class MainMenuItem(Orderable, MenuItem):
     """

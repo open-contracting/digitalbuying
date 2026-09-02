@@ -2,12 +2,14 @@ from django.conf import settings
 from django.test import TestCase
 from wagtail.models import Page
 
+from navigation.models import MenuItem
 from navigation.templatetags.navigation_tags import (
     breadcrumbs,
     get_footer_content,
     get_parent,
     is_main_menu_link_active,
     main_menu,
+    menu_item_link,
 )
 
 
@@ -64,6 +66,24 @@ class TemplateTagsMainMenuTests(TestCase):
         response = self.client.get("/en/guidelines")
         context = {"request": response.wsgi_request}
         self.assertTrue(is_main_menu_link_active(context, "guidelines"))
+
+
+class TemplateTagsMenuItemLinkTests(TestCase):
+    fixtures = ["app.json"]
+
+    def test_menu_item_link_should_return_page_url_when_page_object_is_set(self):
+        guidelines_page = Page.objects.get(id=6)
+        menu_item = MenuItem.objects.create(title="Menu item 1", page=guidelines_page)
+        self.assertEqual(menu_item_link({}, menu_item), guidelines_page.url)
+
+    def test_menu_item_link_should_return_local_url_when_page_object_is_not_set(self):
+        test_url = "http://www.test.com"
+        menu_item = MenuItem.objects.create(title="Menu item 2", url=test_url)
+        self.assertEqual(menu_item_link({}, menu_item), test_url)
+
+    def test_menu_item_link_should_return_anchor_when_neither_is_set(self):
+        menu_item = MenuItem.objects.create(title="Menu item 3")
+        self.assertEqual(menu_item_link({}, menu_item), "#")
 
 
 class TemplateTagsFooterTests(TestCase):

@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db.models import Model
 from django.test import TestCase
 from modelcluster.models import ClusterableModel
-from wagtail.models import Orderable, Page
+from wagtail.models import Orderable
 
 from navigation import models
 
@@ -32,21 +32,8 @@ class MainMenuTests(TestCase):
 
 
 class MenuItemTests(TestCase):
-    fixtures = ["app.json"]
-
     def test_mainitem_inherits_from_translatable_page_class(self):
         assert issubclass(models.MenuItem, Model)
-
-    def test_link_property_should_return_page_url_when_page_object_is_set(self):
-        # Page ID 6 from fixtures - guidelines page
-        guidelines_page = Page.objects.get(id=6)
-        menu_item = models.MenuItem.objects.create(title="Menu item 1", page=guidelines_page)
-        self.assertEqual(menu_item.link, guidelines_page.url)
-
-    def test_link_property_should_return_local_url_when_page_object_is_not_set(self):
-        test_url = "http://www.test.com"
-        menu_item = models.MenuItem.objects.create(title="Menu item 2", url=test_url)
-        self.assertEqual(menu_item.link, test_url)
 
 
 class MainMenuItemTests(TestCase):
