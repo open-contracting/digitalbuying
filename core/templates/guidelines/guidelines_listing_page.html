@@ -23,7 +23,7 @@
 
       {% cache 604800 sections_and_pages_for_listing page.id %}
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{ page.slug }}" data-open-text="{% trans 'Open all' %} " data-close-text="{% trans 'Close all' %} ">
-          {% for section in page.get_children.live %}
+          {% for section in page.get_children.live.specific %}
             <div class="govuk-accordion__section ">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -32,13 +32,13 @@
                   </span>
                 </h2>
                 <div class="govuk-accordion__section-summary govuk-body" id="accordion-{{ page.slug }}-summary-{{forloop.counter}}">
-                  {{ section.specific.landing_page_summary }}
+                  {{ section.landing_page_summary }}
                 </div>
               </div>
               <div id="accordion-{{ page.slug }}-content-{{forloop.counter}}" class="govuk-accordion__section-content govuk-!-padding-top-0" aria-labelledby="accordion-{{ page.slug }}-heading-{{forloop.counter}}">
                 <ul class="govuk-list">
                   <li>
-                    <a href="{% pageurl section %}" class="" aria-label="{{ section.title }} - {{ section.specific.subtitle }}">{{ section.specific.subtitle }}</a>
+                    <a href="{% pageurl section %}" class="" aria-label="{{ section.title }} - {{ section.subtitle }}">{{ section.subtitle }}</a>
                   </li>
                   {% for page in section.get_children.live %}
                     <li>

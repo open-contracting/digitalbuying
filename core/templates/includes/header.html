@@ -13,7 +13,7 @@
       <nav aria-label="{% trans 'Main' context 'navigation landmark' %}">
         <ul id="MainNavigation" class="ictcg-header__navigation " aria-label="{{mainmenu.navigation_aria_label}}">
           {% cache 604800 header_navigation_links request.LANGUAGE_CODE %}
-            {% for item in mainmenu.menu_items.all %}
+            {% for item in mainmenu.get_menu_items %}
               <li class="ictcg-header__navigation-item">
                 <a class="ictcg-header__link" title="{{ item.title }}" href="{% menu_item_link item %}" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
                   {{ item.title }}

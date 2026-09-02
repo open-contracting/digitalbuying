@@ -55,7 +55,7 @@
         <h2 class="govuk-visually-hidden">{% trans 'Support links' %}</h2>
         <ul class="govuk-footer__inline-list">
           {% cache 604800 footer_support_links request.LANGUAGE_CODE %}
-            {% for item in footer.footer_content.footer_menu_items.all %}
+            {% for item in footer.footer_content.get_menu_items %}
               <li class="govuk-footer__inline-list-item">
                 <a class="govuk-footer__link" title="{{ item.title }}" href="{% menu_item_link item %}" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
                   {{ item.title }}

@@ -43,6 +43,10 @@ class MainMenu(ClusterableModel):
         language = dict(settings.LANGUAGES)
         return f"{self.title} - {language[self.language]}"
 
+    def get_menu_items(self):
+        """Return the menu's items, with their linked pages, to avoid a query per item."""
+        return self.menu_items.select_related("page").all()
+
     def save(self, *args, **kwargs):
         try:
             clear_mainmenu_cache(self.language)
@@ -115,6 +119,10 @@ class FooterMenu(ClusterableModel):
     def __str__(self):
         language = dict(settings.LANGUAGES)
         return f"{self.admin_title} - {language[self.language]}"
+
+    def get_menu_items(self):
+        """Return the menu's items, with their linked pages, to avoid a query per item."""
+        return self.footer_menu_items.select_related("page").all()
 
     def save(self, *args, **kwargs):
         try:
