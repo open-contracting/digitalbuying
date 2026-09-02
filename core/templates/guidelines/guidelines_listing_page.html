@@ -40,10 +40,10 @@
                   <li>
                     <a href="{% pageurl section %}" class="" aria-label="{{ section.title }} - {{ section.subtitle }}">{{ section.subtitle }}</a>
                   </li>
-                  {% for page in section.get_children.live %}
+                  {% for child in section.get_children.live %}
                     <li>
-                      <a href="{% pageurl page %}" class="">
-                        {{ page.title }}
+                      <a href="{% pageurl child %}" class="">
+                        {{ child.title }}
                       </a>
                     </li>
                   {% endfor %}
