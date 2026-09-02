@@ -26,7 +26,7 @@
             {% for translation in translations %}
               {% get_language_info for translation.locale.language_code as lang %}
               <li class="">
-                <a class="govuk-footer__link ictcg-footer__link ictcg-capitalize" href="{{ translation.url }}" lang="{{ translation.locale.language_code }}">
+                <a class="govuk-footer__link ictcg-footer__link ictcg-capitalize" href="{% pageurl translation %}" lang="{{ translation.locale.language_code }}">
                   {{ lang.name_local }}
                 </a>
               </li>
@@ -57,7 +57,7 @@
           {% cache 604800 footer_support_links request.LANGUAGE_CODE %}
             {% for item in footer.footer_content.footer_menu_items.all %}
               <li class="govuk-footer__inline-list-item">
-                <a class="govuk-footer__link" title="{{ item.title }}" href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+                <a class="govuk-footer__link" title="{{ item.title }}" href="{% menu_item_link item %}" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
                   {{ item.title }}
                   {% if item.open_in_new_tab %}
                     <span class="govuk-visually-hidden">{% trans '(opens in a new tab)' %}</span>

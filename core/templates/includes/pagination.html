@@ -1,11 +1,11 @@
 
-{% load i18n %}
+{% load i18n wagtailcore_tags %}
 
 <nav class="ictcg-pagination ictcg-margin-bottom-6" role="navigation" aria-label="{% trans 'Pagination' %}">
   <ul class="govuk-list ictcg-pagination__list">
     <li class="ictcg-pagination-item--previous">
-      {% if prev_page.url %}
-        <a class="ictcg-pagination__link ictcg-pagination__link--prev" href="{{prev_page.url}}">
+      {% if prev_page %}
+        <a class="ictcg-pagination__link ictcg-pagination__link--prev" href="{% pageurl prev_page %}">
           <span class="ictcg-pagination__title">{% trans 'Previous' %}</span>
           <span class="govuk-visually-hidden">:</span>
           <span class="ictcg-pagination__page">{{prev_page.title}}</span>
@@ -16,8 +16,8 @@
       {% endif %}
     </li>
     <li class="ictcg-pagination-item--next">
-      {% if next_page.url %}
-        <a class="ictcg-pagination__link ictcg-pagination__link--next" href="{{next_page.url}}">
+      {% if next_page %}
+        <a class="ictcg-pagination__link ictcg-pagination__link--next" href="{% pageurl next_page %}">
           <span class="ictcg-pagination__title">{% trans 'Next' %}</span>
           <span class="govuk-visually-hidden">:</span>
           <span class="ictcg-pagination__page">{{next_page.title}}</span>

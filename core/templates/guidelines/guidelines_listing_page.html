@@ -38,11 +38,11 @@
               <div id="accordion-{{ page.slug }}-content-{{forloop.counter}}" class="govuk-accordion__section-content govuk-!-padding-top-0" aria-labelledby="accordion-{{ page.slug }}-heading-{{forloop.counter}}">
                 <ul class="govuk-list">
                   <li>
-                    <a href="{{ section.url}}" class="" aria-label="{{ section.title }} - {{ section.specific.subtitle }}">{{ section.specific.subtitle }}</a>
+                    <a href="{% pageurl section %}" class="" aria-label="{{ section.title }} - {{ section.specific.subtitle }}">{{ section.specific.subtitle }}</a>
                   </li>
                   {% for page in section.get_children.live %}
                     <li>
-                      <a href="{{ page.url}}" class="">
+                      <a href="{% pageurl page %}" class="">
                         {{ page.title }}
                       </a>
                     </li>

@@ -55,6 +55,14 @@ def main_menu(language):
 
 
 @register.simple_tag(takes_context=True)
+def menu_item_link(context, item):
+    """Return the menu item's target, using the request to resolve a page's URL."""
+    if item.page:
+        return item.page.get_url(context.get("request")) or "#"  # don't render "None" for a non-routable page
+    return item.url or "#"
+
+
+@register.simple_tag(takes_context=True)
 def is_main_menu_link_active(context, link):
     request = context.get("request")
     if request:
