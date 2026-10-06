@@ -16,7 +16,7 @@ defusedxml==0.7.1
     # via willow
 dj-database-url==3.1.2
     # via -r requirements.in
-django==5.2.16
+django==5.2.17
     # via
     #   -r requirements.in
     #   dj-database-url
@@ -84,7 +84,7 @@ pillow-heif==1.4.0
     # via willow
 polib==1.2.0
     # via wagtail-localize
-redis==8.0.1
+redis[hiredis]==8.0.1
     # via -r requirements.in
 requests==2.34.2
     # via wagtail
@@ -112,5 +112,7 @@ wagtail==7.4.3
     #   wagtail-localize
 wagtail-localize==1.13.1
     # via -r requirements.in
-willow==1.12.0
-    # via wagtail
+willow[heif]==1.12.0
+    # via
+    #   wagtail
+    #   willow
